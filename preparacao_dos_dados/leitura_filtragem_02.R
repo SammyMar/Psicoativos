@@ -1,4 +1,3 @@
-
 # instalar e carregar pacotes
 
 pacman::p_load("tidyverse", "janitor", "Hmisc",
@@ -18,6 +17,19 @@ for (ano in 2013:2022) {
   dados_br_total <- bind_rows(df,dados_br_total)
   
 }
+
+#ADICIONANDO COLUNAS EXTRAS
+
+#criar coluna do ano em que o obito ocorreu
+dados_br_total$DTOBITO <- ymd(dados_br_total$DTOBITO)
+dados_br_total$ANOOBITO <- year(dados_br_total$DTOBITO)
+
+#criar coluna da idade em anos completos
+dados_br_total$DTNASC  <- ymd( dados_br_total$DTNASC )  
+dados_br_total$DTOBITO  <- ymd( dados_br_total$DTOBITO )
+dados_br_total$IDADE2  <- floor(interval( start  =  dados_br_total$DTNASC , end = dados_br_total $ DTOBITO ) / years( 1 )) # arrendondado p baixo - anos completos
+
+
 
 #codigos UF
 
@@ -45,6 +57,9 @@ dados_br_psic <- dados_br_total[grepl("F1", dados_br_total$CAUSABAS, ignore.case
 ### ES PSIC
 
 dados_es_psic <- dados_es_total[grepl("F1", dados_es_total$CAUSABAS, ignore.case = TRUE),]
+
+
+
 
 
 
