@@ -1,0 +1,31 @@
+---
+title: "1ª Análise Mortalidade"
+author: "Caroline de Oliveira, Franco Lovatti e Iane Martins"
+date: "2024-07-01"
+output: html_document
+---
+## 1. Introdução ao problema
+
+### 1.1 Variáveis utilizadas e fonte 
+
+### 1.2 Níveis da análise 
+
+## 2. Análise geral (CIDs)
+
+## 3. Análise de correlação e Independência
+
+## 4. Análise sociodemográfica
+
+### 4.1 Gênero
+
+### 4.2 Idade
+
+### 4.3 Raça
+
+### 4.4 Escolaridade
+
+### 4.5 Estado civil
+
+### 4.6 Local do óbito
+
+## 5. Conclusões 
