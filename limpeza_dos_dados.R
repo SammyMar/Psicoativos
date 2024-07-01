@@ -16,7 +16,7 @@ for (ano in 2013:2022) {
   dados <- process_sim(dados)
   dados <- dados %>%
     select(CAUSABAS, CODMUNOCOR, CODMUNRES, DTNASC, DTOBITO, IDADE, RACACOR, SEXO, ESTCIV, ESC, OCUP, LOCOCOR)
-  saveRDS(dados, paste0("dados_", ano))
+  saveRDS(dados, paste0("dados_", ano,'.rds'))
   }
 
 
