@@ -20,7 +20,7 @@ freq_escolaridade_br_total <- dados_br_total %>%
 hist_escolaridade_br_total <- ggplot(freq_escolaridade_br_total, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme_minimal() +
-  labs(title = "Quantidades de mortes por escolaridade no Brasil entre o período de 2013 a 2022",
+  labs(title = "Quantidades de mortes totais no Brasil entre o período de 2013 a 2022 de acordo com a Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
 
@@ -52,7 +52,7 @@ freq_escolaridade_es_total <- dados_es_total %>%
 hist_escolaridade_es_total <- ggplot(freq_escolaridade_es_total, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme_minimal() +
-  labs(title = "Quantidades de mortes por escolaridade no ES entre o período de 2013 a 2022",
+  labs(title = "Quantidades de mortes totais no Espírito Santo entre o período de 2013 a 2022 de acordo com a Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
 
@@ -95,7 +95,7 @@ series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(
                                                                                 colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
-  labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022 por Escolaridade", 
+  labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022 de acordo com a Escolaridade", 
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.br.series$ANOOBITO,  
@@ -117,7 +117,7 @@ series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(
                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
-  labs(title = "Número de Óbitos Totais no ES de 2013 a 2022 por Escolaridade", 
+  labs(title = "Número de Óbitos Totais no ES de 2013 a 2022 de acordo com a Escolaridade", 
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.es.series$ANOOBITO,  
@@ -141,7 +141,7 @@ series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, 
                                                                         colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
-  labs(title = "Número de Óbitos por psicativos no Brasil de 2013 a 2022 de acordo com a escolaridade", 
+  labs(title = "Número de Óbitos por psicativos no Brasil de 2013 a 2022 de acordo com a Escolaridade", 
        x="Anos", y="Óbitos por psicativos", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.br.series.psic$ANOOBITO,  
@@ -164,7 +164,7 @@ series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, 
                                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
-  labs(title = "Número de Óbitos por psicativos no Espírito Santo de 2013 a 2022 de acordo com a escolaridade", 
+  labs(title = "Número de Óbitos por psicativos no Espírito Santo de 2013 a 2022 de acordo com a Escolaridade", 
        x="Anos", y="Óbitos por psicativos", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.es.series.psic$ANOOBITO,  
