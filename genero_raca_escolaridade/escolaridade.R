@@ -36,7 +36,7 @@ freq_escolaridade_br_psic <- dados_br_psic %>%
 hist_escolaridade_br_psic <- ggplot(freq_escolaridade_br_psic, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme_minimal() +
-  labs(title = "Quantidades de mortes por psicoativo no Brasil entre o período de 2013 a 2022 de acordo com a escolaridade",
+  labs(title = "Quantidades de mortes por psicoativo no Brasil entre o período de 2013 a 2022 de acordo com a Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
 
@@ -68,7 +68,7 @@ freq_escolaridade_es_psic <- dados_es_psic %>%
 hist_escolaridade_es_psic <- ggplot(freq_escolaridade_es_psic, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme_minimal() +
-  labs(title = "Quantidades de mortes por psicoativo no ES entre o período de 2013 a 2022 de acordo com a escolaridade",
+  labs(title = "Quantidades de mortes por psicoativo no ES entre o período de 2013 a 2022 de acordo com a Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
 
