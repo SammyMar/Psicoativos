@@ -194,3 +194,4 @@ names(uniao_genero) <- c("Genero", "Mortes Totais BR", "% mortes BR", "Mortes po
 # Calcule mortes por psicoativos a cada 1000 mortes totais no BR
 uniao_genero <- uniao_genero %>%
   mutate(Mortes_por_1000_BR = (Mortes_Psicoativos_BR / Mortes_Totais_BR) * 1000)
+

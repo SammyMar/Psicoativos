@@ -1,7 +1,5 @@
-# Defina o caminho da pasta onde você quer salvar os gráficos
-pasta_destino <- "Psicoativos/graficos"
+# Lista de gráficos 
 
-# Lista de gráficos e seus nomes de arquivos correspondentes
 graficos <- list(
   hist_escolaridade_br_psic = "hist_escolaridade_br_psic.png",
   hist_escolaridade_br_total = "hist_escolaridade_br_total.png",
@@ -35,8 +33,7 @@ graficos <- list(
   series_raca_es_total = "series_raca_es_total.png"
 )
 
-# Loop para salvar todos os gráficos na pasta especificada
+# Salvar todos os gráficos
 for (grafico in names(graficos)) {
-  caminho_completo <- file.path(pasta_destino, graficos[[grafico]])
-  ggsave(caminho_completo, get(grafico), width = 10, height = 6, dpi = 300)
+  ggsave(graficos[[grafico]], get(grafico), width = 10, height = 6, dpi = 300)
 }
