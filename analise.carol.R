@@ -2,7 +2,7 @@ library(dplyr)
 library(data.table)
 library(lubridate)
 library(ggplot2)
-
+library(RColorBrewer)
 getwd()
 # ano teste
 
@@ -13,7 +13,7 @@ getwd()
 #Idade br total
 dados_br_total <- dados_br_total[!is.na(dados_br_total$IDADE2), ]
 
-ggplot(subset(dados_br_total, IDADE2 >= 0), aes(y = IDADE2)) +
+boxplot_idade_br <-  ggplot(subset(dados_br_total, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = "skyblue") +
   labs(
     title = "Óbitos por Idade no Brasil",
@@ -25,10 +25,10 @@ ggplot(subset(dados_br_total, IDADE2 >= 0), aes(y = IDADE2)) +
 dados_filtrados <- subset(dados_br_total, IDADE2 >= 0)
 summary(dados_filtrados$IDADE2)
 #idade br psic
-ggplot(subset(dados_br_psic, IDADE2 >= 0), aes(y = IDADE2)) +
+boxplot_idade_br_psic <- ggplot(subset(dados_br_psic, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = ("#EFA9AE")) +
   labs(
-    title = "Óbitos causadOs pelo uso de psicoativos por Idade no Brasil",
+    title = "Óbitos causados pelo uso de psicoativos por Idade no Brasil",
     y = "Idade"
   ) +
   theme_minimal() +
@@ -39,7 +39,7 @@ summary(dados_filtrados$IDADE2)
 
 # idade es total
 
-ggplot(subset(dados_es_total, IDADE2 >= 0), aes(y = IDADE2)) +
+boxplot_idade_es <- ggplot(subset(dados_es_total, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = "skyblue") +
   labs(
     title = "Óbitos por Idade no Espírito Santo",
@@ -53,7 +53,7 @@ dados_filtrados <- subset(dados_es_total, IDADE2 >= 0)
 summary(dados_filtrados$IDADE2)
 
 #idade es psic
-ggplot(subset(dados_es_psic, IDADE2 >= 0), aes(y = IDADE2)) +
+boxplot_idade_es_psic <- ggplot(subset(dados_es_psic, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = ("#EFA9AE")) +
   labs(
     title = "Óbitos causados pelo uso de psicoativos por Idade no ES",
@@ -72,7 +72,7 @@ categorias <- c("Infantil", "Jovem", "Adulto", "Idoso")  # Rótulos das categori
 
 # Criar a variável categórica baseada na idade
 
-cores <- c("#4357AD","#EFA9AE","#9A3D6A", "#6a3d9a", "#a6cee3", "#1d9a55", "#9A3DA7", "#cab2d6", "#6A3DA7")
+cores <-  brewer.pal(8, "Set1")
 #### SERIES ANO x NUMERO DE OBITOS CONTROLADO POR UMA VARIAVEL ####
 #infantil (0-12 anos), JOVEM (13-24 anos), adulto (25-55 anos) e idoso (56+ anos)
 # MONTANDO DADOS
@@ -99,7 +99,7 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
     labels = dados.grafico.series.esto$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = cores,
                     labels = c("Infantil (0-12 anos)", "Jovem (13-24 anos)", 'Adulto (25-55 anos)', 'Idoso (56+ anos)'))+
-  theme_classic()
+  theme_minimal()
 
 graf.serie.idade.es.t
 ##ES psic
@@ -127,7 +127,7 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
     labels = dados.grafico.series.esps$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = cores,
                       labels = c("Infantil (0-12 anos)", "Jovem (13-24 anos)", 'Adulto (25-55 anos)', 'Idoso (56+ anos)'))+
-  theme_classic()
+  theme_minimal()
 
 graf.serie.idade.es.p
 
@@ -155,7 +155,7 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
     labels = dados.grafico.series.brto$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = cores,
                       labels = c("Infantil (0-12 anos)", "Jovem (13-24 anos)", 'Adulto (25-55 anos)', 'Idoso (56+ anos)'))+
-  theme_classic()
+  theme_minimal()
 
 graf.serie.idade.br.t
 
@@ -184,7 +184,7 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
     labels = dados.grafico.series.brps$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = cores,
                       labels = c("Infantil (0-12 anos)", "Jovem (13-24 anos)", 'Adulto (25-55 anos)', 'Idoso (56+ anos)'))+
-  theme_classic()
+  theme_minimal()
 
 graf.serie.idade.br.p
 
@@ -212,15 +212,13 @@ dados_prop_estciv_br <- dados_br_total %>%
   summarise(n = n()) %>%
   mutate(p= round((n/sum(n))*100, 2), LOC = "Brasil")
 
- ggplot(dados_prop_estciv_br, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
+barplot_estciv_br <-  ggplot(dados_prop_estciv_br, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
    geom_text(
      aes(label = paste0(p, "%") ),
      position = position_dodge(width = 0.9),
      vjust = -0.4,
-     size = 4,
-
-   )+
+     size = 4,)+
   theme_minimal() +
   labs(title = "Óbitos por estado civil no Brasil",
        x = " ",
@@ -234,7 +232,7 @@ dados_prop_estciv_br.psic <- dados_br_psic %>%
   summarise(n = n()) %>%
   mutate(p= round((n/sum(n))*100, 2), LOC = "Brasil")
 
-ggplot(dados_prop_estciv_br.psic, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
+barplot_estciv_br_psic <- ggplot(dados_prop_estciv_br.psic, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
   geom_text(
     aes(label = paste0(p, "%") ),
@@ -258,7 +256,7 @@ dados_prop_estciv_es.psic <- dados_es_psic %>%
   summarise(n = n()) %>%
   mutate(p= round((n/sum(n))*100, 2), LOC = "Brasil")
 
-ggplot(dados_prop_estciv_es.psic, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
+barplot_estciv_es_psic <- ggplot(dados_prop_estciv_es.psic, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
   geom_text(
     aes(label = paste0(p, "%") ),
@@ -281,7 +279,7 @@ dados_prop_estciv_es <- dados_es_total %>%
   summarise(n = n()) %>%
   mutate(p= round((n/sum(n))*100, 2), LOC = "Brasil")
 
-ggplot(dados_prop_estciv_es, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
+barplot_estciv_es <- ggplot(dados_prop_estciv_es, aes(x = ESTCIV, y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
   geom_text(
     aes(label = paste0(p, "%") ),
@@ -322,7 +320,7 @@ serie_obt_psic_br <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
   scale_x_continuous(
     breaks = dados.grafico.series$ANOOBITO,
     labels = dados.grafico.series$ANOOBITO)+
-  theme_classic()
+  theme_minimal()
 
 serie_obt_psic_br
 
@@ -348,25 +346,15 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
   scale_x_continuous(
     breaks = dados.grafico.series$ANOOBITO,
     labels = dados.grafico.series$ANOOBITO)+
-  theme_classic()
+  theme_minimal()
 
 serie_obt_psic_es
 
 
-cores <- c("#4357AD","#EFA9AE","#9A3D6A", "#6a3d9a", "#a6cee3", "#1d9a55", "#9A3DA7", "#cab2d6", "#6A3DA7")
+
 
 #grafico proprcao
-grafico_prop <- ggplot(data = dados_prop_estciv, aes(x = p, y = LOC, fill = ESTCIV))+
-                geom_col(position = "fill") +
-                scale_fill_manual(values = c("#4357AD","#1d9a55","#9A3D6A", "#6a3d9a", "#a6cee3"))+
-                labs(fill="Cor da Impressão de Esporos",
-                x="Comestibilidade",
-                y="Proporção", facet_grid = "Odor",
-                title = "Proporção de óbitos por estado civil no Espírito Santo e no Brasil ",
-                subtitle = "                                                                                         Variável Odor")+
-                theme_classic()
 
-grafico_prop
 
 
 
