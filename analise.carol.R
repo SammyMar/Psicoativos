@@ -16,7 +16,7 @@ dados_br_total <- dados_br_total[!is.na(dados_br_total$IDADE2), ]
 ggplot(subset(dados_br_total, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = "skyblue") +
   labs(
-    title = "Boxplot óbitos por Idade BR total",
+    title = "Óbitos por Idade no Brasil",
     y = "Idade"
   ) +
   theme_minimal() +
@@ -28,7 +28,7 @@ summary(dados_filtrados$IDADE2)
 ggplot(subset(dados_br_psic, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = ("#EFA9AE")) +
   labs(
-    title = "Boxplot óbitos por Idade BR psic",
+    title = "Óbitos causadOs pelo uso de psicoativos por Idade no Brasil",
     y = "Idade"
   ) +
   theme_minimal() +
@@ -42,7 +42,7 @@ summary(dados_filtrados$IDADE2)
 ggplot(subset(dados_es_total, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = "skyblue") +
   labs(
-    title = "Boxplot óbitos por Idade ES total",
+    title = "Óbitos por Idade no Espírito Santo",
     y = "Idade"
   ) +
   theme_minimal() +
@@ -56,7 +56,7 @@ summary(dados_filtrados$IDADE2)
 ggplot(subset(dados_es_psic, IDADE2 >= 0), aes(y = IDADE2)) +
   geom_boxplot(fill = ("#EFA9AE")) +
   labs(
-    title = "Boxplot óbitos por Idade ES psic",
+    title = "Óbitos causados pelo uso de psicoativos por Idade no ES",
     y = "Idade"
   ) +
   theme_minimal() +
@@ -92,7 +92,7 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
                                                          colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos Totais no Espírito Santo de 2013 a 2022 por Faixa etária",
+  labs(title = "Número de Óbitos Totais no Espírito Santo de 2013-2022 por Faixa etária",
        x="Anos", y="Óbitos Totais", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.esto$ANOOBITO,
@@ -120,7 +120,7 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos pelo uso de psicoativos no Espírito Santo de 2013 a 2022 por Faixa etária",
+  labs(title = "Número de Óbitos pelo uso de psicoativos no Espírito Santo de 2013-2022 por Faixa etária",
        x="Anos", y="Número de óbitos", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.esps$ANOOBITO,
@@ -148,7 +148,7 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022 por Faixa etária",
+  labs(title = "Número de Óbitos Totais no Brasil de 2013-2022 por Faixa etária",
        x="Anos", y="Óbitos Totais x 1000", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.brto$ANOOBITO,
@@ -177,7 +177,7 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos pelo uso de psicoativos no Brasil de 2013 a 2022 por Faixa etária",
+  labs(title = "Número de Óbitos pelo uso de psicoativos no Brasil de 2013-2022 por Faixa etária",
        x="Anos", y="Número de óbitos", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.brps$ANOOBITO,
@@ -227,8 +227,6 @@ dados_prop_estciv_br <- dados_br_total %>%
        y = "Proporção (%) ")+
    theme(legend.position = "none")
 
-
-barplot(table(dados.filt.es$estciv), main = "Número de mortos por estado civil", xlab = "Estado civil", ylab = "Número de pessoas")
 
 # BR PSIC
 dados_prop_estciv_br.psic <- dados_br_psic %>%
@@ -370,12 +368,43 @@ grafico_prop <- ggplot(data = dados_prop_estciv, aes(x = p, y = LOC, fill = ESTC
 
 grafico_prop
 
+
+
+# grafico por local de óbito
+
+local_obit_bR_t <- dados_br_total %>%
+  group_by(LOCOCOR) %>%
+  summarise(N.obitos = sum(N.obitos))
+
+local_obit_bR_t <- data.frame(
+  dados_br_total %>% group_by(LOCOCOR) %>%
+    summarise(N.obitos = sum(N.obitos))
+)
+
+ ggplot(local_obit_bR_t, aes(x = LOCOCOR, y = N.obitos, fill = LOCOCOR)) +
+  geom_bar(stat = "identity") +
+   geom_text(
+     aes(label = N.obitos),
+     position = position_dodge(width = 0.9),
+     vjust = -0.4,
+     size = 4,
+
+   )+
+  theme_minimal() +
+   theme(axis.text.x = element_blank(), # Remove os nomes das colunas no eixo x
+         axis.ticks.x = element_blank()) +
+  labs(title = "Números de óbitos por locais no Brail",
+       x = "Locais",
+       y = "Número de óbitos")
+
+
+table(dados_br_total$LOCOCOR)
 #GRÁFICOS
-[16:05, 7/1/2024] Iane Martins PS 2024: frequencia_genero_br <- dados_br_total %>%
+frequencia_genero_br <- dados_br_total %>%
   group_by(SEXO) %>%
   summarise(Quantidade = n(), .groups = "drop") %>%
   mutate(Porcentagem = Quantidade / sum(Quantidade) * 100)
-[16:12, 7/1/2024] Iane Martins PS 2024: #construir tabela de frequencia de cad auma das variáveis
+ #construir tabela de frequencia de cad auma das variáveis
   nome_da_tabela <- base_de_dados %>%
   group_by(VARIAVEL) %>%
   summarise(Quantidade = n(), .groups = "drop") %>%
@@ -388,3 +417,4 @@ nome_do_grafico <- ggplot(nome_da_tabela, aes(x = VARIAVEL, y = Quantidade, fill
   labs(title = "Título que vai aparecer no seu gráfico",
        x = "Título do eixo x",
        y = "Título do eixo x")
+
