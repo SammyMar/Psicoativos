@@ -1,0 +1,18 @@
+1 Passo: clonar repositório para maquina local
+	git clone https://github.com/SammyMar/Psicoativos.git
+2 Passo: Verificar se teve alguma alteração sempre que for mexer, dando um pull de todas as informações
+	git pull
+3 Passo: escolher em qual branch q vc quer mandar, pra mudar de branch ou criar uma nova, olha o tutorial na pasta. 
+
+4 Passo: Fazer qualquer alteração que precise.
+
+5 Passo: Escolher as alterações que quer adicionar na staging area para envio pro GitHub. Para selecionar todas, usar o .
+	git add .
+ obs, para escolher precisamente, ver na internet.
+
+6 Passo: Commitar as alterações que foram adicionadas na staging area.
+	git commit -m "texto que aparecera no commit, tanto no GitHub quanto no git local"
+
+7 Passo: Jogar pro GitHub tudo isso.
+	git push 
+
