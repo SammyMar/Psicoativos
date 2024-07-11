@@ -1,0 +1,14 @@
+--------------ROTINA DE TRABALHO------------
+
+
+
+1. ABRIR PASTA ANÁLISE EXPLORATÓRIA 1
+
+2. ABRIR PROJETO eda1_git.Rproj 
+   (eda = exploratory data analysis)
+
+3. ABRIR SCRIPT leitura_filtragem_02
+
+4. RODAR SCRIPT leitura_filtragem_02 para ler as bases, adcionar variaveis e filtrar pelas CIDs e UF ES
+
+5. ABRIR OS SCRIPTS desejados na pasta CODIGOS
