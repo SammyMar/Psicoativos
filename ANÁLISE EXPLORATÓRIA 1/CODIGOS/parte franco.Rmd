@@ -1,0 +1,12 @@
+---
+title: "parte franco"
+author: "Franco"
+date: "2024-07-01"
+output: html_document
+---
+
+
+$$
+
+$$
+
