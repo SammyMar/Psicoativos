@@ -9,7 +9,9 @@ dados_indic1 <- inner_join(
       summarise(N.obitos = n())
   ), 
   data.frame(
-    dados_es_total %>% group_by(ANOOBITO) %>% 
+    dados_es_total %>% 
+      filter(IDADE2>17) %>% 
+      group_by(ANOOBITO) %>% 
       summarise(N.obitos = n())
   ), 
   
@@ -29,11 +31,13 @@ serie_indic1 <- ggplot(data = dados_indic1, aes(x = ANOOBITO, y = indic1)) +
   geom_line(linetype = "solid" ,color = "black",
             linewidth = 0.5) +
   geom_point(shape = 15, color = "black") +
-  labs(title = "Número de Óbitos por Psicoativos no ES/Número de Óbitos Totais no ES de 2013 a 2022", 
+  labs(title = "Número de Óbitos por Psicoativos no ES/Número de Óbitos Totais (>17 anos) no ES de 2013 a 2022", 
        x="Anos", y="Óbitos/1000") +
   scale_x_continuous(
-    breaks = dados.grafico.series$ANOOBITO,  
-    labels = dados.grafico.series$ANOOBITO)+ 
+    breaks = dados_indic1$ANOOBITO,  
+    labels = dados_indic1$ANOOBITO)+ 
+  scale_y_continuous(limits = c(0,15),
+      breaks = seq(0,15, by=2))+
   theme_classic()
 serie_indic1
 
@@ -73,8 +77,10 @@ serie_indic2 <- ggplot(data = dados_indic2, aes(x = ANOOBITO, y = indic2)) +
 de 2013 a 2022", 
        x="Anos", y="Óbitos/100") +
   scale_x_continuous(
-    breaks = dados.grafico.series$ANOOBITO,  
-    labels = dados.grafico.series$ANOOBITO)+ 
+    breaks = dados_indic2$ANOOBITO,  
+    labels = dados_indic2$ANOOBITO)+ 
+  scale_y_continuous(limits = c(0,3.5),
+                     breaks = seq(0,3.5, by=0.5))+  
   theme_classic()
 serie_indic2
 
@@ -86,11 +92,13 @@ serie_indic2
 
 dados_indic3 <- inner_join(
   data.frame(
-    dados_es_total %>% group_by(ANOOBITO) %>% 
+    dados_es_total %>% 
+      group_by(ANOOBITO) %>% 
       summarise(N.obitos = n())
   ), 
   data.frame(
-    dados_br_total %>% group_by(ANOOBITO) %>% 
+    dados_br_total %>% 
+      group_by(ANOOBITO) %>% 
       summarise(N.obitos = n())
   ), 
   
@@ -114,8 +122,10 @@ serie_indic3 <- ggplot(data = dados_indic3, aes(x = ANOOBITO, y = indic3)) +
 de 2013 a 2022", 
        x="Anos", y="Óbitos/100") +
   scale_x_continuous(
-    breaks = dados.grafico.series$ANOOBITO,  
-    labels = dados.grafico.series$ANOOBITO)+ 
+    breaks = dados_indic3$ANOOBITO,  
+    labels = dados_indic3$ANOOBITO)+ 
+  scale_y_continuous(limits = c(0,3.5),
+                     breaks = seq(0,3.5, by=0.5))+ 
   theme_classic()
 serie_indic3
 
@@ -145,8 +155,10 @@ serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
             labels = c("indicador 2", "Indicador 3")) +
   ylim(1.5, 3.5) +
   scale_x_continuous(
-    breaks = dados.grafico.series$ANOOBITO,  
-    labels = dados.grafico.series$ANOOBITO)+ 
+    breaks = dados_indic2_3$Ano,  
+    labels = dados_indic2_3$Ano)+ 
+  scale_y_continuous(limits = c(0,3.5),
+                     breaks = seq(0,3.5, by=0.5))+ 
   theme_classic()
 
 serie_indic2_3
@@ -223,6 +235,8 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
   scale_x_continuous(
     breaks = dados_indic4_5$Ano,  
     labels = dados_indic4_5$Ano)+ 
+  scale_y_continuous(limits = c(0,10),
+                     breaks = seq(0,10, by=1))+ 
   theme_classic()
 
 serie_indic4_5
