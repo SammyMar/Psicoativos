@@ -35,22 +35,31 @@ dados.count.CID <- data.frame(CIDs = vet.CIDpsic2,
                             Contagens = c(contagens.CID_es, contagens.CID_br),
                             Localidade = c(rep("Espírito Santo", 10), 
                                            rep("Brasil", 10)))
-prop.count.CID <- dados.count.CID %>%
-  group_by(Localidade, Contagens) %>%
-  summarise(count = n(), CIDs) %>%
-  ungroup() %>%
-  group_by(Localidade) %>%
-  mutate(proporcao = count / sum(count))
+
+dados.count.CID <- full_join(
+  
+  dados.count.CID %>% 
+  filter(Localidade == "Brasil") %>% 
+  mutate(prop = Contagens/sum(Contagens)),
+
+  dados.count.CID %>% 
+  filter(Localidade == "Espírito Santo") %>% 
+  mutate(prop = Contagens/sum(Contagens))
+
+)
 
 
-g_count_CIDs <- dados.count.CID %>% 
-  group_by(Localidade, Contagens) %>% 
-  summarise(count = n(), CIDs) %>% 
-  mutate(prop = count/sum(count)) %>% 
-  ggplot(aes(x = fct_reorder(CIDs, Contagens), y = Contagens/sum(Contagens))) +
-  geom_col() +
+
+
+
+
+g_count_CIDs <- dados.count.CID %>%  
+  ggplot(aes(x = fct_reorder(CIDs, prop), y = prop)) +
+  geom_col(fill = "#105DEB") +
   facet_grid(rows = vars(Localidade))+
   labs(title = "Quantidade de Óbitos de 2013 a 2022 no ES por cada CID relacionada a psicoativos", y="Quantidade", x="CIDs")+ 
-  theme_classic()+ coord_flip()
+  theme_classic() + coord_flip() + theme(title = element_text(size = 15),
+                                         axis.text = element_text(size = 13),
+                                         strip.text = element_text(face = "bold", size = 15))
 
 g_count_CIDs
