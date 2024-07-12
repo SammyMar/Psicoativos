@@ -9,6 +9,6 @@
 
 3. ABRIR SCRIPT leitura_filtragem_02
 
-4. RODAR SCRIPT leitura_filtragem_02 para ler as bases, adcionar variaveis e filtrar pelas CIDs e UF ES (cerca de 10 min)
+4. RODAR SCRIPT leitura_filtragem_02 para ler as bases, adcionar variaveis e filtrar pelas CIDs e UF ES (cerca de 10 min para rodar)
 
 5. ABRIR OS SCRIPTS desejados na pasta CODIGOS
