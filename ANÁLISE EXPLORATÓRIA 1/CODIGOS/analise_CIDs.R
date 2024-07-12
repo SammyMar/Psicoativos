@@ -73,44 +73,20 @@ g_count_CIDs
 
 # preparando dados para heatmap por cids vs anos ------------------------------------
 
-contagens.CID_es_anos<-c()
-for (i in vet.CIDpsic2) {
-  
-  count_CID <- dados_es_psic %>% group_by(CAUSABAS, ANOOBITO) %>% 
-    select(CAUSABAS, ANOOBITO)%>% str_count(pattern = i) %>% 
-    sum()
-  contagens.CID_es_anos[i] <- count_CID
-}
+
+dados_heatmap_CIDs <- dados_es_psic %>% select(CAUSABAS, ANOOBITO) %>% 
+                      group_by(CIDs = substr(CAUSABAS, 1, 3), ANOOBITO) %>% 
+                      select(ANOOBITO, CIDs) %>%
+                      table()
 
 
-dados.count.CID_hm <- data.frame(full_join(
-
-    dados_es_psic %>% 
-    group_by(unique(CAUSABAS = substr(CAUSABAS, 1, 3)), ANOOBITO) %>% 
-    reframe(Quantidade = n(), ANOOBITO),
-    
-    dados_br_psic %>% 
-      group_by(unique(CAUSABAS = substr(CAUSABAS, 1, 3)), ANOOBITO) %>% 
-      reframe(Quantidade = n(), ANOOBITO)
-  
-)#, 
-#Localidade = c(rep("Espírito Santo", 10), rep("Brasil", 10))
-)
-
-
-
-
-
-dados.count.CID_hm <- melt(as.matrix(dados.count.CID %>% filter(Localidade == "Brasil")
-                                     %>% select(prop, CIDs, )))
-
-dados.count.CID_hm$Var1 <- factor(dados.count.CID_hm$Var1, levels = rev(rownames(dados.count.CID)))
 
 
 # construindo heatmap por cids vs anos ------------------------------------
 
+dados_heatmap_CIDs <- melt(dados_heatmap_CIDs)
 
-heatmap_CIDS <- ggplot(dados.count.CID_hm, aes(Var2, Var1, fill = value)) +
+heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(Var2, Var1, fill = value)) +
   geom_tile() +
   scale_fill_gradient(low = "white", high = "#105DEB") +
   theme_minimal() +

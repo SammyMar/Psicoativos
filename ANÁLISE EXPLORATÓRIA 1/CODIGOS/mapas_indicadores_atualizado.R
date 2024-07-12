@@ -1,5 +1,10 @@
 
+# baixando info estados brasil (geobr) ------------------------------------
+
+brasil = read_state(code_state = "all", year = 2018)
+
 ### MAPA DO BRASIL OBITOS POR ESTADO POR PSICO/POP ESTADO 2013 e 2022
+
 
 ### numeros de obitos por estado 13 e 22
 dados_mapa_psic_pop13 <- data.frame(
@@ -16,13 +21,13 @@ dados_mapa_psic_pop22 <- data.frame(
 
 ### selecionando pop de 2013 dos estados
 pop_UF_13 <- pop13a21 %>% 
-  filter(ano == "2013" & brasil_e_unidade_da_federacao_codigo != 1) %>% 
-  reframe(unique(valor), brasil_e_unidade_da_federacao_codigo, ano)
+  filter(ano == "2013" & codigoUF != 1) %>% 
+  reframe(unique(valor), codigoUF, ano)
 
 pop_UF_13 <- rename(pop_UF_13, pop13 = `unique(valor)`)
 
 dados_mapa_psic_pop13<- left_join(dados_mapa_psic_pop13,pop_UF_13,
-                                  by = c("codigoUF" = "brasil_e_unidade_da_federacao_codigo"))
+                                  by = "codigoUF")
 
 
 #preparando dados com as siglas
