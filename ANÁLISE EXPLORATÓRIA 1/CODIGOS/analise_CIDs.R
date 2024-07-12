@@ -73,8 +73,30 @@ g_count_CIDs
 
 # preparando dados para heatmap por cids vs anos ------------------------------------
 
-dados_es_psic %>% 
-  group_by(CAUSABAS)
+contagens.CID_es_anos<-c()
+for (i in vet.CIDpsic2) {
+  
+  count_CID <- dados_es_psic %>% group_by(CAUSABAS, ANOOBITO) %>% 
+    select(CAUSABAS, ANOOBITO)%>% str_count(pattern = i) %>% 
+    sum()
+  contagens.CID_es_anos[i] <- count_CID
+}
+
+
+dados.count.CID_hm <- data.frame(full_join(
+
+    dados_es_psic %>% 
+    group_by(unique(CAUSABAS = substr(CAUSABAS, 1, 3)), ANOOBITO) %>% 
+    reframe(Quantidade = n(), ANOOBITO),
+    
+    dados_br_psic %>% 
+      group_by(unique(CAUSABAS = substr(CAUSABAS, 1, 3)), ANOOBITO) %>% 
+      reframe(Quantidade = n(), ANOOBITO)
+  
+)#, 
+#Localidade = c(rep("Espírito Santo", 10), rep("Brasil", 10))
+)
+
 
 
 

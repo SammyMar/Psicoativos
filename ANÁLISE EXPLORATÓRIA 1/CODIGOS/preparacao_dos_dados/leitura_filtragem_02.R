@@ -1,6 +1,10 @@
 
 #LER E SALVAR DADOS TOTAIS BR
 
+#### SETAR O SEU CAMINHO LOCAL ATÉ A PASTA /ANÁLISE EXPLORATÓRIA 1
+
+setwd("~/ALUNO/IC - psicoativos/eda1_git/ANÁLISE EXPLORATÓRIA 1")
+
 
 dados_br_total <- c()
 
@@ -40,7 +44,6 @@ dados_br_total <- dados_br_total %>%
   )
 
 dados_br_total <- inner_join(dados_br_total, var_extras_UF, by = "codigoUF")
-
 
 
 dados_es_total <- dados_br_total %>%
