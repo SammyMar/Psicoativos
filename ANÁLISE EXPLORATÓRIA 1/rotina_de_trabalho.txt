@@ -16,5 +16,5 @@
 6. RODAR SCRIPT INTEIRO leitura_filtragem_02 para ler as bases, adcionar variaveis e filtrar pelas CIDs e UF ES (cerca de 10 min para rodar)
    Ctrl+A (para selecionar todo o código)             serão geradas as 4 bases básicas que nós utilizamos
                                                 
-
+	
 7. ABRIR OS SCRIPTS desejados na pasta CODIGOS
