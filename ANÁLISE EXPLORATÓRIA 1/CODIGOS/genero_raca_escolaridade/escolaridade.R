@@ -174,3 +174,55 @@ series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, 
 print (series_escolaridade_es_psic)
 
 
+
+#GRAFICO DE PROPORCAO Brasil
+
+
+# 1 Definindo a ordem dos níveis de escolaridade
+levels_escolaridade <- c("Nenhuma", "1 a 3 anos", "4 a 7 anos", "8 a 11 anos", "12 anos ou mais")
+
+dados.escolaridade.br.series.psic$ESC <- factor(dados.escolaridade.br.series.psic$ESC, levels = levels_escolaridade)
+
+# 2 Criando coluna de proporção
+dados.escolaridade.br.series.psic <- dados.escolaridade.br.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+# 3 Criando o gráfico
+grafico_escolaridade_br_psic <- ggplot(dados.escolaridade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
+       title = "Proporção de Mortes por Psicoativos no Brasil por Escolaridade e Ano") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired")
+
+print(grafico_escolaridade_br_psic)
+
+
+#GRAFICO DE PROPORCAO ES
+
+
+# 1 Definindo a ordem dos níveis de escolaridade
+levels_escolaridade <- c("Nenhuma", "1 a 3 anos", "4 a 7 anos", "8 a 11 anos", "12 anos ou mais")
+
+dados.escolaridade.es.series.psic$ESC <- factor(dados.escolaridade.es.series.psic$ESC, levels = levels_escolaridade)
+
+# 2 Criando coluna de proporção
+dados.escolaridade.es.series.psic <- dados.escolaridade.es.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+# 3 Criando o gráfico
+grafico_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
+       title = "Proporção de Mortes por Psicoativos no ES por Escolaridade e Ano") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired")
+
+print(grafico_escolaridade_es_psic)
+
