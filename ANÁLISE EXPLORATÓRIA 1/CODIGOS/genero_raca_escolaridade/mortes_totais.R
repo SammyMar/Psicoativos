@@ -88,6 +88,32 @@ print(hist_obito_es_psic)
 
 
 
+#GRAFICO DE PROPORCAO
 
+# Juntando as duas bases de dados por ano
+obitos_combinados_br_es <- freq_obito_br_psic %>%
+  rename(Quantidade_BR = Quantidade) %>%
+  inner_join(freq_obito_es_psic %>% rename(Quantidade_ES = Quantidade), by = "ANOOBITO")
 
+# Calculando as proporções de mortes no ES e no restante do Brasil
+obitos_combinados_br_es <- obitos_combinados_br_es %>%
+  mutate(Quantidade_Restante_BR = Quantidade_BR - Quantidade_ES,
+         total_mortes = Quantidade_BR,
+         porcentagem_ES = (Quantidade_ES / total_mortes) * 100,
+         porcentagem_Restante_BR = (Quantidade_Restante_BR / total_mortes) * 100) %>%
+  select(ANOOBITO, porcentagem_ES, porcentagem_Restante_BR) %>%
+  pivot_longer(cols = c(porcentagem_ES, porcentagem_Restante_BR), 
+               names_to = "Regiao", 
+               values_to = "Porcentagem")
+
+# Plotando o gráfico de proporção
+grafico_proporcao <- ggplot(obitos_combinados_br_es, aes(x = factor(ANOOBITO), y = Porcentagem, fill = Regiao)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Região",
+       title = "Proporção de Mortes por Psicoativos no Espírito Santo em relação ao Restante do Brasil anualmente") +
+  theme_minimal() +
+  scale_fill_manual(values = c("steelblue", "orange"), labels = c("Espírito Santo", "Restante do Brasil"))
+
+# Mostrar o gráfico
+print(grafico_proporcao)
 

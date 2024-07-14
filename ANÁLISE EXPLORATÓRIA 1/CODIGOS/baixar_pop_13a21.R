@@ -20,3 +20,15 @@ pop13a21 <- pop13a21 %>%
 
 print(pop13a21)
 
+# somar as populações p/ ter a pop do brasil
+total_br_pop22 <- pop22 %>% summarise(pop22 = sum(pop22))
+
+brasil_pop22 <- data.frame(
+  codigoUF = as.character (1),
+  pop22 = total_br_pop22$pop22
+)
+
+# Adicionar a nova linha à base de dados pop22
+pop22 <- pop22 %>%
+  mutate(codigoUF = as.character(codigoUF))
+pop22 <- bind_rows(pop22, brasil_pop22)
