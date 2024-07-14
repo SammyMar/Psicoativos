@@ -535,3 +535,277 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
 
 serie_obt_psic_es
 
+### ------------- GRÁFICOS DE PROPORÇÃO -------------
+## ESTADO CIVIL GERAL
+## ES
+#1 Criando data frame com proporção
+dados.estciv.es.series <- data.frame(
+  dados_es_total %>% group_by(ANOOBITO, ESTCIV) %>% 
+    summarise(N.obitos = n())
+)
+dados.estciv.es.series <- dados.estciv.es.series %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Casado" = "#A6CEE3", 
+    "Separado judicialmente" = "#1F78B4", 
+    "Solteiro" = "#B2DF8A", 
+    "União consensual" = "#33A02C", 
+    "Viúvo" = "#FB9A99", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes no Espírito Santo por Estado civil e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Estado Civil"
+  )+
+  theme_minimal()
+
+print(grafico_prop_estciv_es)
+
+## BR
+#1 Criando data frame com proporção
+dados.estciv.br.series <- data.frame(
+  dados_br_total %>% group_by(ANOOBITO, ESTCIV) %>% 
+    summarise(N.obitos = n())
+)
+dados.estciv.br.series <- dados.estciv.br.series %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Casado" = "#A6CEE3", 
+    "Separado judicialmente" = "#1F78B4", 
+    "Solteiro" = "#B2DF8A", 
+    "União consensual" = "#33A02C", 
+    "Viúvo" = "#FB9A99", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes no Brasil por Estado civil e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Estado Civil"
+  )+
+  theme_minimal()
+
+print(grafico_prop_estciv_br)
+
+### ESTADO CIVIL POR PSICOATIVO
+## ES PSIC
+#1 Criando data frame com proporção
+dados.estciv.es.series.psic <- data.frame(
+  dados_es_psic %>% group_by(ANOOBITO, ESTCIV) %>% 
+    summarise(N.obitos = n())
+)
+dados.estciv.es.series.psic <- dados.estciv.es.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Casado" = "#A6CEE3", 
+    "Separado judicialmente" = "#1F78B4", 
+    "Solteiro" = "#B2DF8A", 
+    "União consensual" = "#33A02C", 
+    "Viúvo" = "#FB9A99", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes por Psicoativos no Espírito Santo por Estado civil e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Estado Civil"
+  )+
+  theme_minimal()
+
+print(grafico_prop_estciv_es_psic)
+
+## BR PSIC
+#1 Criando data frame com proporção
+dados.estciv.br.series.psic <- data.frame(
+  dados_br_psic %>% group_by(ANOOBITO, ESTCIV) %>% 
+    summarise(N.obitos = n())
+)
+dados.estciv.br.series.psic <- dados.estciv.br.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Casado" = "#A6CEE3", 
+    "Separado judicialmente" = "#1F78B4", 
+    "Solteiro" = "#B2DF8A", 
+    "União consensual" = "#33A02C", 
+    "Viúvo" = "#FB9A99", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes por psicoativos no Brasil por Estado civil e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Estado Civil"
+  )+
+  theme_minimal()
+
+print(grafico_prop_estciv_br_psic)
+
+## IDADE PSIC
+## ES psic
+#1 Criando data frame com proporção
+dados.idade.es.series.psic <- data.frame(
+  dados_es_psic %>% group_by(ANOOBITO, categoria_idade) %>% 
+    summarise(N.obitos = n())
+)
+dados.idade.es.series.psic <- dados.idade.es.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Adulto" = "#A6CEE3", 
+    "Idoso" = "#B2DF8A", 
+    "Jovem-Adulto" = "#FB9A99", 
+    "Menor de idade" = "#1F78B4", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes por psicoativo no Espírito Santo por Idade e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Idade"
+  )+
+  theme_minimal()
+
+print(grafico_prop_idade_es_psic)
+
+
+# BR PSIC
+#1 Criando data frame com proporção
+dados.idade.br.series.psic <- data.frame(
+  dados_br_psic %>% group_by(ANOOBITO, categoria_idade) %>% 
+    summarise(N.obitos = n())
+)
+dados.idade.br.series.psic <- dados.idade.br.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Adulto" = "#A6CEE3", 
+    "Idoso" = "#B2DF8A", 
+    "Jovem-Adulto" = "#FB9A99", 
+    "Menor de idade" = "#1F78B4", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes por psicoativo no Brasil por Idade e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Idade"
+  )+
+  theme_minimal()
+
+print(grafico_prop_idade_br_psic)
+
+## IDADE GERAL
+## IDADE ES GERAL
+#1 Criando data frame com proporção
+dados.idade.es.series <- data.frame(
+  dados_es_total %>% group_by(ANOOBITO, categoria_idade) %>% 
+    summarise(N.obitos = n())
+)
+dados.idade.es.series <- dados.idade.es.series %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Adulto" = "#A6CEE3", 
+    "Idoso" = "#B2DF8A", 
+    "Jovem-Adulto" = "#FB9A99", 
+    "Menor de idade" = "#1F78B4", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes no Espírito Santo por Idade e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Idade"
+  )+
+  theme_minimal()
+
+print(grafico_prop_idade_es)
+
+## idade BR GERAL
+
+#1 Criando data frame com proporção
+dados.idade.br.series <- data.frame(
+  dados_br_total %>% group_by(ANOOBITO, categoria_idade) %>% 
+    summarise(N.obitos = n())
+)
+dados.idade.br.series <- dados.idade.br.series %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+
+grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = c(
+    "Adulto" = "#A6CEE3", 
+    "Idoso" = "#B2DF8A", 
+    "Jovem-Adulto" = "#FB9A99", 
+    "Menor de idade" = "#1F78B4", 
+    "NA" = "#D3D3D3"
+  )) +
+  labs(
+    title = "Proporção de Mortes no Brasil por Idade e Ano",
+    y = "Porcentagem (%)",
+    x = "",
+    fill = "Idade"
+  )+
+  theme_minimal()
+
+print(grafico_prop_idade_br)
