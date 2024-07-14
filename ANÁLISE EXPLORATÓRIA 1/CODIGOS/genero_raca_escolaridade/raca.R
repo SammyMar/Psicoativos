@@ -173,3 +173,42 @@ series_raca_es_psic <- ggplot(data = dados.raca.es.series.psic, aes(x = ANOOBITO
 
 print (series_raca_es_psic)
 
+
+
+#GRAFICO dE PROPORCAO Brasil
+
+#1 Criando coluna de proporção
+
+dados.raca.br.series.psic <- dados.raca.br.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+ggplot(dados.raca.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = RACACOR)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Raça",
+       title = "Proporção de Mortes por Psicoativos no Brasil por Raça e Ano") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired")
+
+
+#GRAFICOD E PROPORCAO ES
+
+#1 Criando coluna de proporção
+
+dados.raca.es.series.psic <- dados.raca.es.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+ggplot(dados.raca.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = RACACOR)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Raça",
+       title = "Proporção de Mortes por Psicoativos no ES por Raça e Ano") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired")
+
