@@ -1,0 +1,16 @@
+---
+title: Análise Exploratório sobre Mortalidade por Psicoativos no Brasil e no Espírito
+  Santo
+author: "Caroline de Oliveira, Franco Lovatti e Iane Martins"
+date: "2024-07-14"
+output: html_document
+---
+
+```{r, warning = FALSE, message=FALSE, echo=FALSE, include=FALSE}
+source("Psicoativos/ANÁLISE EXPLORATÓRIA 1/CODIGOS/analise.carol.R")
+library(gridExtra)
+```
+
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(graf.serie.idade.br.t, graf.serie.idade.br.p, ncol=2)
+```
