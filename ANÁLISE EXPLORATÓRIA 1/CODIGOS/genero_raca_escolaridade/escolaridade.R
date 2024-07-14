@@ -1,9 +1,9 @@
-library(remotes) 
-library(microdatasus) 
-library(dplyr)
-library(stringr) 
-library(ggplot2) 
-library(lubridate) 
+#library(remotes) 
+#library(microdatasus) 
+#library(dplyr)
+#library(stringr) 
+#library(ggplot2) 
+#library(lubridate) 
 
 
 
@@ -191,14 +191,14 @@ dados.escolaridade.br.series.psic <- dados.escolaridade.br.series.psic %>%
   ungroup()
 
 # 3 Criando o gráfico
-grafico_escolaridade_br_psic <- ggplot(dados.escolaridade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
+proporcao_escolaridade_br_psic <-ggplot(dados.escolaridade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
   geom_bar(stat = "identity", position = "stack") +
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
        title = "Proporção de Mortes por Psicoativos no Brasil por Escolaridade e Ano") +
   theme_minimal() +
   scale_fill_brewer(palette = "Paired")
 
-print(grafico_escolaridade_br_psic)
+print(proporcao_escolaridade_br_psic)
 
 
 #GRAFICO DE PROPORCAO ES
@@ -217,12 +217,12 @@ dados.escolaridade.es.series.psic <- dados.escolaridade.es.series.psic %>%
   ungroup()
 
 # 3 Criando o gráfico
-grafico_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
+proporcao_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
   geom_bar(stat = "identity", position = "stack") +
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
        title = "Proporção de Mortes por Psicoativos no ES por Escolaridade e Ano") +
   theme_minimal() +
   scale_fill_brewer(palette = "Paired")
 
-print(grafico_escolaridade_es_psic)
+print(proporcao_escolaridade_es_psic)
 

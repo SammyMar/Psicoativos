@@ -1,9 +1,9 @@
-library(remotes) 
-library(microdatasus) 
-library(dplyr)
-library(stringr) 
-library(ggplot2) 
-library(lubridate) 
+#library(remotes) 
+#library(microdatasus) 
+#library(dplyr)
+#library(stringr) 
+#library(ggplot2) 
+#library(lubridate) 
 
 
 
@@ -208,7 +208,7 @@ dados.genero.br.series.psic <- dados.genero.br.series.psic %>%
   ungroup()
 
 #2 Criar o gráfico
-ggplot(dados.genero.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
+proporcao_genero_br_psic <- ggplot(dados.genero.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
   geom_bar(stat = "identity", position = "stack") +
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Gênero",
        title = "Proporção de Mortes por Psicoativos no Brasil por Gênero e Ano") +
@@ -227,7 +227,7 @@ dados.genero.es.series.psic <- dados.genero.es.series.psic %>%
   ungroup()
 
 #2 Criar o gráfico
-ggplot(dados.genero.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
+proporcao_genero_es_psic <- ggplot(dados.genero.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
   geom_bar(stat = "identity", position = "stack") +
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Gênero",
        title = "Proporção de Mortes por Psicoativos no ES por Gênero e Ano") +
