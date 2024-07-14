@@ -195,3 +195,42 @@ names(uniao_genero) <- c("Genero", "Mortes Totais BR", "% mortes BR", "Mortes po
 uniao_genero <- uniao_genero %>%
   mutate(Mortes_por_1000_BR = (Mortes_Psicoativos_BR / Mortes_Totais_BR) * 1000)
 
+
+
+#GRAFICOD E PROPORCAO Brasil
+
+#1 Criando coluna de proporção
+
+dados.genero.br.series.psic <- dados.genero.br.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+ggplot(dados.genero.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Gênero",
+       title = "Proporção de Mortes por Psicoativos no Brasil por Gênero e Ano") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired")
+
+
+#GRAFICOD E PROPORCAO ES
+
+#1 Criando coluna de proporção
+
+dados.genero.es.series.psic <- dados.genero.es.series.psic %>%
+  group_by(ANOOBITO) %>%
+  mutate(total_mortes = sum(N.obitos),
+         porcentagem = (N.obitos / total_mortes) * 100) %>%
+  ungroup()
+
+#2 Criar o gráfico
+ggplot(dados.genero.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Gênero",
+       title = "Proporção de Mortes por Psicoativos no ES por Gênero e Ano") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired")
+
