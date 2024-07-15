@@ -100,7 +100,7 @@ series_genero_br_total <- ggplot(data = dados.genero.br.series, aes(x = ANOOBITO
   scale_x_continuous(
     breaks = dados.genero.br.series$ANOOBITO,  
     labels = dados.genero.br.series$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_genero_br_total)
 
@@ -123,7 +123,7 @@ series_genero_es_total <- ggplot(data = dados.genero.es.series, aes(x = ANOOBITO
   scale_x_continuous(
     breaks = dados.genero.es.series$ANOOBITO,  
     labels = dados.genero.es.series$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_genero_es_total)
 
@@ -146,7 +146,7 @@ series_genero_br_psic <- ggplot(data = dados.genero.br.series.psic, aes(x = ANOO
   scale_x_continuous(
     breaks = dados.genero.br.series.psic$ANOOBITO,  
     labels = dados.genero.br.series.psic$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_genero_br_psic)
 
@@ -169,7 +169,7 @@ series_genero_es_psic <- ggplot(data = dados.genero.es.series.psic, aes(x = ANOO
   scale_x_continuous(
     breaks = dados.genero.es.series.psic$ANOOBITO,  
     labels = dados.genero.es.series.psic$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_genero_es_psic)
 

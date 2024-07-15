@@ -100,7 +100,7 @@ series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(
   scale_x_continuous(
     breaks = dados.escolaridade.br.series$ANOOBITO,  
     labels = dados.escolaridade.br.series$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_escolaridade_br_total)
 
@@ -122,7 +122,7 @@ series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(
   scale_x_continuous(
     breaks = dados.escolaridade.es.series$ANOOBITO,  
     labels = dados.escolaridade.es.series$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_escolaridade_es_total)
 
@@ -146,7 +146,7 @@ series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, 
   scale_x_continuous(
     breaks = dados.escolaridade.br.series.psic$ANOOBITO,  
     labels = dados.escolaridade.br.series.psic$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_escolaridade_br_psic)
 
@@ -169,7 +169,7 @@ series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, 
   scale_x_continuous(
     breaks = dados.escolaridade.es.series.psic$ANOOBITO,  
     labels = dados.escolaridade.es.series.psic$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_escolaridade_es_psic)
 

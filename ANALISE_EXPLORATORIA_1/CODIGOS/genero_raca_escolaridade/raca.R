@@ -101,7 +101,7 @@ series_raca_br_total <- ggplot(data = dados.raca.br.series, aes(x = ANOOBITO, y 
   scale_x_continuous(
     breaks = dados.raca.br.series$ANOOBITO,  
     labels = dados.raca.br.series$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_raca_br_total)
 
@@ -124,7 +124,7 @@ series_raca_es_total <- ggplot(data = dados.raca.es.series, aes(x = ANOOBITO, y 
   scale_x_continuous(
     breaks = dados.raca.es.series$ANOOBITO,  
     labels = dados.raca.es.series$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_raca_es_total)
 
@@ -147,7 +147,7 @@ series_raca_br_psic <- ggplot(data = dados.raca.br.series.psic, aes(x = ANOOBITO
   scale_x_continuous(
     breaks = dados.raca.br.series.psic$ANOOBITO,  
     labels = dados.raca.br.series.psic$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_raca_br_psic)
 
@@ -170,7 +170,7 @@ series_raca_es_psic <- ggplot(data = dados.raca.es.series.psic, aes(x = ANOOBITO
   scale_x_continuous(
     breaks = dados.raca.es.series.psic$ANOOBITO,  
     labels = dados.raca.es.series.psic$ANOOBITO)+ 
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20)) 
 
 print (series_raca_es_psic)
 
