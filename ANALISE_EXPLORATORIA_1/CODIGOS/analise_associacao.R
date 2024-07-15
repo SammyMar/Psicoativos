@@ -1,129 +1,13 @@
-data.selec <- dados_es_psic %>% 
-  select(CAUSABAS, SEXO, RACACOR) %>% 
-  group_by(CIDs = substr(CAUSABAS, 1, 3), SEXO) %>% 
-  select(SEXO, CIDs, RACACOR) %>%
-  filter(CIDs == "F10" | CIDs == "F17")
-
-data.selec
-
-
-
-C_ajust.CIDs_es <- c() 
-
-for (i in col_data.selec){
-  
-  tabela <- table(data.selec$CIDs , data.selec[[i]])
-  qui2 <- stats::chisq.test(tabela)$statistic
-  k <- min(nrow(tabela), ncol(tabela))
-  C[i] <- sqrt(qui2/(qui2+sum(tabela)))
-  C_ajust.CIDs_es[i] <- sqrt(qui2/(qui2+sum(tabela)))/sqrt((k-1)/k)
-}
-
-C_ajust.CIDs_es
-
-
-
-C_ajust.CIDs_br <- c() 
-
-for (i in col_data.selec){
-  
-  tabela <- table(data.selec$CIDs , data.selec[[i]])
-  qui2 <- stats::chisq.test(tabela)$statistic
-  k <- min(nrow(tabela), ncol(tabela))
-  C[i] <- sqrt(qui2/(qui2+sum(tabela)))
-  C_ajust.CIDs_br[i] <- sqrt(qui2/(qui2+sum(tabela)))/sqrt((k-1)/k)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-col_data.selec=1:3
-C_ajust.RACACOR  <- c()
-C_ajust.ESTCIV <- c()
-C_ajust.SEXO   <- c()
-
-
-colunas.selec <- c()
-C <- c()
-
-for (i in col_data.selec){
-  
-  tabela <- table(data.selec$RACACOR , data.selec[[i]])
-  qui2 <- stats::chisq.test(tabela)$statistic
-  k <- min(nrow(tabela), ncol(tabela))
-  C[i] <- sqrt(qui2/(qui2+sum(tabela)))
-  C_ajust.RACACOR [i] <- sqrt(qui2/(qui2+sum(tabela)))/sqrt((k-1)/k)
-}
-
-for (i in col_data.selec){
-  
-  tabela <- table(data.selec$ESTCIV , data.selec[[i]])
-  qui2 <- stats::chisq.test(tabela)$statistic
-  k <- min(nrow(tabela), ncol(tabela))
-  C[i] <- sqrt(qui2/(qui2+sum(tabela)))
-  C_ajust.ESTCIV [i] <- sqrt(qui2/(qui2+sum(tabela)))/sqrt((k-1)/k)
-}
-
-for (i in col_data.selec){
-  
-  tabela <- table(data.selec$SEXO  , data.selec[[i]])
-  qui2 <- stats::chisq.test(tabela)$statistic
-  k <- min(nrow(tabela), ncol(tabela))
-  C[i] <- sqrt(qui2/(qui2+sum(tabela)))
-  C_ajust.SEXO  [i] <- sqrt(qui2/(qui2+sum(tabela)))/sqrt((k-1)/k)
-}
-
-
-
-corr.covariaveis <- data.frame(C_ajust.RACACOR ,
-                               C_ajust.ESTCIV ,
-                               C_ajust.SEXO)
-rownames(corr.covariaveis) <- c("Raça", 
-                                "Estado Civil", 
-                                "Sexo")
-colnames(corr.covariaveis) <- c("Raça", 
-                                "Estado Civil", 
-                                "Sexo")
-
-cor_melt <- melt(as.matrix(corr.covariaveis))
-
-cor_melt$Var1 <- factor(cor_melt$Var1, levels = rev(rownames(corr.covariaveis)))
-
-
-heatmap <- ggplot(cor_melt, aes(Var2, Var1, fill = value)) +
-  geom_tile() +
-  scale_fill_gradient(low = "white", high = "red") +
-  theme_minimal() +
-  labs(x = "Covariáveis", y = "Covariáveis", fill = "Coeficiente")+
-  theme(
-    axis.text.x = element_text(angle = 90, vjust = 1, hjust = 0),
-    axis.title.y = element_blank()
-  ) +
-  scale_x_discrete(position = "top")
-heatmap
-
-
 
 
 library(epitools)
 library(gtsummary)
+
 # CRIANDO TABELAS DE CONTINGENCIA POR CIDS X SEXO --------------------------------
 
 sexo_CIDs <- dados_es_psic %>% 
 select(CAUSABAS, SEXO) %>% 
-  mutate(CIDs = ifelse(substr(CAUSABAS, 1, 3) %in% c("F10"),
+  mutate(factor(CIDs) = ifelse(substr(CAUSABAS, 1, 3) %in% c("F10"),
                        substr(CAUSABAS, 1, 3), "Outras CIDs")) %>% 
   #select(SEXO, CIDs) %>%
   #table()
@@ -140,12 +24,13 @@ dados_sexo_CIDs <- dados_es_psic %>%
   select(CIDs, SEXO) %>%
   table() %>% as.matrix()
 
+Qp_sexo <- chisq.test(dados_sexo_CIDs)
+Qp_sexo
 
 dados_sexo_CIDs
 
 OR_sexo_f <- (237*305)/(1744*111)
 
-(237/1744)/(111/305)
 
 
 OR_sexo_m <- 1/OR_sexo_f
@@ -159,31 +44,38 @@ RP <- function(matriz)
 # CRIANDO TABELA DE CONTINGENCIA POR CIDS X RACA --------------------------
 
 
-
 raca_CIDs <- dados_es_psic %>% 
   select(CAUSABAS, RACACOR) %>% 
   mutate(CIDs = ifelse(substr(CAUSABAS, 1, 3) %in% c("F10"),
                        substr(CAUSABAS, 1, 3), "Outras CIDs")) %>% 
-  mutate(RaçaCor=case_when(RACACOR == "Branca"~"Branca",
-                   RACACOR == "Parda"~"Outras",
+  
+  mutate(RacaCor=case_when(RACACOR == "Branca"~"Branca",
+                   RACACOR == "Parda"~"Parda",
                    RACACOR == "Indígena"~"Outras",
                    RACACOR == "Amarela"~"Outras",
                    RACACOR == "Preta"~"Outras")) %>% 
   #select(SEXO, CIDs) %>%
   #table() %>% as.data.frame() %>%
-  tbl_cross(col = CIDs, row = RaçaCor, missing = "ifany",
+  tbl_cross(col = CIDs, row = RacaCor, missing = "ifany",
             missing_text = "NA", ) %>% 
   bold_labels()
 
+
 raca_CIDs
 
-
-
-# CRIANDO TABELAS DE CONTINGENCIA POR CIDS X RACA/COR --------------------------------
-
-dados_es_psic %>% 
+dados_raca_CIDs <- dados_es_psic %>% 
   select(CAUSABAS, RACACOR) %>% 
-  group_by(CIDs = substr(CAUSABAS, 1, 3), RACACOR) %>% 
-  select(RACACOR, CIDs) %>%
-  table() %>% 
-  kable()
+  mutate(CIDs = ifelse(substr(CAUSABAS, 1, 3) %in% c("F10"),
+                       substr(CAUSABAS, 1, 3), "Outras CIDs")) %>% 
+  mutate(RacaCor=case_when(RACACOR == "Branca"~"Branca",
+                           RACACOR == "Parda"~"Parda",
+                           RACACOR == "Indígena"~"Outras",
+                           RACACOR == "Amarela"~"Outras",
+                           RACACOR == "Preta"~"Outras")) %>% 
+  select(RacaCor, CIDs) %>%
+  table()
+
+dados_raca_CIDs
+
+Qp_raca <- chisq.test(dados_raca_CIDs)
+Qp_raca

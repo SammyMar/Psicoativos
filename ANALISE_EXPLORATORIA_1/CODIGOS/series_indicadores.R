@@ -239,9 +239,16 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
                      breaks = seq(0,10, by=1))+ 
   theme_classic()
 
-serie_indic4_5
+
+pacman::p_load("gridExtra")
+
+ggplotly(serie_indic4_5, tooltip = c("x","colour"))
 
 
+grid.arrange(ggplotly(serie_indic4_5, tooltip = c("y")), ggplotly(serie_indic2_3), ncol=2)
+            
+subplot(ggplotly(serie_indic4_5), ggplotly(serie_indic2_3))            
 
 
+serie_indic2_3+serie_indic4_5
 
