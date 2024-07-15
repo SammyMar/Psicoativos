@@ -78,9 +78,5 @@ dados_br_psic <- dados_br_total[grepl("F1", dados_br_total$CAUSABAS, ignore.case
 dados_es_psic <- dados_es_total[grepl("F1", dados_es_total$CAUSABAS, ignore.case = TRUE),]
   
   
-  
-  
 
-  
->>>>>>> dc392ac01eeeea39c9243b7874ab696c44e82591
   
