@@ -117,7 +117,7 @@ heatmap
 
 
 
-
+library(epitools)
 library(gtsummary)
 # CRIANDO TABELAS DE CONTINGENCIA POR CIDS X SEXO --------------------------------
 
@@ -132,6 +132,30 @@ select(CAUSABAS, SEXO) %>%
 
 sexo_CIDs
 
+
+dados_sexo_CIDs <- dados_es_psic %>% 
+  select(CAUSABAS, SEXO) %>% 
+  mutate(CIDs = ifelse(substr(CAUSABAS, 1, 3) %in% c("F10"),
+                       substr(CAUSABAS, 1, 3), "Outras CIDs")) %>% 
+  select(CIDs, SEXO) %>%
+  table() %>% as.matrix()
+
+
+dados_sexo_CIDs
+
+OR_sexo_f <- (237*305)/(1744*111)
+
+(237/1744)/(111/305)
+
+
+OR_sexo_m <- 1/OR_sexo_f
+
+OR_sexo_m
+
+
+
+
+RP <- function(matriz)
 # CRIANDO TABELA DE CONTINGENCIA POR CIDS X RACA --------------------------
 
 
@@ -153,19 +177,6 @@ raca_CIDs <- dados_es_psic %>%
 
 raca_CIDs
 
-
-sexo_CIDs
-Qp_sexo_CIDs <-  sexo_CIDs %>% chisq.test()
-Qp_sexo_CIDs
-
-Coef_contg_ajust <- function(Qp, tabela){
-  k <- min(nrow(tabela), ncol(tabela))
-  phi <- sqrt(Qp/sum(tabela))
-  v_cramer<-sqrt(phi/k)
-  return(v_cramer)
-}
-
-Coef_contg_ajust(Qp_sexo_CIDs$statistic, sexo_CIDs)
 
 
 # CRIANDO TABELAS DE CONTINGENCIA POR CIDS X RACA/COR --------------------------------

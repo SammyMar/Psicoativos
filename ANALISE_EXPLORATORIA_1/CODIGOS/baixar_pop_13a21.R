@@ -18,5 +18,5 @@ pop13a21 <- pop13a21 %>% dplyr::select(codigoUF = brasil_e_unidade_da_federacao_
 pop13a21 <- pop13a21 %>%
   left_join(var_extras_UF, by = "codigoUF")
 
-print(pop13a21)
+saveRDS(pop13a21, "pop13a21.rds")
 
