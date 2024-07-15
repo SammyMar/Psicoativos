@@ -3,7 +3,7 @@
   
   #### SETAR O SEU CAMINHO LOCAL ATÉ A PASTA /ANÁLISE EXPLORATÓRIA 1
   
-  setwd("~/ALUNO/IC - psicoativos/eda1_git/ANÁLISE EXPLORATÓRIA 1")
+  setwd("~/ALUNO/IC - psicoativos/eda1_git/ANALISE_EXPLORATORIA_1")
   
   
   dados_br_total <- c()
