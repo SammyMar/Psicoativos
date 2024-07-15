@@ -165,7 +165,7 @@ serie_indic2_3
 
 ### Indicador 4 obitos psic ES/pop ES
 pop_es_2022 <- data.frame(codigoUF = "32",
-                          ano = "2022",
+                          ano = as.numeric("2022"),
                           valor  = c(3833712))
 
 
