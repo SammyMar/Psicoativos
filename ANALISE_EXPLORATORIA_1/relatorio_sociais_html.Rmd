@@ -50,12 +50,12 @@ kable(tabela_cid) %>%
 
 Os gráficos a seguir mostram quais a CID’s com maior número de ocorrências tanto no Brasil quanto no Espírito Santo. Percebe-se que Transtornos por uso de álcool, fumo, outras substâncias psicoativas e cocaína foram os mais letais entre os anos estudados.
 
-```{r fig.width=12, fig.height=6, echo=FALSE}
-grid.arrange(hist.F10.es, hist.F10.br, ncol=2)
+```{r, echo=FALSE}
+print(g_count_CIDs)
 ```
 
-```{r fig.width=12, fig.height=6, echo=FALSE}
-grid.arrange(hist.F17.es, hist.F17.br, ncol=2)
+```{r, echo=FALSE}
+print(heatmap_CIDS)
 ```
 
 ## 3. Análise Sociodemográfica
@@ -107,16 +107,21 @@ grid.arrange(grafico_prop_estciv_br_psic, grafico_prop_estciv_es_psic, ncol=2)
 
 ### 3.5. Idade
 
-```{r, include=FALSE}
-# Colocar Gráficos de idade
-# por existir uma maior quantidade de graficos, optei por não colcoar o texto ainda
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(boxplot.anoidad.es, boxplot.anoidad.es.psic, ncol=2)
+grid.arrange(boxplot.anoidad.br, boxplot.anoidad.es.psic, ncol=2)
+```
+
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(grafico_prop_idade_es, grafico_prop_idade_es_psic, ncol=2)
+grid.arrange(grafico_prop_idade_br, grafico_prop_idade_br_psic, ncol=2)
 ```
 
 ### 3.6. Faixa Etária
 
-```{r, include=FALSE}
-# Colocar Gráficos de Faixa Etária
-# mesma situação da idade
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(graf.serie.idade.es.t, graf.serie.idade.es.p, ncol=2)
+grid.arrange(graf.serie.idade.br.t, graf.serie.idade.br.p, ncol=2)
 ```
 
 ## 4. Análise Geral do Número de Mortes
@@ -131,22 +136,22 @@ Para iniciar a análise, é importante ter em mente o comportamento desses óbit
 
 O primeiro mapa apresenta, por estado, ignorando a variação ano a ano, o percentual de óbitos por psicoativos sobre os óbitos totais. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções. No entanto, é importante constatar que isso é consequência da variação entre os anos não ter sido considerada neste gráfico, já que o gráfico de séries, anteriormente exposto, mostrou que os números de óbitos por psicoativos e todos os indicadores relacionados no Espírito Santo decresceram até 2019 e a partir de 2020 os números cresceram.
 
-```{r, include=FALSE}
-# Colocar mapa de calor psicoatiovos/totais
+```{r, echo=FALSE}
+print(mapa_psic_pop13)
 ```
 
 O segundo mapa, traz ideia parecida, no entanto, utilizando outro indicador. Neste caso, o denominador é a população mediana de 2013 a 2022 para cada estado, já que a variação entre os anos não foi considerada. Desta forma, cada estado possui uma proporção de óbitos perante sua população. O Espírito Santo, novamente aparece na média neste indicador, em relação aos outros estados.
 
-```{r, include=FALSE}
-# Colocar mapa de calor psicoatiovos/pop
+```{r, echo=FALSE}
+print(mapa_psic_pop22)
 ```
 
 ### 4.2. Gráfico de calor
 
 Através do gráfico de calor é possível ter uma ideia geral do número de mortes por psicoativos a cada 100 mil habitantes em todos os estados do Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe é o com maior número de ocorrência a cada 100 mil habitantes.
 
-```{r, include=FALSE}
-# Colocar grafico de calor 
+```{r, echo=FALSE}
+print(heatmap_mortes_psic)
 ```
 
 
@@ -163,8 +168,8 @@ $$
 
 É possível observar que os números de mortes por uso de substâncias a cada 1000 mortes totais decresceu de 2013 a 2015 e de 2016 a 2019, porém, cresceu entre 2019 e 2021. Este gráfico se assemelha com o gráfico de mortes por psicoativos no Espírito Santo, visto anteriormente.
 
-```{r, include=FALSE}
-# Colocar grafico do indicador 1
+```{r, echo=FALSE}
+print(serie_indic1)
 ```
 
 ### 5.2. Indicadores 2 e 3
@@ -185,8 +190,8 @@ I_3 = \frac{\text{Nº de Óbitos Totais no Espírito Santo}}{\text{Nº de Óbito
 $$
 
 
-```{r, include=FALSE}
-# Colocar grafico  do indicador 2
+```{r, echo=FALSE}
+print(serie_indic2_3)
 ```
 
 ### 5.3. Indicadores 4 e 5
@@ -204,8 +209,8 @@ I_5 = \frac{\text{Nº de Óbitos Decorrentes do Uso de Psicoativos no Brasil}}{\
 $$
 
 
-```{r, include=FALSE}
-# Colocar grafico do indicador 3
+```{r, echo=FALSE}
+print(serie_indic4_5)
 ```
 
 ## 6. Outras Possíveis Análises
