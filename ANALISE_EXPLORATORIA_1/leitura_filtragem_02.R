@@ -11,6 +11,7 @@ library(htmltools)
 library(reactable)
 library(stringr)
 library(sidrar)
+library(janitor)
 
 #LER E SALVAR DADOS TOTAIS BR
   
