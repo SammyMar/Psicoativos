@@ -49,8 +49,8 @@ dados_mapa_psic_pop22 <- brasil %>%
 mapa_psic_pop13 <- ggplot() + 
   geom_sf(data = dados_mapa_psic_pop13, aes(fill = (N.obitos/pop13)*10000),
           color = "#788881")+
-  scale_fill_gradient(low = "white", high = "red",
-                      name=TeX("Obitos (por 10000)")) +
+  scale_fill_gradient(low = "white", high = "red", limits = c(0,2),
+                      name="Obitos (por 10000)") +
   labs(title="Obitos por Psicoativos em 2013 por 10000 habitantes") +
   theme_void() + theme(title = element_text(size = 15))
 
@@ -60,7 +60,7 @@ mapa_psic_pop13
 mapa_psic_pop22 <- ggplot() + 
   geom_sf(data = dados_mapa_psic_pop22, aes(fill = (N.obitos/pop22)*10000),
           color = "#788881")+
-  scale_fill_gradient(low = "white", high = "red",
+  scale_fill_gradient(low = "white", high = "red", , limits = c(0,2),
                       name=TeX("Obitos (por 10000)")) +
   labs(title="Obitos por Psicoativos em 2022 por 10000 habitantes", size=15) +
   theme_void() + theme(title = element_text(size = 15))

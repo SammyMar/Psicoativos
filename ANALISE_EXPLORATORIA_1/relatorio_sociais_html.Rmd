@@ -18,7 +18,7 @@ source("CODIGOS/analise_CIDs.R")
 source("CODIGOS/grafico_calor_iane.R")
 source("CODIGOS/series_indicadores.R")
 source("CODIGOS/mapas_indicadores_atualizado.R")
-
+source("CODIGOS/tabelas_contingencia")
 library(gridExtra)
 ```
 
@@ -214,9 +214,41 @@ grid.arrange(graf.serie.idade.br.t, graf.serie.idade.br.p, ncol=2)
 
 <br>
 
-## 4. Análise Geral do Número de Mortes
 
-Para iniciar a análise, é importante ter em mente o comportamento desses óbitos no decorer dos anos. Ao visualizar os gráficos de mortes totais e mortes por psicoativos tanto do Espírito Santo quando do Brasil, percebe-se que os dois gráficos de mortes totais são bem similares, enquanto os gráficos por mortes por psicoativos apresentam curvas consideravelmente diferentes. O gráfico de mortes por psicoativos no Brasil mostra que a variável número de mortes é estável de 2013 a 2019, e apresenta uma crescente a partir de 2020, quando volta a se estabilizar, mas agora em um número mais alto de mortes. Em contra partida, a curva de mortes por psicotivos no Espírito Santo decresce de 2013 a 2019, mas também sobe a partir de 2020.
+# 4. Análise de Associação - Óbitos no ES
+
+Nesta seção, será abordada uma análise de associação com intuito de averiguar a relevância da CID F10 perante as outras CIDs dentre os óbitos no Espírito Santo, com controle das variáveis Sexo e Raça. A partir deste objetivo, Tabelas de Contingência serão formadas recategorizando as CIDs em 2 (dois) níveis: CID F10 (Álcool) e CIDs F11 a F19 (Todas as outras CIDs somadas).
+
+
+## 4.1 Tabelas de Contingência 
+
+A tabela 1 é a tabela de contingência marginal das CIDs recategorizadas (Álcool e Outras) e a variável Sexo. Já a tabela 2 é a tabela de contingência marginal das CIDs recategorizadas com a variável Raça/Cor que também foi recategorizada em 3 categorias: Branca, Parda e Outras(Preta, Amarela, Indígena). Esta recategorização foi feita com intuito de tornar os tamanhos amostrais para cada nível mais equilibrados, no sentido de não haver níveis com tamanhos amostrais muito pequnos, como era o caso de Indígenas e Amarelos. Uma forma diferente de abordar estas categorias pode ser trabalhada mais à frente em conjunto com os especialistas da equipe. No caso da variável Raça/Cor há a presença de indvíduos sem identificação de Raça/Cor. Estas observações NA foram desconsideradas nos cálculos.
+
+
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(sexo_CIDs, raca_CIDs, ncol=2)
+```
+
+
+## 4.2 Testes de Independência
+
+Inicialmente, será testada, por meio da Estatística de teste Qui-Quadrado a independência das variáveis. Ou seja, testar se as variáveis Sexo e Raça/Cor tem algum tipo de associação com as frequências da CID F10 e a frequência de todas as outras CIDs juntas. Estes testes foram feitos de maneira marginal, ou seja, não condicionando para outras variáveis. Testou-se com um nível de 5% de significância. Futuramente, uma análise mais aprofundada, considerando interações, pode ser pensada.  
+
+$$
+\text{CIDs com a variável Sexo} \ \ \ \ \chi_{(1)}^{2} = 58,838  \ \ \ \ \ \text{p valor} \approx 0 
+$$
+
+$$
+\text{CIDs com a variável Raça/Cor} \ \ \ \ \chi_{(1)}^{2} = 6.789\ \ \ \ \ \text{p valor}=0.03356
+$$
+
+No teste para verificar independência entre as categorias das CIDs e a variável Sexo, há fortissímas evidências para rejeitar a hipótese nula de independência entre as variáveis. Já no teste com a variável Raça/Cor, também rejeitou-se a hipótese de independência, com 5% de probabilidade de errar ao realizar esta afirmação de rejeição.
+
+
+
+## 5. Análise Geral do Número de Mortes
+
+Para iniciar a análise, é importante ter em mente o comportamento desses óbitos no decorrer dos anos. Ao visualizar os gráficos de mortes totais e mortes por psicoativos tanto do Espírito Santo quando do Brasil, percebe-se que os dois gráficos de mortes totais são bem similares, enquanto os gráficos por mortes por psicoativos apresentam curvas consideravelmente diferentes. O gráfico de mortes por psicoativos no Brasil mostra que a variável número de mortes é estável de 2013 a 2019, e apresenta uma crescente a partir de 2020, quando volta a se estabilizar, mas agora em um número mais alto de mortes. Em contra partida, a curva de mortes por psicotivos no Espírito Santo decresce de 2013 a 2019, mas também sobe a partir de 2020.
 
 <br>
 
@@ -238,9 +270,9 @@ print(grafico_proporcao)
 
 <br>
 
-### 4.1. Mapas
+### 5.1. Mapas
 
-O primeiro mapa apresenta, por estado, ignorando a variação ano a ano, o percentual de óbitos por psicoativos sobre os óbitos totais. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções. No entanto, é importante constatar que isso é consequência da variação entre os anos não ter sido considerada neste gráfico, já que o gráfico de séries, anteriormente exposto, mostrou que os números de óbitos por psicoativos e todos os indicadores relacionados no Espírito Santo decresceram até 2019 e a partir de 2020 os números cresceram.
+O primeiro mapa apresenta, o cenário nacional, por estado, do número de óbitos por psicoativos sobre 100000 habitantes no ano de 2013. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções.
 
 ```{r, echo=FALSE}
 print(mapa_psic_pop13)
@@ -256,7 +288,7 @@ print(mapa_psic_pop22)
 
 <br>
 
-### 4.2. Gráfico de calor
+### 5.2. Gráfico de calor
 
 Através do gráfico de calor é possível ter uma ideia geral do número de mortes por psicoativos a cada 100 mil habitantes em todos os estados do Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe é o com maior número de ocorrência a cada 100 mil habitantes.
 
@@ -266,8 +298,8 @@ print(heatmap_mortes_psic)
 ```
 
 
-## 5. indicadores
-### 5.1. Indicador 1
+## 6. indicadores
+### 6.1. Indicador 1
 
 O primeiro indicador desenvolvido mostra quantas pessoas morreram por psicoativos no Espírito Santo a cada 100 mortes totais no estado
 
@@ -285,7 +317,7 @@ $$
 print(serie_indic1)
 ```
 
-### 5.2. Indicadores 2 e 3
+### 6.2. Indicadores 2 e 3
 
 Os indicadores 2 e 3 mostram, respectivamente 1) o número de mortes por psicoativos no Espírito Santo a cada 100 mortes totais no Brasil e 2) o número de mortes totais no estado a cada 100 mortes no país.
 
@@ -308,7 +340,7 @@ $$
 print(serie_indic2_3)
 ```
 
-### 5.3. Indicadores 4 e 5
+### 6.3. Indicadores 4 e 5
 
 Os indicadores 4 e 5 mostram o número de óbitos por psicoativos em relação a população do Brasil e do Espírito Sant. Através deles é possível compreender que enquanto no Brasil o número de óbitos por psicoativos a cada 100.000 habitante variou de 4 a 6, no Espírito Santo esse número divergiu muito no deccorer dos anos, assumindos valores que vão de aproximadamente 4 a aproximadamente 9 óbitos a cada 100.000 habitantes no estado. Vale ressaltar ainda que o indicador do ES só foi menos que o do Brasil no ano de 2019.
 
@@ -329,8 +361,8 @@ $$
 print(serie_indic4_5)
 ```
 
-## 6. Outras Possíveis Análises
-### 6.1. Divisão do Espírito Santo por Regiões
+## 7. Outras Possíveis Análises
+### 7.1. Divisão do Espírito Santo por Regiões
 
 <br>
 
@@ -340,7 +372,7 @@ kable(tabela_regioes_es) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
-### 6.2. Informações sobre as possíveis variáveis
+### 7.2. Informações sobre as possíveis variáveis
 
 <br>
 
@@ -350,4 +382,4 @@ kable(tabela_variaveis_sim) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
-## 7. Referências Bibliográficas
+## 8. Referências Bibliográficas
