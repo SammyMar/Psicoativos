@@ -14,7 +14,7 @@ library(sidrar)
 library(janitor)
 library(tidyverse)
 library(latex2exp)
-
+library(geobr)
 
 
 #LER E SALVAR DADOS TOTAIS BR
