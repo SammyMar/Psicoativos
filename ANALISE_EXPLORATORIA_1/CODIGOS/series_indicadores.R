@@ -31,8 +31,8 @@ serie_indic1 <- ggplot(data = dados_indic1, aes(x = ANOOBITO, y = indic1)) +
   geom_line(linetype = "solid" ,color = "black",
             linewidth = 0.5) +
   geom_point(shape = 15, color = "black") +
-  labs(title = "Número de Óbitos por Psicoativos no ES/Número de Óbitos Totais (>17 anos) no ES de 2013 a 2022", 
-       x="Anos", y="Óbitos/1000") +
+  labs(title = "Numero de Obitos por Psicoativos no ES/Numero de Obitos Totais (>17 anos) no ES de 2013 a 2022", 
+       x="Anos", y="Obitos/1000") +
   scale_x_continuous(
     breaks = dados_indic1$ANOOBITO,  
     labels = dados_indic1$ANOOBITO)+ 
@@ -73,9 +73,9 @@ serie_indic2 <- ggplot(data = dados_indic2, aes(x = ANOOBITO, y = indic2)) +
   geom_line(linetype = "solid" ,color = "black",
             linewidth = 0.5) +
   geom_point(shape = 15, color = "black") +
-  labs(title = "Número de Óbitos por Psicoativos no ES/Número de Óbitos por Psicoativos no Brasil 
+  labs(title = "Numero de Obitos por Psicoativos no ES/Numero de Obitos por Psicoativos no Brasil 
 de 2013 a 2022", 
-       x="Anos", y="Óbitos/100") +
+       x="Anos", y="Obitos/100") +
   scale_x_continuous(
     breaks = dados_indic2$ANOOBITO,  
     labels = dados_indic2$ANOOBITO)+ 
@@ -118,9 +118,9 @@ serie_indic3 <- ggplot(data = dados_indic3, aes(x = ANOOBITO, y = indic3)) +
   geom_line(linetype = "solid" ,color = "black",
             linewidth = 0.5) +
   geom_point(shape = 15, color = "black") +
-  labs(title = "Número de Óbitos Totais no ES/Número de Óbitos Totais no Brasil 
+  labs(title = "Numero de Obitos Totais no ES/Numero de Obitos Totais no Brasil 
 de 2013 a 2022", 
-       x="Anos", y="Óbitos/100") +
+       x="Anos", y="Obitos/100") +
   scale_x_continuous(
     breaks = dados_indic3$ANOOBITO,  
     labels = dados_indic3$ANOOBITO)+ 
@@ -150,9 +150,9 @@ serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
             linewidth = 0.5) +
   geom_point(shape = 15) +
   labs(title = TeX("Indicador 2: $\\frac{Nº óbitos ES psic}{Nº óbitos BR psic}$ e Indicador 3: $\\frac{Nº \ óbitos \ ES \  total}{Nº \ óbitos \ BR \ total}$ de 2013 a 2022"), 
-       x="Anos", y="Óbitos/100") +
+       x="Anos", y="Obitos/100") +
   scale_colour_manual(values = c("red", "blue"), name = "Indicadores", 
-            labels = c("indicador 2", "Indicador 3")) +
+            labels = c("Indicador 2", "Indicador 3")) +
   ylim(1.5, 3.5) +
   scale_x_continuous(
     breaks = dados_indic2_3$Ano,  
@@ -164,16 +164,15 @@ serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
 serie_indic2_3
 
 ### Indicador 4 obitos psic ES/pop ES
-pop_es_2022 <- data.frame(brasil_e_unidade_da_federacao_codigo = c(32),
-                          ano = c(2022),
-                          valor  = c(
-                            3833712
-                          ))
+pop_es_2022 <- data.frame(codigoUF = "32",
+                          ano = "2022",
+                          valor  = c(3833712))
 
 
 dados_indic4 <- pop13a21 %>% 
-  dplyr::filter(brasil_e_unidade_da_federacao_codigo == 32) %>% 
-  rbind(pop_es_2022)
+  dplyr::filter(codigoUF == 32) %>% 
+  select(ano, valor, codigoUF) %>% 
+  bind_rows(pop_es_2022)
 
 dados_indic4$ano <- as.numeric(dados_indic4$ano)
 
@@ -188,13 +187,14 @@ dados_indic4 <- dados_indic4 %>%  inner_join(
 
 
 ### Indicador 5 obitos psic BR/pop BR
-pop_br_2022 <- data.frame(brasil_e_unidade_da_federacao_codigo = c(1),
-                          ano = c(2022),
+pop_br_2022 <- data.frame(codigoUF = "1",
+                          ano = "2022",
                           valor  = c(
                             203080756))
 
 dados_indic5 <- pop13a21 %>% 
-  dplyr::filter(brasil_e_unidade_da_federacao_codigo == 1) %>% 
+  dplyr::filter(codigoUF == 1) %>% 
+  select(ano, valor, codigoUF) %>% 
   rbind(pop_br_2022)
 
 dados_indic5$ano <- as.numeric(dados_indic5$ano)
@@ -228,9 +228,9 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
             linewidth = 0.5) +
   geom_point(shape = 15) +
   labs(title = TeX("Indicador 4: $\\frac{Nº óbitos ES psic}{PopulaçãoES}$ e Indicador 5: $\\frac{NºÓbitosBRpsic}{PopulaçãoBR}$ de 2013 a 2022"), 
-       x="Anos", y="Óbitos/100000") +
+       x="Anos", y="Obitos/100000") +
   scale_colour_manual(values = c("red", "blue"), name = "Indicadores", 
-                      labels = c("indicador 4", "Indicador 5")) +
+                      labels = c("Indicador 4", "Indicador 5")) +
   #ylim(1.5, 3.5) +
   scale_x_continuous(
     breaks = dados_indic4_5$Ano,  
@@ -244,17 +244,4 @@ serie_indic4_5
 
 
 
-
-
-
-serie_BR_total
-serie_ES_total
-serie_indic1
-#serie_indic2
-#serie_indic3
-serie_indic2_3
-serie_indic4_5
-
-mapa_psic_obitos_uf
-mapa_psic_pop
 

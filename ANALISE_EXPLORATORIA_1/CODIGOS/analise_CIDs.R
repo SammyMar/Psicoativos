@@ -62,7 +62,7 @@ g_count_CIDs <- dados.count.CID %>%
   ggplot(aes(x = fct_reorder(CIDs, prop), y = prop)) +
   geom_col(fill = "#105DEB") +
   facet_grid(rows = vars(Localidade))+
-  labs(title = "Proporção de Óbitos de 2013 a 2022 no Brasil e no ES por cada CID relacionada a psicoativos", y="Quantidade", x="CIDs")+ 
+  labs(title = "Proporcao de Obitos de 2013 a 2022 no Brasil e no ES por cada CID relacionada a psicoativos", y="Quantidade", x="CIDs")+ 
   theme_classic() + coord_flip() + theme(title = element_text(size = 15),
                                          axis.text = element_text(size = 13),
                                          strip.text = element_text(face = "bold", size = 15))
@@ -89,10 +89,10 @@ dados_heatmap_CIDs <- melt(dados_heatmap_CIDs)
 
 heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value)) +
   geom_tile() +
-  scale_fill_gradient2(low = "white", high = ("darkblue"))+
+  scale_fill_gradient(low = "lightblue", high = ("darkblue"))+
   theme_minimal() +
-  labs(x = "Anos", y = "CIDs", fill = TeX("Proporção"), 
-       title = "Proporção de óbitos por cada CID e cada ano no Espírito Santo") +
+  labs(x = "Anos", y = "CIDs", fill = "Proporcao", 
+       title = "Proporcao de Obitos por cada CID e cada ano no Espirito Santo") +
   theme(axis.text.x = element_text(size = 15),
        axis.text.y = element_text(size = 15),
        title = element_text(size = 15))+
