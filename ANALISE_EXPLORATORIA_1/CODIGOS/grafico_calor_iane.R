@@ -111,7 +111,7 @@ heatmap_mortes_psic <- ggplot(tab_mortes_estado_ano_psic, aes(x = ANOOBITO, y = 
   labs(title = "Taxa de mortes por Psicoativos a cada 100.000 habitantes nos estados brasileiros ao longo dos anos",
        x = "Ano",
        y = "Estado") +
-  theme_minimal() +
+  theme(plot.title = element_text(size = 20)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 print(heatmap_mortes_psic)

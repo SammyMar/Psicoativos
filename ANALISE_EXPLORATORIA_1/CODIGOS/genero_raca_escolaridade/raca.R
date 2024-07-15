@@ -19,10 +19,10 @@ freq_raca_br_total <- dados_br_total %>%
 
 hist_raca_br_total <- ggplot(freq_raca_br_total, aes(x = RACACOR, y = Quantidade, fill = RACACOR)) +
   geom_bar(stat = "identity") +
-  theme_minimal() +
-  labs(title = "Quantidades de mortes por raC'a no Brasil entre o perC-odo de 2013 a 2022",
-       x = "RaC'a",
-       y = "NC:mero de Pessoas")
+  theme(plot.title = element_text(size = 20)) +
+  labs(title = "Quantidades de mortes por raCa no Brasil entre o periodo de 2013 a 2022",
+       x = "RaCa",
+       y = "Numero de Pessoas")
 
 print(hist_raca_br_total)
 
@@ -35,10 +35,10 @@ freq_raca_br_psic <- dados_br_psic %>%
 
 hist_raca_br_psic <- ggplot(freq_raca_br_psic, aes(x = RACACOR, y = Quantidade, fill = RACACOR)) +
   geom_bar(stat = "identity") +
-  theme_minimal() +
-  labs(title = "Quantidades de mortes por psicoativo no Brasil entre o perC-odo de 2013 a 2022 de acordo com a raC'a",
-       x = "RaC'a",
-       y = "NC:mero de Pessoas")
+  theme(plot.title = element_text(size = 20)) +
+  labs(title = "Quantidades de mortes por psicoativo no Brasil entre o periodo de 2013 a 2022 de acordo com a raC'a",
+       x = "RaCa",
+       y = "Numero de Pessoas")
 
 print(hist_raca_br_psic)
 
@@ -51,10 +51,10 @@ freq_raca_es_total <- dados_es_total %>%
 
 hist_raca_es_total <- ggplot(freq_raca_es_total, aes(x = RACACOR, y = Quantidade, fill = RACACOR)) +
   geom_bar(stat = "identity") +
-  theme_minimal() +
-  labs(title = "Quantidades de mortes por raC'a no ES entre o perC-odo de 2013 a 2022",
-       x = "RaC'a",
-       y = "NC:mero de Pessoas")
+  theme(plot.title = element_text(size = 20)) +
+  labs(title = "Quantidades de mortes por rac no ES entre o periodo de 2013 a 2022",
+       x = "Rac",
+       y = "Numero de Pessoas")
 
 print(hist_raca_es_total)
 
@@ -67,10 +67,10 @@ freq_raca_es_psic <- dados_es_psic %>%
 
 hist_raca_es_psic <- ggplot(freq_raca_es_psic, aes(x = RACACOR, y = Quantidade, fill = RACACOR)) +
   geom_bar(stat = "identity") +
-  theme_minimal() +
-  labs(title = "Quantidades de mortes por psicoativo no ES entre o perC-odo de 2013 a 2022 de acordo com a raC'a",
-       x = "RaC'a",
-       y = "NC:mero de Pessoas")
+  theme(plot.title = element_text(size = 20)) +
+  labs(title = "Quantidades de mortes por psicoativo no ES entre o periodo de 2013 a 2022 de acordo com a raC'a",
+       x = "Raca",
+       y = "Numero de Pessoas")
 
 print(hist_raca_es_psic)
 
@@ -96,12 +96,12 @@ series_raca_br_total <- ggplot(data = dados.raca.br.series, aes(x = ANOOBITO, y 
                                                                     colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "NC:mero de Cbitos Totais no Brasil de 2013 a 2022 por RaC'a", 
-       x="Anos", y="Cbitos Totais", colour = "RaC'a") +
+  labs(title = "Numero de Cbitos Totais no Brasil de 2013 a 2022 por RaCa", 
+       x="Anos", y="Cbitos Totais", colour = "Raca") +
   scale_x_continuous(
     breaks = dados.raca.br.series$ANOOBITO,  
     labels = dados.raca.br.series$ANOOBITO)+ 
-  theme_classic()
+  theme(plot.title = element_text(size = 20)) +
 
 print (series_raca_br_total)
 
@@ -119,12 +119,12 @@ series_raca_es_total <- ggplot(data = dados.raca.es.series, aes(x = ANOOBITO, y 
                                                                     colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "NC:mero de Cbitos Totais no ES de 2013 a 2022 por RaC'a", 
-       x="Anos", y="Cbitos Totais", colour = "RaC'a") +
+  labs(title = "Numero de Cbitos Totais no ES de 2013 a 2022 por Raca", 
+       x="Anos", y="Cbitos Totais", colour = "Raca") +
   scale_x_continuous(
     breaks = dados.raca.es.series$ANOOBITO,  
     labels = dados.raca.es.series$ANOOBITO)+ 
-  theme_classic()
+  theme(plot.title = element_text(size = 20)) +
 
 print (series_raca_es_total)
 
@@ -142,12 +142,12 @@ series_raca_br_psic <- ggplot(data = dados.raca.br.series.psic, aes(x = ANOOBITO
                                                                         colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "NC:mero de Cbitos por psicativos no Brasil de 2013 a 2022 de acordo com a RaC'a", 
-       x="Anos", y="Cbitos por psicativos", colour = "RaC'a") +
+  labs(title = "Numero de Cbitos por psicativos no Brasil de 2013 a 2022 de acordo com a Raca", 
+       x="Anos", y="Cbitos por psicativos", colour = "Raca") +
   scale_x_continuous(
     breaks = dados.raca.br.series.psic$ANOOBITO,  
     labels = dados.raca.br.series.psic$ANOOBITO)+ 
-  theme_classic()
+  theme(plot.title = element_text(size = 20)) +
 
 print (series_raca_br_psic)
 
@@ -165,12 +165,12 @@ series_raca_es_psic <- ggplot(data = dados.raca.es.series.psic, aes(x = ANOOBITO
                                                                         colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "NC:mero de Cbitos por psicativos no ES de 2013 a 2022 de acordo com o gC*nero", 
-       x="Anos", y="Cbitos por psicativos", colour = "RaC'a") +
+  labs(title = "Numero de Cbitos por psicativos no ES de 2013 a 2022 de acordo com o genero", 
+       x="Anos", y="Cbitos por psicativos", colour = "Raca") +
   scale_x_continuous(
     breaks = dados.raca.es.series.psic$ANOOBITO,  
     labels = dados.raca.es.series.psic$ANOOBITO)+ 
-  theme_classic()
+  theme(plot.title = element_text(size = 20)) +
 
 print (series_raca_es_psic)
 
@@ -189,9 +189,9 @@ dados.raca.br.series.psic <- dados.raca.br.series.psic %>%
 #2 Criar o grC!fico
 proporcao_raca_br_psic <- ggplot(dados.raca.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = RACACOR)) +
   geom_bar(stat = "identity", position = "stack") +
-  labs(x = "Ano", y = "Porcentagem (%)", fill = "RaC'a",
-       title = "ProporC'C#o de Mortes por Psicoativos no Brasil por RaC'a e Ano") +
-  theme_minimal() +
+  labs(x = "Ano", y = "Porcentagem (%)", fill = "Raca",
+       title = "Proporcao de Mortes por Psicoativos no Brasil por Raca e Ano") +
+  theme(plot.title = element_text(size = 20)) +
   scale_fill_brewer(palette = "Paired")
 
 print(proporcao_raca_br_psic)
@@ -210,8 +210,8 @@ dados.raca.es.series.psic <- dados.raca.es.series.psic %>%
 proporcao_raca_es_psic <- ggplot(dados.raca.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = RACACOR)) +
   geom_bar(stat = "identity", position = "stack") +
   labs(x = "Ano", y = "Porcentagem (%)", fill = "RaC'a",
-       title = "ProporC'C#o de Mortes por Psicoativos no ES por RaC'a e Ano") +
-  theme_minimal() +
+       title = "Proporcao de Mortes por Psicoativos no ES por Raca e Ano") +
+  theme(plot.title = element_text(size = 20)) +
   scale_fill_brewer(palette = "Paired")
 
 print(proporcao_raca_es_psic)
