@@ -6,13 +6,17 @@ library(RColorBrewer)
 library(reactR)
 library(htmltools)
 library(reactable)
+library(readxl)
 getwd()
 cores <-  brewer.pal(10, "Set1")
 cores2 <- c("#4357AD","#EFA9AE","#9A3D6A", "#6a3d9a", "#a6cee3", "#1d9a55", "#9A3DA7", "#Dab2d6", "#6A3DA7", "#EFA1AE")
 
 ### -------------------------TABELA DINÂMICA DE CIDS-- ------------###
 ### PREPARAÇÃO ### 
-#Importar o DataSet CIDs na pasta bases_de_dados antes de rodar o codigo 
+#Importar o DataSet CIDs na pasta bases_de_dados antes de rodar o codigo:
+
+CIDs <- read_excel('CIDs.xlsx')
+
 # Tabela dinâmica
  reactable::reactable(CIDs, 
                       groupBy = c("CID", "subdivisao"),
