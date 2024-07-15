@@ -66,3 +66,4 @@ mapa_psic_pop22 <- ggplot() +
   theme_void() + theme(title = element_text(size = 15))
 
 mapa_psic_pop22
+

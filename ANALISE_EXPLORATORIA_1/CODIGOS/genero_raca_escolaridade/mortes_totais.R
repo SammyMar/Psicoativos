@@ -117,3 +117,109 @@ grafico_proporcao <- ggplot(obitos_combinados_br_es, aes(x = factor(ANOOBITO), y
 # Mostrar o gráfico
 print(grafico_proporcao)
 
+
+
+
+
+#SERIE
+
+
+# juntando os dados
+
+dados.mortes.totais.series <- data.frame(
+  dados_br_total %>% group_by(ANOOBITO) %>% 
+    summarise(N.obitos = n())
+)
+
+# grafico 
+
+series_mortes_br_total <- ggplot(data = dados.mortes.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
+  geom_line(linetype = "solid" ,color = "black",
+            linewidth = 0.5) +
+  geom_point(shape = 15, color = "black") +
+  labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022", 
+       x="Anos", y="Óbitos Totais") +
+  scale_x_continuous(
+    breaks = dados.mortes.totais.series$ANOOBITO,  
+    labels = dados.mortes.totais.series$ANOOBITO)+ 
+  theme_classic()
+series_mortes_br_total
+
+
+
+#2.1 quantidade de mortes psic no brasil
+
+# juntando os dados
+
+dados.mortes.psic.series <- data.frame(
+  dados_br_psic %>% group_by(ANOOBITO) %>% 
+    summarise(N.obitos = n())
+)
+
+# grafico 
+
+series_mortes_br_psic <- ggplot(data = dados.mortes.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
+  geom_line(linetype = "solid" ,color = "black",
+            linewidth = 0.5) +
+  geom_point(shape = 15, color = "black") +
+  labs(title = "Número de Óbitos por Psicoativos no Brasil de 2013 a 2022", 
+       x="Anos", y="Óbitos Totais") +
+  scale_x_continuous(
+    breaks = dados.mortes.psic.series$ANOOBITO,  
+    labels = dados.mortes.psic.series$ANOOBITO)+ 
+  theme_classic()
+series_mortes_br_psic
+
+
+
+
+#2.1 quantidade de mortes totais no es
+
+# juntando os dados
+
+dados.mortes.es.totais.series <- data.frame(
+  dados_es_total %>% group_by(ANOOBITO) %>% 
+    summarise(N.obitos = n())
+)
+
+# grafico 
+
+series_mortes_es_total <- ggplot(data = dados.mortes.es.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
+  geom_line(linetype = "solid" ,color = "black",
+            linewidth = 0.5) +
+  geom_point(shape = 15, color = "black") +
+  labs(title = "Número de Óbitos Totais no Espírito Santo de 2013 a 2022", 
+       x="Anos", y="Óbitos Totais") +
+  scale_x_continuous(
+    breaks = dados.mortes.es.totais.series$ANOOBITO,  
+    labels = dados.mortes.es.totais.series$ANOOBITO)+ 
+  theme_classic()
+series_mortes_es_total
+
+
+
+#2.1 quantidade de mortes psic no es
+
+# juntando os dados
+
+dados.mortes.es.psic.series <- data.frame(
+  dados_es_psic %>% group_by(ANOOBITO) %>% 
+    summarise(N.obitos = n())
+)
+
+# grafico 
+
+series_mortes_es_psic <- ggplot(data = dados.mortes.es.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
+  geom_line(linetype = "solid" ,color = "black",
+            linewidth = 0.5) +
+  geom_point(shape = 15, color = "black") +
+  labs(title = "Número de Óbitos por Psicoativos no Espírito Santo de 2013 a 2022", 
+       x="Anos", y="Óbitos Totais") +
+  scale_x_continuous(
+    breaks = dados.mortes.es.psic.series$ANOOBITO,  
+    labels = dados.mortes.es.psic.series$ANOOBITO)+ 
+  theme_classic()
+series_mortes_es_psic
+
+
+
