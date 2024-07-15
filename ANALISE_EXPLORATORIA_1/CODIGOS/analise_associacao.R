@@ -130,6 +130,7 @@ select(CAUSABAS, SEXO) %>%
   tbl_cross(col = CIDs, row = SEXO) %>% 
   bold_labels()
 
+sexo_CIDs
 
 # CRIANDO TABELA DE CONTINGENCIA POR CIDS X RACA --------------------------
 
