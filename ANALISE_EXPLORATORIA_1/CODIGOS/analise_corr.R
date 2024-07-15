@@ -118,15 +118,54 @@ heatmap
 
 
 
-
+library(gtsummary)
 # CRIANDO TABELAS DE CONTINGENCIA POR CIDS X SEXO --------------------------------
 
-dados_es_psic %>% 
+sexo_CIDs <- dados_es_psic %>% 
 select(CAUSABAS, SEXO) %>% 
-  group_by(CIDs = substr(CAUSABAS, 1, 3), SEXO) %>% 
-  select(SEXO, CIDs) %>%
-  filter(CIDs == "F10" | CIDs == "F17") %>% 
-  table()
+  mutate(CIDs = ifelse(substr(CAUSABAS, 1, 3) %in% c("F10"),
+                       substr(CAUSABAS, 1, 3), "Outras CIDs")) %>% 
+  #select(SEXO, CIDs) %>%
+  #table()
+  tbl_cross(col = CIDs, row = SEXO) %>% 
+  bold_labels()
+
+
+# CRIANDO TABELA DE CONTINGENCIA POR CIDS X RACA --------------------------
+
+
+
+raca_CIDs <- dados_es_psic %>% 
+  select(CAUSABAS, RACACOR) %>% 
+  mutate(CIDs = ifelse(substr(CAUSABAS, 1, 3) %in% c("F10"),
+                       substr(CAUSABAS, 1, 3), "Outras CIDs")) %>% 
+  mutate(RaçaCor=case_when(RACACOR == "Branca"~"Branca",
+                   RACACOR == "Parda"~"Outras",
+                   RACACOR == "Indígena"~"Outras",
+                   RACACOR == "Amarela"~"Outras",
+                   RACACOR == "Preta"~"Outras")) %>% 
+  #select(SEXO, CIDs) %>%
+  #table() %>% as.data.frame() %>%
+  tbl_cross(col = CIDs, row = RaçaCor, missing = "ifany",
+            missing_text = "NA", ) %>% 
+  bold_labels()
+
+raca_CIDs
+
+
+sexo_CIDs
+Qp_sexo_CIDs <-  sexo_CIDs %>% chisq.test()
+Qp_sexo_CIDs
+
+Coef_contg_ajust <- function(Qp, tabela){
+  k <- min(nrow(tabela), ncol(tabela))
+  phi <- sqrt(Qp/sum(tabela))
+  v_cramer<-sqrt(phi/k)
+  return(v_cramer)
+}
+
+Coef_contg_ajust(Qp_sexo_CIDs$statistic, sexo_CIDs)
+
 
 # CRIANDO TABELAS DE CONTINGENCIA POR CIDS X RACA/COR --------------------------------
 
