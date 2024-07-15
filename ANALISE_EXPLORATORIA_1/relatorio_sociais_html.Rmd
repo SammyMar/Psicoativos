@@ -7,7 +7,7 @@ output: html_document
 ---
 
 ```{r, warning = FALSE, message=FALSE, echo=FALSE, include=FALSE}
-source("CODIGOS/leitura_filtragem_02.R")
+source("leitura_filtragem_02.R")
 library(gridExtra)
 ```
 

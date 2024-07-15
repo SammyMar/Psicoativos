@@ -14,9 +14,9 @@ library(sidrar)
 
 #LER E SALVAR DADOS TOTAIS BR
   
-#### SETAR O SEU CAMINHO LOCAL ATÉ A PASTA /ANÁLISE EXPLORATÓRIA 1
+#### SETAR O SEU CAMINHO LOCAL ATC	 A PASTA /ANCLISE EXPLORATCRIA 1
   
-setwd("Psicoativos/ANALISE_EXPLORATORIA_1")
+#setwd("base_de_dados/dados_")
   
   
 dados_br_total <- c()
