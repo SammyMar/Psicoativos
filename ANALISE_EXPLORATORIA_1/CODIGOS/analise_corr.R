@@ -1,6 +1,53 @@
-data.selec <- dplyr::select(dados_es_psic, RACACOR , ESTCIV , SEXO)
+data.selec <- dados_es_psic %>% 
+  select(CAUSABAS, SEXO, RACACOR) %>% 
+  group_by(CIDs = substr(CAUSABAS, 1, 3), SEXO) %>% 
+  select(SEXO, CIDs, RACACOR) %>%
+  filter(CIDs == "F10" | CIDs == "F17")
 
 data.selec
+
+
+
+C_ajust.CIDs_es <- c() 
+
+for (i in col_data.selec){
+  
+  tabela <- table(data.selec$CIDs , data.selec[[i]])
+  qui2 <- stats::chisq.test(tabela)$statistic
+  k <- min(nrow(tabela), ncol(tabela))
+  C[i] <- sqrt(qui2/(qui2+sum(tabela)))
+  C_ajust.CIDs_es[i] <- sqrt(qui2/(qui2+sum(tabela)))/sqrt((k-1)/k)
+}
+
+C_ajust.CIDs_es
+
+
+
+C_ajust.CIDs_br <- c() 
+
+for (i in col_data.selec){
+  
+  tabela <- table(data.selec$CIDs , data.selec[[i]])
+  qui2 <- stats::chisq.test(tabela)$statistic
+  k <- min(nrow(tabela), ncol(tabela))
+  C[i] <- sqrt(qui2/(qui2+sum(tabela)))
+  C_ajust.CIDs_br[i] <- sqrt(qui2/(qui2+sum(tabela)))/sqrt((k-1)/k)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 col_data.selec=1:3
 C_ajust.RACACOR  <- c()
@@ -66,3 +113,26 @@ heatmap <- ggplot(cor_melt, aes(Var2, Var1, fill = value)) +
   ) +
   scale_x_discrete(position = "top")
 heatmap
+
+
+
+
+
+
+# CRIANDO TABELAS DE CONTINGENCIA POR CIDS X SEXO --------------------------------
+
+dados_es_psic %>% 
+select(CAUSABAS, SEXO) %>% 
+  group_by(CIDs = substr(CAUSABAS, 1, 3), SEXO) %>% 
+  select(SEXO, CIDs) %>%
+  filter(CIDs == "F10" | CIDs == "F17") %>% 
+  table()
+
+# CRIANDO TABELAS DE CONTINGENCIA POR CIDS X RACA/COR --------------------------------
+
+dados_es_psic %>% 
+  select(CAUSABAS, RACACOR) %>% 
+  group_by(CIDs = substr(CAUSABAS, 1, 3), RACACOR) %>% 
+  select(RACACOR, CIDs) %>%
+  table() %>% 
+  kable()
