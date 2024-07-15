@@ -6,19 +6,9 @@ date: "2024-07-15"
 output: html_document
 ---
 
-```{r setup, warning = FALSE, message=FALSE, echo=FALSE, include=FALSE}
-library(readr)
-library(plotly)
-library(dplyr)
-library(data.table)
-library(lubridate)
-library(ggplot2)
-library(RColorBrewer)
-library(reactR)
-library(htmltools)
-library(reactable)
-library(stringr)
-library(sidrar)
+```{r, warning = FALSE, message=FALSE, echo=FALSE, include=FALSE}
+source("CODIGOS/leitura_filtragem_02.R")
+library(gridExtra)
 ```
 
 ## 1.Introdução
@@ -37,19 +27,19 @@ Para obter os dados de morte por psicoativos foram usados os Códigos Diagnósti
 
 A Classificação Internacional de Doenças e Problemas Relacionados à Saúde (também conhecida como Classificação Internacional de Doenças – CID 10) é publicada pela Organização Mundial de Saúde (OMS) e visa padronizar a codificação de doenças e outros problemas relacionados à saúde. (https://www.medicinanet.com.br/cid10/f.htm)
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar em formato de referência bibliográfica
 ```
 
 Dentro dessa classificação da CID-10 é possível encontrar a CID F1, que é responsável pelos Transtornos Mentais e de Comportamento. A lista completa desse segmento da CID-10 pode ser vista a seguir:
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Tabela Carol
 ```
 
 Os gráficos a seguir mostram quais a CID’s com maior número de ocorrências tanto no Brasil quanto no Espírito Santo. Percebe-se que Transtornos por uso de álcool, fumo, outras substâncias psicoativas e cocaína foram os mais letais entre os anos estudados.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficosd a CID
 ```
 
@@ -59,7 +49,7 @@ Os gráficos a seguir mostram quais a CID’s com maior número de ocorrências 
 
 A seguir é possível visualizar a discrepância entre o número de homens e de mulheres que morreram por mortes totais e por psicativos tanto no Brasil quando no Espírito Santo. Em ambas as localizações o número de óbitos de indivíduos do gênero masculino foi superior ao número de mortes em pessoas do gênero feminino. Ao observar a diferença entre as mortes totais e mortes por psicoativos, porém, tem-se que o número de homens que faleceram por uso de substância é consideravelmente superior ao número de mulheres. Ao mesmo tempo, enquanto o número de mortes em mulheres que morreram por uso de substãncia se mantêm bastante estável, os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficos de gênero
 ```
 
@@ -69,7 +59,7 @@ Os dados sobre as raças dos indivíduos falecidos no Brasil como um todo são b
 
 Para a pesquisa, pode ser importante discutir a forma de analisar esses dados e se é válido unir as categorias Parda e Preta.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficos de raça
 ```
 
@@ -77,7 +67,7 @@ Para a pesquisa, pode ser importante discutir a forma de analisar esses dados e 
 
 A variável escolaridade foi a que apresentou maior discrepância com o passar do tempo. Sobre esse aspecto, é importante destacar o número alto de informações Não Atribuídas (NA), o que pode ter causado interferência nos dados.Também é válido ressaltar que existem mais de uma variável que retrata a escolaridade dos indivíduos, entretanto, todas elas apresentam um alto índice de NA's.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficos de escolaridade
 ```
 
@@ -87,20 +77,20 @@ Ao analisar os dados de estado civil, percebe-se que, enquanto a maior parte dos
 
 É válido mencionar que por se tratar de uma informação que requer certa formalidade e inclusive documentação, os dados podem não ser eficientes em expressar se os falecidos tinham de fato um companheiro ou companheira com quem se relacionavam. 
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficos de estado civil
 ```
 
 ### 3.5. Idade
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficos de idade
 # por existir uma maior quantidade de graficos, optei por não colcoar o texto ainda
 ```
 
 ### 3.6. Faixa Etária
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficos de Faixa Etária
 # mesma situação da idade
 ```
@@ -109,7 +99,7 @@ Ao analisar os dados de estado civil, percebe-se que, enquanto a maior parte dos
 
 Para iniciar a análise, é importante ter em mente o comportamento desses óbitos no decorer dos anos. Ao visualizar os gráficos de mortes totais e mortes por psicoativos tanto do Espírito Santo quando do Brasil, percebe-se que os dois gráficos de mortes totais são bem similares, enquanto os gráficos por mortes por psicoativos apresentam curvas consideravelmente diferentes. O gráfico de mortes por psicoativos no Brasil mostra que a variável número de mortes é estável de 2013 a 2019, e apresenta uma crescente a partir de 2020, quando volta a se estabilizar, mas agora em um número mais alto de mortes. Em contra partida, a curva de mortes por psicotivos no Espírito Santo decresce de 2013 a 2019, mas também sobe a partir de 2020.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar Gráficos de morte
 ```
 
@@ -117,13 +107,13 @@ Para iniciar a análise, é importante ter em mente o comportamento desses óbit
 
 O primeiro mapa apresenta, por estado, ignorando a variação ano a ano, o percentual de óbitos por psicoativos sobre os óbitos totais. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções. No entanto, é importante constatar que isso é consequência da variação entre os anos não ter sido considerada neste gráfico, já que o gráfico de séries, anteriormente exposto, mostrou que os números de óbitos por psicoativos e todos os indicadores relacionados no Espírito Santo decresceram até 2019 e a partir de 2020 os números cresceram.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar mapa de calor psicoatiovos/totais
 ```
 
 O segundo mapa, traz ideia parecida, no entanto, utilizando outro indicador. Neste caso, o denominador é a população mediana de 2013 a 2022 para cada estado, já que a variação entre os anos não foi considerada. Desta forma, cada estado possui uma proporção de óbitos perante sua população. O Espírito Santo, novamente aparece na média neste indicador, em relação aos outros estados.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar mapa de calor psicoatiovos/pop
 ```
 
@@ -131,7 +121,7 @@ O segundo mapa, traz ideia parecida, no entanto, utilizando outro indicador. Nes
 
 Através do gráfico de calor é possível ter uma ideia geral do número de mortes por psicoativos a cada 100 mil habitantes em todos os estados do Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe é o com maior número de ocorrência a cada 100 mil habitantes.
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # Colocar grafico de calor 
 ```
 
@@ -145,8 +135,8 @@ O primeiro indicador desenvolvido mostra quantas pessoas morreram por psicoativo
 I1=Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito SantoNº de Óbitos Totais no Espírito Santo⋅1000
 É possível observar que os números de mortes por uso de substâncias a cada 1000 mortes totais decresceu de 2013 a 2015 e de 2016 a 2019, porém, cresceu entre 2019 e 2021. Este gráfico se assemelha com o gráfico de mortes por psicoativos no Espírito Santo, visto anteriormente.
 
-```{r setup, include=FALSE}
-# Colocar grafico 
+```{r, include=FALSE}
+# Colocar grafico do indicador 1
 ```
 
 ### 5.2. Indicadores 2 e 3
@@ -162,8 +152,8 @@ I2=Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito SantoNº de Ób
 I3=Nº de Óbitos Totais no Espírito SantoNº de Óbitos Totais no Brasil⋅100
 
 
-```{r setup, include=FALSE}
-# Colocar grafico  
+```{r, include=FALSE}
+# Colocar grafico  do indicador 2
 ```
 
 ### 5.3. Indicadores 4 e 5
@@ -177,8 +167,8 @@ I4=Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito SantoPopulaçã
 I5=Nº de Óbitos Decorrentes do Uso de Psicoativos no BrasilPopulação Estimada do Brasil no ano correspondente⋅100000
 
 
-```{r setup, include=FALSE}
-# Colocar grafico 
+```{r, include=FALSE}
+# Colocar grafico do indicador 3
 ```
 
 ## 6. Outras Possíveis Análises
