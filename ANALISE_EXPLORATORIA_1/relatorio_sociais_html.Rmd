@@ -8,10 +8,13 @@ output: html_document
 
 ```{r, warning = FALSE, message=FALSE, echo=FALSE, include=FALSE}
 source("leitura_filtragem_02.R")
-source("CODIGOS/analise_carol.R")
+source("CODIGOS/genero_raca_escolaridade/escolaridade.R")
+source("CODIGOS/genero_raca_escolaridade/genero.R")
+source("CODIGOS/genero_raca_escolaridade/raca.R")
+source("CODIGOS/baixar_pop_13a21.R")
+source("CODIGOS/grafico_calor_iane.R")
 library(gridExtra)
 ```
-
 
 
 ## 1.Introdução
