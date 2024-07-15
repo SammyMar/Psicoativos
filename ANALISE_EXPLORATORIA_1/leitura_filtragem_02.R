@@ -12,6 +12,10 @@ library(reactable)
 library(stringr)
 library(sidrar)
 library(janitor)
+library(readxl)
+library(knitr)
+library(kableExtra)
+
 
 #LER E SALVAR DADOS TOTAIS BR
   
