@@ -1,10 +1,24 @@
- #LER E SALVAR DADOS TOTAIS BR
+
+library(readr)
+library(plotly)
+library(dplyr)
+library(data.table)
+library(lubridate)
+library(ggplot2)
+library(RColorBrewer)
+library(reactR)
+library(htmltools)
+library(reactable)
+library(stringr)
+library(sidrar)
+
+  #LER E SALVAR DADOS TOTAIS BR
   
   #### SETAR O SEU CAMINHO LOCAL ATÉ A PASTA /ANÁLISE EXPLORATÓRIA 1
   
+  setwd("Psicoativos/ANALISE_EXPLORATORIA_1")
   
- 
-  setwd("C:/Users/Alessandra/Documents/Carol/Psicoativos/Psicoativos/ANALISE_EXPLORATORIA_1")
+>>>>>>> 69d8e13 (relatório_sociais)
   
   
   dados_br_total <- c()
