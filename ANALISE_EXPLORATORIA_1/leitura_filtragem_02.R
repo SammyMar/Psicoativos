@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 library(readr)
 library(plotly)
@@ -12,6 +13,9 @@ library(reactable)
 library(stringr)
 library(sidrar)
 library(janitor)
+library(readxl)
+library(knitr)
+library(kableExtra)
 library(tidyverse)
 library(latex2exp)
 library(geobr)
@@ -80,4 +84,5 @@ dados_es_psic <- dados_es_total[grepl("F1", dados_es_total$CAUSABAS, ignore.case
   
 
   
+>>>>>>> dc392ac01eeeea39c9243b7874ab696c44e82591
   
