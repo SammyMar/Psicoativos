@@ -23,7 +23,7 @@ dados_br_total <- c()
   
 for (ano in 2013:2022) {
     
-  df <- readRDS(paste0("base_de_dados/dados_", ano,".rds"))
+  df <- readRDS(paste0("dados_", ano,".rds"))
   dados_br_total <- bind_rows(df,dados_br_total)
     
 }
