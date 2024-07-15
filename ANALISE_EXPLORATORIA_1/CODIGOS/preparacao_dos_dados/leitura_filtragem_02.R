@@ -1,9 +1,10 @@
-  
-  #LER E SALVAR DADOS TOTAIS BR
+ #LER E SALVAR DADOS TOTAIS BR
   
   #### SETAR O SEU CAMINHO LOCAL ATÉ A PASTA /ANÁLISE EXPLORATÓRIA 1
   
-  setwd("~/ALUNO/IC - psicoativos/eda1_git/ANALISE_EXPLORATORIA_1")
+  
+ 
+  setwd("C:/Users/Alessandra/Documents/Carol/Psicoativos/Psicoativos/ANALISE_EXPLORATORIA_1")
   
   
   dados_br_total <- c()

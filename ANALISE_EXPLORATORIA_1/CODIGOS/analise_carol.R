@@ -11,26 +11,29 @@ cores <-  brewer.pal(10, "Set1")
 cores2 <- c("#4357AD","#EFA9AE","#9A3D6A", "#6a3d9a", "#a6cee3", "#1d9a55", "#9A3DA7", "#Dab2d6", "#6A3DA7", "#EFA1AE")
 
 ### -------------------------TABELA DINÂMICA DE CIDS-- ------------###
-# reactable::reactable(CIDs, 
-#                      groupBy = c("CID", "subdivisao"),
-#                      filterable = TRUE,
-#                      showSortable = TRUE,
-#                      searchable = TRUE,
-#                      showPageSizeOptions = TRUE,
-#                      pageSizeOptions = c(10, 15, 27),
-#                      defaultPageSize = 27,
-#                      striped = TRUE,
-#                      highlight = TRUE,
-#                      theme = reactable::reactableTheme(
-#                        color = "#000000",
-#                        borderColor = "#dfe2e5",
-#                        stripedColor = "#f6f8fa",
-#                        highlightColor = "#f0f5f9",
-#                        cellPadding = "8px 12px",
-#                        style = list(fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif"),
-#                        searchInputStyle = list(width = "100%")
-#                      ))
-# 
+### PREPARAÇÃO ### 
+#Importar o DataSet CIDs na pasta bases_de_dados antes de rodar o codigo 
+# Tabela dinâmica
+ reactable::reactable(CIDs, 
+                      groupBy = c("CID", "subdivisao"),
+                      filterable = TRUE,
+                      showSortable = TRUE,
+                      searchable = TRUE,
+                      showPageSizeOptions = TRUE,
+                      pageSizeOptions = c(10, 15, 27),
+                      defaultPageSize = 27,
+                      striped = TRUE,
+                      highlight = TRUE,
+                      theme = reactable::reactableTheme(
+                        color = "#000000",
+                        borderColor = "#dfe2e5",
+                        stripedColor = "#f6f8fa",
+                        highlightColor = "#f0f5f9",
+                        cellPadding = "8px 12px",
+                        style = list(fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif"),
+                        searchInputStyle = list(width = "100%")
+                      ))
+
 
 ### ------------------ GRÁFICOS IDADE ----------------------###
 
