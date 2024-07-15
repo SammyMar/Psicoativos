@@ -8,16 +8,18 @@ output: html_document
 
 ```{r, warning = FALSE, message=FALSE, echo=FALSE, include=FALSE}
 source("leitura_filtragem_02.R")
+source("CODIGOS/baixar_pop_13a21.R")
 source("CODIGOS/genero_raca_escolaridade/escolaridade.R")
 source("CODIGOS/genero_raca_escolaridade/genero.R")
 source("CODIGOS/genero_raca_escolaridade/raca.R")
 source("CODIGOS/analise_carol.R")
-source("CODIGOS/analise_CIDs.R")
-source("CODIGOS/baixar_pop_13a21.R")
+#source("CODIGOS/analise_CIDs.R")
 source("CODIGOS/grafico_calor_iane.R")
+source("CODIGOS/series_indicadores.R")
+source("CODIGOS/mapas_indicadores_atualizado.R")
+
 library(gridExtra)
 ```
-
 
 
 ## 1.Introdução
@@ -26,30 +28,36 @@ Este relatório busca examinar as variáveis sociodemográficas presentes na bas
 
 Para obter os dados de morte por psicoativos foram usados os Códigos Diagnósticos (CID) de F10 até F19. No decorrer deste relatório serão abordadas mais detalhadamente informações sobre:
 
-**i.** CID’s;
-**ii.** Variáveis sociodemográficas como Idade, Gênero, Raça, Escolaridade e Estado Civil;
-**iii.** Número de Mortes, com foco no Brasil e no Espírito Santo;
-**iv.** Indicadores;
-**v.** Sugestões de possíveis análises que podem ser desenvolvidas.
+**i.** CID’s;  
+**ii.** Variáveis sociodemográficas como Idade, Gênero, Raça, Escolaridade e Estado Civil;  
+**iii.** Número de Mortes, com foco no Brasil e no Espírito Santo;  
+**iv.** Indicadores;  
+**v.** Sugestões de possíveis análises que podem ser desenvolvidas.  
 
 ## 2.Informações sobre as CID’s
 
 A Classificação Internacional de Doenças e Problemas Relacionados à Saúde (também conhecida como Classificação Internacional de Doenças – CID 10) é publicada pela Organização Mundial de Saúde (OMS) e visa padronizar a codificação de doenças e outros problemas relacionados à saúde. (https://www.medicinanet.com.br/cid10/f.htm)
 
-```{r, include=FALSE}
-# Colocar em formato de referência bibliográfica
+```{r}
+#adicionar referencia bibliografica
 ```
 
 Dentro dessa classificação da CID-10 é possível encontrar a CID F1, que é responsável pelos Transtornos Mentais e de Comportamento. A lista completa desse segmento da CID-10 pode ser vista a seguir:
 
-```{r, include=FALSE}
-# Colocar Tabela Carol
+```{r, echo=FALSE}
+tabela_cid <- read_excel("CIDs.xlsx")
+kable(tabela_cid) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
 Os gráficos a seguir mostram quais a CID’s com maior número de ocorrências tanto no Brasil quanto no Espírito Santo. Percebe-se que Transtornos por uso de álcool, fumo, outras substâncias psicoativas e cocaína foram os mais letais entre os anos estudados.
 
-```{r, include=FALSE}
-# Colocar Gráficosd a CID
+```{r fig.width=12, fig.height=6, echo=FALSE}
+#grid.arrange(hist.F10.es, hist.F10.br, ncol=2)
+```
+
+```{r fig.width=12, fig.height=6, echo=FALSE}
+#grid.arrange(hist.F17.es, hist.F17.br, ncol=2)
 ```
 
 ## 3. Análise Sociodemográfica
@@ -58,8 +66,10 @@ Os gráficos a seguir mostram quais a CID’s com maior número de ocorrências 
 
 A seguir é possível visualizar a discrepância entre o número de homens e de mulheres que morreram por mortes totais e por psicativos tanto no Brasil quando no Espírito Santo. Em ambas as localizações o número de óbitos de indivíduos do gênero masculino foi superior ao número de mortes em pessoas do gênero feminino. Ao observar a diferença entre as mortes totais e mortes por psicoativos, porém, tem-se que o número de homens que faleceram por uso de substância é consideravelmente superior ao número de mulheres. Ao mesmo tempo, enquanto o número de mortes em mulheres que morreram por uso de substãncia se mantêm bastante estável, os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
 
-```{r, include=FALSE}
-# Colocar Gráficos de gênero
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(series_genero_br_total, series_genero_es_total, ncol=2)
+grid.arrange(series_genero_br_psic, series_genero_es_psic, ncol=2)
+grid.arrange(proporcao_genero_br_psic, proporcao_genero_es_psic, ncol=2)
 ```
 
 ### 3.2. Raça
@@ -68,16 +78,20 @@ Os dados sobre as raças dos indivíduos falecidos no Brasil como um todo são b
 
 Para a pesquisa, pode ser importante discutir a forma de analisar esses dados e se é válido unir as categorias Parda e Preta.
 
-```{r, include=FALSE}
-# Colocar Gráficos de raça
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(series_raca_br_total, series_raca_es_total, ncol=2)
+grid.arrange(series_raca_br_psic, series_raca_es_psic, ncol=2)
+grid.arrange(proporcao_raca_br_psic, proporcao_raca_es_psic, ncol=2)
 ```
 
 ### 3.3. Escolaridade
 
 A variável escolaridade foi a que apresentou maior discrepância com o passar do tempo. Sobre esse aspecto, é importante destacar o número alto de informações Não Atribuídas (NA), o que pode ter causado interferência nos dados.Também é válido ressaltar que existem mais de uma variável que retrata a escolaridade dos indivíduos, entretanto, todas elas apresentam um alto índice de NA's.
 
-```{r, include=FALSE}
-# Colocar Gráficos de escolaridade
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(series_escolaridade_br_total, series_escolaridade_es_total, ncol=2)
+grid.arrange(series_escolaridade_br_psic, series_escolaridade_es_psic, ncol=2)
+grid.arrange(proporcao_escolaridade_br_psic, proporcao_escolaridade_es_psic, ncol=2)
 ```
 
 ### 3.4. Estado Civil
@@ -86,8 +100,11 @@ Ao analisar os dados de estado civil, percebe-se que, enquanto a maior parte dos
 
 É válido mencionar que por se tratar de uma informação que requer certa formalidade e inclusive documentação, os dados podem não ser eficientes em expressar se os falecidos tinham de fato um companheiro ou companheira com quem se relacionavam. 
 
-```{r, include=FALSE}
-# Colocar Gráficos de estado civil
+```{r fig.width=12, fig.height=6, echo=FALSE}
+grid.arrange(barplot_estciv_br, barplot_estciv_es, ncol=2)
+grid.arrange(barplot_estciv_br_psic, barplot_estciv_es_psic, ncol=2)
+grid.arrange(grafico_prop_estciv_br, grafico_prop_estciv_es, ncol=2)
+grid.arrange(grafico_prop_estciv_br_psic, grafico_prop_estciv_es_psic, ncol=2)
 ```
 
 ### 3.5. Idade
@@ -182,4 +199,19 @@ I5=Nº de Óbitos Decorrentes do Uso de Psicoativos no BrasilPopulação Estimad
 
 ## 6. Outras Possíveis Análises
 ### 6.1. Divisão do Espírito Santo por Regiões
+
+```{r, echo=FALSE}
+tabela_regioes_es <- read_excel("regioes_es.xlsx")
+kable(tabela_regioes_es) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
 ### 6.2. Informações sobre as possíveis variáveis
+
+```{r, echo=FALSE}
+tabela_variaveis_sim <- read_excel("variaveis_sim.xlsx")
+kable(tabela_variaveis_sim) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## 7. Referências Bibliográficas
