@@ -36,17 +36,13 @@ paleta_hist_ordinal <- function(n){
   return(paleta(n))
 }
 
-paleta_func(5)
-paleta(5)
-paleta_hist_ordinal(5)
 
 
+# PALETA GRADIENTE (CORES CONTÍNUAS) (EXEMPLO: HEATMAP)
 
 
-paleta_ordinal <- seq_gradient_pal(low = "#9AC7D9", "#010440", "Lab")
-                                   (seq(0,1, length.out=5))
+scale_fill_gradient(low = "lightblue", high = "#010440")
 
-paleta_ordinal(seq(0,1))
 
 # AZUIS QUE PODEM SER ÚTEIS PARA DETALHES
 

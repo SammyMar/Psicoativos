@@ -60,7 +60,7 @@ dados.count.CID <- full_join(
 
 g_count_CIDs <- dados.count.CID %>%  
   ggplot(aes(x = fct_reorder(CIDs, prop), y = prop)) +
-  geom_col(fill = "#105DEB") +
+  geom_col(fill = paleta_hist(1)) +
   facet_grid(rows = vars(Localidade))+
   labs(title = "Proporcao de Obitos de 2013 a 2022 no Brasil e no ES por cada CID relacionada a psicoativos", y="Quantidade", x="CIDs")+ 
   theme_classic() + coord_flip() + theme(title = element_text(size = 15),
@@ -87,12 +87,12 @@ dados_heatmap_CIDs <- dados_es_psic %>% select(CAUSABAS, ANOOBITO) %>%
 
 dados_heatmap_CIDs <- melt(dados_heatmap_CIDs)
 
-heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value)) +
+heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value*100)) +
   geom_tile() +
-  scale_fill_gradient(low = "lightblue", high = ("darkblue"))+
+  scale_fill_gradient(low = "lightblue", high = "#010440")+
   theme_minimal() +
-  labs(x = "Anos", y = "CIDs", fill = "Proporcao", 
-       title = "Proporção de óbitos por cada CID e cada ano no Espirito Santo") +
+  labs(x = "Anos", y = "CIDs", fill = "%", 
+       title = "Percentual de óbitos por cada CID e cada ano no Espírito Santo") +
   theme(axis.text.x = element_text(size = 13),
        axis.text.y = element_text(size = 15),
        title = element_text(size = 14))+

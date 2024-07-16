@@ -16,7 +16,11 @@ editor_options:
 
 ```{r, warning = FALSE, message=FALSE, echo=FALSE, include=FALSE}
 Sys.setlocale("LC_ALL", "en_US.UTF-8")
+library(gridExtra)
+library(plotly)
+library(scales)
 source("leitura_filtragem_02.R")
+source("CODIGOS/paletas_de_cores.R")
 source("read_pop13a21.R")
 source("CODIGOS/genero_raca_escolaridade/escolaridade.R")
 source("CODIGOS/genero_raca_escolaridade/genero.R")
@@ -28,9 +32,7 @@ source("CODIGOS/grafico_calor_iane.R")
 source("CODIGOS/series_indicadores.R")
 source("CODIGOS/mapas_indicadores_atualizado.R")
 source("CODIGOS/graficos_pelascids.R")
-library(gridExtra)
-library(plotly)
-library(scales)
+
 ```
 
 <br>

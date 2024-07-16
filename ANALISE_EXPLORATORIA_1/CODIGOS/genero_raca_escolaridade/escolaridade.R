@@ -37,6 +37,7 @@ freq_escolaridade_br_psic <- dados_br_psic %>%
 hist_escolaridade_br_psic <- ggplot(freq_escolaridade_br_psic, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme(plot.title = element_text(size = 20)) +
+  scale_fill_manual(values=paleta_hist_ordinal(5))+
   labs(title = "Quantidades de mortes por psicoativo no Brasil por Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
@@ -53,6 +54,7 @@ freq_escolaridade_es_total <- dados_es_total %>%
 hist_escolaridade_es_total <- ggplot(freq_escolaridade_es_total, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme(plot.title = element_text(size = 15)) +
+  scale_fill_manual(values=paleta_hist_ordinal(5))+
   labs(title = "Quantidades de mortes totais no Espirito Santo por Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
@@ -69,6 +71,7 @@ freq_escolaridade_es_psic <- dados_es_psic %>%
 hist_escolaridade_es_psic <- ggplot(freq_escolaridade_es_psic, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme(plot.title = element_text(size = 15)) +
+  scale_fill_manual(values=paleta_hist_ordinal(5))+
   labs(title = "Quantidades de mortes por psicoativo no ES por Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
