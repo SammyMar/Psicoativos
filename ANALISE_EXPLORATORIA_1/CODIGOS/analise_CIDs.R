@@ -92,10 +92,10 @@ heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value)) +
   scale_fill_gradient(low = "lightblue", high = ("darkblue"))+
   theme_minimal() +
   labs(x = "Anos", y = "CIDs", fill = "Proporcao", 
-       title = "Proporcao de Obitos por cada CID e cada ano no Espirito Santo") +
-  theme(axis.text.x = element_text(size = 15),
+       title = "Proporção de óbitos por cada CID e cada ano no Espirito Santo") +
+  theme(axis.text.x = element_text(size = 13),
        axis.text.y = element_text(size = 15),
-       title = element_text(size = 15))+
+       title = element_text(size = 14))+
   scale_x_discrete(limits = dados_heatmap_CIDs$ANOOBITO,position = "bottom")
   
 heatmap_CIDS

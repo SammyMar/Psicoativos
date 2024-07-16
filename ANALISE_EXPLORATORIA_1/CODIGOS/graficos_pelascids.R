@@ -1,10 +1,5 @@
 #------------- ORGANIZANDO A BASE DE DADOS DAS CIDS COM MAIS MORTES-------------------------------
 # gráfico dos tipos de mortes, usando causabas
-table(dados_es_psic$CAUSABAS)
-table(dados_br_psic$CAUSABAS)
-
-barplot(table(dados_es_psic$CAUSABAS), main = "mortes por cada categoria de CID 10", xlab = "Categoria CID 10",ylab = "Número de mortes")
-barplot(table(dados_br_psic$CAUSABAS), main = "mortes por cada categoria de CID 10 no br", xlab = "Categoria CID 10",ylab = "Número de mortes")
 
 #criando bases filtradas pelas cidis com maior número de mortos no es
 dados.F10.ES <- subset(dados_es_psic, grepl("^F10[0-9]$", CAUSABAS))
@@ -28,7 +23,7 @@ hist.F10.es <- ggplot(data = dados.F10.ES, aes(x = IDADE2)) +
   scale_x_continuous(breaks = seq(0, 100, by = 10))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 12),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -48,7 +43,7 @@ hist.F10.br <- ggplot(data = dados.F10.BR, aes(x = IDADE2)) +
   scale_x_continuous(breaks = seq(0, 100, by = 10))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -70,7 +65,7 @@ hist.F17.es <- ggplot(data = dados.F17.ES, aes(x = IDADE2)) +
   scale_x_continuous(breaks = seq(0, 100, by = 10))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -90,7 +85,7 @@ hist.F17.br <- ggplot(data = dados.F17.BR, aes(x = IDADE2)) +
   scale_x_continuous(breaks = seq(0, 100, by = 10))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -116,12 +111,19 @@ series_genero_br_f10 <- ggplot(data = dados.genero.br.F10, aes(x = ANOOBITO, y =
                                                                     colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Número de Óbitos causados pelo uso de álcool no Brasil de 2013 a 2022 por Gênero", 
+  labs(title = "Óbitos causados pelo uso de álcool no Brasil por Gênero", 
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
     breaks = dados.genero.br.F10$ANOOBITO,  
     labels = dados.genero.br.F10$ANOOBITO)+ 
-  theme_classic()
+  theme_classic()+
+  theme(
+    plot.title = element_text(size = 12),       # Tamanho e estilo do título do gráfico
+    axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
+    axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
+    legend.title = element_text(size = 13),     # Tamanho do título da legenda
+    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
+  )
 
 print (series_genero_br_f10)
 
@@ -137,14 +139,22 @@ series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y =
                                                                colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Número de Óbitos causados pelo uso de álcool no Espírito Santo de 2013 a 2022 por Gênero", 
+  labs(title = "Óbitos causados pelo uso de álcool no Espírito Santo por Gênero", 
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
     breaks = dados.genero.es.F10$ANOOBITO,  
     labels = dados.genero.es.F10$ANOOBITO)+ 
-  theme_classic()
+  theme_classic()+
+  theme(
+    plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
+    axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
+    axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
+    legend.title = element_text(size = 13),     # Tamanho do título da legenda
+    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
+  )
 
 print (series_genero_es_f10)
+
 
 # 4. quantidade de mortes por genero - PELO FUMO (F17)
 #4.1 BR
@@ -159,12 +169,19 @@ series_genero_br_f17 <- ggplot(data = dados.genero.br.F17, aes(x = ANOOBITO, y =
                                                                colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Número de Óbitos causados pelo fumo no Brasil de 2013 a 2022 por Gênero", 
+  labs(title = "Número de Óbitos causados pelo fumo no Brasil por Gênero", 
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
     breaks = dados.genero.br.F17$ANOOBITO,  
     labels = dados.genero.br.F17$ANOOBITO)+ 
-  theme_classic()
+  theme_classic()+
+  theme(
+    plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
+    axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
+    axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
+    legend.title = element_text(size = 13),     # Tamanho do título da legenda
+    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
+  )
 
 print (series_genero_br_f17)
 
@@ -180,12 +197,19 @@ series_genero_es_f17 <- ggplot(data = dados.genero.es.F17, aes(x = ANOOBITO, y =
                                                                colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Número de Óbitos causados pelo fumo no Espírito Santo de 2013 a 2022 por Gênero", 
+  labs(title = "Óbitos causados pelo fumo no Espírito Santo por Gênero", 
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
     breaks = dados.genero.es.F17$ANOOBITO,  
     labels = dados.genero.es.F17$ANOOBITO)+ 
-  theme_classic()
+  theme_classic()+
+  theme(
+    plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
+    axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
+    axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
+    legend.title = element_text(size = 13),     # Tamanho do título da legenda
+    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
+  )
 
 print (series_genero_es_f17)
 
@@ -202,14 +226,14 @@ hist_escolaridade_br_f10 <- ggplot(freq_escolaridade_br_f10, aes(x = ESC, y = Qu
   geom_bar(stat = "identity") +
   theme_minimal() +
   labs(
-    title = "Quantidade de mortes pelo consumo de álcool no BR entre o período de 2013 a 2022 de acordo com a Escolaridade",
+    title = "Óbitos pelo consumo de álcool no Brasil por Escolaridade",
     x = "Escolaridade",
     y = "Número de Pessoas"
   ) +
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text.y = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
     legend.title = element_text(size = 13),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
@@ -227,13 +251,13 @@ freq_escolaridade_es_f10 <- dados.F10.ES %>%
 hist_escolaridade_es_f10 <- ggplot(freq_escolaridade_es_f10, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme_minimal() +
-  labs(title = "Quantidade de mortes pelo consumo de álcool no ES entre o período de 2013 a 2022 de acordo com a Escolaridade",
+  labs(title = "Óbitos pelo consumo de álcool no ES por Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")+
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text.y = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
     legend.title = element_text(size = 13),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
@@ -253,14 +277,14 @@ hist_escolaridade_br_f17 <- ggplot(freq_escolaridade_br_f17, aes(x = ESC, y = Qu
   geom_bar(stat = "identity") +
   theme_minimal() +
   labs(
-    title = "Quantidade de mortes pelo fumo no BR entre o período de 2013 a 2022 de acordo com a Escolaridade",
+    title = "Óbitos pelo fumo no Brasil por Escolaridade",
     x = "Escolaridade",
     y = "Número de Pessoas"
   ) +
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text.y = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
     legend.title = element_text(size = 13),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
@@ -278,13 +302,13 @@ freq_escolaridade_es_f17 <- dados.F17.ES %>%
 hist_escolaridade_es_f17 <- ggplot(freq_escolaridade_es_f17, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme_minimal() +
-  labs(title = "Quantidade de mortes pelo fumo no ES entre o período de 2013 a 2022 de acordo com a Escolaridade",
+  labs(title = "Óbitos pelo fumo no ES por Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")+
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text.y = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
     legend.title = element_text(size = 13),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
@@ -309,16 +333,16 @@ series_raca_br_F10 <- ggplot(data = dados.raca.br.f10, aes(x = ANOOBITO, y = N.o
                                                                 colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "Número de Óbitos pelo consumo de álcool no Brasil de 2013 a 2022 por Raça", 
+  labs(title ="Óbitos pelo consumo de álcool no Brasil por Raça", 
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
     breaks = dados.raca.br.f10$ANOOBITO,  
     labels = dados.raca.br.f10$ANOOBITO)+ 
   theme_classic()+
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
     legend.title = element_text(size = 14),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
   )
@@ -338,16 +362,16 @@ series_raca_es_F10 <- ggplot(data = dados.raca.es.f10, aes(x = ANOOBITO, y = N.o
                                                            colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "Número de Óbitos pelo consumo de álcool no Espírito Santo de 2013 a 2022 por Raça", 
+  labs(title = "Óbitos pelo consumo de álcool no Espírito Santo por Raça", 
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
     breaks = dados.raca.es.f10$ANOOBITO,  
     labels = dados.raca.es.f10$ANOOBITO)+ 
   theme_classic()+
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
     legend.title = element_text(size = 14),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
   )
@@ -368,16 +392,16 @@ series_raca_br_F17 <- ggplot(data = dados.raca.br.f17, aes(x = ANOOBITO, y = N.o
                                                            colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "Número de Óbitos pelo fumo no Brasil de 2013 a 2022 por Raça", 
+  labs(title = "Óbitos pelo fumo no Brasil por Raça", 
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
     breaks = dados.raca.br.f17$ANOOBITO,  
     labels = dados.raca.br.f17$ANOOBITO)+ 
   theme_classic()+
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
     legend.title = element_text(size = 14),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
   )
@@ -397,16 +421,16 @@ series_raca_es_F17 <- ggplot(data = dados.raca.es.f17, aes(x = ANOOBITO, y = N.o
                                                            colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "Número de Óbitos pelo fumo no Espírito Santo de 2013 a 2022 por Raça", 
+  labs(title = "Óbitos pelo fumo no Espírito Santo por Raça", 
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
     breaks = dados.raca.es.f17$ANOOBITO,  
     labels = dados.raca.es.f17$ANOOBITO)+ 
   theme_classic()+
   theme(
-    plot.title = element_text(size = 15),       # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 14),      # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
     legend.title = element_text(size = 14),     # Tamanho do título da legenda
     legend.text = element_text(size = 12)       # Tamanho do texto da legenda
   )

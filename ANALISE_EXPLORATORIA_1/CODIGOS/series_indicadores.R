@@ -31,14 +31,17 @@ serie_indic1 <- ggplot(data = dados_indic1, aes(x = ANOOBITO, y = indic1)) +
   geom_line(linetype = "solid" ,color = "black",
             linewidth = 0.5) +
   geom_point(shape = 15, color = "black") +
-  labs(title = "Numero de Obitos por Psicoativos no ES/Numero de Obitos Totais (>17 anos) no ES de 2013 a 2022", 
+  labs(title = "Número de óbitos por Psicoativos no ES/Numero de Obitos Totais (>17 anos) no ES de 2013 a 2022", 
        x="Anos", y="Obitos/1000") +
   scale_x_continuous(
     breaks = dados_indic1$ANOOBITO,  
     labels = dados_indic1$ANOOBITO)+ 
   scale_y_continuous(limits = c(0,15),
       breaks = seq(0,15, by=2))+
-  theme_classic()
+  theme_classic()+
+  theme(
+    plot.title = element_text(size = 13))
+
 serie_indic1
 
 
@@ -240,15 +243,15 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
   theme_classic()
 
 
-pacman::p_load("gridExtra")
-
-ggplotly(serie_indic4_5, tooltip = c("x","colour"))
-
-
-grid.arrange(ggplotly(serie_indic4_5, tooltip = c("y")), ggplotly(serie_indic2_3), ncol=2)
-            
-subplot(ggplotly(serie_indic4_5), ggplotly(serie_indic2_3))            
-
-
-serie_indic2_3+serie_indic4_5
-
+#pacman::p_load("gridExtra")
+# 
+# ggplotly(serie_indic4_5, tooltip = c("x","colour"))
+# 
+# 
+# grid.arrange(ggplotly(serie_indic4_5, tooltip = c("y")), ggplotly(serie_indic2_3), ncol=2)
+#             
+# subplot(ggplotly(serie_indic4_5), ggplotly(serie_indic2_3))            
+# 
+# 
+# serie_indic2_3+serie_indic4_5
+# 

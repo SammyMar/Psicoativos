@@ -18,7 +18,7 @@ cores2 <- c("#4357AD","#EFA9AE","#9A3D6A", "#6a3d9a", "#a6cee3", "#1d9a55", "#9A
 CIDs <- read_excel('CIDs.xlsx')
 
 # Tabela dinâmica
- reactable::reactable(CIDs, 
+ tabela_redutiva <- reactable::reactable(CIDs, 
                       groupBy = c("CID", "subdivisao"),
                       filterable = TRUE,
                       showSortable = TRUE,
@@ -141,7 +141,7 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos Totais no Espírito Santo de 2013-2022 por Faixa etária",
+  labs(title = "Óbitos Totais no Espírito Santo por Faixa etária",
        x="Anos", y="Óbitos Totais", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.esto$ANOOBITO,
@@ -150,7 +150,7 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
                       labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -176,7 +176,7 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos pelo uso de psicoativos no Espírito Santo de 2013-2022 por Faixa etária",
+  labs(title = "Óbitos pelo uso de psicoativos no Espírito Santo por Faixa etária",
        x="Anos", y="Número de óbitos", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.esps$ANOOBITO,
@@ -185,7 +185,7 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
                       labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -209,7 +209,7 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos Totais no Brasil de 2013-2022 por Faixa etária",
+  labs(title = " Óbitos Totais no Brasil por Faixa etária",
        x="Anos", y="Óbitos Totais x 1000", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.brto$ANOOBITO,
@@ -218,7 +218,7 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
                       labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -242,7 +242,7 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade)) +
-  labs(title = "Número de Óbitos pelo uso de psicoativos no Brasil de 2013-2022 por Faixa etária",
+  labs(title = " Óbitos pelo uso de psicoativos no Brasil por Faixa etária",
        x="Anos", y="Número de óbitos", colour = "Faixa etária") +
   scale_x_continuous(
     breaks = dados.grafico.series.brps$ANOOBITO,
@@ -251,7 +251,7 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
                       labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -268,12 +268,19 @@ boxplot.anoidad.es <- dados_es_total %>%
   geom_errorbar(stat = "boxplot", width = 0.2)+
   geom_boxplot( fill = "#a6cee3" )+
   labs(
-    title = "Óbitos de Idade por ano no Espírito Santo",
+    title = "Óbitos de Idade x ano no Espírito Santo",
     x = "Ano",
     y = "Idade"
   ) +
   theme_minimal()+
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))
+  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
+    axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
+    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
+    legend.title = element_text(size = 15),               # Tamanho do título da legenda
+    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
+  )
 boxplot.anoidad.es
 
 #BOXPLOT IDADE POR ANO NO ESPÍRITO SANTO, PSICOATIVO
@@ -282,14 +289,14 @@ boxplot.anoidad.es.psic <- dados_es_psic %>%
   geom_errorbar(stat = "boxplot", width = 0.2)+
   geom_boxplot( fill = "#EFA1AE" )+
   labs(
-    title = "Óbitos de Idade por ano no Espírito Santo, causados por psicoativos",
+    title = "Óbitos de Idade x ano no Espírito Santo, por psicoativos",
     x = "Ano",
     y = "Idade"
   ) +
   theme_minimal()+
   scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -303,14 +310,14 @@ boxplot.anoidad.br <- dados_br_total %>%
   geom_errorbar(stat = "boxplot", width = 0.2)+
   geom_boxplot( fill = "#a6cee3" )+
   labs(
-    title = "Óbitos de Idade por ano no Brasil",
+    title = "Óbitos de Idade x ano no Brasil",
     x = "Ano",
     y = "Idade"
   ) +
   theme_minimal()+
   scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -324,14 +331,14 @@ boxplot.anoidad.br.psic <- dados_br_psic %>%
   geom_errorbar(stat = "boxplot", width = 0.2)+
   geom_boxplot( fill = "#EFA1AE" )+
   labs(
-    title = "Óbitos de Idade por ano no Brasil, causados por psicoativos",
+    title = "Óbitos de Idade x ano no Brasil, por psicoativos",
     x = "Ano",
     y = "Idade"
   ) +
   theme_minimal()+
   scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -373,13 +380,14 @@ barplot_estciv_br <-  ggplot(dados_prop_estciv_br, aes(x = ESTCIV, y = p, fill =
      size = 4,)+
   theme_minimal() +
   labs(title = "Óbitos por estado civil no Brasil",
-       x = " ",
-       y = "Proporção (%) ")+
-   theme(legend.position = "none")+
+       x = " Estado Civil",
+       y = "Proporção (%) ",
+       fill = "Estado civil")+
   theme(
     plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
+    axis.text.x = element_blank(),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
     legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
   )
@@ -402,13 +410,14 @@ barplot_estciv_br_psic <- ggplot(dados_prop_estciv_br.psic, aes(x = ESTCIV, y = 
   )+
   theme_minimal() +
   labs(title = "Óbitos por psicoativos a partir do estado civil no Brasil",
-       x = " ",
-       y = "Proporção (%) ")+
-  theme(legend.position = "none")+
+       x = "Estado Civil ",
+       y = "Proporção (%) ",
+       fill= 'Estado civil')+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),
+    axis.text.x = element_blank(),# Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
     legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
   )
@@ -432,14 +441,15 @@ barplot_estciv_es_psic <- ggplot(dados_prop_estciv_es.psic, aes(x = ESTCIV, y = 
 
   )+
   theme_minimal() +
-  labs(title = "Óbitos por psicoativos a partir do estado civil no Espírito Santo",
-       x = " ",
-       y = "Proporção (%) ")+
-  theme(legend.position = "none")+
+  labs(title = "Óbitos por psicoativos a partir do estado civil no ES",
+       x = "Estado Civil ",
+       y = "Proporção (%) ",
+       fill= 'Estado civil')+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),
+    axis.text.x = element_blank(),# Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
     legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
   )
@@ -460,14 +470,15 @@ barplot_estciv_es <- ggplot(dados_prop_estciv_es, aes(x = ESTCIV, y = p, fill = 
     vjust = -0.4,
     size = 4)+
   theme_minimal() +
-  labs(title = "Óbitos por  estado civil no Espírito Santo",
-       x = " ",
-       y = "Proporção (%) ")+
-  theme(legend.position = "none")+
+  labs(title = "Óbitos no Espírito Santo por estado civil",
+       x = "Estado Civil ",
+       y = "Proporção (%) ",
+       fill= 'Estado civil')+
   theme(
     plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 11),                  # Tamanho dos textos dos eixos
+    axis.text = element_text(size = 12),
+    axis.text.x = element_blank(),# Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
     legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
   )
@@ -499,7 +510,7 @@ serie_obt_psic_br <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
     labels = dados.grafico.series$ANOOBITO)+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -531,7 +542,7 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
     labels = dados.grafico.series$ANOOBITO)+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -575,7 +586,7 @@ grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -617,7 +628,7 @@ grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -653,14 +664,14 @@ grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = facto
     "NA" = "#D3D3D3"
   )) +
   labs(
-    title = "Proporção de Mortes por Psicoativos no Espírito Santo por Estado civil e Ano",
+    title = "Proporção de Mortes por Psicoativos no ES por Estado civil e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Estado Civil"
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -702,7 +713,7 @@ grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = facto
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -737,14 +748,14 @@ grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(
     "NA" = "#D3D3D3"
   )) +
   labs(
-    title = "Proporção de Mortes por psicoativo no Espírito Santo por Idade e Ano",
+    title = "Proporção de Mortes por psicoativo no ES por Idade e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Idade"
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -786,7 +797,7 @@ grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -828,7 +839,7 @@ grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO),
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
@@ -870,7 +881,7 @@ grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO),
   )+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),   # Tamanho e estilo do título do gráfico
+    plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
     legend.title = element_text(size = 15),               # Tamanho do título da legenda
