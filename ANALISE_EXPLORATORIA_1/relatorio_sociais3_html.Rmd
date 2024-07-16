@@ -116,12 +116,21 @@ os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
 <br>
 
 ```{r fig.width=12, fig.height=6, echo=FALSE}
-subplot(ggplotly(series_genero_br_total),
-        style(ggplotly(series_genero_es_total), showlegend = FALSE),
-        style( ggplotly(series_genero_br_psic), showlegend = FALSE),
-       style(ggplotly(series_genero_es_psic), showlegend = FALSE),
+subplot(ggplotly(series_genero_br_total)  |> 
+          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes totais BR", showarrow = F, 
+xref='paper', yref='paper')),
+        style(ggplotly(series_genero_es_total), showlegend = FALSE)  |> 
+          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes totais ES", showarrow = F, 
+xref='paper', yref='paper')),
+        style( ggplotly(series_genero_br_psic), showlegend = FALSE)  |> 
+          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes Psicoativos BR", showarrow = F, 
+xref='paper', yref='paper')),
+       style(ggplotly(series_genero_es_psic), showlegend = FALSE)  |> 
+          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes Psicoativos ES", showarrow = F, 
+xref='paper', yref='paper')),
         shareX = T, titleX = T, titleY = T,
-        nrows = 2)
+        nrows = 2)  |> layout(title = 'Mortes relacionadas por gênero')
+ 
 ```
 
 <br>
