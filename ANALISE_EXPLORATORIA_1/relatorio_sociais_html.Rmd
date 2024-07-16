@@ -272,15 +272,13 @@ print(grafico_proporcao)
 
 ### 5.1. Mapas
 
-O primeiro mapa apresenta, o cenário nacional, por estado, do número de óbitos por psicoativos sobre 100000 habitantes no ano de 2013. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções.
+Os dois mapas abaixo apresentam o cenário nacional, por estado, do número de óbitos por psicoativos sobre 100000 habitantes no ano de 2013 e 2022, respectivamente. Representa, portanto duas fotografias deste indicador, uma em 2013 e a outra 9 anos depois. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções em 2013 e em 2022 ocorre um leve aumento nesta razão, junto com outros estados que também apresentam este aumento.
 
 ```{r, echo=FALSE}
 print(mapa_psic_pop13)
 ```
 
 <br>
-
-O segundo mapa, traz ideia parecida, no entanto, utilizando outro indicador. Neste caso, o denominador é a população mediana de 2013 a 2022 para cada estado, já que a variação entre os anos não foi considerada. Desta forma, cada estado possui uma proporção de óbitos perante sua população. O Espírito Santo, novamente aparece na média neste indicador, em relação aos outros estados.
 
 ```{r, echo=FALSE}
 print(mapa_psic_pop22)
