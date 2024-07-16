@@ -30,6 +30,7 @@ source("CODIGOS/mapas_indicadores_atualizado.R")
 source("CODIGOS/graficos_pelascids.R")
 library(gridExtra)
 library(plotly)
+library(scales)
 ```
 
 <br>

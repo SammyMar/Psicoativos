@@ -18,7 +18,8 @@ freq_escolaridade_br_total <- dados_br_total %>%
   mutate(Porcentagem = Quantidade / sum(Quantidade) * 100)
 
 hist_escolaridade_br_total <- ggplot(freq_escolaridade_br_total, aes(x = ESC, y = Quantidade, fill = ESC)) +
-  geom_bar(stat = "identity") +
+  geom_bar(stat = "identity") + 
+  scale_fill_manual(values=paleta_hist_ordinal(5))+
   theme(plot.title = element_text(size = 15)) +
   labs(title = "Quantidades de mortes totais no Brasil por Escolaridade",
        x = "Escolaridade",
