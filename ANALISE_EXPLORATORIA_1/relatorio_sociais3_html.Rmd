@@ -36,16 +36,10 @@ library(plotly)
 
 # Introdução
 
-Este relatório busca examinar as variáveis sociodemográficas presentes
-na base de dados do Sistema de Informação sobre Mortalidade (SIM) em
-relação às mortes por psicoativos ocorridas no Brasil e no estado do
-Espírito Santo entre os anos de 2013 e 2022. Além disso, também tem como
-objetivo mostrar alguns indicadores que possam ajudar no entendimento da
-situação de mortes por psicoativos no Brasil e no Espírito Santo.
+Este relatório busca examinar as variáveis sociodemográficas presentes na base de dados do Sistema de Informação sobre Mortalidade (SIM) em relação às mortes por psicoativos ocorridas no Brasil e no estado do Espírito Santo entre os anos de 2013 e 2022. Além disso, também tem como
+objetivo mostrar alguns indicadores que possam ajudar no entendimento da situação de mortes por psicoativos no Brasil e no Espírito Santo.
 
-Para obter os dados de morte por psicoativos foram usados os Códigos
-Diagnósticos (CID) de F10 até F19. No decorrer deste relatório serão
-abordadas mais detalhadamente informações sobre:
+Para obter os dados de morte por psicoativos foram usados os Códigos Diagnósticos (CID) de F10 até F19. No decorrer deste relatório serão abordadas mais detalhadamente informações sobre:
 
 - **i.** CID's;\
 - **ii.** Variáveis sociodemográficas como Idade, Gênero, Raça,
@@ -56,15 +50,9 @@ abordadas mais detalhadamente informações sobre:
 
 # Informações sobre as CID's
 
-A Classificação Internacional de Doenças e Problemas Relacionados à
-Saúde (também conhecida como Classificação Internacional de Doenças --
-CID 10) é publicada pela Organização Mundial de Saúde (OMS) e visa
-padronizar a codificação de doenças e outros problemas relacionados à
-saúde. (<https://www.medicinanet.com.br/cid10/f.htm>)
+A Classificação Internacional de Doenças e Problemas Relacionados à Saúde (também conhecida como Classificação Internacional de Doenças -- CID 10) é publicada pela Organização Mundial de Saúde (OMS) e visa padronizar a codificação de doenças e outros problemas relacionados à saúde. (<https://www.medicinanet.com.br/cid10/f.htm>)
 
-Dentro dessa classificação da CID-10 é possível encontrar a CID F1, que
-é responsável pelos Transtornos Mentais e de Comportamento. A lista
-completa desse segmento da CID-10 pode ser vista a seguir:
+Dentro dessa classificação da CID-10 é possível encontrar a CID F1, que é responsável pelos Transtornos Mentais e de Comportamento. A lista completa desse segmento da CID-10 pode ser vista a seguir:
 
 ```{r, echo=FALSE}
 tabela_cid <- read_excel("CIDs.xlsx")
@@ -75,10 +63,7 @@ tabela_redutiva
 
 <br>
 
-Os gráficos abaixo mostram quais a CID's com maior número de ocorrências
-tanto no Brasil quanto no Espírito Santo. Percebe-se que Transtornos por
-uso de álcool, fumo, outras substâncias psicoativas e cocaína foram os
-mais letais.
+Os gráficos abaixo mostram quais a CID's com maior número de ocorrências tanto no Brasil quanto no Espírito Santo. Percebe-se que Transtornos por uso de álcool, fumo, outras substâncias psicoativas e cocaína foram os mais letais.
 
 <br>
 
@@ -98,37 +83,31 @@ ggplotly(heatmap_CIDS)
 
 <br>
 
-# 3. Análise Sociodemográfica
+# Análise Sociodemográfica
 
-## 3.1. Gênero
+## Gênero
 
-A seguir é possível visualizar a discrepância entre o número de homens e
-de mulheres que morreram por mortes totais e por psicoativos tanto no
-Brasil quando no Espírito Santo. Em ambas as localizações o número de
-óbitos de indivíduos do gênero masculino foi superior ao número de
-mortes em pessoas do gênero feminino. Ao observar a diferença entre as
-mortes totais e mortes por psicoativos, porém, tem-se que o número de
-homens que faleceram por uso de substância é consideravelmente superior
-ao número de mulheres. Ao mesmo tempo, enquanto o número de mortes em
-mulheres que morreram por uso de substãncia se mantêm bastante estável,
-os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
+A seguir é possível visualizar a discrepância entre o número de homens e de mulheres que morreram por mortes totais e por psicoativos tanto no Brasil quando no Espírito Santo. Em ambas as localizações o número de óbitos de indivíduos do gênero masculino foi superior ao número de mortes em pessoas do gênero feminino. Ao observar a diferença entre as mortes totais e mortes por psicoativos, porém, tem-se que o número de homens que faleceram por uso de substância é consideravelmente superior ao número de mulheres. Ao mesmo tempo, enquanto o número de mortes em mulheres que morreram por uso de substãncia se mantêm bastante estável, os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
 
 <br>
 
-```{r fig.width=12, fig.height=6, echo=FALSE}
-subplot(ggplotly(series_genero_br_total)  |> 
-          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes totais BR", showarrow = F, 
+```{r echo=FALSE, out.width = "100%"}
+subplot(style(ggplotly(series_genero_br_total), showlegend = F)  |> 
+          layout(annotations = list(x = 0.2 , y = 1.11, text = "Mortes totais BR", showarrow = F, 
 xref='paper', yref='paper')),
         style(ggplotly(series_genero_es_total), showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes totais ES", showarrow = F, 
+          layout(annotations = list(x = 0.5 , y = 1.11, text = "Mortes totais ES", showarrow = F, 
 xref='paper', yref='paper')),
-        style( ggplotly(series_genero_br_psic), showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes Psicoativos BR", showarrow = F, 
+        style( ggplotly(series_genero_br_psic), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",   # show entries horizontally
+                     xanchor = "center",  # use center of legend as anchor
+                     x = 0.5),annotations = list(x = 0.2 , y = 1.05, text = "Mortes Psicoativos BR", showarrow = F, 
 xref='paper', yref='paper')),
-       style(ggplotly(series_genero_es_psic), showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.2 , y = 1.05, text = "Mortes Psicoativos ES", showarrow = F, 
-xref='paper', yref='paper')),
-        shareX = T, titleX = T, titleY = T,
+       style(ggplotly(series_genero_es_psic), showlegend = F)  |> 
+  layout(
+         annotations = list(x = 0.6 , y = 1.05, text = "Mortes Psicoativos ES", showarrow = F,
+xref='paper', yref='paper'))  ,          # put legend in center of x-axis ,
+        shareX = T, titleX = T, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
         nrows = 2)  |> layout(title = 'Mortes relacionadas por gênero')
  
 ```
@@ -159,7 +138,7 @@ ggpubr::ggarrange(proporcao_genero_br_psic, proporcao_genero_es_psic, ncol=2, co
 
 <br>
 
-### 3.2. Raça
+## Raça
 
 Os dados sobre as raças dos indivíduos falecidos no Brasil como um todo
 são bem parecidos com os dados do Espírito Santo. Em ambos os casos o
@@ -201,7 +180,7 @@ ggpubr::ggarrange(proporcao_raca_br_psic, proporcao_raca_es_psic, ncol=2, common
 
 <br>
 
-### 3.3. Escolaridade
+## Escolaridade
 
 A variável escolaridade foi a que apresentou maior discrepância com o
 passar do tempo. Sobre esse aspecto, é importante destacar o número alto
@@ -240,7 +219,7 @@ ggpubr::ggarrange(proporcao_escolaridade_br_psic, proporcao_escolaridade_es_psic
 
 <br>
 
-### 3.4. Estado Civil
+## Estado Civil
 
 Ao analisar os dados de estado civil, percebe-se que, enquanto a maior
 parte dos falecidos totais (tanto do Brasil quanto do Espírito Santo) é
@@ -300,7 +279,7 @@ ggpubr::ggarrange(grafico_prop_estciv_br_psic, grafico_prop_estciv_es_psic, ncol
 
 <br>
 
-### 3.5. Idade
+## Idade
 
 Quando analisamos a idade , temos duas abordagens a serem seguidas, por
 cada idade e por faixa etária, vamos primeiro analisar por idade:
@@ -328,7 +307,7 @@ ggpubr::ggarrange(boxplot.anoidad.es, boxplot.anoidad.es.psic, ncol=2,  common.l
           heights = c(1, 1))
 ```
 
-### 3.6. Faixa Etária
+## Faixa Etária
 
 Menor de idade - entre 0 e 17 anos \\ Jovem-Adulto - entre 18 e 30 anos
 \\ Adulto - entre 31 e 55 anos \\ Idoso - acima de 55 anos \\
@@ -382,9 +361,9 @@ ggpubr::ggarrange(grafico_prop_idade_es, grafico_prop_idade_es_psic , ncol=2,  c
 
 <br>
 
-## 4. Análise demográfica com ênfase nas CIDs mais comuns
+# Análise demográfica com ênfase nas CIDs mais comuns
 
-### 4.1 ÓBITOS X IDADE
+## ÓBITOS X IDADE
 
 Ao analisar a quantidade de óbitos pelas dois maiores psicoativos,
 percebemos que maior parte das pessoas que morreram pelo uso de álcool
@@ -394,19 +373,19 @@ como os outros, já no Brasil, a distribuição se parece mais, porém
 deslocada para a direita, o que mostra que as pessoas que morrem por
 fumo são mais velhas que as que morrem por álcool.
 
-#### óbtos x idade - por consumo de Álcool (F10)
+### óbtos x idade - por consumo de Álcool (F10)
 
 ```{r echo=FALSE, fig.height=6, fig.width=12, warning=FALSE}
 grid.arrange(hist.F10.es, hist.F10.br, ncol=2)
 ```
 
-#### óbtos x idade por Fumo (F17)
+### óbtos x idade por Fumo (F17)
 
 ```{r echo=FALSE, fig.height=6, fig.width=12, warning=FALSE}
 grid.arrange(hist.F17.es, hist.F17.br, ncol=2)
 ```
 
-### 4.2 ÓBITOS X GÊNERO
+## ÓBITOS X GÊNERO
 
 Com relação ao gênero, é perceptível que no Brasil e no Espírito Sando o
 comportamento é o mesmo, homens morrem mais que mulheres tanto pelo
@@ -414,7 +393,7 @@ consumo de álcool quanto de fumo. É uma informação interessante o
 aumento de todos os casos no período de 2020 até 2022, que foram os anos
 da pandemia.
 
-#### Mortes x gênero - por consumo de Álcool (F10)
+### Mortes x gênero - por consumo de Álcool (F10)
 
 ```{r fig.width=12, fig.height=7, echo=FALSE}
 ggpubr::ggarrange(series_genero_es_f10, series_genero_br_f10, ncol=2, common.legend = T,
@@ -423,7 +402,7 @@ ggpubr::ggarrange(series_genero_es_f10, series_genero_br_f10, ncol=2, common.leg
 
 ```
 
-#### Mortes x gênero - por Fumo (F17)
+### Mortes x gênero - por Fumo (F17)
 
 ```{r fig.width=13, fig.height=6, echo=FALSE}
 ggpubr::ggarrange(series_genero_es_f17, series_genero_br_f17, ncol=2, common.legend = T,
@@ -431,14 +410,14 @@ ggpubr::ggarrange(series_genero_es_f17, series_genero_br_f17, ncol=2, common.leg
           heights = c(1, 1))
 ```
 
-### 4.3 ÓBITOS X ESCOLARIDADE
+## ÓBITOS X ESCOLARIDADE
 
 A variável escolaridade, como dito antes, possui muitas observações
 faltando (NAs), portanto fica complicado chegar a concluções corretas,
 porém, notamos que independente do psicoativo, pessoas que passaram
 menos tempo na escola morrem mais.
 
-#### Mortes x escolaridade - por consumo de Álcool (F10)
+### Mortes x escolaridade - por consumo de Álcool (F10)
 
 ```{r fig.width=12, fig.height=6, echo=FALSE}
 ggpubr::ggarrange(hist_escolaridade_es_f10, hist_escolaridade_br_f10, ncol=2, common.legend = T,
@@ -446,7 +425,7 @@ ggpubr::ggarrange(hist_escolaridade_es_f10, hist_escolaridade_br_f10, ncol=2, co
           heights = c(1, 1))
 ```
 
-#### Mortes x escolaridade - por Fumo (F17)
+### Mortes x escolaridade - por Fumo (F17)
 
 ```{r fig.width=12, fig.height=6, echo=FALSE}
 ggpubr::ggarrange(hist_escolaridade_es_f17, hist_escolaridade_br_f17, ncol=2, common.legend = T,
@@ -454,7 +433,7 @@ ggpubr::ggarrange(hist_escolaridade_es_f17, hist_escolaridade_br_f17, ncol=2, co
           heights = c(1, 1))
 ```
 
-### 4.4 ÓBTOS X RAÇA
+## ÓBTOS X RAÇA
 
 Independente do psicoativo, os dois seguem o mesmo padrão, pardors
 morrem mais, logo seguidos por brancos, isso ocorre em todos, e apenas
@@ -468,7 +447,7 @@ ggpubr::ggarrange(series_raca_es_F10, series_raca_br_F10, ncol=2, common.legend 
           heights = c(1, 1))
 ```
 
-#### Mortes x raça - por Fumo (F17)
+### Mortes x raça - por Fumo (F17)
 
 ```{r fig.width=12, fig.height=6, echo=FALSE}
 ggpubr::ggarrange(series_raca_es_F17, series_raca_br_F17, ncol=2, common.legend = T,
@@ -477,7 +456,7 @@ ggpubr::ggarrange(series_raca_es_F17, series_raca_br_F17, ncol=2, common.legend 
 
 ```
 
-## 5. Análise Geral do Número de Mortes
+# Análise Geral do Número de Mortes
 
 Para iniciar a análise, é importante ter em mente o comportamento desses
 óbitos no decorer dos anos. Ao visualizar os gráficos de mortes totais e
@@ -511,7 +490,7 @@ print(grafico_proporcao)
 
 <br>
 
-### 5.1. Mapas
+## Mapas
 
 O primeiro mapa apresenta, por estado, ignorando a variação ano a ano, o
 percentual de óbitos por psicoativos sobre os óbitos totais. É possível
@@ -542,7 +521,7 @@ print(mapa_psic_pop22)
 
 <br>
 
-### 5.2. Gráfico de calor
+## Gráfico de calor
 
 Através do gráfico de calor é possível ter uma ideia geral do número de
 mortes por psicoativos a cada 100 mil habitantes em todos os estados do
@@ -555,9 +534,9 @@ Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe
 print(heatmap_mortes_psic)
 ```
 
-## 6. indicadores
+# indicadores
 
-### 6.1. Indicador 1
+## Indicador 1
 
 O primeiro indicador desenvolvido mostra quantas pessoas morreram por
 psicoativos no Espírito Santo a cada 100 mortes totais no estado
@@ -578,7 +557,7 @@ anteriormente.
 print(serie_indic1)
 ```
 
-### 6.2. Indicadores 2 e 3
+## Indicadores 2 e 3
 
 Os indicadores 2 e 3 mostram, respectivamente 1) o número de mortes por
 psicoativos no Espírito Santo a cada 100 mortes totais no Brasil e 2) o
@@ -607,7 +586,7 @@ $$
 print(serie_indic2_3)
 ```
 
-### 6.3. Indicadores 4 e 5
+## Indicadores 4 e 5
 
 Os indicadores 4 e 5 mostram o número de óbitos por psicoativos em
 relação a população do Brasil e do Espírito Sant. Através deles é
@@ -634,9 +613,9 @@ $$
 print(serie_indic4_5)
 ```
 
-## 7. Outras Possíveis Análises
+# Outras Possíveis Análises
 
-### 7.1. Divisão do Espírito Santo por Regiões
+## Divisão do Espírito Santo por Regiões
 
 <br>
 
@@ -646,7 +625,7 @@ kable(tabela_regioes_es) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
-### 7.2. Informações sobre as possíveis variáveis
+## Informações sobre as possíveis variáveis
 
 <br>
 
@@ -656,7 +635,7 @@ kable(tabela_variaveis_sim) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
-## 8. Referências Bibliográficas
+#  Referências Bibliográficas
 
 SALDANHA, Raphael de Freitas; BASTOS, Ronaldo Rocha; BARCELLOS,
 Christovam. Microdatasus: pacote para download e pré-processamento de
