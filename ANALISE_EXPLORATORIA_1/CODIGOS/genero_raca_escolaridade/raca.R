@@ -199,7 +199,7 @@ proporcao_raca_br_psic <- ggplot(dados.raca.br.series.psic, aes(x = factor(ANOOB
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = rev(paleta_hist(5)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Raca",
-       title = "Proporção de Mortes por Psicoativos no BR por Raça/Cor e Ano") +
+       title = "Percentual de Mortes por Psicoativos no BR por Raça/Cor e Ano") +
   theme_classic()+
   theme(plot.title = element_text(size = 14)) 
 
@@ -220,7 +220,7 @@ proporcao_raca_es_psic <- ggplot(dados.raca.es.series.psic, aes(x = factor(ANOOB
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = rev(paleta_hist(5)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Raça/Cor",
-       title = "Proporção de Mortes por Psicoativos no ES por Raça/Cor e Ano") +
+       title = "Percentual de Mortes por Psicoativos no ES por Raça/Cor e Ano") +
   theme_classic()+
   theme(plot.title = element_text(size = 14))
 

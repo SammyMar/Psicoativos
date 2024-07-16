@@ -99,11 +99,13 @@ series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(
                                                                                 colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
+  scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de Óbitos Totais no Brasil por Escolaridade", 
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.br.series$ANOOBITO,  
     labels = dados.escolaridade.br.series$ANOOBITO)+ 
+  theme_classic()+
   theme(plot.title = element_text(size = 15)) 
 
 print (series_escolaridade_br_total)
@@ -121,11 +123,13 @@ series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(
                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
+  scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de Óbitos Totais no ES por Escolaridade", 
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.es.series$ANOOBITO,  
     labels = dados.escolaridade.es.series$ANOOBITO)+ 
+  theme_classic()+
   theme(plot.title = element_text(size = 15)) 
 
 print (series_escolaridade_es_total)
@@ -145,11 +149,13 @@ series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, 
                                                                         colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
+  scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de Óbitos por psicoativos no Brasil por Escolaridade", 
        x="Anos", y="Óbitos por psicoativos", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.br.series.psic$ANOOBITO,  
-    labels = dados.escolaridade.br.series.psic$ANOOBITO)+ 
+    labels = dados.escolaridade.br.series.psic$ANOOBITO)+
+  theme_classic()+
   theme(plot.title = element_text(size = 13)) 
 
 print (series_escolaridade_br_psic)
@@ -168,11 +174,13 @@ series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, 
                                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
+  scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de óbitos por psicoativos no Espirito Santo por Escolaridade", 
        x="Anos", y="Óbitos por psicoativos", colour = "Escolaridade") +
   scale_x_continuous(
     breaks = dados.escolaridade.es.series.psic$ANOOBITO,  
     labels = dados.escolaridade.es.series.psic$ANOOBITO)+ 
+  theme_classic()+
   theme(plot.title = element_text(size = 13)) 
 
 print (series_escolaridade_es_psic)

@@ -17,8 +17,9 @@ paleta_series <- manual_pal(c("#0000FF", "#FF0000", "#000000",
 
 # paleta de histograma === SIMILAR A DE SÉRIES PORÉM COM CORES MAIS AGRADÁVEIS DE OLHAR
 
-paleta_hist <- manual_pal(c("#223459", "#D32323", "#000000", "#FCC103",
-                                   "#36A944"))
+paleta_hist <- manual_pal(c("#223459", "#D32323", "#000000",
+                            "#36A944","#FC3F6B", "#54006D",
+                            "#FCC103"))
 
 
 # paleta de histograma VARIÁVEL ORDINAL = EXEMPLO (FAIXAS ETÁRIAS)
