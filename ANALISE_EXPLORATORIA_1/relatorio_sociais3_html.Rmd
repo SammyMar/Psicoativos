@@ -3,7 +3,12 @@ title: Análise Exploratória sobre Mortalidade por Psicoativos no Brasil e no E
   Santo
 author: "Caroline de Oliveira, Franco Lovatti e Iane Martins"
 date: "2024-07-15"
-output: html_document
+output:
+  bookdown::html_document2: 
+    toc: true
+    toc_float: true
+    latex_engine: xelatex
+  bookdown::pdf_document2: default
 editor_options: 
   markdown: 
     wrap: 72
@@ -24,11 +29,12 @@ source("CODIGOS/series_indicadores.R")
 source("CODIGOS/mapas_indicadores_atualizado.R")
 source("CODIGOS/graficos_pelascids.R")
 library(gridExtra)
+library(plotly)
 ```
 
 <br>
 
-## 1. Introdução
+# Introdução
 
 Este relatório busca examinar as variáveis sociodemográficas presentes
 na base de dados do Sistema de Informação sobre Mortalidade (SIM) em
@@ -41,14 +47,14 @@ Para obter os dados de morte por psicoativos foram usados os Códigos
 Diagnósticos (CID) de F10 até F19. No decorrer deste relatório serão
 abordadas mais detalhadamente informações sobre:
 
-**i.** CID's;\
-**ii.** Variáveis sociodemográficas como Idade, Gênero, Raça,
-Escolaridade e Estado Civil;\
-**iii.** Número de Mortes, com foco no Brasil e no Espírito Santo;\
-**iv.** Indicadores;\
-**v.** Sugestões de possíveis análises que podem ser desenvolvidas.
+- **i.** CID's;\
+- **ii.** Variáveis sociodemográficas como Idade, Gênero, Raça,
+- Escolaridade e Estado Civil;\
+- **iii.** Número de Mortes, com foco no Brasil e no Espírito Santo;\
+- **iv.** Indicadores;\
+- **v.** Sugestões de possíveis análises que podem ser desenvolvidas.
 
-## 2. Informações sobre as CID's
+# Informações sobre as CID's
 
 A Classificação Internacional de Doenças e Problemas Relacionados à
 Saúde (também conhecida como Classificação Internacional de Doenças --
@@ -87,14 +93,14 @@ mais escura a cor, maior foi a quantidade de mortes por essa CID no
 estado.
 
 ```{r, echo=FALSE}
-print(heatmap_CIDS)
+ggplotly(heatmap_CIDS)
 ```
 
 <br>
 
-## 3. Análise Sociodemográfica
+# 3. Análise Sociodemográfica
 
-### 3.1. Gênero
+## 3.1. Gênero
 
 A seguir é possível visualizar a discrepância entre o número de homens e
 de mulheres que morreram por mortes totais e por psicoativos tanto no
@@ -110,10 +116,12 @@ os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
 <br>
 
 ```{r fig.width=12, fig.height=6, echo=FALSE}
-ggpubr::ggarrange(series_genero_br_total, series_genero_es_total, ncol=2, common.legend = T,
-                  legend = c("bottom" ), align ="hv", 
-          widths = c(1, 1), 
-          heights = c(1, 1))
+subplot(ggplotly(series_genero_br_total),
+        style(ggplotly(series_genero_es_total), showlegend = FALSE),
+        style( ggplotly(series_genero_br_psic), showlegend = FALSE),
+       style(ggplotly(series_genero_es_psic), showlegend = FALSE),
+        shareX = T, titleX = T, titleY = T,
+        nrows = 2)
 ```
 
 <br>
