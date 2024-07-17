@@ -811,18 +811,68 @@ da pandemia.
 ### Mortes x gênero - por consumo de Álcool (F10)
 
 ```{r out.width = "100%", echo=FALSE}
-ggpubr::ggarrange(series_genero_es_f10, series_genero_br_f10, ncol=2, common.legend = T,
-                  legend = c("bottom" ),align ="hv", widths = c(1, 1), 
-          heights = c(1, 1))
+# ggpubr::ggarrange(series_genero_es_f10, series_genero_br_f10, ncol=2, common.legend = T,
+#                   legend = c("bottom" ),align ="hv", widths = c(1, 1), 
+#           heights = c(1, 1))
+subplot(style(ggplotly(series_genero_br_f10),
+              showlegend = F)  |> 
+          layout(annotations = list(x = 0.02 ,
+                                    y = 1,
+                                    text = "Mortes por F10 BR",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(series_genero_es_f10),
+              showlegend = T)   |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.5,
+                                    y = 1,
+                                    text = "Mortes por F10 ES",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+       nrows = 1)  |> layout(title = ("Óbitos por Consumo de Álcool por Gênero"))
 
 ```
 
 ### Mortes x gênero - por Fumo (F17)
 
 ```{r out.width = "100%", echo=FALSE}
-ggpubr::ggarrange(series_genero_es_f17, series_genero_br_f17, ncol=2, common.legend = T,
-                  legend = c("bottom" ),align ="hv", widths = c(1, 1), 
-          heights = c(1, 1))
+# ggpubr::ggarrange(series_genero_es_f17, series_genero_br_f17, ncol=2, common.legend = T,
+#                   legend = c("bottom" ),align ="hv", widths = c(1, 1), 
+#           heights = c(1, 1))
+subplot(style(ggplotly(series_genero_br_f17),
+              showlegend = F)  |> 
+          layout(annotations = list(x = 0.02 ,
+                                    y = 1.04,
+                                    text = "Mortes por F17 BR",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(series_genero_es_f17),
+              showlegend = T)   |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.22,
+                                    y = 1.04,
+                                    text = "Mortes por F17 ES",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+       nrows = 1)  |> layout(title = ("Óbitos por Fumo por Gênero"))
 ```
 
 ## ÓBITOS X ESCOLARIDADE
@@ -835,17 +885,69 @@ menos tempo na escola morrem mais.
 ### Mortes x escolaridade - por consumo de Álcool (F10)
 
 ```{r out.width = "100%", echo=FALSE}
-ggpubr::ggarrange(hist_escolaridade_es_f10, hist_escolaridade_br_f10, ncol=2, common.legend = T,
-                  legend = c("bottom" ),align ="hv", widths = c(1, 1), 
-          heights = c(1, 1))
+# ggpubr::ggarrange(hist_escolaridade_es_f10, hist_escolaridade_br_f10, ncol=2, common.legend = T,
+#                   legend = c("bottom" ),align ="hv", widths = c(1, 1), 
+#           heights = c(1, 1))
+
+subplot(style(ggplotly(hist_escolaridade_br_f10),
+              showlegend = F)  |> 
+          layout(annotations = list(x = 0.02 ,
+                                    y = 1.04,
+                                    text = "Mortes por F10 BR",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(hist_escolaridade_es_f10),
+              showlegend = T)   |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.22,
+                                    y = 1.04,
+                                    text = "Mortes por F10 ES",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+       nrows = 1)  |> layout(title = "Óbitos por Consumo de Álcool por Escolaridade")
 ```
 
 ### Mortes x escolaridade - por Fumo (F17)
 
 ```{r out.width = "100%", echo=FALSE}
-ggpubr::ggarrange(hist_escolaridade_es_f17, hist_escolaridade_br_f17, ncol=2, common.legend = T,
-                  legend = c("bottom" ),align ="hv", widths = c(1, 1), 
-          heights = c(1, 1))
+# ggpubr::ggarrange(hist_escolaridade_es_f17, hist_escolaridade_br_f17, ncol=2, common.legend = T,
+#                   legend = c("bottom" ),align ="hv", widths = c(1, 1), 
+#           heights = c(1, 1))
+subplot(style(ggplotly(hist_escolaridade_br_f17),
+              showlegend = F)  |> 
+          layout(annotations = list(x = 0.02 ,
+                                    y = 1.04,
+                                    text = "Mortes por F17 BR",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(hist_escolaridade_es_f17),
+              showlegend = T)   |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.22,
+                                    y = 1.04,
+                                    text = "Mortes por F17 ES",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+       nrows = 1)  |> layout(title = "Óbitos por Fumo por Escolaridade")
+
 ```
 
 ## ÓBTOS X RAÇA
@@ -853,22 +955,73 @@ ggpubr::ggarrange(hist_escolaridade_es_f17, hist_escolaridade_br_f17, ncol=2, co
 Independente do psicoativo, os dois seguem o mesmo padrão, pardors
 morrem mais, logo seguidos por brancos, isso ocorre em todos, e apenas
 no fumo no Brasil, a distribuição altera um pouco, tendo alterações
-brutas ao longo dos anos e com os brancos morrendo mais em 2022. \####
-Mortes x raça - por consumo de Álcool (F10)
+brutas ao longo dos anos e com os brancos morrendo mais em 2022. 
+
+### Mortes x raça - por consumo de Álcool (F10)
 
 ```{r out.width = "100%", echo=FALSE}
-ggpubr::ggarrange(series_raca_es_F10, series_raca_br_F10, ncol=2, common.legend = T,
-                  legend = c("bottom" ),align ="hv", widths = c(1, 1), 
-          heights = c(1, 1))
+# ggpubr::ggarrange(series_raca_es_F10, series_raca_br_F10, ncol=2, common.legend = T,
+#                   legend = c("bottom" ),align ="hv", widths = c(1, 1), 
+#           heights = c(1, 1))
+
+subplot(style(ggplotly(series_raca_br_F10),
+              showlegend = F)  |> 
+          layout(annotations = list(x = 0.02 ,
+                                    y = 1.04,
+                                    text = "Mortes por F10 BR",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(series_raca_es_F10),
+              showlegend = T)   |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.22,
+                                    y = 1.04,
+                                    text = "Mortes por F10 ES",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+       nrows = 1)  |> layout(title = "Óbitos por Consumo de Álcool por Raça/Cor")
 ```
 
 ### Mortes x raça - por Fumo (F17)
 
 ```{r out.width = "100%", echo=FALSE}
-ggpubr::ggarrange(series_raca_es_F17, series_raca_br_F17, ncol=2, common.legend = T,
-                  legend = c("bottom" ),align ="hv", widths = c(1, 1), 
-          heights = c(1, 1))
-
+# ggpubr::ggarrange(series_raca_es_F17, series_raca_br_F17, ncol=2, common.legend = T,
+#                   legend = c("bottom" ),align ="hv", widths = c(1, 1), 
+#           heights = c(1, 1))
+subplot(style(ggplotly(series_raca_br_F17),
+              showlegend = F)  |> 
+          layout(annotations = list(x = 0.02 ,
+                                    y = 1.04,
+                                    text = "Mortes por F17 BR",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(series_raca_es_F17),
+              showlegend = T)   |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.22,
+                                    y = 1.04,
+                                    text = "Mortes por F17 ES",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+       nrows = 1)  |> layout(title = "Óbitos por Fumo por Raça/Cor")
 ```
 
 # Análise Geral do Número de Mortes
@@ -888,19 +1041,71 @@ partida, a curva de mortes por psicotivos no Espírito Santo decresce de
 <br>
 
 ```{r out.width = "100%", echo=FALSE}
-grid.arrange(series_mortes_br_total, series_mortes_br_psic, ncol=2)
+# 
+# grid.arrange(series_mortes_br_total, series_mortes_br_psic, ncol=2)
+subplot(style(ggplotly(series_mortes_br_total),
+              showlegend = F)  |> 
+          layout(annotations = list(x = 0.2 ,
+                                    y = 1.11,
+                                    text = "Mortes Totais BR",
+                                    showarrow = F, 
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(series_mortes_es_total),
+              showlegend = FALSE)  |> 
+          layout(annotations = list(x = 0.5 ,
+                                    y = 1.11,
+                                    text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style( ggplotly(series_mortes_br_psic),
+               showlegend = T)  |>
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos BR",
+                                    showarrow = F,
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       style(ggplotly(series_mortes_es_psic),
+             showlegend = F)  |> 
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos ES",
+                                    showarrow = F,
+                                    xref='paper',
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+       nrows = 2)  |> layout(title = 'Número de Mortes')
 ```
 
 <br>
 
 ```{r out.width = "100%", echo=FALSE}
-grid.arrange(series_mortes_es_total, series_mortes_es_psic, ncol=2)
+# grid.arrange(series_mortes_es_total, series_mortes_es_psic, ncol=2)
 ```
 
 <br>
 
 ```{r, echo=FALSE}
-print(grafico_proporcao)
+ggplotly(grafico_proporcao) |> style( showlegend = T)  |>
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5,
+                               y = -0.16),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Porcentagem de Mortes por Piscoativos no ES em relação ao Brasil')
 ```
 
 <br>
@@ -918,7 +1123,7 @@ print(mapa_psic_pop13)
 Já este segundo mapa, apresenta o mesmo indicador, porém calculado com os dados de 2022. As duas "fotografias", uma do ano de 2013 e a outra do ano de 2022, não consideram a evolução ao longo dos anos deste indicador, no entanto, traz visualmente, a ideia do antes e depois. O gráfico de calor, apresentado em seguida, consegue 
 
 ```{r, echo=FALSE}
-print(mapa_psic_pop22)
+print(mapa_psic_pop22) 
 ```
 
 <br>
@@ -933,7 +1138,7 @@ Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe
 <br>
 
 ```{r, echo=FALSE}
-print(heatmap_mortes_psic)
+ggplotly(heatmap_mortes_psic) |> layout(title = 'Taxa de Mortes por Psicoativos a cada 100K de Habitantes')
 ```
 
 # indicadores
@@ -956,7 +1161,13 @@ anteriormente.
 <br>
 
 ```{r, out.width = "100%", echo=FALSE}
-print(serie_indic1)
+ggplotly(serie_indic1)   |>
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5,
+                               y = -0.16),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Número de Óbitos por Psicoativos no ES/Número de Obitos Totais (> 17 anos) no ')
 ```
 
 ## Indicadores 2 e 3
