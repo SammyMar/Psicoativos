@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 library(readr)
 library(plotly)
 library(dplyr)
@@ -17,7 +25,7 @@ library(kableExtra)
 library(tidyverse)
 library(latex2exp)
 library(geobr)
-
+library(scales)
 
 #LER E SALVAR DADOS TOTAIS BR
   
@@ -77,6 +85,6 @@ dados_br_psic <- dados_br_total[grepl("F1", dados_br_total$CAUSABAS, ignore.case
   
 dados_es_psic <- dados_es_total[grepl("F1", dados_es_total$CAUSABAS, ignore.case = TRUE),]
   
-  
+
 
   
