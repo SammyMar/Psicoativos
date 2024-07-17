@@ -107,7 +107,7 @@ series_raca_br_total <- ggplot(data = dados.raca.br.series, aes(x = ANOOBITO, y 
 
 print (series_raca_br_total)
 
-save(series_raca_br_total, file="GRAFICOS_RDA/series_raca_br_total")
+save(series_raca_br_total, file="GRAFICOS_RDA/series_raca_br_total.rda")
 #2.2 quantidade de mortes por Raça/Cor/Cor no espirito santo
 
 # montando os dados
@@ -132,7 +132,7 @@ series_raca_es_total <- ggplot(data = dados.raca.es.series, aes(x = ANOOBITO, y 
 
 print (series_raca_es_total)
 
-save(series_raca_es_total, file="GRAFICOS_RDA/series_raca_es_total")
+save(series_raca_es_total, file="GRAFICOS_RDA/series_raca_es_total.rda")
 #2.1 quantidade de mortes por psicoativos por raca no brasil
 
 # montando os dados
@@ -157,7 +157,7 @@ series_raca_br_psic <- ggplot(data = dados.raca.br.series.psic, aes(x = ANOOBITO
 
 print (series_raca_br_psic)
 
-save(series_raca_br_psic, file="GRAFICOS_RDA/series_raca_br_psic")
+save(series_raca_br_psic, file="GRAFICOS_RDA/series_raca_br_psic.rda")
 #2.2 quantidade de mortes por psicoativos por raca no espirito santo
 
 # montando os dados
@@ -182,7 +182,7 @@ series_raca_es_psic <- ggplot(data = dados.raca.es.series.psic, aes(x = ANOOBITO
 
 print (series_raca_es_psic)
 
-save(series_raca_es_psic, file="GRAFICOS_RDA/series_raca_es_psic")
+save(series_raca_es_psic, file="GRAFICOS_RDA/series_raca_es_psic.rda")
 
 #GRAFICO dE PROPORCAO Brasil
 
@@ -206,7 +206,7 @@ proporcao_raca_br_psic <- ggplot(dados.raca.br.series.psic, aes(x = factor(ANOOB
 print(proporcao_raca_br_psic)
 
 
-save(proporcao_raca_br_psic, file="GRAFICOS_RDA/proporcao_raca_br_psic")
+save(proporcao_raca_br_psic, file="GRAFICOS_RDA/proporcao_raca_br_psic.rda")
 
 #GRAFICOD E PROPORCAO ES
 
@@ -229,4 +229,4 @@ proporcao_raca_es_psic <- ggplot(dados.raca.es.series.psic, aes(x = factor(ANOOB
 
 print(proporcao_raca_es_psic)
 
-save(proporcao_raca_es_psic, file="GRAFICOS_RDA/proporcao_raca_es_psic")
+save(proporcao_raca_es_psic, file="GRAFICOS_RDA/proporcao_raca_es_psic.rda")
