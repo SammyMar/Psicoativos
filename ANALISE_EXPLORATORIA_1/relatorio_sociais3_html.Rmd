@@ -74,16 +74,18 @@ Para obter os dados de morte por psicoativos foram usados os Códigos Diagnósti
 - **iv.** Indicadores;\
 - **v.** Sugestões de possíveis análises que podem ser desenvolvidas.
 
-# Informações sobre as CID's
+# Informações Sobre as CID's
 
 A Classificação Internacional de Doenças e Problemas Relacionados à Saúde (também conhecida como Classificação Internacional de Doenças -- CID 10) é publicada pela Organização Mundial de Saúde (OMS) e visa padronizar a codificação de doenças e outros problemas relacionados à saúde. (MEDICINA NET, 2024)
 
 Dentro dessa classificação da CID-10 é possível encontrar a CID F1, que é responsável pelos Transtornos Mentais e de Comportamento. A lista completa desse segmento da CID-10 pode ser vista a seguir:
 
 ```{r, echo=FALSE}
-tabela_cid <- read_excel("CIDs.xlsx")
+# tabela_cid <- read_excel("CIDs.xlsx")
 #kable(tabela_cid) %>%
  # kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+tabela_redutiva$x$tag$attribs$columns[[2]][2] <- "Subdivisão"
+tabela_redutiva$x$tag$attribs$columns[[3]][2] <- "Explicação"
 tabela_redutiva
 ```
 
@@ -121,8 +123,11 @@ A seguir é possível visualizar a discrepância entre o número de homens e de 
 
 ```{r echo=FALSE, out.width = "100%"}
 subplot(style(ggplotly(series_genero_br_total),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
+              showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
                                     y = 1.05,
                                     text = "Mortes Totais BR",
                                     showarrow = F, 
@@ -140,7 +145,7 @@ subplot(style(ggplotly(series_genero_br_total),
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))))  |> 
-  layout(title = 'Mortes relacionadas por gênero')
+  layout(title = 'Mortes Relacionadas por Gênero')
  
 subplot(style( ggplotly(series_genero_br_psic), showlegend = T)  |> 
           layout(legend = list(orientation = "h",
@@ -222,33 +227,84 @@ dados e se é válido unir as categorias Parda e Preta.
 #           heights = c(1, 1))
 # 
 
+# 
+# 
+# subplot(style(ggplotly(series_raca_br_total), showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 , y = 1.11, text = "Mortes Totais BR", showarrow = F, 
+# xref='paper', yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(series_raca_es_total), showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 , y = 1.11, text = "Mortes Totais ES", showarrow = F, 
+# xref='paper', yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style( ggplotly(series_raca_br_psic), showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",   # show entries horizontally
+#                      xanchor = "center",  # use center of legend as anchor
+#                      x = 0.5),annotations = list(x = 0.2 , y = 1.05, text = "Mortes Psicoativos BR", showarrow = F, 
+# xref='paper', yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        style(ggplotly(series_raca_es_psic), showlegend = F)  |> 
+#   layout(
+#          annotations = list(x = 0.6 , y = 1.05, text = "Mortes Psicoativos ES", showarrow = F,
+# xref='paper', yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10)))  ,          # put legend in center of x-axis ,
+#         shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#         nrows = 2)  |> layout(title = 'Mortes Relacionadas por Raça/Cor')
+# 
 
 
-subplot(style(ggplotly(series_raca_br_total), showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 , y = 1.11, text = "Mortes Totais BR", showarrow = F, 
-xref='paper', yref='paper'),
+
+subplot(style(ggplotly(series_raca_br_total),
+              showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Totais BR",
+                                    showarrow = F, 
+                                    xref='paper', 
+                                    yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_raca_es_total), showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 , y = 1.11, text = "Mortes Totais ES", showarrow = F, 
-xref='paper', yref='paper'),
+        style(ggplotly(series_raca_es_total), 
+              showlegend = FALSE)  |> 
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
+                                    text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))))  |> 
+  layout(title =  'Mortes Relacionadas por Raça/Cor')
+ 
+subplot(style( ggplotly(series_raca_br_psic), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos BR",
+                                    showarrow = F,
+                                    xref='paper',
+                                    yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style( ggplotly(series_raca_br_psic), showlegend = T)  |> 
-          layout(legend = list(orientation = "h",   # show entries horizontally
-                     xanchor = "center",  # use center of legend as anchor
-                     x = 0.5),annotations = list(x = 0.2 , y = 1.05, text = "Mortes Psicoativos BR", showarrow = F, 
-xref='paper', yref='paper'),
+        style(ggplotly(series_raca_es_psic), showlegend = F)  |> 
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos ES",
+                                    showarrow = F,
+                                    xref='paper',
+                                    yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       style(ggplotly(series_raca_es_psic), showlegend = F)  |> 
-  layout(
-         annotations = list(x = 0.6 , y = 1.05, text = "Mortes Psicoativos ES", showarrow = F,
-xref='paper', yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10)))  ,          # put legend in center of x-axis ,
-        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-        nrows = 2)  |> layout(title = 'Mortes Relacionadas por Raça/Cor')
+                 yaxis = list(tickfont = list(size = 10)))) |>
+  layout(title = "")
 ```
 
 <br>
@@ -269,8 +325,7 @@ xref='paper', yref='paper'),
 #           heights = c(1, 1))
 
 
-subplot(ggplotly(proporcao_raca_br_psic,  
-                 tooltip  = "text") |> 
+subplot(ggplotly(proporcao_raca_br_psic) |> 
           layout(annotations = list(x = 0.1 , 
                                     y = 1.05,
                                     text = "Mortes Psicoativos BR",
@@ -294,6 +349,9 @@ subplot(ggplotly(proporcao_raca_br_psic,
         shareY = T,
         widths = c(0.5,0.5)) |> 
   layout(title = "Porcentagem de Mortes de Cada Raça/Cor por Uso de Psicoativos")
+
+
+
 ```
 
 <br>
@@ -315,42 +373,94 @@ um alto índice de NA's.
 #           widths = c(1, 1), 
 #           heights = c(1, 1))
 
+# 
+# subplot(style(ggplotly(series_escolaridade_br_total),
+#               showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(series_escolaridade_es_total),
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style( ggplotly(series_escolaridade_br_psic),
+#                showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        style(ggplotly(series_escolaridade_es_psic),
+#              showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#        nrows = 2)  |> layout(title = 'Mortes Relacionadas por Escolaridade')
+
+
+
 
 subplot(style(ggplotly(series_escolaridade_br_total),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
-                                    y = 1.11,
+              showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
                                     text = "Mortes Totais BR",
                                     showarrow = F, 
-                                    xref='paper',
+                                    xref='paper', 
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_escolaridade_es_total),
+        style(ggplotly(series_escolaridade_es_total), 
               showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 ,
-                                    y = 1.11,
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
                                     text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))))  |> 
+  layout(title =  'Mortes Relacionadas por Escolaridade')
+ 
+subplot(style( ggplotly(series_escolaridade_br_psic), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos BR",
                                     showarrow = F,
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style( ggplotly(series_escolaridade_br_psic),
-               showlegend = T)  |> 
-          layout(legend = list(orientation = "h",
-                               xanchor = "center",
-                               x = 0.5),
-                 annotations = list(x = 0.2,
-                                    y = 1.05,
-                                    text = "Mortes Psicoativos BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       style(ggplotly(series_escolaridade_es_psic),
-             showlegend = F)  |> 
+        style(ggplotly(series_escolaridade_es_psic), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -358,9 +468,8 @@ subplot(style(ggplotly(series_escolaridade_br_total),
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-       nrows = 2)  |> layout(title = 'Mortes Relacionadas por Escolaridade')
+                 yaxis = list(tickfont = list(size = 10)))) |>
+  layout(title = '')
 ```
 
 <br>
@@ -429,41 +538,92 @@ companheira com quem se relacionavam.
 #                   legend = c("bottom" ), align ="hv", 
 #           widths = c(1, 1), 
 #           heights = c(1, 1))
+# subplot(style(ggplotly(barplot_estciv_br),
+#               showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 15))),
+#         style(ggplotly(barplot_estciv_es),
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 15))),
+#         style( ggplotly(barplot_estciv_br_psic),
+#                showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 15))),
+#        style(ggplotly(barplot_estciv_es_psic),
+#              showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 15))),
+#        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#        nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Estado Civil')
+
+
+
 subplot(style(ggplotly(barplot_estciv_br),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
-                                    y = 1.11,
+              showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
                                     text = "Mortes Totais BR",
                                     showarrow = F, 
-                                    xref='paper',
+                                    xref='paper', 
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 15))),
-        style(ggplotly(barplot_estciv_es),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(barplot_estciv_es), 
               showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 ,
-                                    y = 1.11,
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
                                     text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))))  |> 
+  layout(title =  'Porcentagem de Mortes Relacionadas por Estado Civil')
+ 
+subplot(style( ggplotly(barplot_estciv_br_psic), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos BR",
                                     showarrow = F,
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 15))),
-        style( ggplotly(barplot_estciv_br_psic),
-               showlegend = T)  |> 
-          layout(legend = list(orientation = "h",
-                               xanchor = "center",
-                               x = 0.5),
-                 annotations = list(x = 0.2,
-                                    y = 1.05,
-                                    text = "Mortes Psicoativos BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 15))),
-       style(ggplotly(barplot_estciv_es_psic),
-             showlegend = F)  |> 
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(barplot_estciv_es_psic), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -471,9 +631,8 @@ subplot(style(ggplotly(barplot_estciv_br),
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 15))),
-       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-       nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Estado Civil')
+                 yaxis = list(tickfont = list(size = 10)))) |>
+  layout(title = '')
 ```
 
 <br>
@@ -493,41 +652,92 @@ subplot(style(ggplotly(barplot_estciv_br),
 #                   legend = c("bottom" ), align ="hv", 
 #           widths = c(1, 1), 
 #           heights = c(1, 1))
+# subplot(style(ggplotly(grafico_prop_estciv_br),
+#               showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(grafico_prop_estciv_es),
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style( ggplotly(grafico_prop_estciv_br_psic),
+#                showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        style(ggplotly(grafico_prop_estciv_es_psic),
+#              showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#        nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Estado Civil')
+# 
+
+
 subplot(style(ggplotly(grafico_prop_estciv_br),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
-                                    y = 1.11,
+              showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
                                     text = "Mortes Totais BR",
                                     showarrow = F, 
-                                    xref='paper',
+                                    xref='paper', 
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(grafico_prop_estciv_es),
+        style(ggplotly(grafico_prop_estciv_es), 
               showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 ,
-                                    y = 1.11,
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
                                     text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))))  |> 
+  layout(title =  'Porcentagem de Mortes Relacionadas por Estado Civil')
+ 
+subplot(style( ggplotly(grafico_prop_estciv_br_psic), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos BR",
                                     showarrow = F,
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style( ggplotly(grafico_prop_estciv_br_psic),
-               showlegend = T)  |> 
-          layout(legend = list(orientation = "h",
-                               xanchor = "center",
-                               x = 0.5),
-                 annotations = list(x = 0.2,
-                                    y = 1.05,
-                                    text = "Mortes Psicoativos BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       style(ggplotly(grafico_prop_estciv_es_psic),
-             showlegend = F)  |> 
+        style(ggplotly(grafico_prop_estciv_es_psic), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -535,9 +745,8 @@ subplot(style(ggplotly(grafico_prop_estciv_br),
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-       nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Estado Civil')
+                 yaxis = list(tickfont = list(size = 10)))) |>
+  layout(title = '')
 ```
 
 <br>
@@ -564,21 +773,21 @@ uso de psicoativos.
 
 ```{r out.width = "100%", warning = FALSE, echo=FALSE}
 # ggpubr::ggarrange(boxplot.anoidad.br, boxplot.anoidad.br.psic , ncol=2,  common.legend = T,
-#                   legend = c("bottom" ), align ="hv", 
-#           widths = c(1, 1), 
+#                   legend = c("bottom" ), align ="hv",
+#           widths = c(1, 1),
 #           heights = c(1, 1))
 # subplot(style(ggplotly(boxplot.anoidad.br),
-#               showlegend = F)  |> 
+#               showlegend = F)  |>
 #           layout(annotations = list(x = 0.2 ,
 #                                     y = 1.11,
 #                                     text = "Mortes Totais BR",
-#                                     showarrow = F, 
+#                                     showarrow = F,
 #                                     xref='paper',
 #                                     yref='paper'),
 #                  xaxis = list(tickfont = list(size = 10)),
 #                  yaxis = list(tickfont = list(size = 10))),
 #         style(ggplotly(boxplot.anoidad.es),
-#               showlegend = FALSE)  |> 
+#               showlegend = FALSE)  |>
 #           layout(annotations = list(x = 0.5 ,
 #                                     y = 1.11,
 #                                     text = "Mortes Totais ES",
@@ -588,20 +797,20 @@ uso de psicoativos.
 #                  xaxis = list(tickfont = list(size = 10)),
 #                  yaxis = list(tickfont = list(size = 10))),
 #         style( ggplotly(boxplot.anoidad.br.psic),
-#                showlegend = T)  |> 
+#                showlegend = T)  |>
 #           layout(legend = list(orientation = "h",
 #                                xanchor = "center",
 #                                x = 0.5),
 #                  annotations = list(x = 0.2,
 #                                     y = 1.05,
 #                                     text = "Mortes Psicoativos BR",
-#                                     showarrow = F, 
+#                                     showarrow = F,
 #                                     xref='paper',
 #                                     yref='paper'),
 #                  xaxis = list(tickfont = list(size = 10)),
 #                  yaxis = list(tickfont = list(size = 10))),
 #        style(ggplotly(boxplot.anoidad.es.psic),
-#              showlegend = F)  |> 
+#              showlegend = F)  |>
 #           layout(annotations = list(x = 0.6 ,
 #                                     y = 1.05,
 #                                     text = "Mortes Psicoativos ES",
@@ -613,6 +822,53 @@ uso de psicoativos.
 #        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
 #        nrows = 2)  |> layout(title = 'Distribuição das Idades dos Óbitos')
 
+# subplot(style(ggplotly(boxplot.anoidad.br),
+#               showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper', 
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(boxplot.anoidad.es), 
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper', 
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))))  |> 
+#   layout(title =  'Distribuição das Idades dos Óbitos')
+#  
+# subplot(style( ggplotly(boxplot.anoidad.br.psic), showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(boxplot.anoidad.es.psic), showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+  #                                   yref='paper'),
+  #                xaxis = list(tickfont = list(size = 10)),
+  #                yaxis = list(tickfont = list(size = 10)))) |>
+  # layout(title = '')
 ```
 
 <br>
@@ -646,41 +902,91 @@ adultos.
 #                   legend = c("bottom" ), align ="hv", 
 #           widths = c(1, 1), 
 #           heights = c(1, 1))
+# subplot(style(ggplotly(graf.serie.idade.br.t),
+#               showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(graf.serie.idade.es.t),
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style( ggplotly(graf.serie.idade.br.p),
+#                showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        style(ggplotly(graf.serie.idade.es.p),
+#              showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#        nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Faixa Etária')
+
+
 subplot(style(ggplotly(graf.serie.idade.br.t),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
-                                    y = 1.11,
+              showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
                                     text = "Mortes Totais BR",
                                     showarrow = F, 
-                                    xref='paper',
+                                    xref='paper', 
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(graf.serie.idade.es.t),
+        style(ggplotly(graf.serie.idade.es.t), 
               showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 ,
-                                    y = 1.11,
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
                                     text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))))  |> 
+  layout(title =  'Porcentagem de Mortes Relacionadas por Faixa Etária')
+ 
+subplot(style( ggplotly(graf.serie.idade.br.p), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos BR",
                                     showarrow = F,
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style( ggplotly(graf.serie.idade.br.p),
-               showlegend = T)  |> 
-          layout(legend = list(orientation = "h",
-                               xanchor = "center",
-                               x = 0.5),
-                 annotations = list(x = 0.2,
-                                    y = 1.05,
-                                    text = "Mortes Psicoativos BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       style(ggplotly(graf.serie.idade.es.p),
-             showlegend = F)  |> 
+        style(ggplotly(graf.serie.idade.es.p), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -688,9 +994,8 @@ subplot(style(ggplotly(graf.serie.idade.br.t),
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-       nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Faixa Etária')
+                 yaxis = list(tickfont = list(size = 10)))) |>
+  layout(title = '')
 ```
 
 <br>
@@ -709,41 +1014,92 @@ subplot(style(ggplotly(graf.serie.idade.br.t),
 #                   legend = c("bottom" ), align ="hv", 
 #           widths = c(1, 1), 
 #           heights = c(1, 1))
+# subplot(style(ggplotly(grafico_prop_idade_br),
+#               showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(grafico_prop_idade_es),
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style( ggplotly(grafico_prop_idade_br_psic),
+#                showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        style(ggplotly(grafico_prop_idade_es_psic),
+#              showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#        nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Faixa Etária')
+
+
+
 subplot(style(ggplotly(grafico_prop_idade_br),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
-                                    y = 1.11,
+              showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
                                     text = "Mortes Totais BR",
                                     showarrow = F, 
-                                    xref='paper',
+                                    xref='paper', 
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(grafico_prop_idade_es),
+        style(ggplotly(grafico_prop_idade_es), 
               showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 ,
-                                    y = 1.11,
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
                                     text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))))  |> 
+  layout(title =  'Porcentagem de Mortes Relacionadas por Faixa Etária')
+ 
+subplot(style( ggplotly(grafico_prop_idade_br_psic), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Psicoativos BR",
                                     showarrow = F,
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style( ggplotly(grafico_prop_idade_br_psic),
-               showlegend = T)  |> 
-          layout(legend = list(orientation = "h",
-                               xanchor = "center",
-                               x = 0.5),
-                 annotations = list(x = 0.2,
-                                    y = 1.05,
-                                    text = "Mortes Psicoativos BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       style(ggplotly(grafico_prop_idade_es_psic),
-             showlegend = F)  |> 
+        style(ggplotly(grafico_prop_idade_es_psic), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -751,9 +1107,8 @@ subplot(style(ggplotly(grafico_prop_idade_br),
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-       nrows = 2)  |> layout(title = 'Porcentagem de Mortes Relacionadas por Faixa Etária')
+                 yaxis = list(tickfont = list(size = 10)))) |>
+  layout(title = '')
 ```
 
 <br>
@@ -1079,32 +1434,82 @@ partida, a curva de mortes por psicotivos no Espírito Santo decresce de
 ```{r out.width = "100%", echo=FALSE}
 # 
 # grid.arrange(series_mortes_br_total, series_mortes_br_psic, ncol=2)
+# subplot(style(ggplotly(series_mortes_br_total),
+#               showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(series_mortes_es_total),
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style( ggplotly(series_mortes_br_psic),
+#                showlegend = T)  |>
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        style(ggplotly(series_mortes_es_psic),
+#              showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#        nrows = 2)  |> layout(title = 'Número de Mortes')
+
 subplot(style(ggplotly(series_mortes_br_total),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
-                                    y = 1.11,
-                                    text = "Mortes Totais BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_mortes_es_total),
-              showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 ,
-                                    y = 1.11,
-                                    text = "Mortes Totais ES",
-                                    showarrow = F,
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-        style( ggplotly(series_mortes_br_psic),
-               showlegend = T)  |>
+              showlegend = T)  |> 
           layout(legend = list(orientation = "h",
                                xanchor = "center",
                                x = 0.5),
-                 annotations = list(x = 0.2,
+                 annotations = list(x = 0.2 ,
+                                    y = 1.05,
+                                    text = "Mortes Totais BR",
+                                    showarrow = F, 
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))),
+        style(ggplotly(series_mortes_es_total), 
+              showlegend = FALSE)  |> 
+          layout(annotations = list(x = 0.6 ,
+                                    y = 1.05,
+                                    text = "Mortes Totais ES",
+                                    showarrow = F,
+                                    xref='paper', 
+                                    yref='paper'),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10))))  |> 
+  layout(title =  'Número de Mortes')
+ 
+subplot(style( ggplotly(series_mortes_br_psic), showlegend = T)  |> 
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5),
+                 annotations = list(x = 0.2 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos BR",
                                     showarrow = F,
@@ -1112,8 +1517,7 @@ subplot(style(ggplotly(series_mortes_br_total),
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-       style(ggplotly(series_mortes_es_psic),
-             showlegend = F)  |> 
+        style(ggplotly(series_mortes_es_psic), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -1121,9 +1525,8 @@ subplot(style(ggplotly(series_mortes_br_total),
                                     xref='paper',
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-       nrows = 2)  |> layout(title = 'Número de Mortes')
+                 yaxis = list(tickfont = list(size = 10)))) |>
+  layout(title = '')
 ```
 
 <br>
