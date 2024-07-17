@@ -19,19 +19,20 @@ Sys.setlocale("LC_ALL", "en_US.UTF-8")
 library(gridExtra)
 library(plotly)
 library(scales)
-source("CODIGOS/paletas_de_cores.R")
-source("leitura_filtragem_02.R")
-source("read_pop13a21.R")
-source("CODIGOS/genero_raca_escolaridade/escolaridade.R")
-source("CODIGOS/genero_raca_escolaridade/genero.R")
-source("CODIGOS/genero_raca_escolaridade/raca.R")
-source("CODIGOS/genero_raca_escolaridade/mortes_totais.R")
-source("CODIGOS/analise_carol.R")
-source("CODIGOS/analise_CIDs.R")
-source("CODIGOS/grafico_calor_iane.R")
-source("CODIGOS/series_indicadores.R")
-source("CODIGOS/mapas_indicadores_atualizado.R")
-source("CODIGOS/graficos_pelascids.R")
+# source("CODIGOS/paletas_de_cores.R")
+# source("leitura_filtragem_02.R")
+# source("read_pop13a21.R")
+# source("CODIGOS/genero_raca_escolaridade/escolaridade.R")
+# source("CODIGOS/genero_raca_escolaridade/genero.R")
+# source("CODIGOS/genero_raca_escolaridade/raca.R")
+# source("CODIGOS/genero_raca_escolaridade/mortes_totais.R")
+# source("CODIGOS/analise_carol.R")
+# source("CODIGOS/analise_CIDs.R")
+# source("CODIGOS/grafico_calor_iane.R")
+# source("CODIGOS/series_indicadores.R")
+# source("CODIGOS/mapas_indicadores_atualizado.R")
+# source("CODIGOS/graficos_pelascids.R")
+source("carregamento_plots.R")
 
 ```
 
@@ -529,51 +530,51 @@ uso de psicoativos.
 #                   legend = c("bottom" ), align ="hv", 
 #           widths = c(1, 1), 
 #           heights = c(1, 1))
-subplot(style(ggplotly(boxplot.anoidad.br),
-              showlegend = F)  |> 
-          layout(annotations = list(x = 0.2 ,
-                                    y = 1.11,
-                                    text = "Mortes Totais BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(boxplot.anoidad.es),
-              showlegend = FALSE)  |> 
-          layout(annotations = list(x = 0.5 ,
-                                    y = 1.11,
-                                    text = "Mortes Totais ES",
-                                    showarrow = F,
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-        style( ggplotly(boxplot.anoidad.br.psic),
-               showlegend = T)  |> 
-          layout(legend = list(orientation = "h",
-                               xanchor = "center",
-                               x = 0.5),
-                 annotations = list(x = 0.2,
-                                    y = 1.05,
-                                    text = "Mortes Psicoativos BR",
-                                    showarrow = F, 
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       style(ggplotly(boxplot.anoidad.es.psic),
-             showlegend = F)  |> 
-          layout(annotations = list(x = 0.6 ,
-                                    y = 1.05,
-                                    text = "Mortes Psicoativos ES",
-                                    showarrow = F,
-                                    xref='paper',
-                                    yref='paper'),
-                 xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10))),
-       shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
-       nrows = 2)  |> layout(title = 'Distribuição das Idades dos Óbitos')
+# subplot(style(ggplotly(boxplot.anoidad.br),
+#               showlegend = F)  |> 
+#           layout(annotations = list(x = 0.2 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style(ggplotly(boxplot.anoidad.es),
+#               showlegend = FALSE)  |> 
+#           layout(annotations = list(x = 0.5 ,
+#                                     y = 1.11,
+#                                     text = "Mortes Totais ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#         style( ggplotly(boxplot.anoidad.br.psic),
+#                showlegend = T)  |> 
+#           layout(legend = list(orientation = "h",
+#                                xanchor = "center",
+#                                x = 0.5),
+#                  annotations = list(x = 0.2,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos BR",
+#                                     showarrow = F, 
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        style(ggplotly(boxplot.anoidad.es.psic),
+#              showlegend = F)  |> 
+#           layout(annotations = list(x = 0.6 ,
+#                                     y = 1.05,
+#                                     text = "Mortes Psicoativos ES",
+#                                     showarrow = F,
+#                                     xref='paper',
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                  yaxis = list(tickfont = list(size = 10))),
+#        shareX = T, titleX = F, widths = c(0.5,0.5), margin = c(.02,.04,.04,.02),
+#        nrows = 2)  |> layout(title = 'Distribuição das Idades dos Óbitos')
 
 ```
 
