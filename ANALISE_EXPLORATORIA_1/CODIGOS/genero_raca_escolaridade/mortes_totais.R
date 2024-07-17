@@ -199,6 +199,7 @@ series_mortes_es_total <- ggplot(data = dados.mortes.es.totais.series, aes(x = A
 series_mortes_es_total
 
 
+save(series_mortes_es_total, file = "GRAFICOS_RDA/series_mortes_es_total")
 
 #2.1 quantidade de mortes psic no es
 
@@ -223,5 +224,5 @@ series_mortes_es_psic <- ggplot(data = dados.mortes.es.psic.series, aes(x = ANOO
   theme_classic()
 series_mortes_es_psic
 
-
+save(series_mortes_es_psic, file = "GRAFICOS_RDA/series_mortes_es_psic")
 
