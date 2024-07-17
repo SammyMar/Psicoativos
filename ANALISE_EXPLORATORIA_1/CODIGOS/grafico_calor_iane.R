@@ -80,7 +80,7 @@ tab_mortes_estado_ano_psic <- tab_mortes_estado_ano_psic %>%
 
 #2. PLOTAR O GRAFICO
 
-# Calcular a taxa de C3bitos por 100.000 habitantes
+# Calcular a taxa de C3bitos por 100.00 habitantes
 tab_mortes_estado_ano_psic <- tab_mortes_estado_ano_psic %>%
   mutate(Taxa_Obitos_100k = (Quantidade_Obitos / valor) * 100000)
 
@@ -106,7 +106,7 @@ anos <- seq(2013, 2022)
 # Plotar o grC!fico de calor
 heatmap_mortes_psic <- ggplot(tab_mortes_estado_ano_psic, aes(x = ANOOBITO, y = Sigla, fill = Taxa_Obitos_100k)) +
   geom_tile(color = "white") +
-  scale_fill_gradient(low = "lightblue", high = "darkblue", name = "Obitos por 100k habitantes") +
+  scale_fill_gradient(low = "lightblue", high = "#010440", name = "Obitos por 100k habitantes") +
   scale_x_continuous(breaks = anos) +
   labs(title = "Taxa de mortes por Psicoativos a cada 100.000 habitantes nos estados brasileiros ao longo dos anos",
        x = "Ano",
@@ -116,3 +116,7 @@ heatmap_mortes_psic <- ggplot(tab_mortes_estado_ano_psic, aes(x = ANOOBITO, y = 
 
 print(heatmap_mortes_psic)
 
+
+save(heatmap_mortes_psic, file="heatmap_mortes_psic.rda")
+
+load("heatmap_mortes_psic.rda")

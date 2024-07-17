@@ -373,11 +373,6 @@ dados_prop_estciv_br <- dados_br_total %>%
 
 barplot_estciv_br <-  ggplot(dados_prop_estciv_br, aes(x = fct_reorder(ESTCIV,p), y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
-   geom_text(
-     aes(label = paste0(p, "%") ),
-     position = position_dodge(width = 0.9),
-     vjust = -0.4,
-     size = 4,)+
   scale_fill_manual(values=paleta_hist(5))+
   theme_minimal() +
   labs(title = "Óbitos por estado civil no Brasil",
@@ -404,12 +399,6 @@ dados_prop_estciv_br.psic <- dados_br_psic %>%
 barplot_estciv_br_psic <- ggplot(dados_prop_estciv_br.psic, aes(x = fct_reorder(ESTCIV, p), y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values=paleta_hist(5))+
-  geom_text(
-    aes(label = paste0(p, "%") ),
-    position = position_dodge(width = 0.9),
-    vjust = -0.4,
-    size = 4,
-)+
   theme_minimal() +
   labs(title = "Óbitos por psicoativos a partir do estado civil no Brasil",
        x = "Estado Civil ",
@@ -437,13 +426,6 @@ dados_prop_estciv_es.psic <- dados_es_psic %>%
 barplot_estciv_es_psic <- ggplot(dados_prop_estciv_es.psic, aes(x = fct_reorder(ESTCIV,p), y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values=paleta_hist(5))+
-  geom_text(
-    aes(label = paste0(p, "%") ),
-    position = position_dodge(width = 0.9),
-    vjust = -0.4,
-    size = 4,
-
-  )+
   theme_classic() +
   labs(title = "Óbitos por psicoativos a partir do estado civil no ES",
        x = "Estado Civil ",
@@ -469,11 +451,6 @@ dados_prop_estciv_es <- dados_es_total %>%
 barplot_estciv_es <- ggplot(dados_prop_estciv_es, aes(x = fct_reorder(ESTCIV,p), y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values=paleta_hist(5))+
-  geom_text(
-    aes(label = paste0(p, "%") ),
-    position = position_dodge(width = 0.9),
-    vjust = -0.4,
-    size = 4)+
   theme_classic() +
   labs(title = "Óbitos no Espírito Santo por estado civil",
        x = "Estado Civil ",

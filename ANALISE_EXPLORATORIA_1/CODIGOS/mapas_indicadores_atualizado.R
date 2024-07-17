@@ -2,7 +2,7 @@
 # baixando info estados brasil (geobr) ------------------------------------
 
 brasil = read_state(code_state = "all", year = 2018)
-
+pop13a21<-readRDS("bases_de_dados_externas/pop13a21.rds")
 ### MAPA DO BRASIL OBITOS POR ESTADO POR PSICO/POP ESTADO 2013 e 2022
 
 
@@ -47,22 +47,22 @@ dados_mapa_psic_pop22 <- brasil %>%
 
 
 mapa_psic_pop13 <- ggplot() + 
-  geom_sf(data = dados_mapa_psic_pop13, aes(fill = (N.obitos/pop13)*10000),
+  geom_sf(data = dados_mapa_psic_pop13, aes(fill = (N.obitos/pop13)*100000),
           color = "#788881")+
-  scale_fill_gradient(low = "white", high = "red", limits = c(0,2),
-                      name="Obitos (por 10000)") +
-  labs(title="Obitos por Psicoativos em 2013 por 10000 habitantes") +
+  scale_fill_gradient(low = "white", high = "#010440",limits = c(0,15),
+                      name="Obitos (por 100000)") +
+  labs(title="Obitos por Psicoativos em 2013 por 100000 habitantes") +
   theme_void() + theme(title = element_text(size = 15))
 
 mapa_psic_pop13
 
 
 mapa_psic_pop22 <- ggplot() + 
-  geom_sf(data = dados_mapa_psic_pop22, aes(fill = (N.obitos/pop22)*10000),
+  geom_sf(data = dados_mapa_psic_pop22, aes(fill = (N.obitos/pop22)*100000),
           color = "#788881")+
-  scale_fill_gradient(low = "white", high = "red", , limits = c(0,2),
-                      name=TeX("Obitos (por 10000)")) +
-  labs(title="Obitos por Psicoativos em 2022 por 10000 habitantes", size=15) +
+  scale_fill_gradient(low = "white", high = "#010440", , limits = c(0,15),
+                      name="Obitos (por 100000)") +
+  labs(title="Obitos por Psicoativos em 2022 por 100000 habitantes", size=15) +
   theme_void() + theme(title = element_text(size = 15))
 
 mapa_psic_pop22

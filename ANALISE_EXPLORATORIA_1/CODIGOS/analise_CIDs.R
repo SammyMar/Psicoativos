@@ -88,7 +88,7 @@ dados_heatmap_CIDs <- dados_es_psic %>% select(CAUSABAS, ANOOBITO) %>%
 dados_heatmap_CIDs <- melt(dados_heatmap_CIDs)
 
 heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value*100)) +
-  geom_tile() +
+  geom_tile(color="white") +
   scale_fill_gradient(low = "lightblue", high = "#010440")+
   theme_minimal() +
   labs(x = "Anos", y = "CIDs", fill = "%", 
