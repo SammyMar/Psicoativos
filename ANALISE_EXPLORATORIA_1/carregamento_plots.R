@@ -22,6 +22,7 @@ load("GRAFICOS_RDA/series_mortes_br_total.rda")
 load("GRAFICOS_RDA/series_mortes_es_total.rda")
 load("GRAFICOS_RDA/series_mortes_es_psic.rda")
 
+<<<<<<< HEAD
 load("GRAFICOS_RDA/series_genero_br_total.rda")
 load("GRAFICOS_RDA/series_genero_es_total.rda")
 load("GRAFICOS_RDA/series_genero_br_psic.rda")
@@ -42,14 +43,43 @@ load("GRAFICOS_RDA/series_raca_br_psic.rda")
 load("GRAFICOS_RDA/series_raca_es_psic.rda")
 load("GRAFICOS_RDA/proporcao_raca_br_psic.rda")
 load("GRAFICOS_RDA/proporcao_raca_es_psic.rda")
+=======
+load("GRAFICOS_RDA/series_mortes_br_psic.rda")
+load("GRAFICOS_RDA/series_mortes_br_total.rda")
+load("GRAFICOS_RDA/series_mortes_es_total.rda")
+load("GRAFICOS_RDA/series_mortes_es_psic.rda")
+>>>>>>> 5ea719e9b0e1438b01582047e5b4b164b44a454d
 
 
 #Loads Carol -----------------------------------------------------------------
 
+<<<<<<< HEAD
 load("GRAFICOS_RDA/hist.F10.es.rda")
 load("GRAFICOS_RDA/hist.F10.br.rda")
 load("GRAFICOS_RDA/hist.F17.es.rda")
 load("GRAFICOS_RDA/hist.F17.br.rda")
+=======
+load("GRAFICOS_RDA/series_genero_br_total.rda")
+load("GRAFICOS_RDA/series_genero_es_total.rda")
+load("GRAFICOS_RDA/series_genero_br_psic.rda")
+load("GRAFICOS_RDA/series_genero_es_psic.rda")
+load("GRAFICOS_RDA/proporcao_genero_br_psic.rda")
+load("GRAFICOS_RDA/proporcao_genero_es_psic.rda")
+
+load("GRAFICOS_RDA/series_raca_br_total.rda")
+load("GRAFICOS_RDA/series_raca_es_total.rda")
+load("GRAFICOS_RDA/series_raca_br_psic.rda")
+load("GRAFICOS_RDA/series_raca_es_psic.rda")
+load("GRAFICOS_RDA/proporcao_raca_br_psic.rda")
+load("GRAFICOS_RDA/proporcao_raca_es_psic.rda")
+
+load("GRAFICOS_RDA/series_raca_br_total.rda")
+load("GRAFICOS_RDA/series_raca_es_total.rda")
+load("GRAFICOS_RDA/series_raca_br_psic.rda")
+load("GRAFICOS_RDA/series_raca_es_psic.rda")
+load("GRAFICOS_RDA/proporcao_raca_br_psic.rda")
+load("GRAFICOS_RDA/proporcao_raca_es_psic.rda")
+>>>>>>> 5ea719e9b0e1438b01582047e5b4b164b44a454d
 
 load("GRAFICOS_RDA/series_genero_br_f10.rda")
 load("GRAFICOS_RDA/series_genero_br_f17.rda")
