@@ -69,15 +69,14 @@ objetivo mostrar alguns indicadores que possam ajudar no entendimento da situaç
 Para obter os dados de morte por psicoativos foram usados os Códigos Diagnósticos (CID) de F10 até F19. No decorrer deste relatório serão abordadas mais detalhadamente informações sobre:
 
 - **i.** CID's;\
-- **ii.** Variáveis sociodemográficas como Idade, Gênero, Raça,
-- Escolaridade e Estado Civil;\
+- **ii.** Variáveis sociodemográficas como Idade, Gênero, Raça,Escolaridade e Estado Civil;\
 - **iii.** Número de Mortes, com foco no Brasil e no Espírito Santo;\
 - **iv.** Indicadores;\
 - **v.** Sugestões de possíveis análises que podem ser desenvolvidas.
 
 # Informações sobre as CID's
 
-A Classificação Internacional de Doenças e Problemas Relacionados à Saúde (também conhecida como Classificação Internacional de Doenças -- CID 10) é publicada pela Organização Mundial de Saúde (OMS) e visa padronizar a codificação de doenças e outros problemas relacionados à saúde. (<https://www.medicinanet.com.br/cid10/f.htm>)
+A Classificação Internacional de Doenças e Problemas Relacionados à Saúde (também conhecida como Classificação Internacional de Doenças -- CID 10) é publicada pela Organização Mundial de Saúde (OMS) e visa padronizar a codificação de doenças e outros problemas relacionados à saúde. (MEDICINA NET, 2024)
 
 Dentro dessa classificação da CID-10 é possível encontrar a CID F1, que é responsável pelos Transtornos Mentais e de Comportamento. A lista completa desse segmento da CID-10 pode ser vista a seguir:
 
@@ -90,7 +89,7 @@ tabela_redutiva
 
 <br>
 
-Os gráficos abaixo mostram quais a CID's com maior número de ocorrências tanto no Brasil quanto no Espírito Santo. Percebe-se que Transtornos por uso de álcool, fumo, outras substâncias psicoativas e cocaína foram os mais letais.
+Os gráficos abaixo mostram quais as CID's com maior número de ocorrências tanto no Brasil quanto no Espírito Santo. Percebe-se que transtornos por uso de álcool, fumo, outras substâncias psicoativas e cocaína foram os mais letais.
 
 <br>
 
@@ -101,10 +100,10 @@ ggplotly(g_count_CIDs)
 ```
 
 <br> O gráfico de calor é usado para visualizar de forma clara a
-concentração de ocorrência de algo. Este gráfico de calor mostra a
-incidência de mortes por cada cid no Espírito Santo, ou seja, quanto
-mais escura a cor, maior foi a quantidade de mortes por essa CID no
-estado.
+concentração de ocorrência de algum evento. Este gráfico de calor específico mostra a
+incidência de mortes por cada CID no Espírito Santo, ou seja, quanto
+mais escura a cor, maior a quantidade de mortes por determinada CID no
+estado. 
 
 ```{r, echo=FALSE}
 ggplotly(heatmap_CIDS)
@@ -116,7 +115,7 @@ ggplotly(heatmap_CIDS)
 
 ## Gênero
 
-A seguir é possível visualizar a discrepância entre o número de homens e de mulheres que morreram por mortes totais e por psicoativos tanto no Brasil quando no Espírito Santo. Em ambas as localizações o número de óbitos de indivíduos do gênero masculino foi superior ao número de mortes em pessoas do gênero feminino. Ao observar a diferença entre as mortes totais e mortes por psicoativos, porém, tem-se que o número de homens que faleceram por uso de substância é consideravelmente superior ao número de mulheres. Ao mesmo tempo, enquanto o número de mortes em mulheres que morreram por uso de substãncia se mantêm bastante estável, os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
+A seguir é possível visualizar a discrepância entre o número de homens e de mulheres que morreram por mortes totais e por psicoativos tanto no Brasil quando no Espírito Santo. Em ambas as localizações o número de óbitos de indivíduos do gênero masculino foi superior ao número de mortes em pessoas do gênero feminino. Ao observar a diferença entre as mortes totais e mortes por psicoativos, porém, tem-se que o número de homens que faleceram por uso de substância é consideravelmente superior ao número de mulheres. Ao mesmo tempo, enquanto o número de óbitos em mulheres que morreram por uso de substãncias se mantêm bastante estável, os dados sobre os homens apresentam uma curva crescente de 2019 a 2021.
 
 <br>
 
@@ -167,10 +166,12 @@ subplot(style( ggplotly(series_genero_br_psic), showlegend = T)  |>
   layout(title = "")
 ```
 
-<br> Com o objetivo de melhorar a visualização dos dados, é possível
-analizar pelo gráfico de porcentagem, que utiliza a porcentagem de cada dado
-com relação ao total, por ele fica clara a discrepância entre o número
+<br> Com o objetivo de melhorar a visualização dos dados, é possível também
+analizar o gráfico de porcentagem. Este gráfico utiliza a porcentagem de cada dado
+com relação ao total e através dele fica clara a discrepância entre o número
 de morte por gênero, no Brasil e no Espírito Santo.
+
+<br>
 
 ```{r out.width = "100%", echo=FALSE}
 subplot(ggplotly(proporcao_genero_br_psic) |> 
@@ -205,11 +206,9 @@ subplot(ggplotly(proporcao_genero_br_psic) |>
 ## Raça
 
 Os dados sobre as raças dos indivíduos falecidos no Brasil como um todo
-são bem parecidos com os dados do Espírito Santo. Em ambos os casos o
-número de mortes de pessoas brancas é superior ao número de mortes de
-pessoas pardas na maioria das vezes e sempre superior ao número de
-pessoas pretas, amarelas e indígenas. Entretanto, nas mortes por
-psicoativos o número de pardos é o predominante.
+são bem parecidos com os dados do Espírito Santo. Em ambos os casos, o
+número de mortes de pessoas brancas é, na maioria das vezes, superior ao número de mortes de
+pessoas pardas e sempre superior ao número de pessoas pretas, amarelas e indígenas. Entretanto, nas mortes por psicoativos, o número de pessoas pardas é predominante.
 
 Para a pesquisa, pode ser importante discutir a forma de analisar esses
 dados e se é válido unir as categorias Parda e Preta.
