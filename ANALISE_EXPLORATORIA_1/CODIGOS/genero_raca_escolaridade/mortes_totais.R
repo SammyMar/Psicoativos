@@ -118,7 +118,7 @@ grafico_proporcao <- ggplot(obitos_combinados_br_es, aes(x = factor(ANOOBITO), y
 print(grafico_proporcao)
 
 
-save(grafico_proporcao, file = "GRAFICOS_RDA/grafico_proporcao")
+save(grafico_proporcao, file = "GRAFICOS_RDA/grafico_proporcao.rda")
 
 
 #SERIE
@@ -134,9 +134,9 @@ dados.mortes.totais.series <- data.frame(
 # grafico 
 
 series_mortes_br_total <- ggplot(data = dados.mortes.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
-  geom_line(linetype = "solid" ,color = "black",
-            linewidth = 0.5) +
-  geom_point(shape = 15, color = "black") +
+  geom_line(linetype = "solid",
+            linewidth = 0.5, color = paleta_series(1)) +
+  geom_point(shape = 15) +
   labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022", 
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
@@ -146,7 +146,7 @@ series_mortes_br_total <- ggplot(data = dados.mortes.totais.series, aes(x = ANOO
 series_mortes_br_total
 
 
-save(series_mortes_br_total, file = "GRAFICOS_RDA/series_mortes_br_total")
+save(series_mortes_br_total, file = "GRAFICOS_RDA/series_mortes_br_total.rda")
 
 #2.1 quantidade de mortes psic no brasil
 
@@ -160,9 +160,9 @@ dados.mortes.psic.series <- data.frame(
 # grafico 
 
 series_mortes_br_psic <- ggplot(data = dados.mortes.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
-  geom_line(linetype = "solid" ,color = "black",
+  geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
-  geom_point(shape = 15, color = "black") +
+  geom_point(shape = 15) +
   labs(title = "Número de Óbitos por Psicoativos no Brasil de 2013 a 2022", 
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
@@ -172,7 +172,7 @@ series_mortes_br_psic <- ggplot(data = dados.mortes.psic.series, aes(x = ANOOBIT
 series_mortes_br_psic
 
 
-save(series_mortes_br_psic, file = "GRAFICOS_RDA/series_mortes_br_psic")
+save(series_mortes_br_psic, file = "GRAFICOS_RDA/series_mortes_br_psic.rda")
 
 
 #2.1 quantidade de mortes totais no es
@@ -187,9 +187,9 @@ dados.mortes.es.totais.series <- data.frame(
 # grafico 
 
 series_mortes_es_total <- ggplot(data = dados.mortes.es.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
-  geom_line(linetype = "solid" ,color = "black",
+  geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
-  geom_point(shape = 15, color = "black") +
+  geom_point(shape = 15) +
   labs(title = "Número de Óbitos Totais no Espírito Santo de 2013 a 2022", 
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
@@ -199,7 +199,7 @@ series_mortes_es_total <- ggplot(data = dados.mortes.es.totais.series, aes(x = A
 series_mortes_es_total
 
 
-save(series_mortes_es_total, file = "GRAFICOS_RDA/series_mortes_es_total")
+save(series_mortes_es_total, file = "GRAFICOS_RDA/series_mortes_es_total.rda")
 
 #2.1 quantidade de mortes psic no es
 
@@ -213,9 +213,9 @@ dados.mortes.es.psic.series <- data.frame(
 # grafico 
 
 series_mortes_es_psic <- ggplot(data = dados.mortes.es.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
-  geom_line(linetype = "solid" ,color = "black",
+  geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
-  geom_point(shape = 15, color = "black") +
+  geom_point(shape = 15) +
   labs(title = "Número de Óbitos por Psicoativos no Espírito Santo de 2013 a 2022", 
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
@@ -224,5 +224,5 @@ series_mortes_es_psic <- ggplot(data = dados.mortes.es.psic.series, aes(x = ANOO
   theme_classic()
 series_mortes_es_psic
 
-save(series_mortes_es_psic, file = "GRAFICOS_RDA/series_mortes_es_psic")
+save(series_mortes_es_psic, file = "GRAFICOS_RDA/series_mortes_es_psic.rda")
 
