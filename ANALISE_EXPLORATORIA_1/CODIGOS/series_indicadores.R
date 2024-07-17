@@ -5,18 +5,18 @@
 
 dados_indic1 <- inner_join(
   data.frame(
-    dados_es_psic %>% group_by(ANOOBITO) %>% 
+    dados_es_psic %>% group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
+  ),
   data.frame(
-    dados_es_total %>% 
-      filter(IDADE2>17) %>% 
-      group_by(ANOOBITO) %>% 
+    dados_es_total %>%
+      filter(IDADE2>17) %>%
+      group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
-  
+  ),
+
   by="ANOOBITO"
-  
+
 )
 
 colnames(dados_indic1) <- c("ANOOBITO", "N_obitos_es_psic", "N_obitos_es_total")
@@ -31,11 +31,11 @@ serie_indic1 <- ggplot(data = dados_indic1, aes(x = ANOOBITO, y = indic1)) +
   geom_line(linetype = "solid", color = paleta_series(1),
             linewidth = 0.5) +
   geom_point(shape = 15, color = paleta_series(1)) +
-  labs(title = "Número de óbitos por Psicoativos no ES/Numero de Obitos Totais (>17 anos) no ES de 2013 a 2022", 
+  labs(title = "Número de óbitos por Psicoativos no ES/Numero de Obitos Totais (>17 anos) no ES de 2013 a 2022",
        x="Anos", y="Obitos/1000") +
   scale_x_continuous(
-    breaks = dados_indic1$ANOOBITO,  
-    labels = dados_indic1$ANOOBITO)+ 
+    breaks = dados_indic1$ANOOBITO,
+    labels = dados_indic1$ANOOBITO)+
   scale_y_continuous(limits = c(0,15),
       breaks = seq(0,15, by=2))+
   theme_classic()+
@@ -46,23 +46,23 @@ serie_indic1
 
 
 
-save(serie_indic1, file="GRAFICOS_RDA/serie_indic1.rda")
+save(serie_indic1, file="GRAFICOS_RDA/serie_indic1.RData")
 
 
 # MONTANDO OS DADOS INDICADOR 2
 
 dados_indic2 <- inner_join(
   data.frame(
-    dados_es_psic %>% group_by(ANOOBITO) %>% 
+    dados_es_psic %>% group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
+  ),
   data.frame(
-    dados_br_psic %>% group_by(ANOOBITO) %>% 
+    dados_br_psic %>% group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
-  
+  ),
+
   by="ANOOBITO"
-  
+
 )
 
 colnames(dados_indic2) <- c("ANOOBITO", "N_obitos_es_psic", "N_obitos_br_psic")
@@ -77,18 +77,18 @@ serie_indic2 <- ggplot(data = dados_indic2, aes(x = ANOOBITO, y = indic2)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
   geom_point(shape = 15, color = paleta_series(1)) +
-  labs(title = "Numero de Obitos por Psicoativos no ES/Numero de Obitos por Psicoativos no Brasil 
-de 2013 a 2022", 
+  labs(title = "Numero de Obitos por Psicoativos no ES/Numero de Obitos por Psicoativos no Brasil
+de 2013 a 2022",
        x="Anos", y="Obitos/100") +
   scale_x_continuous(
-    breaks = dados_indic2$ANOOBITO,  
-    labels = dados_indic2$ANOOBITO)+ 
+    breaks = dados_indic2$ANOOBITO,
+    labels = dados_indic2$ANOOBITO)+
   scale_y_continuous(limits = c(0,3.5),
-                     breaks = seq(0,3.5, by=0.5))+  
+                     breaks = seq(0,3.5, by=0.5))+
   theme_classic()
 serie_indic2
 
-save(serie_indic1, file="GRAFICOS_RDA/serie_indic2.rda")
+save(serie_indic1, file="GRAFICOS_RDA/serie_indic2.RData")
 
 
 
@@ -96,18 +96,18 @@ save(serie_indic1, file="GRAFICOS_RDA/serie_indic2.rda")
 
 dados_indic3 <- inner_join(
   data.frame(
-    dados_es_total %>% 
-      group_by(ANOOBITO) %>% 
+    dados_es_total %>%
+      group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
+  ),
   data.frame(
-    dados_br_total %>% 
-      group_by(ANOOBITO) %>% 
+    dados_br_total %>%
+      group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
-  
+  ),
+
   by="ANOOBITO"
-  
+
 )
 
 colnames(dados_indic3) <- c("ANOOBITO", "N_obitos_es_total", "N_obitos_br_total")
@@ -122,52 +122,52 @@ serie_indic3 <- ggplot(data = dados_indic3, aes(x = ANOOBITO, y = indic3)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
   geom_point(shape = 15, color = paleta_series(1)) +
-  labs(title = "Numero de Obitos Totais no ES/Numero de Obitos Totais no Brasil 
-de 2013 a 2022", 
+  labs(title = "Numero de Obitos Totais no ES/Numero de Obitos Totais no Brasil
+de 2013 a 2022",
        x="Anos", y="Obitos/100") +
   scale_x_continuous(
-    breaks = dados_indic3$ANOOBITO,  
-    labels = dados_indic3$ANOOBITO)+ 
+    breaks = dados_indic3$ANOOBITO,
+    labels = dados_indic3$ANOOBITO)+
   scale_y_continuous(limits = c(0,3.5),
-                     breaks = seq(0,3.5, by=0.5))+ 
+                     breaks = seq(0,3.5, by=0.5))+
   theme_classic()
 serie_indic3
 
 
 
 
-#DADOS INDIC 2 e 3 
+#DADOS INDIC 2 e 3
 
 dados_indic2_3 <- data.frame(
       Ano = rep(dados_indic2$ANOOBITO, 2),
-      valor = c(dados_indic2$indic2, 
+      valor = c(dados_indic2$indic2,
                 dados_indic3$indic3),
-      Indicador = c(rep("Indicador 2", 10), 
+      Indicador = c(rep("Indicador 2", 10),
                     rep("Indicador 3", 10))
 )
 
 
 # montando o grafico
-serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor, 
+serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
                                                     colour = Indicador)) +
   geom_line(linetype = "solid",
             linewidth = 0.5) +
   geom_point(shape = 15) +
-  labs(title = TeX("Indicador 2: $\\frac{Nº óbitos ES psic}{Nº óbitos BR psic}$ e Indicador 3: $\\frac{Nº \ óbitos \ ES \  total}{Nº \ óbitos \ BR \ total}$ de 2013 a 2022"), 
+  labs(title = TeX("Indicador 2: $\\frac{Nº óbitos ES psic}{Nº óbitos BR psic}$ e Indicador 3: $\\frac{Nº \ óbitos \ ES \  total}{Nº \ óbitos \ BR \ total}$ de 2013 a 2022"),
        x="Anos", y="Obitos/100") +
-  scale_colour_manual(values = paleta_series(2), name = "Indicadores", 
+  scale_colour_manual(values = paleta_series(2), name = "Indicadores",
             labels = c("Indicador 2", "Indicador 3")) +
   ylim(1.5, 3.5) +
   scale_x_continuous(
-    breaks = dados_indic2_3$Ano,  
-    labels = dados_indic2_3$Ano)+ 
+    breaks = dados_indic2_3$Ano,
+    labels = dados_indic2_3$Ano)+
   scale_y_continuous(limits = c(0,3.5),
-                     breaks = seq(0,3.5, by=0.5))+ 
+                     breaks = seq(0,3.5, by=0.5))+
   theme_classic()
 
 serie_indic2_3
 
-save(serie_indic2_3, file="GRAFICOS_RDA/serie_indic2_3.rda")
+save(serie_indic2_3, file="GRAFICOS_RDA/serie_indic2_3.RData")
 
 
 
@@ -177,19 +177,19 @@ pop_es_2022 <- data.frame(codigoUF = "32",
                           valor  = c(3833712))
 
 
-dados_indic4 <- pop13a21 %>% 
-  dplyr::filter(codigoUF == 32) %>% 
-  select(ano, valor, codigoUF) %>% 
+dados_indic4 <- pop13a21 %>%
+  dplyr::filter(codigoUF == 32) %>%
+  select(ano, valor, codigoUF) %>%
   bind_rows(pop_es_2022)
 
 dados_indic4$ano <- as.numeric(dados_indic4$ano)
 
 dados_indic4 <- dados_indic4 %>%  inner_join(
   data.frame(
-    dados_es_psic %>% group_by(ANOOBITO) %>% 
+    dados_es_psic %>% group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
-  
+  ),
+
   by = c("ano" = "ANOOBITO")
 )
 
@@ -200,19 +200,19 @@ pop_br_2022 <- data.frame(codigoUF = "1",
                           valor  = c(
                             203080756))
 
-dados_indic5 <- pop13a21 %>% 
-  dplyr::filter(codigoUF == 1) %>% 
-  select(ano, valor, codigoUF) %>% 
+dados_indic5 <- pop13a21 %>%
+  dplyr::filter(codigoUF == 1) %>%
+  select(ano, valor, codigoUF) %>%
   rbind(pop_br_2022)
 
 dados_indic5$ano <- as.numeric(dados_indic5$ano)
 
 dados_indic5 <- dados_indic5 %>%  inner_join(
   data.frame(
-    dados_br_psic %>% group_by(ANOOBITO) %>% 
+    dados_br_psic %>% group_by(ANOOBITO) %>%
       summarise(N.obitos = n())
-  ), 
-  
+  ),
+
   by = c("ano" = "ANOOBITO")
 )
 
@@ -221,43 +221,43 @@ dados_indic5 <- dados_indic5 %>%  inner_join(
 ### MONTANDO DADOS
 dados_indic4_5 <- data.frame(
   Ano = rep(dados_indic4$ano, 2),
-  valor = c(dados_indic4$valor, 
+  valor = c(dados_indic4$valor,
             dados_indic5$valor),
   N.obitos = c(dados_indic4$N.obitos,
                dados_indic5$N.obitos),
-  Indicador = c(rep("Indicador 4", 10), 
+  Indicador = c(rep("Indicador 4", 10),
                 rep("Indicador 5", 10))
 )
 
 
-serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor)*100000, 
+serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor)*100000,
                                                     colour = Indicador)) +
   geom_line(linetype = "solid",
             linewidth = 0.5) +
   geom_point(shape = 15) +
-  labs(title = TeX("Indicador 4: $\\frac{Nº óbitos ES psic}{PopulaçãoES}$ e Indicador 5: $\\frac{NºÓbitosBRpsic}{PopulaçãoBR}$ de 2013 a 2022"), 
+  labs(title = TeX("Indicador 4: $\\frac{Nº óbitos ES psic}{PopulaçãoES}$ e Indicador 5: $\\frac{NºÓbitosBRpsic}{PopulaçãoBR}$ de 2013 a 2022"),
        x="Anos", y="Obitos/100000") +
-  scale_colour_manual(values = paleta_series(2), name = "Indicadores", 
+  scale_colour_manual(values = paleta_series(2), name = "Indicadores",
                       labels = c("Indicador 4", "Indicador 5")) +
   #ylim(1.5, 3.5) +
   scale_x_continuous(
-    breaks = dados_indic4_5$Ano,  
-    labels = dados_indic4_5$Ano)+ 
+    breaks = dados_indic4_5$Ano,
+    labels = dados_indic4_5$Ano)+
   scale_y_continuous(limits = c(0,10),
-                     breaks = seq(0,10, by=1))+ 
+                     breaks = seq(0,10, by=1))+
   theme_classic()
 
-save(serie_indic4_5, file="GRAFICOS_RDA/serie_indic4_5.rda")
+save(serie_indic4_5, file="GRAFICOS_RDA/serie_indic4_5.RData")
 
 #pacman::p_load("gridExtra")
-# 
+#
 # ggplotly(serie_indic4_5, tooltip = c("x","colour"))
-# 
-# 
+#
+#
 # grid.arrange(ggplotly(serie_indic4_5, tooltip = c("y")), ggplotly(serie_indic2_3), ncol=2)
-#             
-# subplot(ggplotly(serie_indic4_5), ggplotly(serie_indic2_3))            
-# 
-# 
+#
+# subplot(ggplotly(serie_indic4_5), ggplotly(serie_indic2_3))
+#
+#
 # serie_indic2_3+serie_indic4_5
-# 
+#

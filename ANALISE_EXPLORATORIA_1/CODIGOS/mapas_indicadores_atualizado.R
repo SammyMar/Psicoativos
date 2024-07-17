@@ -8,20 +8,20 @@ pop13a21<-readRDS("bases_de_dados_externas/pop13a21.rds")
 
 ### numeros de obitos por estado 13 e 22
 dados_mapa_psic_pop13 <- data.frame(
-  dados_br_psic %>%  
-    filter(ANOOBITO == "2013") %>% 
-    group_by(codigoUF, ANOOBITO) %>% 
+  dados_br_psic %>%
+    filter(ANOOBITO == "2013") %>%
+    group_by(codigoUF, ANOOBITO) %>%
     summarise(N.obitos = n()))
 
 dados_mapa_psic_pop22 <- data.frame(
-  dados_br_psic %>%  
-    filter(ANOOBITO == "2022") %>% 
-    group_by(codigoUF, ANOOBITO) %>% 
+  dados_br_psic %>%
+    filter(ANOOBITO == "2022") %>%
+    group_by(codigoUF, ANOOBITO) %>%
     summarise(N.obitos = n()))
 
 ### selecionando pop de 2013 dos estados
-pop_UF_13 <- pop13a21 %>% 
-  filter(ano == "2013" & codigoUF != 1) %>% 
+pop_UF_13 <- pop13a21 %>%
+  filter(ano == "2013" & codigoUF != 1) %>%
   reframe(unique(valor), codigoUF, ano)
 
 pop_UF_13 <- rename(pop_UF_13, pop13 = `unique(valor)`)
@@ -39,14 +39,14 @@ dados_mapa_psic_pop22<- left_join(dados_mapa_psic_pop22, var_extras_UF,
 
 
 # joins com base brasil coordenadas
-dados_mapa_psic_pop13 <- brasil %>% 
+dados_mapa_psic_pop13 <- brasil %>%
   left_join(dados_mapa_psic_pop13, by = c("abbrev_state"="Sigla"))
 
-dados_mapa_psic_pop22 <- brasil %>% 
+dados_mapa_psic_pop22 <- brasil %>%
   left_join(dados_mapa_psic_pop22, by = c("abbrev_state"="Sigla"))
 
 
-mapa_psic_pop13 <- ggplot() + 
+mapa_psic_pop13 <- ggplot() +
   geom_sf(data = dados_mapa_psic_pop13, aes(fill = (N.obitos/pop13)*100000),
           color = "#788881")+
   scale_fill_gradient(low = "white", high = "#010440",limits = c(0,15),
@@ -56,9 +56,9 @@ mapa_psic_pop13 <- ggplot() +
 
 mapa_psic_pop13
 
-save(mapa_psic_pop13, file="GRAFICOS_RDA/mapa_psic_pop13.rda")
+save(mapa_psic_pop13, file="GRAFICOS_RDA/mapa_psic_pop13.RData")
 
-mapa_psic_pop22 <- ggplot() + 
+mapa_psic_pop22 <- ggplot() +
   geom_sf(data = dados_mapa_psic_pop22, aes(fill = (N.obitos/pop22)*100000),
           color = "#788881")+
   scale_fill_gradient(low = "white", high = "#010440", , limits = c(0,15),
@@ -68,4 +68,4 @@ mapa_psic_pop22 <- ggplot() +
 
 mapa_psic_pop22
 
-save(mapa_psic_pop22, file="GRAFICOS_RDA/mapa_psic_pop22.rda")
+save(mapa_psic_pop22, file="GRAFICOS_RDA/mapa_psic_pop22.RData")

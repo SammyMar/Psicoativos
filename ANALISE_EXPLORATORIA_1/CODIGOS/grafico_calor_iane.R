@@ -117,8 +117,6 @@ heatmap_mortes_psic <- ggplot(tab_mortes_estado_ano_psic, aes(x = ANOOBITO, y = 
 print(heatmap_mortes_psic)
 
 
-save(heatmap_mortes_psic, file="heatmap_mortes_psic.rda")
-
-load("GRAFICOS_RDA/heatmap_mortes_psic.rda")
+save(heatmap_mortes_psic, file="GRAFICOS_RDA/heatmap_mortes_psic.RData")
 
 

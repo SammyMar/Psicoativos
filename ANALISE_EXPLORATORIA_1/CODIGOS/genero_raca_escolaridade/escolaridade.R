@@ -1,9 +1,9 @@
-#library(remotes) 
-#library(microdatasus) 
+#library(remotes)
+#library(microdatasus)
 #library(dplyr)
-#library(stringr) 
-#library(ggplot2) 
-#library(lubridate) 
+#library(stringr)
+#library(ggplot2)
+#library(lubridate)
 
 
 
@@ -18,7 +18,7 @@ freq_escolaridade_br_total <- dados_br_total %>%
   mutate(Porcentagem = Quantidade / sum(Quantidade) * 100)
 
 hist_escolaridade_br_total <- ggplot(freq_escolaridade_br_total, aes(x = ESC, y = Quantidade, fill = ESC)) +
-  geom_bar(stat = "identity") + 
+  geom_bar(stat = "identity") +
   scale_fill_manual(values=paleta_hist_ordinal(5))+
   theme(plot.title = element_text(size = 15)) +
   labs(title = "Quantidades de mortes totais no Brasil por Escolaridade",
@@ -61,7 +61,7 @@ hist_escolaridade_es_total <- ggplot(freq_escolaridade_es_total, aes(x = ESC, y 
 
 print(hist_escolaridade_es_total)
 
-#3.4 quantidade de mortes por psicoativos por escolaridade no espirito santo 
+#3.4 quantidade de mortes por psicoativos por escolaridade no espirito santo
 
 freq_escolaridade_es_psic <- dados_es_psic %>%
   group_by(ESC) %>%
@@ -90,107 +90,107 @@ print(hist_escolaridade_es_psic)
 
 # montando os dados
 dados.escolaridade.br.series <- data.frame(
-  dados_br_total %>% group_by(ANOOBITO, ESC) %>% 
+  dados_br_total %>% group_by(ANOOBITO, ESC) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(x = ANOOBITO, y = N.obitos, 
+series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(x = ANOOBITO, y = N.obitos,
                                                                                 colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
   scale_colour_manual(values =  paleta_series(5))+
-  labs(title = "Número de Óbitos Totais no Brasil por Escolaridade", 
+  labs(title = "Número de Óbitos Totais no Brasil por Escolaridade",
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
   scale_x_continuous(
-    breaks = dados.escolaridade.br.series$ANOOBITO,  
-    labels = dados.escolaridade.br.series$ANOOBITO)+ 
+    breaks = dados.escolaridade.br.series$ANOOBITO,
+    labels = dados.escolaridade.br.series$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15)) 
+  theme(plot.title = element_text(size = 15))
 
 print (series_escolaridade_br_total)
 
-save(series_escolaridade_br_total, file="GRAFICOS_RDA/series_escolaridade_br_total.rda")
+save(series_escolaridade_br_total, file="GRAFICOS_RDA/series_escolaridade_br_total.RData")
 
 #2.2 quantidade de mortes TOTAIS por escolaridade no espirito santo
 
 # montando os dados
 dados.escolaridade.es.series <- data.frame(
-  dados_es_total %>% group_by(ANOOBITO, ESC) %>% 
+  dados_es_total %>% group_by(ANOOBITO, ESC) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(x = ANOOBITO, y = N.obitos, 
+series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(x = ANOOBITO, y = N.obitos,
                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
   scale_colour_manual(values =  paleta_series(5))+
-  labs(title = "Número de Óbitos Totais no ES por Escolaridade", 
+  labs(title = "Número de Óbitos Totais no ES por Escolaridade",
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
   scale_x_continuous(
-    breaks = dados.escolaridade.es.series$ANOOBITO,  
-    labels = dados.escolaridade.es.series$ANOOBITO)+ 
+    breaks = dados.escolaridade.es.series$ANOOBITO,
+    labels = dados.escolaridade.es.series$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15)) 
+  theme(plot.title = element_text(size = 15))
 
 print (series_escolaridade_es_total)
 
 
-save(series_escolaridade_es_total, file="GRAFICOS_RDA/series_escolaridade_es_total.rda")
+save(series_escolaridade_es_total, file="GRAFICOS_RDA/series_escolaridade_es_total.RData")
 
 #2.1 quantidade de mortes por psicoativos por escolaridade no brasil
 
 # montando os dados
 dados.escolaridade.br.series.psic <- data.frame(
-  dados_br_psic %>% group_by(ANOOBITO, ESC) %>% 
+  dados_br_psic %>% group_by(ANOOBITO, ESC) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, aes(x = ANOOBITO, y = N.obitos, 
+series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                         colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
   scale_colour_manual(values =  paleta_series(5))+
-  labs(title = "Número de Óbitos por psicoativos no Brasil por Escolaridade", 
+  labs(title = "Número de Óbitos por psicoativos no Brasil por Escolaridade",
        x="Anos", y="Óbitos por psicoativos", colour = "Escolaridade") +
   scale_x_continuous(
-    breaks = dados.escolaridade.br.series.psic$ANOOBITO,  
+    breaks = dados.escolaridade.br.series.psic$ANOOBITO,
     labels = dados.escolaridade.br.series.psic$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 13)) 
+  theme(plot.title = element_text(size = 13))
 
 print (series_escolaridade_br_psic)
 
-save(series_escolaridade_br_psic, file="GRAFICOS_RDA/series_escolaridade_br_psic.rda")
+save(series_escolaridade_br_psic, file="GRAFICOS_RDA/series_escolaridade_br_psic.RData")
 
 #2.1 quantidade de mortes por psicoativos por escolaridade no espirito santo
 
 # montando os dados
 dados.escolaridade.es.series.psic <- data.frame(
-  dados_es_psic %>% group_by(ANOOBITO, ESC) %>% 
+  dados_es_psic %>% group_by(ANOOBITO, ESC) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, aes(x = ANOOBITO, y = N.obitos, 
+series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC)) +
   scale_colour_manual(values =  paleta_series(5))+
-  labs(title = "Número de óbitos por psicoativos no Espirito Santo por Escolaridade", 
+  labs(title = "Número de óbitos por psicoativos no Espirito Santo por Escolaridade",
        x="Anos", y="Óbitos por psicoativos", colour = "Escolaridade") +
   scale_x_continuous(
-    breaks = dados.escolaridade.es.series.psic$ANOOBITO,  
-    labels = dados.escolaridade.es.series.psic$ANOOBITO)+ 
+    breaks = dados.escolaridade.es.series.psic$ANOOBITO,
+    labels = dados.escolaridade.es.series.psic$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 13)) 
+  theme(plot.title = element_text(size = 13))
 
 print (series_escolaridade_es_psic)
 
 
-save(series_escolaridade_es_psic, file="GRAFICOS_RDA/series_escolaridade_es_psic.rda")
+save(series_escolaridade_es_psic, file="GRAFICOS_RDA/series_escolaridade_es_psic.RData")
 #GRAFICO DE PROPORCAO Brasil
 
 
@@ -218,7 +218,7 @@ proporcao_escolaridade_br_psic <-ggplot(dados.escolaridade.br.series.psic, aes(x
 
 print(proporcao_escolaridade_br_psic)
 
-save(proporcao_escolaridade_br_psic, file="GRAFICOS_RDA/proporcao_escolaridade_br_psic.rda")
+save(proporcao_escolaridade_br_psic, file="GRAFICOS_RDA/proporcao_escolaridade_br_psic.RData")
 
 #GRAFICO DE PROPORCAO ES
 
@@ -247,5 +247,5 @@ proporcao_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(
 
 print(proporcao_escolaridade_es_psic)
 
-save(proporcao_escolaridade_es_psic, file="GRAFICOS_RDA/proporcao_escolaridade_es_psic.rda")
+save(proporcao_escolaridade_es_psic, file="GRAFICOS_RDA/proporcao_escolaridade_es_psic.RData")
 

@@ -12,13 +12,13 @@ cores <-  brewer.pal(10, "Set1")
 cores2 <- c("#4357AD","#EFA9AE","#9A3D6A", "#6a3d9a", "#a6cee3", "#1d9a55", "#9A3DA7", "#Dab2d6", "#6A3DA7", "#EFA1AE")
 
 ### -------------------------TABELA DINÂMICA DE CIDS-- ------------###
-### PREPARAÇÃO ### 
+### PREPARAÇÃO ###
 #Importar o DataSet CIDs na pasta bases_de_dados antes de rodar o codigo:
 
 CIDs <- read_excel('CIDs.xlsx')
 
 # Tabela dinâmica
- tabela_redutiva <- reactable::reactable(CIDs, 
+ tabela_redutiva <- reactable::reactable(CIDs,
                       groupBy = c("CID", "subdivisao"),
                       filterable = TRUE,
                       showSortable = TRUE,
@@ -38,7 +38,7 @@ CIDs <- read_excel('CIDs.xlsx')
                         searchInputStyle = list(width = "100%")
                       ))
 
-
+ save(tabela_redutiva, file="GRAFICOS_RDA/tabela_redutiva.RData")
 ### ------------------ GRÁFICOS IDADE ----------------------###
 
 ## BOXPLOT SIMPLES DE IDADE PARA CADA BASE DE DADO
@@ -259,10 +259,13 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
   )
 
 graf.serie.idade.br.p
-
+save(graf.serie.idade.es.t, file="GRAFICOS_RDA/graf.serie.idade.es.t.RData")
+save(graf.serie.idade.es.p, file="GRAFICOS_RDA/graf.serie.idade.es.p.RData")
+save(graf.serie.idade.br.t, file="GRAFICOS_RDA/graf.serie.idade.br.t.RData")
+save(graf.serie.idade.br.p, file="GRAFICOS_RDA/graf.serie.idade.br.p.RData")
 ##BOXPLOT DE IDADE POR ANO
 #BOXPLOT IDADE POR ANO NO ESPÍRITO SANTO, GERAL
-boxplot.anoidad.es <- dados_es_total %>% 
+boxplot.anoidad.es <- dados_es_total %>%
   ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
   stat_summary(fun = mean, geom = "line", aes(group = 1), color = "gray", size = 1)+
   geom_errorbar(stat = "boxplot", width = 0.2)+
@@ -284,7 +287,7 @@ boxplot.anoidad.es <- dados_es_total %>%
 boxplot.anoidad.es
 
 #BOXPLOT IDADE POR ANO NO ESPÍRITO SANTO, PSICOATIVO
-boxplot.anoidad.es.psic <- dados_es_psic %>% 
+boxplot.anoidad.es.psic <- dados_es_psic %>%
   ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
   geom_errorbar(stat = "boxplot", width = 0.2)+
   geom_boxplot( fill = "#EFA1AE" )+
@@ -305,7 +308,7 @@ boxplot.anoidad.es.psic <- dados_es_psic %>%
 boxplot.anoidad.es.psic
 
 #BOXPLOT IDADE POR ANO NO BRASIL, GERAL
-boxplot.anoidad.br <- dados_br_total %>% 
+boxplot.anoidad.br <- dados_br_total %>%
   ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
   geom_errorbar(stat = "boxplot", width = 0.2)+
   geom_boxplot( fill = "#a6cee3" )+
@@ -326,7 +329,7 @@ boxplot.anoidad.br <- dados_br_total %>%
 boxplot.anoidad.br
 
 #BOXPLOT IDADE POR ANO NO BRASIL, PSICOATIVO
-boxplot.anoidad.br.psic <- dados_br_psic %>% 
+boxplot.anoidad.br.psic <- dados_br_psic %>%
   ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
   geom_errorbar(stat = "boxplot", width = 0.2)+
   geom_boxplot( fill = "#EFA1AE" )+
@@ -345,6 +348,11 @@ boxplot.anoidad.br.psic <- dados_br_psic %>%
     legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
   )
 boxplot.anoidad.br.psic
+save(boxplot.anoidad.es, file="GRAFICOS_RDA/boxplot.anoidad.es.RData")
+save(boxplot.anoidad.es.psic, file="GRAFICOS_RDA/boxplot.anoidad.es.psic.RData")
+save(boxplot.anoidad.br, file="GRAFICOS_RDA/boxplot.anoidad.br.RData")
+save(boxplot.anoidad.br.psic, file="GRAFICOS_RDA/boxplot.anoidad.br.psic.RData")
+
 
 ###----------------------- GRÁFICOS ESTADO CIVIL ---------------------###
 
@@ -466,9 +474,12 @@ barplot_estciv_es <- ggplot(dados_prop_estciv_es, aes(x = fct_reorder(ESTCIV,p),
   )
 
 barplot_estciv_es
-
+save(barplot_estciv_br, file="GRAFICOS_RDA/barplot_estciv_br.RData")
+save(barplot_estciv_br_psic, file="GRAFICOS_RDA/barplot_estciv_br_psic.RData")
+save(barplot_estciv_es_psic, file="GRAFICOS_RDA/barplot_estciv_es_psic.RData")
+save(barplot_estciv_es, file="GRAFICOS_RDA/barplot_estciv_es.RData")
 ##### ----------------SERIES ANO x NUMERO DE OBITOS CONTROLADO POR UMA VARIAVEL -----------####
-# ÓBITOS NO BRASIL PELO USO DE PSICOATIVOS 
+# ÓBITOS NO BRASIL PELO USO DE PSICOATIVOS
 
 # MONTANDO DADOS
 dados_br_psic$DTOBITO <- ymd(dados_br_psic$DTOBITO)
@@ -501,7 +512,7 @@ serie_obt_psic_br <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
 
 serie_obt_psic_br
 
-# ÓBITOS NO ESPÍRITO SANTO PELO USO DE PSICOATIVOS 
+# ÓBITOS NO ESPÍRITO SANTO PELO USO DE PSICOATIVOS
 
 dados_es_psic$DTOBITO <- ymd(dados_es_psic$DTOBITO)
 dados_es_psic$ANOOBITO <- year(dados_es_psic$DTOBITO)
@@ -533,13 +544,15 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
 
 
 serie_obt_psic_es
+save(serie_obt_psic_br, file="GRAFICOS_RDA/serie_obt_psic_br.RData")
+save(serie_obt_psic_es, file="GRAFICOS_RDA/serie_obt_psic_es.RData")
 
 ### ------------- GRÁFICOS DE PROPORÇÃO -------------
 ## ESTADO CIVIL GERAL
 ## ES
 #1 Criando data frame com proporção
 dados.estciv.es.series <- data.frame(
-  dados_es_total %>% group_by(ANOOBITO, ESTCIV) %>% 
+  dados_es_total %>% group_by(ANOOBITO, ESTCIV) %>%
     summarise(N.obitos = n())
 )
 dados.estciv.es.series <- dados.estciv.es.series %>%
@@ -553,11 +566,11 @@ dados.estciv.es.series <- dados.estciv.es.series %>%
 grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3", 
-    "Separado judicialmente" = "#1F78B4", 
-    "Solteiro" = "#B2DF8A", 
-    "União consensual" = "#33A02C", 
-    "Viúvo" = "#FB9A99", 
+    "Casado" = "#A6CEE3",
+    "Separado judicialmente" = "#1F78B4",
+    "Solteiro" = "#B2DF8A",
+    "União consensual" = "#33A02C",
+    "Viúvo" = "#FB9A99",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -581,7 +594,7 @@ print(grafico_prop_estciv_es)
 ## BR
 #1 Criando data frame com proporção
 dados.estciv.br.series <- data.frame(
-  dados_br_total %>% group_by(ANOOBITO, ESTCIV) %>% 
+  dados_br_total %>% group_by(ANOOBITO, ESTCIV) %>%
     summarise(N.obitos = n())
 )
 dados.estciv.br.series <- dados.estciv.br.series %>%
@@ -595,11 +608,11 @@ dados.estciv.br.series <- dados.estciv.br.series %>%
 grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3", 
-    "Separado judicialmente" = "#1F78B4", 
-    "Solteiro" = "#B2DF8A", 
-    "União consensual" = "#33A02C", 
-    "Viúvo" = "#FB9A99", 
+    "Casado" = "#A6CEE3",
+    "Separado judicialmente" = "#1F78B4",
+    "Solteiro" = "#B2DF8A",
+    "União consensual" = "#33A02C",
+    "Viúvo" = "#FB9A99",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -619,12 +632,13 @@ grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO
 
 
 print(grafico_prop_estciv_br)
-
+save(grafico_prop_estciv_es, file="GRAFICOS_RDA/grafico_prop_estciv_es.RData")
+save(grafico_prop_estciv_br, file="GRAFICOS_RDA/grafico_prop_estciv_br.RData")
 ### ESTADO CIVIL POR PSICOATIVO
 ## ES PSIC
 #1 Criando data frame com proporção
 dados.estciv.es.series.psic <- data.frame(
-  dados_es_psic %>% group_by(ANOOBITO, ESTCIV) %>% 
+  dados_es_psic %>% group_by(ANOOBITO, ESTCIV) %>%
     summarise(N.obitos = n())
 )
 dados.estciv.es.series.psic <- dados.estciv.es.series.psic %>%
@@ -638,11 +652,11 @@ dados.estciv.es.series.psic <- dados.estciv.es.series.psic %>%
 grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3", 
-    "Separado judicialmente" = "#1F78B4", 
-    "Solteiro" = "#B2DF8A", 
-    "União consensual" = "#33A02C", 
-    "Viúvo" = "#FB9A99", 
+    "Casado" = "#A6CEE3",
+    "Separado judicialmente" = "#1F78B4",
+    "Solteiro" = "#B2DF8A",
+    "União consensual" = "#33A02C",
+    "Viúvo" = "#FB9A99",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -666,7 +680,7 @@ print(grafico_prop_estciv_es_psic)
 ## BR PSIC
 #1 Criando data frame com proporção
 dados.estciv.br.series.psic <- data.frame(
-  dados_br_psic %>% group_by(ANOOBITO, ESTCIV) %>% 
+  dados_br_psic %>% group_by(ANOOBITO, ESTCIV) %>%
     summarise(N.obitos = n())
 )
 dados.estciv.br.series.psic <- dados.estciv.br.series.psic %>%
@@ -680,11 +694,11 @@ dados.estciv.br.series.psic <- dados.estciv.br.series.psic %>%
 grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3", 
-    "Separado judicialmente" = "#1F78B4", 
-    "Solteiro" = "#B2DF8A", 
-    "União consensual" = "#33A02C", 
-    "Viúvo" = "#FB9A99", 
+    "Casado" = "#A6CEE3",
+    "Separado judicialmente" = "#1F78B4",
+    "Solteiro" = "#B2DF8A",
+    "União consensual" = "#33A02C",
+    "Viúvo" = "#FB9A99",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -704,12 +718,15 @@ grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = facto
 
 
 print(grafico_prop_estciv_br_psic)
-
+save(grafico_prop_estciv_es, file="GRAFICOS_RDA/grafico_prop_estciv_es.RData")
+save(grafico_prop_estciv_br, file="GRAFICOS_RDA/grafico_prop_estciv_br.RData")
+save(grafico_prop_estciv_es_psic, file="GRAFICOS_RDA/grafico_prop_estciv_es_psic.RData")
+save(grafico_prop_estciv_br_psic, file="GRAFICOS_RDA/grafico_prop_estciv_br_psic.RData")
 ## IDADE PSIC
 ## ES psic
 #1 Criando data frame com proporção
 dados.idade.es.series.psic <- data.frame(
-  dados_es_psic %>% group_by(ANOOBITO, categoria_idade) %>% 
+  dados_es_psic %>% group_by(ANOOBITO, categoria_idade) %>%
     summarise(N.obitos = n())
 )
 dados.idade.es.series.psic <- dados.idade.es.series.psic %>%
@@ -723,10 +740,10 @@ dados.idade.es.series.psic <- dados.idade.es.series.psic %>%
 grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3", 
-    "Idoso" = "#B2DF8A", 
-    "Jovem-Adulto" = "#FB9A99", 
-    "Menor de idade" = "#1F78B4", 
+    "Adulto" = "#A6CEE3",
+    "Idoso" = "#B2DF8A",
+    "Jovem-Adulto" = "#FB9A99",
+    "Menor de idade" = "#1F78B4",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -751,7 +768,7 @@ print(grafico_prop_idade_es_psic)
 # BR PSIC
 #1 Criando data frame com proporção
 dados.idade.br.series.psic <- data.frame(
-  dados_br_psic %>% group_by(ANOOBITO, categoria_idade) %>% 
+  dados_br_psic %>% group_by(ANOOBITO, categoria_idade) %>%
     summarise(N.obitos = n())
 )
 dados.idade.br.series.psic <- dados.idade.br.series.psic %>%
@@ -765,10 +782,10 @@ dados.idade.br.series.psic <- dados.idade.br.series.psic %>%
 grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3", 
-    "Idoso" = "#B2DF8A", 
-    "Jovem-Adulto" = "#FB9A99", 
-    "Menor de idade" = "#1F78B4", 
+    "Adulto" = "#A6CEE3",
+    "Idoso" = "#B2DF8A",
+    "Jovem-Adulto" = "#FB9A99",
+    "Menor de idade" = "#1F78B4",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -793,7 +810,7 @@ print(grafico_prop_idade_br_psic)
 ## IDADE ES GERAL
 #1 Criando data frame com proporção
 dados.idade.es.series <- data.frame(
-  dados_es_total %>% group_by(ANOOBITO, categoria_idade) %>% 
+  dados_es_total %>% group_by(ANOOBITO, categoria_idade) %>%
     summarise(N.obitos = n())
 )
 dados.idade.es.series <- dados.idade.es.series %>%
@@ -807,10 +824,10 @@ dados.idade.es.series <- dados.idade.es.series %>%
 grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3", 
-    "Idoso" = "#B2DF8A", 
-    "Jovem-Adulto" = "#FB9A99", 
-    "Menor de idade" = "#1F78B4", 
+    "Adulto" = "#A6CEE3",
+    "Idoso" = "#B2DF8A",
+    "Jovem-Adulto" = "#FB9A99",
+    "Menor de idade" = "#1F78B4",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -835,7 +852,7 @@ print(grafico_prop_idade_es)
 
 #1 Criando data frame com proporção
 dados.idade.br.series <- data.frame(
-  dados_br_total %>% group_by(ANOOBITO, categoria_idade) %>% 
+  dados_br_total %>% group_by(ANOOBITO, categoria_idade) %>%
     summarise(N.obitos = n())
 )
 dados.idade.br.series <- dados.idade.br.series %>%
@@ -849,10 +866,10 @@ dados.idade.br.series <- dados.idade.br.series %>%
 grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3", 
-    "Idoso" = "#B2DF8A", 
-    "Jovem-Adulto" = "#FB9A99", 
-    "Menor de idade" = "#1F78B4", 
+    "Adulto" = "#A6CEE3",
+    "Idoso" = "#B2DF8A",
+    "Jovem-Adulto" = "#FB9A99",
+    "Menor de idade" = "#1F78B4",
     "NA" = "#D3D3D3"
   )) +
   labs(
@@ -871,3 +888,7 @@ grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO),
   )
 
 print(grafico_prop_idade_br)
+save(grafico_prop_idade_es_psic, file="GRAFICOS_RDA/grafico_prop_idade_es_psic.RData")
+save(grafico_prop_idade_br_psic, file="GRAFICOS_RDA/grafico_prop_idade_br_psic.RData")
+save(grafico_prop_idade_es, file="GRAFICOS_RDA/grafico_prop_idade_es.RData")
+save(grafico_prop_idade_br, file="GRAFICOS_RDA/grafico_prop_idade_br.RData")

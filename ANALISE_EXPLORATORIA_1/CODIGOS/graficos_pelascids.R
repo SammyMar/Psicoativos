@@ -31,6 +31,7 @@ hist.F10.es <- ggplot(data = dados.F10.ES, aes(x = IDADE2)) +
   )
 
 hist.F10.es
+save(hist.F10.es, file="GRAFICOS_RDA/hist.F10.es.RData")
 
 #1.2 br
 hist.F10.br <- ggplot(data = dados.F10.BR, aes(x = IDADE2)) +
@@ -51,9 +52,9 @@ hist.F10.br <- ggplot(data = dados.F10.BR, aes(x = IDADE2)) +
   )
 
 hist.F10.br
+save(hist.F10.br, file="GRAFICOS_RDA/hist.F10.br.RData")
 
-
-# 2. histograma de mortos x idade de f17 (fumo) 
+# 2. histograma de mortos x idade de f17 (fumo)
 # 2.1 es
 hist.F17.es <- ggplot(data = dados.F17.ES, aes(x = IDADE2)) +
   geom_histogram(binwidth = 4, fill = "#9A3D6A", color = "black", alpha = 0.8) +
@@ -73,7 +74,7 @@ hist.F17.es <- ggplot(data = dados.F17.ES, aes(x = IDADE2)) +
   )
 
 hist.F17.es
-
+save(hist.F17.es, file="GRAFICOS_RDA/hist.F17.es.RData")
 #2.2 br
 hist.F17.br <- ggplot(data = dados.F17.BR, aes(x = IDADE2)) +
   geom_histogram(binwidth = 4, fill = "#9A3D6A", color = "black", alpha = 0.8) +
@@ -93,7 +94,7 @@ hist.F17.br <- ggplot(data = dados.F17.BR, aes(x = IDADE2)) +
   )
 
 hist.F17.br
-
+save(hist.F17.br, file="GRAFICOS_RDA/hist.F17.br.RData")
 #------------ ÓBITOS X GêNERO ---------------
 #SERIE
 
@@ -102,20 +103,20 @@ hist.F17.br
 # 3.1 BR
 # montando os dados
 dados.genero.br.F10 <- data.frame(
-  dados.F10.BR %>% group_by(ANOOBITO, SEXO) %>% 
+  dados.F10.BR %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_br_f10 <- ggplot(data = dados.genero.br.F10, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_br_f10 <- ggplot(data = dados.genero.br.F10, aes(x = ANOOBITO, y = N.obitos,
                                                                     colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Óbitos causados pelo uso de álcool no Brasil por Gênero", 
+  labs(title = "Óbitos causados pelo uso de álcool no Brasil por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
-    breaks = dados.genero.br.F10$ANOOBITO,  
-    labels = dados.genero.br.F10$ANOOBITO)+ 
+    breaks = dados.genero.br.F10$ANOOBITO,
+    labels = dados.genero.br.F10$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 12),       # Tamanho e estilo do título do gráfico
@@ -126,24 +127,24 @@ series_genero_br_f10 <- ggplot(data = dados.genero.br.F10, aes(x = ANOOBITO, y =
   )
 
 print (series_genero_br_f10)
-
+save(series_genero_br_f10, file="GRAFICOS_RDA/series_genero_br_f10.RData")
 # 3.2 ES
 # montando os dados
 dados.genero.es.F10 <- data.frame(
-  dados.F10.ES %>% group_by(ANOOBITO, SEXO) %>% 
+  dados.F10.ES %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y = N.obitos,
                                                                colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Óbitos causados pelo uso de álcool no Espírito Santo por Gênero", 
+  labs(title = "Óbitos causados pelo uso de álcool no Espírito Santo por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
-    breaks = dados.genero.es.F10$ANOOBITO,  
-    labels = dados.genero.es.F10$ANOOBITO)+ 
+    breaks = dados.genero.es.F10$ANOOBITO,
+    labels = dados.genero.es.F10$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
@@ -154,26 +155,26 @@ series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y =
   )
 
 print (series_genero_es_f10)
-
+save(series_genero_es_f10, file="GRAFICOS_RDA/series_genero_es_f10.RData")
 
 # 4. quantidade de mortes por genero - PELO FUMO (F17)
 #4.1 BR
 # montando os dados
 dados.genero.br.F17 <- data.frame(
-  dados.F17.BR %>% group_by(ANOOBITO, SEXO) %>% 
+  dados.F17.BR %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_br_f17 <- ggplot(data = dados.genero.br.F17, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_br_f17 <- ggplot(data = dados.genero.br.F17, aes(x = ANOOBITO, y = N.obitos,
                                                                colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Número de Óbitos causados pelo fumo no Brasil por Gênero", 
+  labs(title = "Número de Óbitos causados pelo fumo no Brasil por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
-    breaks = dados.genero.br.F17$ANOOBITO,  
-    labels = dados.genero.br.F17$ANOOBITO)+ 
+    breaks = dados.genero.br.F17$ANOOBITO,
+    labels = dados.genero.br.F17$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
@@ -184,24 +185,24 @@ series_genero_br_f17 <- ggplot(data = dados.genero.br.F17, aes(x = ANOOBITO, y =
   )
 
 print (series_genero_br_f17)
-
+save(series_genero_br_f17, file="GRAFICOS_RDA/series_genero_br_f17.RData")
 #4.2 ES
 # montando os dados
 dados.genero.es.F17 <- data.frame(
-  dados.F17.ES %>% group_by(ANOOBITO, SEXO) %>% 
+  dados.F17.ES %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_es_f17 <- ggplot(data = dados.genero.es.F17, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_es_f17 <- ggplot(data = dados.genero.es.F17, aes(x = ANOOBITO, y = N.obitos,
                                                                colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
-  labs(title = "Óbitos causados pelo fumo no Espírito Santo por Gênero", 
+  labs(title = "Óbitos causados pelo fumo no Espírito Santo por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
-    breaks = dados.genero.es.F17$ANOOBITO,  
-    labels = dados.genero.es.F17$ANOOBITO)+ 
+    breaks = dados.genero.es.F17$ANOOBITO,
+    labels = dados.genero.es.F17$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
@@ -212,7 +213,7 @@ series_genero_es_f17 <- ggplot(data = dados.genero.es.F17, aes(x = ANOOBITO, y =
   )
 
 print (series_genero_es_f17)
-
+save(series_genero_es_f17, file="GRAFICOS_RDA/series_genero_es_f17.RData")
 #------------ ÓBITOS X ESCOLARIDADE ---------------
 
 #5. quantidade de mortes por escolaridade - PELO CONSUMO DE ÁLCOOL (F10)
@@ -240,7 +241,7 @@ hist_escolaridade_br_f10 <- ggplot(freq_escolaridade_br_f10, aes(x = ESC, y = Qu
   )
 
 print(hist_escolaridade_br_f10)
-
+save(hist_escolaridade_br_f10, file="GRAFICOS_RDA/hist_escolaridade_br_f10.RData")
 #5.2 ES
 
 freq_escolaridade_es_f10 <- dados.F10.ES %>%
@@ -265,6 +266,7 @@ hist_escolaridade_es_f10 <- ggplot(freq_escolaridade_es_f10, aes(x = ESC, y = Qu
 
 print(hist_escolaridade_es_f10)
 
+save(hist_escolaridade_es_f10, file="GRAFICOS_RDA/hist_escolaridade_es_f10.RData")
 # 6. quantidade de mortes por escolaridade - PELO FUMO(F17)
 
 #6.1 BR
@@ -292,6 +294,7 @@ hist_escolaridade_br_f17 <- ggplot(freq_escolaridade_br_f17, aes(x = ESC, y = Qu
 
 print(hist_escolaridade_br_f17)
 
+save(hist_escolaridade_br_f17, file="GRAFICOS_RDA/hist_escolaridade_br_f17.RData")
 #6.2 ES
 
 freq_escolaridade_es_f17 <- dados.F17.ES %>%
@@ -315,29 +318,29 @@ hist_escolaridade_es_f17 <- ggplot(freq_escolaridade_es_f17, aes(x = ESC, y = Qu
   )
 
 print(hist_escolaridade_es_f17)
-
+save(hist_escolaridade_es_f17, file="GRAFICOS_RDA/hist_escolaridade_es_f17.RData")
 #------------ ÓBITOS X raça ---------------
 #SERIE
 
-#7 quantidade de mortes por raca - PELO CONSUMO DE ALCOOL (F10) 
+#7 quantidade de mortes por raca - PELO CONSUMO DE ALCOOL (F10)
 
 #7.1 BR
 # montando os dados
 dados.raca.br.f10 <- data.frame(
-  dados.F10.BR %>% group_by(ANOOBITO, RACACOR) %>% 
+  dados.F10.BR %>% group_by(ANOOBITO, RACACOR) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_raca_br_F10 <- ggplot(data = dados.raca.br.f10, aes(x = ANOOBITO, y = N.obitos, 
+series_raca_br_F10 <- ggplot(data = dados.raca.br.f10, aes(x = ANOOBITO, y = N.obitos,
                                                                 colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title ="Óbitos pelo consumo de álcool no Brasil por Raça", 
+  labs(title ="Óbitos pelo consumo de álcool no Brasil por Raça",
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
-    breaks = dados.raca.br.f10$ANOOBITO,  
-    labels = dados.raca.br.f10$ANOOBITO)+ 
+    breaks = dados.raca.br.f10$ANOOBITO,
+    labels = dados.raca.br.f10$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
@@ -353,20 +356,20 @@ print (series_raca_br_F10)
 
 # montando os dados
 dados.raca.es.f10 <- data.frame(
-  dados.F10.ES %>% group_by(ANOOBITO, RACACOR) %>% 
+  dados.F10.ES %>% group_by(ANOOBITO, RACACOR) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_raca_es_F10 <- ggplot(data = dados.raca.es.f10, aes(x = ANOOBITO, y = N.obitos, 
+series_raca_es_F10 <- ggplot(data = dados.raca.es.f10, aes(x = ANOOBITO, y = N.obitos,
                                                            colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "Óbitos pelo consumo de álcool no Espírito Santo por Raça", 
+  labs(title = "Óbitos pelo consumo de álcool no Espírito Santo por Raça",
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
-    breaks = dados.raca.es.f10$ANOOBITO,  
-    labels = dados.raca.es.f10$ANOOBITO)+ 
+    breaks = dados.raca.es.f10$ANOOBITO,
+    labels = dados.raca.es.f10$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
@@ -383,20 +386,20 @@ print (series_raca_es_F10)
 #8.1 BR
 # montando os dados
 dados.raca.br.f17 <- data.frame(
-  dados.F17.BR %>% group_by(ANOOBITO, RACACOR) %>% 
+  dados.F17.BR %>% group_by(ANOOBITO, RACACOR) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_raca_br_F17 <- ggplot(data = dados.raca.br.f17, aes(x = ANOOBITO, y = N.obitos, 
+series_raca_br_F17 <- ggplot(data = dados.raca.br.f17, aes(x = ANOOBITO, y = N.obitos,
                                                            colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "Óbitos pelo fumo no Brasil por Raça", 
+  labs(title = "Óbitos pelo fumo no Brasil por Raça",
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
-    breaks = dados.raca.br.f17$ANOOBITO,  
-    labels = dados.raca.br.f17$ANOOBITO)+ 
+    breaks = dados.raca.br.f17$ANOOBITO,
+    labels = dados.raca.br.f17$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
@@ -412,20 +415,20 @@ print (series_raca_br_F17)
 
 # montando os dados
 dados.raca.es.f17 <- data.frame(
-  dados.F17.ES %>% group_by(ANOOBITO, RACACOR) %>% 
+  dados.F17.ES %>% group_by(ANOOBITO, RACACOR) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_raca_es_F17 <- ggplot(data = dados.raca.es.f17, aes(x = ANOOBITO, y = N.obitos, 
+series_raca_es_F17 <- ggplot(data = dados.raca.es.f17, aes(x = ANOOBITO, y = N.obitos,
                                                            colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = RACACOR)) +
-  labs(title = "Óbitos pelo fumo no Espírito Santo por Raça", 
+  labs(title = "Óbitos pelo fumo no Espírito Santo por Raça",
        x="Anos", y="Óbitos Totais", colour = "Raça") +
   scale_x_continuous(
-    breaks = dados.raca.es.f17$ANOOBITO,  
-    labels = dados.raca.es.f17$ANOOBITO)+ 
+    breaks = dados.raca.es.f17$ANOOBITO,
+    labels = dados.raca.es.f17$ANOOBITO)+
   theme_classic()+
   theme(
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
@@ -436,3 +439,8 @@ series_raca_es_F17 <- ggplot(data = dados.raca.es.f17, aes(x = ANOOBITO, y = N.o
   )
 
 print (series_raca_es_F17)
+
+save(series_raca_br_F10, file="GRAFICOS_RDA/series_raca_br_F10.RData")
+save(series_raca_es_F10, file="GRAFICOS_RDA/series_raca_es_F10.RData")
+save(series_raca_br_F17, file="GRAFICOS_RDA/series_raca_br_F17.RData")
+save(series_raca_es_F17, file="GRAFICOS_RDA/series_raca_es_F17.RData")

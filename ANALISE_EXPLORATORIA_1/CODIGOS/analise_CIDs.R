@@ -6,10 +6,10 @@
 n=10:19
 
 
-vet.CIDpsic2 <- paste(c("F"), n, 
+vet.CIDpsic2 <- paste(c("F"), n,
                       sep = "", collapse = ",")
 
-vet.CIDpsic2 <- strsplit(vet.CIDpsic2, ",") %>% 
+vet.CIDpsic2 <- strsplit(vet.CIDpsic2, ",") %>%
   unlist()
 
 
@@ -19,15 +19,15 @@ contagens.CID_es=c()
 contagens.CID_br=c()
 
 for (i in vet.CIDpsic2) {
-  
-  count_CID <- dados_es_psic$CAUSABAS %>% str_count(pattern = i) %>% 
+
+  count_CID <- dados_es_psic$CAUSABAS %>% str_count(pattern = i) %>%
     sum()
   contagens.CID_es[i] <- count_CID
 }
 
 for (i in vet.CIDpsic2) {
-  
-  count_CID <- dados_br_psic$CAUSABAS %>% str_count(pattern = i) %>% 
+
+  count_CID <- dados_br_psic$CAUSABAS %>% str_count(pattern = i) %>%
     sum()
   contagens.CID_br[i] <- count_CID
 }
@@ -39,17 +39,17 @@ for (i in vet.CIDpsic2) {
 
 dados.count.CID <- data.frame(CIDs = vet.CIDpsic2,
                             Contagens = c(contagens.CID_es, contagens.CID_br),
-                            Localidade = c(rep("Espírito Santo", 10), 
+                            Localidade = c(rep("Espírito Santo", 10),
                                            rep("Brasil", 10)))
 
 dados.count.CID <- full_join(
-  
-  dados.count.CID %>% 
-  filter(Localidade == "Brasil") %>% 
+
+  dados.count.CID %>%
+  filter(Localidade == "Brasil") %>%
   mutate(prop = Contagens/sum(Contagens)),
 
-  dados.count.CID %>% 
-  filter(Localidade == "Espírito Santo") %>% 
+  dados.count.CID %>%
+  filter(Localidade == "Espírito Santo") %>%
   mutate(prop = Contagens/sum(Contagens))
 
 )
@@ -58,11 +58,11 @@ dados.count.CID <- full_join(
 
 # montando o plot ---------------------------------------------------------
 
-g_count_CIDs <- dados.count.CID %>%  
+g_count_CIDs <- dados.count.CID %>%
   ggplot(aes(x = fct_reorder(CIDs, prop), y = prop)) +
   geom_col(fill = paleta_hist(1)) +
   facet_grid(rows = vars(Localidade))+
-  labs(title = "Proporcao de Obitos de 2013 a 2022 no Brasil e no ES por cada CID relacionada a psicoativos", y="Quantidade", x="CIDs")+ 
+  labs(title = "Proporcao de Obitos de 2013 a 2022 no Brasil e no ES por cada CID relacionada a psicoativos", y="Quantidade", x="CIDs")+
   theme_classic() + coord_flip() + theme(title = element_text(size = 15),
                                          axis.text = element_text(size = 13),
                                          strip.text = element_text(face = "bold", size = 15))
@@ -70,16 +70,16 @@ g_count_CIDs <- dados.count.CID %>%
 g_count_CIDs
 
 
-save(g_count_CIDs, file="GRAFICOS_RDA/g_count_CIDs.rda")
+save(g_count_CIDs, file="GRAFICOS_RDA/g_count_CIDs.RDatata")
 
 
 # preparando dados para heatmap por cids vs anos ------------------------------------
 
 
-dados_heatmap_CIDs <- dados_es_psic %>% select(CAUSABAS, ANOOBITO) %>% 
-                      group_by(CIDs = substr(CAUSABAS, 1, 3), ANOOBITO) %>% 
+dados_heatmap_CIDs <- dados_es_psic %>% select(CAUSABAS, ANOOBITO) %>%
+                      group_by(CIDs = substr(CAUSABAS, 1, 3), ANOOBITO) %>%
                       select(ANOOBITO, CIDs) %>%
-                      table() %>% 
+                      table() %>%
                       prop.table(margin = 1)
 
 
@@ -93,16 +93,16 @@ heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value*100)
   geom_tile(color="white") +
   scale_fill_gradient(low = "lightblue", high = "#010440")+
   theme_minimal() +
-  labs(x = "Anos", y = "CIDs", fill = "%", 
+  labs(x = "Anos", y = "CIDs", fill = "%",
        title = "Percentual de óbitos por cada CID e cada ano no Espírito Santo") +
   theme(axis.text.x = element_text(size = 13),
        axis.text.y = element_text(size = 15),
        title = element_text(size = 14))+
   scale_x_discrete(limits = dados_heatmap_CIDs$ANOOBITO,position = "bottom")
-  
+
 heatmap_CIDS
 
 
-save(heatmap_CIDS, file="GRAFICOS_RDA/heatmap_CIDS.rda")
+save(heatmap_CIDS, file="GRAFICOS_RDA/heatmap_CIDS.RDatata")
 
-load("GRAFICOS_RDA/heatmap_CIDS.rda")
+load("GRAFICOS_RDA/heatmap_CIDS.RDatata")

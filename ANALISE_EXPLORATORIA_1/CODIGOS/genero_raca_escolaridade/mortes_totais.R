@@ -1,9 +1,9 @@
-library(remotes) 
-library(microdatasus) 
+library(remotes)
+library(microdatasus)
 library(dplyr)
-library(stringr) 
-library(ggplot2) 
-library(lubridate) 
+library(stringr)
+library(ggplot2)
+library(lubridate)
 
 
 # -------------- ANALISE MORTES TOTAIS  -------------
@@ -102,8 +102,8 @@ obitos_combinados_br_es <- obitos_combinados_br_es %>%
          porcentagem_ES = (Quantidade_ES / total_mortes) * 100,
          porcentagem_Restante_BR = (Quantidade_Restante_BR / total_mortes) * 100) %>%
   select(ANOOBITO, porcentagem_ES, porcentagem_Restante_BR) %>%
-  pivot_longer(cols = c(porcentagem_ES, porcentagem_Restante_BR), 
-               names_to = "Regiao", 
+  pivot_longer(cols = c(porcentagem_ES, porcentagem_Restante_BR),
+               names_to = "Regiao",
                values_to = "Porcentagem")
 
 # Plotando o gráfico de proporção
@@ -118,7 +118,7 @@ grafico_proporcao <- ggplot(obitos_combinados_br_es, aes(x = factor(ANOOBITO), y
 print(grafico_proporcao)
 
 
-save(grafico_proporcao, file = "GRAFICOS_RDA/grafico_proporcao.rda")
+save(grafico_proporcao, file = "GRAFICOS_RDA/grafico_proporcao.RData")
 
 
 #SERIE
@@ -127,52 +127,52 @@ save(grafico_proporcao, file = "GRAFICOS_RDA/grafico_proporcao.rda")
 # juntando os dados
 
 dados.mortes.totais.series <- data.frame(
-  dados_br_total %>% group_by(ANOOBITO) %>% 
+  dados_br_total %>% group_by(ANOOBITO) %>%
     summarise(N.obitos = n())
 )
 
-# grafico 
+# grafico
 
 series_mortes_br_total <- ggplot(data = dados.mortes.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid",
             linewidth = 0.5, color = paleta_series(1)) +
   geom_point(shape = 15) +
-  labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022", 
+  labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
-    breaks = dados.mortes.totais.series$ANOOBITO,  
-    labels = dados.mortes.totais.series$ANOOBITO)+ 
+    breaks = dados.mortes.totais.series$ANOOBITO,
+    labels = dados.mortes.totais.series$ANOOBITO)+
   theme_classic()
 series_mortes_br_total
 
 
-save(series_mortes_br_total, file = "GRAFICOS_RDA/series_mortes_br_total.rda")
+save(series_mortes_br_total, file = "GRAFICOS_RDA/series_mortes_br_total.RData")
 
 #2.1 quantidade de mortes psic no brasil
 
 # juntando os dados
 
 dados.mortes.psic.series <- data.frame(
-  dados_br_psic %>% group_by(ANOOBITO) %>% 
+  dados_br_psic %>% group_by(ANOOBITO) %>%
     summarise(N.obitos = n())
 )
 
-# grafico 
+# grafico
 
 series_mortes_br_psic <- ggplot(data = dados.mortes.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
   geom_point(shape = 15) +
-  labs(title = "Número de Óbitos por Psicoativos no Brasil de 2013 a 2022", 
+  labs(title = "Número de Óbitos por Psicoativos no Brasil de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
-    breaks = dados.mortes.psic.series$ANOOBITO,  
-    labels = dados.mortes.psic.series$ANOOBITO)+ 
+    breaks = dados.mortes.psic.series$ANOOBITO,
+    labels = dados.mortes.psic.series$ANOOBITO)+
   theme_classic()
 series_mortes_br_psic
 
 
-save(series_mortes_br_psic, file = "GRAFICOS_RDA/series_mortes_br_psic.rda")
+save(series_mortes_br_psic, file = "GRAFICOS_RDA/series_mortes_br_psic.RData")
 
 
 #2.1 quantidade de mortes totais no es
@@ -180,49 +180,49 @@ save(series_mortes_br_psic, file = "GRAFICOS_RDA/series_mortes_br_psic.rda")
 # juntando os dados
 
 dados.mortes.es.totais.series <- data.frame(
-  dados_es_total %>% group_by(ANOOBITO) %>% 
+  dados_es_total %>% group_by(ANOOBITO) %>%
     summarise(N.obitos = n())
 )
 
-# grafico 
+# grafico
 
 series_mortes_es_total <- ggplot(data = dados.mortes.es.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
   geom_point(shape = 15) +
-  labs(title = "Número de Óbitos Totais no Espírito Santo de 2013 a 2022", 
+  labs(title = "Número de Óbitos Totais no Espírito Santo de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
-    breaks = dados.mortes.es.totais.series$ANOOBITO,  
-    labels = dados.mortes.es.totais.series$ANOOBITO)+ 
+    breaks = dados.mortes.es.totais.series$ANOOBITO,
+    labels = dados.mortes.es.totais.series$ANOOBITO)+
   theme_classic()
 series_mortes_es_total
 
 
-save(series_mortes_es_total, file = "GRAFICOS_RDA/series_mortes_es_total.rda")
+save(series_mortes_es_total, file = "GRAFICOS_RDA/series_mortes_es_total.RData")
 
 #2.1 quantidade de mortes psic no es
 
 # juntando os dados
 
 dados.mortes.es.psic.series <- data.frame(
-  dados_es_psic %>% group_by(ANOOBITO) %>% 
+  dados_es_psic %>% group_by(ANOOBITO) %>%
     summarise(N.obitos = n())
 )
 
-# grafico 
+# grafico
 
 series_mortes_es_psic <- ggplot(data = dados.mortes.es.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
   geom_point(shape = 15) +
-  labs(title = "Número de Óbitos por Psicoativos no Espírito Santo de 2013 a 2022", 
+  labs(title = "Número de Óbitos por Psicoativos no Espírito Santo de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
-    breaks = dados.mortes.es.psic.series$ANOOBITO,  
-    labels = dados.mortes.es.psic.series$ANOOBITO)+ 
+    breaks = dados.mortes.es.psic.series$ANOOBITO,
+    labels = dados.mortes.es.psic.series$ANOOBITO)+
   theme_classic()
 series_mortes_es_psic
 
-save(series_mortes_es_psic, file = "GRAFICOS_RDA/series_mortes_es_psic.rda")
+save(series_mortes_es_psic, file = "GRAFICOS_RDA/series_mortes_es_psic.RData")
 

@@ -1,9 +1,9 @@
-#library(remotes) 
-#library(microdatasus) 
+#library(remotes)
+#library(microdatasus)
 #library(dplyr)
-#library(stringr) 
-#library(ggplot2) 
-#library(lubridate) 
+#library(stringr)
+#library(ggplot2)
+#library(lubridate)
 
 
 
@@ -58,7 +58,7 @@ hist_genero_es_total <- ggplot(freq_genero_es_total, aes(x = SEXO, y = Quantidad
 
 print(hist_genero_es_total)
 
-#2.4 quantidade de mortes por psicoativos por genero no espirito santo 
+#2.4 quantidade de mortes por psicoativos por genero no espirito santo
 
 freq_genero_es_psic <- dados_es_psic %>%
   group_by(SEXO) %>%
@@ -86,105 +86,105 @@ print(hist_genero_es_psic)
 
 # montando os dados
 dados.genero.br.series <- data.frame(
-  dados_br_total %>% group_by(ANOOBITO, SEXO) %>% 
+  dados_br_total %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_br_total <- ggplot(data = dados.genero.br.series, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_br_total <- ggplot(data = dados.genero.br.series, aes(x = ANOOBITO, y = N.obitos,
                                                          colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
-  labs(title = "Número de óbitos Totais no Brasil por gênero", 
+  labs(title = "Número de óbitos Totais no Brasil por gênero",
        x="Anos", y="Cbitos Totais", colour = "Sexo") +
   scale_x_continuous(
-    breaks = dados.genero.br.series$ANOOBITO,  
+    breaks = dados.genero.br.series$ANOOBITO,
     labels = dados.genero.br.series$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15)) 
+  theme(plot.title = element_text(size = 15))
 
 print(series_genero_br_total)
 
-save(series_genero_br_total, file="GRAFICOS_RDA/series_genero_br_total.rda")
+save(series_genero_br_total, file="GRAFICOS_RDA/series_genero_br_total.RData")
 
 #2.2 quantidade de mortes por genero no espirito santo
 
 # montando os dados
 dados.genero.es.series <- data.frame(
-  dados_es_total %>% group_by(ANOOBITO, SEXO) %>% 
+  dados_es_total %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_es_total <- ggplot(data = dados.genero.es.series, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_es_total <- ggplot(data = dados.genero.es.series, aes(x = ANOOBITO, y = N.obitos,
                                                                  colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
-  labs(title = "Número de óbitos Totais no Espírito Santo por gênero", 
+  labs(title = "Número de óbitos Totais no Espírito Santo por gênero",
        x="Anos", y="Cbitos Totais", colour = "Sexo") +
   scale_x_continuous(
-    breaks = dados.genero.es.series$ANOOBITO,  
-    labels = dados.genero.es.series$ANOOBITO)+ 
+    breaks = dados.genero.es.series$ANOOBITO,
+    labels = dados.genero.es.series$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15)) 
+  theme(plot.title = element_text(size = 15))
 
 print (series_genero_es_total)
 
-save(series_genero_es_total, file="GRAFICOS_RDA/series_genero_es_total.rda")
+save(series_genero_es_total, file="GRAFICOS_RDA/series_genero_es_total.RData")
 #2.1 quantidade de mortes por psicoativos por genero no brasil
 
 # montando os dados
 dados.genero.br.series.psic <- data.frame(
-  dados_br_psic %>% group_by(ANOOBITO, SEXO) %>% 
+  dados_br_psic %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_br_psic <- ggplot(data = dados.genero.br.series.psic, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_br_psic <- ggplot(data = dados.genero.br.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                     colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
-  labs(title = "Número de óbitos por psicoativos no Brasil por gênero", 
+  labs(title = "Número de óbitos por psicoativos no Brasil por gênero",
        x="Anos", y="obitos por psicativos", colour = "Sexo") +
   scale_x_continuous(
-  breaks = dados.genero.br.series.psic$ANOOBITO,  
-  labels = dados.genero.br.series.psic$ANOOBITO)+ 
+  breaks = dados.genero.br.series.psic$ANOOBITO,
+  labels = dados.genero.br.series.psic$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15)) 
+  theme(plot.title = element_text(size = 15))
 
 print (series_genero_br_psic)
 
-save(series_genero_br_psic, file="GRAFICOS_RDA/series_genero_br_psic.rda")
+save(series_genero_br_psic, file="GRAFICOS_RDA/series_genero_br_psic.RData")
 
 #2.2 quantidade de mortes por psicoativos por genero no espirito santo
 
 # montando os dados
 dados.genero.es.series.psic <- data.frame(
-  dados_es_psic %>% group_by(ANOOBITO, SEXO) %>% 
+  dados_es_psic %>% group_by(ANOOBITO, SEXO) %>%
     summarise(N.obitos = n())
 )
 
 # grafico
-series_genero_es_psic <- ggplot(data = dados.genero.es.series.psic, aes(x = ANOOBITO, y = N.obitos, 
+series_genero_es_psic <- ggplot(data = dados.genero.es.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                         colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
-  labs(title = "Número de óbitos por psicoativos no Espírito Santo por gênero", 
+  labs(title = "Número de óbitos por psicoativos no Espírito Santo por gênero",
        x="Anos", y="Cbitos por psicativos", colour = "Sexo") +
   scale_x_continuous(
-    breaks = dados.genero.es.series.psic$ANOOBITO,  
-    labels = dados.genero.es.series.psic$ANOOBITO)+ 
+    breaks = dados.genero.es.series.psic$ANOOBITO,
+    labels = dados.genero.es.series.psic$ANOOBITO)+
     theme_classic()+
-    theme(plot.title = element_text(size = 15)) 
+    theme(plot.title = element_text(size = 15))
 
 print (series_genero_es_psic)
 
 
-save(series_genero_es_psic, file="GRAFICOS_RDA/series_genero_es_psic.rda")
+save(series_genero_es_psic, file="GRAFICOS_RDA/series_genero_es_psic.RData")
 
 #TABELA E INDICADOR
 
@@ -227,8 +227,8 @@ proporcao_genero_br_psic <- ggplot(dados.genero.br.series.psic, aes(x = factor(A
   theme_classic()+
   theme(plot.title = element_text(size = 13),
         axis.text= element_text(size = 15))
-  
-save(proporcao_genero_br_psic, file="GRAFICOS_RDA/proporcao_genero_br_psic.rda")
+
+save(proporcao_genero_br_psic, file="GRAFICOS_RDA/proporcao_genero_br_psic.RData")
 
 #GRAFICOD E PROPORCAO ES
 
@@ -250,7 +250,7 @@ proporcao_genero_es_psic <- ggplot(dados.genero.es.series.psic, aes(x = factor(A
   theme(plot.title = element_text(size = 13),
         axis.text= element_text(size = 15))
 
-save(proporcao_genero_es_psic, file="GRAFICOS_RDA/proporcao_genero_es_psic.rda")
+save(proporcao_genero_es_psic, file="GRAFICOS_RDA/proporcao_genero_es_psic.RData")
 
 proporcao_genero_br_psic
 proporcao_genero_es_psic
