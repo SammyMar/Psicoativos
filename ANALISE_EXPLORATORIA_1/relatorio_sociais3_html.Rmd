@@ -1141,7 +1141,7 @@ ggplotly(grafico_proporcao) |> style( showlegend = T)  |>
                                x = 0.5,
                                y = -0.16),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Porcentagem de Mortes por Piscoativos no ES em relação ao Brasil')
+                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Porcentagem de Mortes por Psicoativos no ES em relação ao Brasil')
 ```
 
 <br>
@@ -1174,7 +1174,7 @@ Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe
 <br>
 
 ```{r, echo=FALSE}
-ggplotly(heatmap_mortes_psic) |> layout(title = 'Taxa de Mortes por Psicoativos a cada 100K de Habitantes')
+ggplotly(heatmap_mortes_psic) |> layout(title = 'Taxa de Mortes por Psicoativos a cada 100.000 Habitantes')
 ```
 
 # Indicadores

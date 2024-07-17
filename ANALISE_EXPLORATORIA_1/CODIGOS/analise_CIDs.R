@@ -62,7 +62,7 @@ g_count_CIDs <- dados.count.CID %>%
   ggplot(aes(x = fct_reorder(CIDs, prop), y = prop)) +
   geom_col(fill = paleta_hist(1)) +
   facet_grid(rows = vars(Localidade))+
-  labs(title = "Proporção de Óbitos por CID no Brasil e Espírito Santo", y="Quantidade", x="CIDs")+
+  labs(title = "Porcentagem de Óbitos por CID no Brasil e Espírito Santo", y="Quantidade", x="CIDs")+
   theme_classic() + coord_flip() + theme(title = element_text(size = 15),
                                          axis.text = element_text(size = 13),
                                          strip.text = element_text(face = "bold", size = 15))
