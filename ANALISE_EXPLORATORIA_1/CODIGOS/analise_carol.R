@@ -8,8 +8,6 @@ library(htmltools)
 library(reactable)
 library(readxl)
 getwd()
-cores <-  brewer.pal(10, "Set1")
-cores2 <- c("#4357AD","#EFA9AE","#9A3D6A", "#6a3d9a", "#a6cee3", "#1d9a55", "#9A3DA7", "#Dab2d6", "#6A3DA7", "#EFA1AE")
 
 ### -------------------------TABELA DINÂMICA DE CIDS-- ------------###
 ### PREPARAÇÃO ###
@@ -45,75 +43,75 @@ CIDs <- read_excel('CIDs.xlsx')
 
 #Boxplot de idade no Brasil, geral
 
-boxplot_idade_br <-  ggplot(subset(dados_br_total, IDADE2 >= 0), aes(y = IDADE2)) +
-  geom_boxplot(fill = "skyblue") +
-  labs(
-    title = "Óbitos por Idade no Brasil",
-    y = "Idade"
-  ) +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))
+#boxplot_idade_br <-  ggplot(subset(dados_br_total, IDADE2 >= 0), aes(y = IDADE2)) +
+  #3geom_boxplot(fill = "skyblue") +
+ #labs(
+ #  title = "Óbitos por Idade no Brasil",
+ #   y = "Idade"
+ # ) +
+ # theme_minimal() +
+ # scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))
 
-boxplot_idade_br
+ #boxplot_idade_br
 
 #Boxplot de idade no brasil por psicoativo
-boxplot_idade_br_psic <- ggplot(subset(dados_br_psic, IDADE2 >= 0), aes(y = IDADE2)) +
-  geom_boxplot(fill = ("#EFA9AE")) +
-  labs(
-    title = "Óbitos causados pelo uso de psicoativos por Idade no Brasil",
-    y = "Idade"
-  ) +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))
+ #boxplot_idade_br_psic <- ggplot(subset(dados_br_psic, IDADE2 >= 0), aes(y = IDADE2)) +
+ # geom_boxplot(fill = ("#EFA9AE")) +
+ #labs(
+ ## title = "Óbitos causados pelo uso de psicoativos por Idade no Brasil",
+ # y = "Idade"
+ # ) +
+ # theme_minimal() +
+ # scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))
 
-boxplot_idade_br_psic
+ #boxplot_idade_br_psic
 
-dados_filtrados <- subset(dados_br_psic, IDADE2 >= 0)
-summary(dados_filtrados$IDADE2)
+ #dados_filtrados <- subset(dados_br_psic, IDADE2 >= 0)
+ #summary(dados_filtrados$IDADE2)
 
 # Boxplot geral de idade no Espírito santo
 #Boxplot de idade no espírito santo, filtrada por psicoativo
-dados_es_total$x <- factor(1)
-boxplot_idade_es <- ggplot(subset(dados_es_total, IDADE2 >= 0), aes(x = x, y = IDADE2)) +
-  geom_boxplot(width = 0.5, fill = "skyblue") +
-  labs(
-    title = "Óbitos por Idade no Espírito Santo",
-    x = "",
-    y = "Idade"
-  ) +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20)) +
-  theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
-    axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    axis.ticks.x = element_blank(),                       # Remover ticks do eixo x
-    axis.text.x = element_blank()                         # Remover textos do eixo x
-  )
+ #dados_es_total$x <- factor(1)
+ #boxplot_idade_es <- ggplot(subset(dados_es_total, IDADE2 >= 0), aes(x = x, y = IDADE2)) +
+ #  geom_boxplot(width = 0.5, fill = "skyblue") +
+ #  labs(
+ #   title = "Óbitos por Idade no Espírito Santo",
+ #  x = "",
+ #  y = "Idade"
+ # ) +
+ # theme_minimal() +
+ # scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20)) +
+ # theme(
+ #   plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+ #  axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
+     #   axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
+ #  axis.ticks.x = element_blank(),                       # Remover ticks do eixo x
+ #  axis.text.x = element_blank()                         # Remover textos do eixo x
+ #  )
 
 
-dados_filtrados <- subset(dados_es_total, IDADE2 >= 0)
-summary(dados_filtrados$IDADE2)
+ #dados_filtrados <- subset(dados_es_total, IDADE2 >= 0)
+ #summary(dados_filtrados$IDADE2)
 
 #Boxplot de idade no espírito santo, filtrada por psicoativo
 
-dados_es_psic$x <- factor(1)
-boxplot_idade_es_psic <- ggplot(subset(dados_es_psic, IDADE2 >= 0), aes(x = x, y = IDADE2)) +
-  geom_boxplot(width = 0.5, fill = "#EFA9AE") +
-  labs(
-    title = "Óbitos causados pelo uso de psicoativos por Idade no ES",
-    x = "",
-    y = "Idade"
-  ) +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20)) +
-  theme(
-    plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
-    axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    axis.ticks.x = element_blank(),                       # Remover ticks do eixo x
-    axis.text.x = element_blank()                         # Remover textos do eixo x
-  )
+ #dados_es_psic$x <- factor(1)
+ #boxplot_idade_es_psic <- ggplot(subset(dados_es_psic, IDADE2 >= 0), aes(x = x, y = IDADE2)) +
+ #  geom_boxplot(width = 0.5, fill = "#EFA9AE") +
+ #  labs(
+ ##   title = "Óbitos causados pelo uso de psicoativos por Idade no ES",
+ #  x = "",
+    #  y = "Idade"
+ # ) +
+ # theme_minimal() +
+ # scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20)) +
+ # theme(
+ # plot.title = element_text(size = 16, face = "bold"),   # Tamanho e estilo do título do gráfico
+ #  axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
+ #  axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
+ #  axis.ticks.x = element_blank(),                       # Remover ticks do eixo x
+ #  axis.text.x = element_blank()                         # Remover textos do eixo x
+ # )
 
 
 
@@ -146,9 +144,12 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
   scale_x_continuous(
     breaks = dados.grafico.series.esto$ANOOBITO,
     labels = dados.grafico.series.esto$ANOOBITO)+
-  scale_colour_manual(name = "Faixa etária", values = cores,
-                      labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
-  theme_minimal()+
+  scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
+                      labels = c("Menor de idade (0-17 anos)", 
+                                 "Jovem-Adulto (18 - 30 anos)", 
+                                 "Adulto (31 - 55 anos)", 
+                                 "Idoso(56+ anos)"))+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -181,9 +182,12 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
   scale_x_continuous(
     breaks = dados.grafico.series.esps$ANOOBITO,
     labels = dados.grafico.series.esps$ANOOBITO)+
-  scale_colour_manual(name = "Faixa etária", values = cores,
-                      labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
-  theme_minimal()+
+  scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
+                      labels = c("Menor de idade (0-17 anos)", 
+                                 "Jovem-Adulto (18 - 30 anos)", 
+                                 "Adulto (31 - 55 anos)", 
+                                 "Idoso(56+ anos)"))+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -214,9 +218,12 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
   scale_x_continuous(
     breaks = dados.grafico.series.brto$ANOOBITO,
     labels = dados.grafico.series.brto$ANOOBITO)+
-  scale_colour_manual(name = "Faixa etária", values = cores,
-                      labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
-  theme_minimal()+
+  scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
+                      labels = c("Menor de idade (0-17 anos)", 
+                                 "Jovem-Adulto (18 - 30 anos)", 
+                                 "Adulto (31 - 55 anos)", 
+                                 "Idoso(56+ anos)"))+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -247,9 +254,12 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
   scale_x_continuous(
     breaks = dados.grafico.series.brps$ANOOBITO,
     labels = dados.grafico.series.brps$ANOOBITO)+
-  scale_colour_manual(name = "Faixa etária", values = cores,
-                      labels = c("Menor de idade (0-17 anos)", "Jovem-Adulto (18 - 30 anos)", "Adulto (31 - 55 anos)", "Idoso(56+ anos)"))+
-  theme_minimal()+
+  scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
+                      labels = c("Menor de idade (0-17 anos)", 
+                                 "Jovem-Adulto (18 - 30 anos)", 
+                                 "Adulto (31 - 55 anos)", 
+                                 "Idoso(56+ anos)"))+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -263,95 +273,6 @@ save(graf.serie.idade.es.t, file="GRAFICOS_RDA/graf.serie.idade.es.t.RData")
 save(graf.serie.idade.es.p, file="GRAFICOS_RDA/graf.serie.idade.es.p.RData")
 save(graf.serie.idade.br.t, file="GRAFICOS_RDA/graf.serie.idade.br.t.RData")
 save(graf.serie.idade.br.p, file="GRAFICOS_RDA/graf.serie.idade.br.p.RData")
-##BOXPLOT DE IDADE POR ANO
-#BOXPLOT IDADE POR ANO NO ESPÍRITO SANTO, GERAL
-boxplot.anoidad.es <- dados_es_total %>%
-  ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
-  stat_summary(fun = mean, geom = "line", aes(group = 1), color = "gray", size = 1)+
-  geom_errorbar(stat = "boxplot", width = 0.2)+
-  geom_boxplot( fill = "#a6cee3" )+
-  labs(
-    title = "Óbitos de Idade x ano no Espírito Santo",
-    x = "Ano",
-    y = "Idade"
-  ) +
-  theme_minimal()+
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
-  theme(
-    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
-    axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
-boxplot.anoidad.es
-
-#BOXPLOT IDADE POR ANO NO ESPÍRITO SANTO, PSICOATIVO
-boxplot.anoidad.es.psic <- dados_es_psic %>%
-  ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
-  geom_errorbar(stat = "boxplot", width = 0.2)+
-  geom_boxplot( fill = "#EFA1AE" )+
-  labs(
-    title = "Óbitos de Idade x ano no Espírito Santo, por psicoativos",
-    x = "Ano",
-    y = "Idade"
-  ) +
-  theme_minimal()+
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
-  theme(
-    plot.title = element_text(size = 13, face = "bold"),   # Tamanho e estilo do título do gráfico
-    axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
-boxplot.anoidad.es.psic
-
-#BOXPLOT IDADE POR ANO NO BRASIL, GERAL
-boxplot.anoidad.br <- dados_br_total %>%
-  ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
-  geom_errorbar(stat = "boxplot", width = 0.2)+
-  geom_boxplot( fill = "#a6cee3" )+
-  labs(
-    title = "Óbitos de Idade x ano no Brasil",
-    x = "Ano",
-    y = "Idade"
-  ) +
-  theme_minimal()+
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
-  theme(
-    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
-    axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
-boxplot.anoidad.br
-
-#BOXPLOT IDADE POR ANO NO BRASIL, PSICOATIVO
-boxplot.anoidad.br.psic <- dados_br_psic %>%
-  ggplot(aes( x = as.factor(ANOOBITO), y=IDADE2, group = ANOOBITO))+
-  geom_errorbar(stat = "boxplot", width = 0.2)+
-  geom_boxplot( fill = "#EFA1AE" )+
-  labs(
-    title = "Óbitos de Idade x ano no Brasil, por psicoativos",
-    x = "Ano",
-    y = "Idade"
-  ) +
-  theme_minimal()+
-  scale_y_continuous(limits = c(0, 135), breaks = seq(0, 135, by = 20))+
-  theme(
-    plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
-    axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
-    axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
-boxplot.anoidad.br.psic
-save(boxplot.anoidad.es, file="GRAFICOS_RDA/boxplot.anoidad.es.RData")
-save(boxplot.anoidad.es.psic, file="GRAFICOS_RDA/boxplot.anoidad.es.psic.RData")
-save(boxplot.anoidad.br, file="GRAFICOS_RDA/boxplot.anoidad.br.RData")
-save(boxplot.anoidad.br.psic, file="GRAFICOS_RDA/boxplot.anoidad.br.psic.RData")
 
 
 ###----------------------- GRÁFICOS ESTADO CIVIL ---------------------###
@@ -496,12 +417,13 @@ serie_obt_psic_br <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
                                                          colour = ESTCIV)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESTCIV)) +
+  scale_colour_manual(values =  paleta_series(5))+
   labs(title = "óbitos pelo uso de psicoativo no Brasil por Estado civil",
        x="Anos", y="Número de óbitos ", colour = "Estado Civil") +
   scale_x_continuous(
     breaks = dados.grafico.series$ANOOBITO,
     labels = dados.grafico.series$ANOOBITO)+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -528,12 +450,13 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
                                                              colour = ESTCIV)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESTCIV)) +
+  scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Óbitos pelo uso de psicoativo no Espírito Santo por Estado civil",
        x="Anos", y="Número de óbitos ", colour = "Estado Civil") +
   scale_x_continuous(
     breaks = dados.grafico.series$ANOOBITO,
     labels = dados.grafico.series$ANOOBITO)+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -565,21 +488,14 @@ dados.estciv.es.series <- dados.estciv.es.series %>%
 
 grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3",
-    "Separado judicialmente" = "#1F78B4",
-    "Solteiro" = "#B2DF8A",
-    "União consensual" = "#33A02C",
-    "Viúvo" = "#FB9A99",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes no Espírito Santo por Estado civil e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Estado Civil"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -607,21 +523,14 @@ dados.estciv.br.series <- dados.estciv.br.series %>%
 
 grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3",
-    "Separado judicialmente" = "#1F78B4",
-    "Solteiro" = "#B2DF8A",
-    "União consensual" = "#33A02C",
-    "Viúvo" = "#FB9A99",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes no Brasil por Estado civil e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Estado Civil"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -651,21 +560,14 @@ dados.estciv.es.series.psic <- dados.estciv.es.series.psic %>%
 
 grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3",
-    "Separado judicialmente" = "#1F78B4",
-    "Solteiro" = "#B2DF8A",
-    "União consensual" = "#33A02C",
-    "Viúvo" = "#FB9A99",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes por Psicoativos no ES por Estado civil e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Estado Civil"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -693,21 +595,14 @@ dados.estciv.br.series.psic <- dados.estciv.br.series.psic %>%
 
 grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Casado" = "#A6CEE3",
-    "Separado judicialmente" = "#1F78B4",
-    "Solteiro" = "#B2DF8A",
-    "União consensual" = "#33A02C",
-    "Viúvo" = "#FB9A99",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes por psicoativos no Brasil por Estado civil e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Estado Civil"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -739,20 +634,14 @@ dados.idade.es.series.psic <- dados.idade.es.series.psic %>%
 
 grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3",
-    "Idoso" = "#B2DF8A",
-    "Jovem-Adulto" = "#FB9A99",
-    "Menor de idade" = "#1F78B4",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes por psicoativo no ES por Idade e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Idade"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -781,20 +670,14 @@ dados.idade.br.series.psic <- dados.idade.br.series.psic %>%
 
 grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3",
-    "Idoso" = "#B2DF8A",
-    "Jovem-Adulto" = "#FB9A99",
-    "Menor de idade" = "#1F78B4",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes por psicoativo no Brasil por Idade e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Idade"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -823,20 +706,14 @@ dados.idade.es.series <- dados.idade.es.series %>%
 
 grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3",
-    "Idoso" = "#B2DF8A",
-    "Jovem-Adulto" = "#FB9A99",
-    "Menor de idade" = "#1F78B4",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes no Espírito Santo por Idade e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Idade"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
@@ -865,20 +742,14 @@ dados.idade.br.series <- dados.idade.br.series %>%
 
 grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values = c(
-    "Adulto" = "#A6CEE3",
-    "Idoso" = "#B2DF8A",
-    "Jovem-Adulto" = "#FB9A99",
-    "Menor de idade" = "#1F78B4",
-    "NA" = "#D3D3D3"
-  )) +
+  scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes no Brasil por Idade e Ano",
     y = "Porcentagem (%)",
     x = "",
     fill = "Idade"
   )+
-  theme_minimal()+
+  theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos

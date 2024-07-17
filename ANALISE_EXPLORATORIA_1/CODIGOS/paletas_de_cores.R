@@ -10,18 +10,20 @@
 # paleta de series === CORES VIVAS (primárias) POIS AS LINHAS SÃO FINAS
 
 
-paleta_series <- manual_pal(c("#0000FF", "#FF0000", "#000000",
-                              "#009D00", "#FF00D3", "#422774",
-                               "#FFFF00"))
+paleta_series <- manual_pal(c("#ff7f00","#1e96fc", "#ff6392", 
+                              "#009D00","#9381ff" ,"#e31a1c", "#25a18e"
+                        ))
 
 
 # paleta de histograma === SIMILAR A DE SÉRIES PORÉM COM CORES MAIS AGRADÁVEIS DE OLHAR
 
-paleta_hist <- manual_pal(c("#223459", "#D32323", "#000000",
-                            "#36A944","#FC3F6B", "#54006D",
-                            "#FCC103"))
+paleta_hist <- manual_pal(c("#A6CEE3", "#FB9A99", "#FFDB58", "#1F78B4",
+                            "#B2DF8A","#33A02C", "#F5F5F5"
+                            ))
 
 
+
+#"#c8cd3b"
 # paleta de histograma VARIÁVEL ORDINAL = EXEMPLO (FAIXAS ETÁRIAS)
 
 

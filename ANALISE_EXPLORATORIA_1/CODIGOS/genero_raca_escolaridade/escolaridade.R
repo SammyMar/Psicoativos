@@ -209,7 +209,7 @@ dados.escolaridade.br.series.psic <- dados.escolaridade.br.series.psic %>%
 # 3 Criando o gráfico
 proporcao_escolaridade_br_psic <-ggplot(dados.escolaridade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
   geom_bar(stat = "identity", position = "stack") +
-  scale_fill_manual(values =  (paleta_hist(5)))+
+  scale_fill_manual(values =  (paleta_hist(6)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
        title = "Proporção de Mortes por Psicoativos no Brasil por Escolaridade e Ano") +
   theme_classic()+
