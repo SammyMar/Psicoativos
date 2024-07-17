@@ -110,6 +110,8 @@ series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(
 
 print (series_escolaridade_br_total)
 
+save(series_escolaridade_br_total, file="GRAFICOS_RDA/series_escolaridade_br_total")
+
 #2.2 quantidade de mortes TOTAIS por escolaridade no espirito santo
 
 # montando os dados
@@ -135,6 +137,7 @@ series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(
 print (series_escolaridade_es_total)
 
 
+save(series_escolaridade_es_total, file="GRAFICOS_RDA/series_escolaridade_es_total")
 
 #2.1 quantidade de mortes por psicoativos por escolaridade no brasil
 
@@ -160,6 +163,7 @@ series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, 
 
 print (series_escolaridade_br_psic)
 
+save(series_escolaridade_br_psic, file="GRAFICOS_RDA/series_escolaridade_br_psic")
 
 #2.1 quantidade de mortes por psicoativos por escolaridade no espirito santo
 
@@ -186,7 +190,7 @@ series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, 
 print (series_escolaridade_es_psic)
 
 
-
+save(series_escolaridade_es_psic, file="GRAFICOS_RDA/series_escolaridade_es_psic")
 #GRAFICO DE PROPORCAO Brasil
 
 
@@ -214,6 +218,7 @@ proporcao_escolaridade_br_psic <-ggplot(dados.escolaridade.br.series.psic, aes(x
 
 print(proporcao_escolaridade_br_psic)
 
+save(proporcao_escolaridade_br_psic, file="GRAFICOS_RDA/proporcao_escolaridade_br_psic")
 
 #GRAFICO DE PROPORCAO ES
 
@@ -241,4 +246,6 @@ proporcao_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(
         axis.text = element_text(size = 13))
 
 print(proporcao_escolaridade_es_psic)
+
+save(proporcao_escolaridade_es_psic, file="GRAFICOS_RDA/proporcao_escolaridade_es_psic")
 

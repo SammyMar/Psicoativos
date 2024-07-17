@@ -248,6 +248,7 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
   theme_classic()
 
 save(serie_indic4_5, file="GRAFICOS_RDA/serie_indic4_5.rda")
+
 #pacman::p_load("gridExtra")
 # 
 # ggplotly(serie_indic4_5, tooltip = c("x","colour"))

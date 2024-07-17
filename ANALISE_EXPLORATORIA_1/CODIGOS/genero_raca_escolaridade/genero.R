@@ -106,6 +106,7 @@ series_genero_br_total <- ggplot(data = dados.genero.br.series, aes(x = ANOOBITO
 
 print(series_genero_br_total)
 
+save(series_genero_br_total, file="GRAFICOS_RDA/series_genero_br_total")
 
 #2.2 quantidade de mortes por genero no espirito santo
 
@@ -131,7 +132,7 @@ series_genero_es_total <- ggplot(data = dados.genero.es.series, aes(x = ANOOBITO
 
 print (series_genero_es_total)
 
-
+save(series_genero_es_total, file="GRAFICOS_RDA/series_genero_es_total")
 #2.1 quantidade de mortes por psicoativos por genero no brasil
 
 # montando os dados
@@ -156,6 +157,7 @@ series_genero_br_psic <- ggplot(data = dados.genero.br.series.psic, aes(x = ANOO
 
 print (series_genero_br_psic)
 
+save(series_genero_br_psic, file="GRAFICOS_RDA/series_genero_br_psic")
 
 #2.2 quantidade de mortes por psicoativos por genero no espirito santo
 
@@ -182,6 +184,7 @@ series_genero_es_psic <- ggplot(data = dados.genero.es.series.psic, aes(x = ANOO
 print (series_genero_es_psic)
 
 
+save(series_genero_es_psic, file="GRAFICOS_RDA/series_genero_es_psic")
 
 #TABELA E INDICADOR
 
@@ -225,7 +228,7 @@ proporcao_genero_br_psic <- ggplot(dados.genero.br.series.psic, aes(x = factor(A
   theme(plot.title = element_text(size = 13),
         axis.text= element_text(size = 15))
   
-
+save(proporcao_genero_br_psic, file="GRAFICOS_RDA/proporcao_genero_br_psic")
 
 #GRAFICOD E PROPORCAO ES
 
@@ -247,5 +250,10 @@ proporcao_genero_es_psic <- ggplot(dados.genero.es.series.psic, aes(x = factor(A
   theme(plot.title = element_text(size = 13),
         axis.text= element_text(size = 15))
 
+save(proporcao_genero_es_psic, file="GRAFICOS_RDA/proporcao_genero_es_psic")
+
 proporcao_genero_br_psic
 proporcao_genero_es_psic
+
+
+
