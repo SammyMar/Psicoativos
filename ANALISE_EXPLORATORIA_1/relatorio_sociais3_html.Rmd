@@ -302,8 +302,8 @@ subplot(ggplotly(proporcao_raca_br_psic,
 
 A variável escolaridade foi a que apresentou maior discrepância com o
 passar do tempo. Sobre esse aspecto, é importante destacar o número alto
-de informações Não Atribuídas (NA), o que pode ter causado interferência
-nos dados.Também é válido ressaltar que existem mais de uma variável que
+de informações não disponíveis (NA), o que pode ter causado interferência
+nos dados.Também é válido ressaltar que existe mais de uma variável que
 retrata a escolaridade dos indivíduos, entretanto, todas elas apresentam
 um alto índice de NA's.
 
@@ -414,11 +414,11 @@ Ao analisar os dados de estado civil, percebe-se que, enquanto a maior
 parte dos falecidos totais (tanto do Brasil quanto do Espírito Santo) é
 casada, quando se observa os falecidos por psicoativos, a maior parte
 deles é solteira. Esse fenômeno acontece tanto a nível estadual quando a
-nível nacional. Vale ressaltar que o número de dados não atribuídos (NA)
+nível nacional. Vale ressaltar que o número de dados não disponíveis (NA)
 nessa variável também foi elevado e pode ter influenciado os dados.
 
 É válido mencionar que por se tratar de uma informação que requer certa
-formalidade e inclusive documentação, os dados podem não ser eficientes
+formalidade e inclusive documentação que comprove o vínculo afetivo, os dados podem não ser eficientes
 em expressar se os falecidos tinham de fato um companheiro ou
 companheira com quem se relacionavam.
 
@@ -485,10 +485,6 @@ subplot(style(ggplotly(barplot_estciv_br),
 #           heights = c(1, 1))
 
 ```
-
-Independente do número de NAs, notamos que quanto maior o tempo de
-escolaridade, menor a número de mortes, ou seja, pode ser que a
-instrução e conhecimento da pessoa interfira no consumo de psicoativos.
 
 <br>
 
@@ -558,12 +554,11 @@ subplot(style(ggplotly(grafico_prop_estciv_br),
 
 ## Idade
 
-Quando analisamos a idade , temos duas abordagens a serem seguidas, por
-cada idade e por faixa etária, vamos primeiro analisar por idade:
+Ao analisar a variável idade, é possível seguir duas abordagens, por
+anos de idade e por faixas etárias. Neste relatório serão feitas as duas análises, iniciando pelos anos de idade.
 
-Nos boxplots das idades por ano, observamos que, a variabilidade das
-idades ao longo dos anos é baixa, tanto no Brasil, quanto no ES, e às
-mortes gerais e morte por psicoativos. Percebemos também que a média de
+É possível observar que em todos os boxplots das idades por ano a variabilidade dessas
+idades ao longo dos anos é baixa. Percebe-se também que a média de
 idade de mortes geral é mais elevada que a média de idade de mortes pelo
 uso de psicoativos.
 
@@ -631,15 +626,17 @@ uso de psicoativos.
 
 ## Faixa Etária
 
-Menor de idade - entre 0 e 17 anos \\ Jovem-Adulto - entre 18 e 30 anos
-\\ Adulto - entre 31 e 55 anos \\ Idoso - acima de 55 anos \\
+**Menor de idade** - entre 0 e 17 anos \
+**Jovem-Adulto** - entre 18 e 30 anos \
+**Adulto** - entre 31 e 55 anos \
+**Idoso** - acima de 55 anos \
 
-Nos gráficos por faixa etária, separamos menor de idade, de maior de
-idade e nota-se que a quantidade de menor de idade que morre pelo uso de
-psicoativo é muito baixo, uma única pessoa, de 17 anos no Espírito Santo
-e poucas no Brasil. Percebemos também que nas mortes gerais no Brasil e
-no Espírito Santo, a maior parte das pessoas eram idosas, enquanto a
-maior parte das pessoas que morreram pelo uso de psicoativo eram
+Nos gráficos por faixa etária foram separados os indivíduos menores de idade dos maiores de
+idade. Nota-se que o número de menor de idade que morre pelo uso de
+psicoativo é muito baixo: uma única pessoa de 17 anos no Espírito Santo
+e menos de 35 pessoas no Brasil. Percebe-se também que nas mortes gerais no Brasil e
+no Espírito Santo, a maior parte das pessoas eram  da categoria idosas, enquanto a
+maior parte das pessoas que morreram pelo uso de psicoativo eram do grupo dos
 adultos.
 
 <br>
