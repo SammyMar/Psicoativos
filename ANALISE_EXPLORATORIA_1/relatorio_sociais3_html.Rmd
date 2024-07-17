@@ -770,17 +770,17 @@ subplot(style(ggplotly(grafico_prop_idade_br),
 
 # Análise demográfica com ênfase nas CIDs mais comuns
 
-## ÓBITOS X IDADE
+## Óbitos X Idade
 
-Ao analisar a quantidade de óbitos pelas dois maiores psicoativos,
-percebemos que maior parte das pessoas que morreram pelo uso de álcool
-tem entre 50 e 60 anos, o que altera quando vemos o gráfico de fumo, No
-Espírito Santo, a maior parte tem mais de 60 e não tem uma distribuição
-como os outros, já no Brasil, a distribuição se parece mais, porém
+Ao analisar a quantidade de óbitos pelos dois maiores psicoativos,
+percebe-se que a maior parte das pessoas que morreram pelo uso de álcool
+tem entre 50 e 60 anos, o que altera quando vemos o gráfico de fumo. No
+Espírito Santo, a maior parte tem mais de 60 anos e não tem uma distribuição
+como os outros, ou seja, a quantidade de mortes por idade varia de uma maneira irregular. No Brasil, a distribuição se parece mais com uma normal, porém
 deslocada para a direita, o que mostra que as pessoas que morrem por
 fumo são mais velhas que as que morrem por álcool.
 
-### óbtos x idade - por consumo de Álcool (F10)
+### Óbitos x Idade - por consumo de Álcool (F10)
 
 ```{r echo=FALSE,out.width = "100%", warning=FALSE}
 # grid.arrange(hist.F10.es, hist.F10.br, ncol=2)
@@ -810,7 +810,7 @@ subplot(ggplotly(hist.F10.br,
   layout(title = "Óbitos por Consumo de Álcool por Idade")
 ```
 
-### óbtos x idade por Fumo (F17)
+### Óbitos x Idade - por Fumo (F17)
 
 ```{r echo=FALSE,out.width = "100%", warning=FALSE}
 # grid.arrange(hist.F17.es, hist.F17.br, ncol=2)
@@ -840,15 +840,15 @@ subplot(ggplotly(hist.F17.es,
   layout(title = "Óbitos por Fumo por Idade")
 ```
 
-## ÓBITOS X GÊNERO
+## Óbitos X Gênero
 
-Com relação ao gênero, é perceptível que no Brasil e no Espírito Sando o
+Com relação ao gênero, é perceptível que no Brasil e no Espírito Santo o
 comportamento é o mesmo, homens morrem mais que mulheres tanto pelo
 consumo de álcool quanto de fumo. É uma informação interessante o
-aumento de todos os casos no período de 2020 até 2022, que foram os anos
+aumento de todos os casos no período de 2020 até 2021, que foram os anos
 da pandemia.
 
-### Mortes x gênero - por consumo de Álcool (F10)
+### Mortes x Gênero - por consumo de Álcool (F10)
 
 ```{r out.width = "100%", echo=FALSE}
 # ggpubr::ggarrange(series_genero_es_f10, series_genero_br_f10, ncol=2, common.legend = T,
@@ -882,7 +882,7 @@ subplot(style(ggplotly(series_genero_br_f10),
 
 ```
 
-### Mortes x gênero - por Fumo (F17)
+### Mortes x Gênero - por Fumo (F17)
 
 ```{r out.width = "100%", echo=FALSE}
 # ggpubr::ggarrange(series_genero_es_f17, series_genero_br_f17, ncol=2, common.legend = T,
@@ -915,14 +915,12 @@ subplot(style(ggplotly(series_genero_br_f17),
        nrows = 1)  |> layout(title = ("Óbitos por Fumo por Gênero"))
 ```
 
-## ÓBITOS X ESCOLARIDADE
+## Óbitos X Escolaridade
 
-A variável escolaridade, como dito antes, possui muitas observações
-faltando (NAs), portanto fica complicado chegar a concluções corretas,
-porém, notamos que independente do psicoativo, pessoas que passaram
-menos tempo na escola morrem mais.
+A variável escolaridade, como explicitado anteriormente, possui muitos dados faltantes (NAs), portanto fica complicado chegar a concluções corretas,
+porém, em relação ao psicoativo fumo, quando mantidas as devidas proporções, percebe-se que houve uma crescente nos dois polos de escolaridade, isto é, tanto pessoas com nenhuma escolaridade, quando com 12 anos ou mais de escolaridade morreram mais por fumo.
 
-### Mortes x escolaridade - por consumo de Álcool (F10)
+### Mortes x Escolaridade - por consumo de Álcool (F10)
 
 ```{r out.width = "100%", echo=FALSE}
 # ggpubr::ggarrange(hist_escolaridade_es_f10, hist_escolaridade_br_f10, ncol=2, common.legend = T,
@@ -956,7 +954,7 @@ subplot(style(ggplotly(hist_escolaridade_br_f10),
        nrows = 1)  |> layout(title = "Óbitos por Consumo de Álcool por Escolaridade")
 ```
 
-### Mortes x escolaridade - por Fumo (F17)
+### Mortes x Escolaridade - por Fumo (F17)
 
 ```{r out.width = "100%", echo=FALSE}
 # ggpubr::ggarrange(hist_escolaridade_es_f17, hist_escolaridade_br_f17, ncol=2, common.legend = T,
@@ -990,14 +988,12 @@ subplot(style(ggplotly(hist_escolaridade_br_f17),
 
 ```
 
-## ÓBTOS X RAÇA
+## Óbitos X Raça
 
-Independente do psicoativo, os dois seguem o mesmo padrão, pardors
-morrem mais, logo seguidos por brancos, isso ocorre em todos, e apenas
-no fumo no Brasil, a distribuição altera um pouco, tendo alterações
-brutas ao longo dos anos e com os brancos morrendo mais em 2022. 
+Independente do psicoativo, os dois seguem o mesmo padrão, pessoas pardas
+morrem mais, seguidas por brancas. Apenas no fumo no Brasil a distribuição altera um pouco, tendo alterações brutas ao longo dos anos e com brancos morrendo mais em 2022. 
 
-### Mortes x raça - por consumo de Álcool (F10)
+### Mortes x Raça - por consumo de Álcool (F10)
 
 ```{r out.width = "100%", echo=FALSE}
 # ggpubr::ggarrange(series_raca_es_F10, series_raca_br_F10, ncol=2, common.legend = T,
@@ -1031,7 +1027,7 @@ subplot(style(ggplotly(series_raca_br_F10),
        nrows = 1)  |> layout(title = "Óbitos por Consumo de Álcool por Raça/Cor")
 ```
 
-### Mortes x raça - por Fumo (F17)
+### Mortes x Raça - por Fumo (F17)
 
 ```{r out.width = "100%", echo=FALSE}
 # ggpubr::ggarrange(series_raca_es_F17, series_raca_br_F17, ncol=2, common.legend = T,
@@ -1066,7 +1062,7 @@ subplot(style(ggplotly(series_raca_br_F17),
 
 # Análise Geral do Número de Mortes
 
-Para iniciar a análise, é importante ter em mente o comportamento desses
+Para iniciar esta parte da análise, é importante ter em mente o comportamento desses
 óbitos no decorer dos anos. Ao visualizar os gráficos de mortes totais e
 mortes por psicoativos tanto do Espírito Santo quando do Brasil,
 percebe-se que os dois gráficos de mortes totais são bem similares,
@@ -1152,7 +1148,7 @@ ggplotly(grafico_proporcao) |> style( showlegend = T)  |>
 
 ## Mapas
 
-O mapa abaixo apresenta o cenário nacional, por estado, do número de óbitos por psicoativos sobre 100000 habitantes no ano de 2013. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções.
+O mapa abaixo apresenta o cenário nacional, por estado, do número de óbitos por psicoativos sobre 100.000 habitantes no ano de 2013. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções.
 
 ```{r, echo=FALSE}
 print(mapa_psic_pop13)
@@ -1160,7 +1156,7 @@ print(mapa_psic_pop13)
 
 <br>
 
-Já este segundo mapa, apresenta o mesmo indicador, porém calculado com os dados de 2022. As duas "fotografias", uma do ano de 2013 e a outra do ano de 2022, não consideram a evolução ao longo dos anos deste indicador, no entanto, traz visualmente, a ideia do antes e depois. O gráfico de calor, apresentado em seguida, consegue 
+Já este segundo mapa apresenta o mesmo indicador, porém calculado com os dados de 2022. As duas "fotografias", uma do ano de 2013 e a outra do ano de 2022, não consideram a evolução ao longo dos anos deste indicador, no entanto, traz visualmente a ideia do antes e depois. O gráfico de calor, apresentado em seguida, consegue mostrar essa mudança ao longo do tempo.
 
 ```{r, echo=FALSE}
 print(mapa_psic_pop22) 
@@ -1171,9 +1167,9 @@ print(mapa_psic_pop22)
 ## Gráfico de calor
 
 Através do gráfico de calor é possível ter uma ideia geral do número de
-mortes por psicoativos a cada 100 mil habitantes em todos os estados do
+mortes por psicoativos a cada 100.000 habitantes em todos os estados do
 Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe
-é o com maior número de ocorrência a cada 100 mil habitantes.
+é o com maior número de ocorrência a cada 100.000 habitantes.
 
 <br>
 
@@ -1181,7 +1177,7 @@ Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe
 ggplotly(heatmap_mortes_psic) |> layout(title = 'Taxa de Mortes por Psicoativos a cada 100K de Habitantes')
 ```
 
-# indicadores
+# Indicadores
 
 ## Indicador 1
 
@@ -1242,12 +1238,12 @@ print(serie_indic2_3)
 ## Indicadores 4 e 5
 
 Os indicadores 4 e 5 mostram o número de óbitos por psicoativos em
-relação a população do Brasil e do Espírito Sant. Através deles é
+relação a população do Brasil e do Espírito Santo. Através deles é
 possível compreender que enquanto no Brasil o número de óbitos por
 psicoativos a cada 100.000 habitante variou de 4 a 6, no Espírito Santo
-esse número divergiu muito no deccorer dos anos, assumindos valores que
+esse número divergiu muito no decorrer dos anos, assumindo valores que
 vão de aproximadamente 4 a aproximadamente 9 óbitos a cada 100.000
-habitantes no estado. Vale ressaltar ainda que o indicador do ES só foi
+habitantes. Vale ressaltar ainda que o indicador do ES só foi
 menos que o do Brasil no ano de 2019.
 
 $$
@@ -1268,7 +1264,11 @@ print(serie_indic4_5)
 
 # Outras Possíveis Análises
 
+Nesta parte do relatório é possível visualizar possíveis informações que podem direcionar as próximas análises de dados do estudo. Em seguida serão apresentadas duas tabelas, uma com possíveis formas de divisão territorial do estado do Espírito Santo e outra com as variáveis existentes no SIM. Ambas as tabelas tem como objetivo mostrar, mas não limitar, caminhos para os quais este estudo pode seguir.
+
 ## Divisão do Espírito Santo por Regiões
+
+A tabela a seguir mostra algumas possíveis formas de divisão do Espírito Santo por regiões. Esse tipo de tabela é útil para desenvolver analises mais específicas referentes a cada parte do estado. 
 
 <br>
 
@@ -1278,7 +1278,9 @@ kable(tabela_regioes_es) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
-## Informações sobre as possíveis variáveis
+## Informações sobre as Possíveis Variáveis
+
+Já a tabela de variáveis mostra os dados que podem ser coletados através do SIM e que podem auxiliar no entendimento do problema trabalhado. 
 
 <br>
 
