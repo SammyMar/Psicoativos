@@ -112,13 +112,13 @@ grafico_proporcao <- ggplot(obitos_combinados_br_es, aes(x = factor(ANOOBITO), y
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Região",
        title = "Proporção de Mortes por Psicoativos no Espírito Santo em relação ao Restante do Brasil anualmente") +
   theme_minimal() +
-  scale_fill_manual(values = c("steelblue", "orange"), labels = c("Espírito Santo", "Restante do Brasil"))
+  scale_fill_manual(values = rev(paleta_hist(2)), labels = c("Espírito Santo", "Restante do Brasil"))
 
 # Mostrar o gráfico
 print(grafico_proporcao)
 
 
-
+save(grafico_proporcao, file = "GRAFICOS_RDA/grafico_proporcao")
 
 
 #SERIE
@@ -146,6 +146,7 @@ series_mortes_br_total <- ggplot(data = dados.mortes.totais.series, aes(x = ANOO
 series_mortes_br_total
 
 
+save(series_mortes_br_total, file = "GRAFICOS_RDA/series_mortes_br_total")
 
 #2.1 quantidade de mortes psic no brasil
 
@@ -171,6 +172,7 @@ series_mortes_br_psic <- ggplot(data = dados.mortes.psic.series, aes(x = ANOOBIT
 series_mortes_br_psic
 
 
+save(series_mortes_br_psic, file = "GRAFICOS_RDA/series_mortes_br_psic")
 
 
 #2.1 quantidade de mortes totais no es

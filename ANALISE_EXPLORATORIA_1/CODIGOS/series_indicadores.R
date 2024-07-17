@@ -46,6 +46,7 @@ serie_indic1
 
 
 
+save(serie_indic1, file="GRAFICOS_RDA/serie_indic1.rda")
 
 
 # MONTANDO OS DADOS INDICADOR 2
@@ -87,7 +88,7 @@ de 2013 a 2022",
   theme_classic()
 serie_indic2
 
-
+save(serie_indic1, file="GRAFICOS_RDA/serie_indic2.rda")
 
 
 
@@ -166,6 +167,10 @@ serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
 
 serie_indic2_3
 
+save(serie_indic2_3, file="GRAFICOS_RDA/serie_indic2_3.rda")
+
+
+
 ### Indicador 4 obitos psic ES/pop ES
 pop_es_2022 <- data.frame(codigoUF = "32",
                           ano = as.numeric("2022"),
@@ -242,7 +247,7 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
                      breaks = seq(0,10, by=1))+ 
   theme_classic()
 
-
+save(serie_indic4_5, file="GRAFICOS_RDA/serie_indic4_5.rda")
 #pacman::p_load("gridExtra")
 # 
 # ggplotly(serie_indic4_5, tooltip = c("x","colour"))

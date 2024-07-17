@@ -70,6 +70,8 @@ g_count_CIDs <- dados.count.CID %>%
 g_count_CIDs
 
 
+save(g_count_CIDs, file="GRAFICOS_RDA/g_count_CIDs.rda")
+
 
 # preparando dados para heatmap por cids vs anos ------------------------------------
 
@@ -101,5 +103,6 @@ heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value*100)
 heatmap_CIDS
 
 
+save(heatmap_CIDS, file="GRAFICOS_RDA/heatmap_CIDS.rda")
 
-
+load("GRAFICOS_RDA/heatmap_CIDS.rda")

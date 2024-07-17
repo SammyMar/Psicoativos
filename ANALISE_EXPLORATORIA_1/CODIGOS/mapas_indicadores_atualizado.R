@@ -56,6 +56,7 @@ mapa_psic_pop13 <- ggplot() +
 
 mapa_psic_pop13
 
+save(mapa_psic_pop13, file="GRAFICOS_RDA/mapa_psic_pop13.rda")
 
 mapa_psic_pop22 <- ggplot() + 
   geom_sf(data = dados_mapa_psic_pop22, aes(fill = (N.obitos/pop22)*100000),
@@ -67,3 +68,4 @@ mapa_psic_pop22 <- ggplot() +
 
 mapa_psic_pop22
 
+save(mapa_psic_pop22, file="GRAFICOS_RDA/mapa_psic_pop22.rda")
