@@ -99,11 +99,9 @@ Os gráficos abaixo mostram quais as CID's com maior número de ocorrências tan
 <br>
 
 ```{r, echo=FALSE}
-<<<<<<< HEAD
+
 ggplotly(g_count_CIDs, tooltip = "text")
-=======
-ggplotly(g_count_CIDs, tooltip = 'text')
->>>>>>> b65380f4e079e4479b4a2d6a7646361584b37d26
+
 ```
 
 <br> O gráfico de calor é usado para visualizar de forma clara a
@@ -1144,8 +1142,7 @@ fumo são mais velhas que as que morrem por álcool.
 
 ```{r echo=FALSE,out.width = "100%", warning=FALSE}
 # grid.arrange(hist.F10.es, hist.F10.br, ncol=2)
-subplot(ggplotly(hist.F10.br, tooltip = "text",  
-                 tooltip  = "text") |> 
+subplot(style(ggplotly(hist.F10.br, tooltip = "text")) |> 
           layout(annotations = list(x = 0.1 , 
                                      y = -0.1,
                                     text = "Mortes F10 BR",
