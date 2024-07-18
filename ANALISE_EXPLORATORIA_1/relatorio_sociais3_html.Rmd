@@ -827,10 +827,10 @@ uso de psicoativos.
 #           layout(legend = list(orientation = "h",
 #                                xanchor = "center",
 #                                x = 0.5),
-#                  annotations = list(x = 0.2 ,
+ #                 annotations = list(x = 0.2 ,
 #                                     y = 1.05,
 #                                     text = "Mortes Totais BR",
-#                                     showarrow = F, 
+#                                    showarrow = F, 
 #                                     xref='paper', 
 #                                     yref='paper'),
 #                  xaxis = list(tickfont = list(size = 10)),
@@ -851,12 +851,12 @@ uso de psicoativos.
 #           layout(legend = list(orientation = "h",
 #                                xanchor = "center",
 #                                x = 0.5),
-#                  annotations = list(x = 0.2 ,
-#                                     y = 1.05,
+#                 annotations = list(x = 0.2 ,
+#                                    y = 1.05,
 #                                     text = "Mortes Psicoativos BR",
 #                                     showarrow = F,
 #                                     xref='paper',
-#                                     yref='paper'),
+#                                    yref='paper'),
 #                  xaxis = list(tickfont = list(size = 10)),
 #                  yaxis = list(tickfont = list(size = 10))),
 #         style(ggplotly(boxplot.anoidad.es.psic), showlegend = F)  |> 
@@ -865,10 +865,10 @@ uso de psicoativos.
 #                                     text = "Mortes Psicoativos ES",
 #                                     showarrow = F,
 #                                     xref='paper',
-  #                                   yref='paper'),
-  #                xaxis = list(tickfont = list(size = 10)),
-  #                yaxis = list(tickfont = list(size = 10)))) |>
-  # layout(title = '')
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                 yaxis = list(tickfont = list(size = 10)))) |>
+#   layout(title = '')
 ```
 
 <br>
