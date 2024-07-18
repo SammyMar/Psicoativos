@@ -14,9 +14,8 @@ dados.F17.BR <- subset(dados_br_psic, grepl("^F17[0-9]$", CAUSABAS))
 #1.histograma de mortos x idade por F10 (álcool)
 #1.1 es
 hist.F10.es <- ggplot(data = dados.F10.ES, aes(x = IDADE2)) +
-  geom_histogram(binwidth = 4, fill = "#9A3D6A", color = "black", alpha = 0.8,
-                 aes(text  = paste("<br>Quantidade: ", ..count..,
-                                   "<br>Idade: ", IDADE2)))+
+  geom_histogram(binwidth = 4, fill = paleta_hist(1), alpha = 0.8,
+                 )+
   labs(
     title = "Óbitos por idade causadas pelo uso de álcool no Espírito Santo",
     x = 'Idade',
@@ -31,13 +30,13 @@ hist.F10.es <- ggplot(data = dados.F10.ES, aes(x = IDADE2)) +
     legend.title = element_text(size = size_titulo_legenda),               
     legend.text = element_text(size = size_texto_legenda))
 
-ggplotly(hist.F10.es, tooltip = "text")
+ggplotly(hist.F10.es)
 
 save(hist.F10.es, file="GRAFICOS_RDA/hist.F10.es.RData")
 
 #1.2 br
 hist.F10.br <- ggplot(data = dados.F10.BR, aes(x = IDADE2)) +
-  geom_histogram(binwidth = 4, fill = "#9A3D6A", color = "black", alpha = 0.8) +
+  geom_histogram(binwidth = 4, fill = paleta_hist(1), alpha = 0.8) +
   labs(
     title = "Óbitos por idade causadas pelo uso de álcool no Brasil",
     x = 'Idade',
@@ -58,7 +57,7 @@ save(hist.F10.br, file="GRAFICOS_RDA/hist.F10.br.RData")
 # 2. histograma de mortos x idade de f17 (fumo)
 # 2.1 es
 hist.F17.es <- ggplot(data = dados.F17.ES, aes(x = IDADE2)) +
-  geom_histogram(binwidth = 4, fill = "#9A3D6A", color = "black", alpha = 0.8) +
+  geom_histogram(binwidth = 4, fill = paleta_hist(1), alpha = 0.8) +
   labs(
     title = "Óbitos por idade causadas pelo fumo no Espírito Santo",
     x = 'Idade',
@@ -77,7 +76,7 @@ hist.F17.es
 save(hist.F17.es, file="GRAFICOS_RDA/hist.F17.es.RData")
 #2.2 br
 hist.F17.br <- ggplot(data = dados.F17.BR, aes(x = IDADE2)) +
-  geom_histogram(binwidth = 4, fill = "#9A3D6A", color = "black", alpha = 0.8) +
+  geom_histogram(binwidth = 4, fill = paleta_hist(1), alpha = 0.8) +
   labs(
     title = "Óbitos por idade causadas pelo fumo no Brasil",
     x = 'Idade',
@@ -119,6 +118,7 @@ series_genero_br_f10 <- ggplot(data = dados.genero.br.F10, aes(x = ANOOBITO, y =
   scale_x_continuous(
     breaks = dados.genero.br.F10$ANOOBITO,
     labels = dados.genero.br.F10$ANOOBITO)+
+  scale_colour_manual(values = paleta_series(2))+
   theme_classic()+
   theme(
     plot.title = element_text(size = 12),       # Tamanho e estilo do título do gráfico
@@ -158,6 +158,7 @@ series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y =
     legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_es_f10)
+ggplotly(series_genero_es_f10, tooltip = "text")
 save(series_genero_es_f10, file="GRAFICOS_RDA/series_genero_es_f10.RData")
 
 # 4. quantidade de mortes por genero - PELO FUMO (F17)
