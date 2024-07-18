@@ -154,9 +154,9 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))                 # Tamanho do texto da legenda
+  
 
 graf.serie.idade.es.t
 
@@ -192,9 +192,8 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 graf.serie.idade.es.p
 
@@ -228,9 +227,8 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 graf.serie.idade.br.t
 
@@ -264,9 +262,8 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 graf.serie.idade.br.p
 save(graf.serie.idade.es.t, file="GRAFICOS_RDA/graf.serie.idade.es.t.RData")
@@ -314,9 +311,8 @@ barplot_estciv_br <-  ggplot(dados_prop_estciv_br, aes(x = fct_reorder(ESTCIV,p)
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 barplot_estciv_br
 
 # gráfico de barras de estado civil, BR PSICOATIVOS
@@ -339,9 +335,8 @@ barplot_estciv_br_psic <- ggplot(dados_prop_estciv_br.psic, aes(x = fct_reorder(
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),
     axis.text.x = element_blank(),# Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 barplot_estciv_br_psic
@@ -365,9 +360,8 @@ barplot_estciv_es_psic <- ggplot(dados_prop_estciv_es.psic, aes(x = fct_reorder(
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),
     axis.text.x = element_blank(),# Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 barplot_estciv_es_psic
 
@@ -390,9 +384,8 @@ barplot_estciv_es <- ggplot(dados_prop_estciv_es, aes(x = fct_reorder(ESTCIV,p),
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),
     axis.text.x = element_blank(),# Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 barplot_estciv_es
 save(barplot_estciv_br, file="GRAFICOS_RDA/barplot_estciv_br.RData")
@@ -428,9 +421,8 @@ serie_obt_psic_br <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 serie_obt_psic_br
 
@@ -461,9 +453,8 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 serie_obt_psic_es
@@ -500,9 +491,8 @@ grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 print(grafico_prop_estciv_es)
@@ -535,9 +525,8 @@ grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 print(grafico_prop_estciv_br)
@@ -572,9 +561,8 @@ grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = facto
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 print(grafico_prop_estciv_es_psic)
@@ -607,9 +595,8 @@ grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = facto
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 print(grafico_prop_estciv_br_psic)
@@ -646,9 +633,8 @@ grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 print(grafico_prop_idade_es_psic)
@@ -682,9 +668,8 @@ grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 print(grafico_prop_idade_br_psic)
@@ -718,9 +703,8 @@ grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO),
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 
 print(grafico_prop_idade_es)
@@ -754,9 +738,8 @@ grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO),
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print(grafico_prop_idade_br)
 save(grafico_prop_idade_es_psic, file="GRAFICOS_RDA/grafico_prop_idade_es_psic.RData")
