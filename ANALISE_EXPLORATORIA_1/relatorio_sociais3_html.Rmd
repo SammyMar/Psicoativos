@@ -59,6 +59,7 @@ source("CODIGOS/paletas_de_cores.R")
 # source("CODIGOS/graficos_pelascids.R")
 source("carregamento_plots.R")
 
+
 ```
 
 <br>
@@ -98,7 +99,7 @@ Os gráficos abaixo mostram quais as CID's com maior número de ocorrências tan
 <br>
 
 ```{r, echo=FALSE}
-ggplotly(g_count_CIDs)
+ggplotly(g_count_CIDs, tooltip = 'text')
 ```
 
 <br> O gráfico de calor é usado para visualizar de forma clara a
