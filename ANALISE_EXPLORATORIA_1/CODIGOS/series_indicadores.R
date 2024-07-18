@@ -45,7 +45,9 @@ serie_indic1 <- ggplot(data = dados_indic1,
   scale_y_continuous(limits = c(0,15),
       breaks = seq(0,15, by=2))+
   theme_classic()+
-  theme(plot.title = element_text(size = 13))
+  theme(plot.title = element_text(size = 13),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(serie_indic1, tooltip = "text")
 
@@ -90,7 +92,9 @@ de 2013 a 2022",
     labels = dados_indic2$ANOOBITO)+
   scale_y_continuous(limits = c(0,3.5),
                      breaks = seq(0,3.5, by=0.5))+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 serie_indic2
 
 save(serie_indic1, file="GRAFICOS_RDA/serie_indic2.RData")
@@ -135,7 +139,9 @@ de 2013 a 2022",
     labels = dados_indic3$ANOOBITO)+
   scale_y_continuous(limits = c(0,3.5),
                      breaks = seq(0,3.5, by=0.5))+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+legend.text = element_text(size = size_texto_legenda))
 serie_indic3
 
 
@@ -172,7 +178,9 @@ serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
     labels = dados_indic2_3$Ano)+
   scale_y_continuous(limits = c(0,3.5),
                      breaks = seq(0,3.5, by=0.5))+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(serie_indic2_3, tooltip = "text")
 
@@ -258,7 +266,9 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
     labels = dados_indic4_5$Ano)+
   scale_y_continuous(limits = c(0,10),
                      breaks = seq(0,10, by=1))+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(serie_indic4_5, tooltip = "text")
 
