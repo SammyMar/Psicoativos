@@ -828,7 +828,7 @@ uso de psicoativos.
 #           layout(legend = list(orientation = "h",
 #                                xanchor = "center",
 #                                x = 0.5),
- #                 annotations = list(x = 0.2 ,
+#                 annotations = list(x = 0.2 ,
 #                                     y = 1.05,
 #                                     text = "Mortes Totais BR",
 #                                    showarrow = F, 
