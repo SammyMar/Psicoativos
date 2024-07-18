@@ -95,7 +95,10 @@ dados.raca.br.series <- data.frame(
 series_raca_br_total <- ggplot(data = dados.raca.br.series, aes(x = ANOOBITO, y = N.obitos,
                                                                     colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = RACACOR)) +
+  geom_point(shape = 15, aes(colour = RACACOR,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Raça/Cor: ", RACACOR))) +
   scale_colour_manual(values = rev(paleta_series(5)))+
   labs(title = "Número de óbitos Totais no Brasil por Raça/Cor",
        x="Anos", y="Óbitos Totais", colour = "Raça/Cor") +
@@ -120,7 +123,10 @@ dados.raca.es.series <- data.frame(
 series_raca_es_total <- ggplot(data = dados.raca.es.series, aes(x = ANOOBITO, y = N.obitos,
                                                                     colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = RACACOR)) +
+  geom_point(shape = 15, aes(colour = RACACOR,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Raça/Cor: ", RACACOR))) +
   scale_colour_manual(values = rev(paleta_series(5)))+
   labs(title = "Número de óbitos Totais no ES por Raça/Cor",
        x="Anos", y="Óbitos Totais", colour = "Raça/Cor") +
@@ -145,7 +151,10 @@ dados.raca.br.series.psic <- data.frame(
 series_raca_br_psic <- ggplot(data = dados.raca.br.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                         colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = RACACOR)) +
+  geom_point(shape = 15, aes(colour = RACACOR,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Raça/Cor: ", RACACOR))) +
   scale_colour_manual(values = rev(paleta_series(5)))+
   labs(title = "Número de óbitos por psicativos no Brasil por Raça/Cor",
        x="Anos", y="Óbitos por psicoativos", colour = "Raça/Cor") +
@@ -170,7 +179,10 @@ dados.raca.es.series.psic <- data.frame(
 series_raca_es_psic <- ggplot(data = dados.raca.es.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                         colour = RACACOR)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = RACACOR)) +
+  geom_point(shape = 15, aes(colour = RACACOR,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Raça/Cor: ", RACACOR))) +
   scale_colour_manual(values = rev(paleta_series(5)))+
   labs(title = "Número de óbitos por psicoativos no ES por Raça/Cor/Cor",
        x="Anos", y="Óbitos por psicoativos", colour = "Raça/Cor") +
@@ -196,9 +208,13 @@ dados.raca.br.series.psic <- dados.raca.br.series.psic %>%
 
 #2 Criar o grC!fico
 proporcao_raca_br_psic <- ggplot(dados.raca.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = RACACOR)) +
-  geom_bar(stat = "identity", position = "stack") +
+  geom_bar(stat = "identity", 
+           position = "stack", 
+           aes(text  = paste("Ano: ", factor(ANOOBITO), 
+                            "<br>Quantidade: ", N.obitos,
+                            "<br>Raça/Cor: ", RACACOR))) +
   scale_fill_manual(values = rev(paleta_hist(5)))+
-  labs(x = "Ano", y = "Porcentagem (%)", fill = "Raca",
+  labs(x = "Ano", y = "Percentual (%)", fill = "Raca",
        title = "Percentual de Mortes por Psicoativos no BR por Raça/Cor e Ano") +
   theme_classic()+
   theme(plot.title = element_text(size = 14))
@@ -220,9 +236,12 @@ dados.raca.es.series.psic <- dados.raca.es.series.psic %>%
 
 #2 Criar o grC!fico
 proporcao_raca_es_psic <- ggplot(dados.raca.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = RACACOR)) +
-  geom_bar(stat = "identity", position = "stack") +
+  geom_bar(stat = "identity", position = "stack", 
+           aes(text  = paste("Ano: ", factor(ANOOBITO), 
+                             "<br>", N.obitos,
+                             "<br>Raça/Cor: ", RACACOR))) +
   scale_fill_manual(values = rev(paleta_hist(5)))+
-  labs(x = "Ano", y = "Porcentagem (%)", fill = "Raça/Cor",
+  labs(x = "Ano", y = "Percentual (%)", fill = "Raça/Cor",
        title = "Percentual de Mortes por Psicoativos no ES por Raça/Cor e Ano") +
   theme_classic()+
   theme(plot.title = element_text(size = 14))
