@@ -77,7 +77,9 @@ mapa_psic_pop13 <- ggplot() +
                       name="Óbitos por 100000 hab.") +
   labs(title="Óbitos por Psicoativos em 2013 por 100000 habitantes") +
   theme_void() + theme(title = element_text(size = 15),
-                       axis.line = element_blank())
+                       axis.line = element_blank(),
+                       legend.title = element_text(size = size_titulo_legenda),               
+                       legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(mapa_psic_pop13, tooltip = "text")
 
@@ -88,11 +90,13 @@ mapa_psic_pop22 <- ggplot() +
           color = "#788881")+
   geom_sf(data = points_within_df_22, aes(text = label),
           color = "transparent") +
-  scale_fill_gradient(low = "white", high = "#010440", , limits = c(0,15),
+  scale_fill_gradient(low = "white", high = "#010440", limits = c(0,15),
                       name="Obitos (por 100000)") +
   labs(title="Obitos por Psicoativos em 2022 por 100000 habitantes", size=15) +
   theme_void() + theme(title = element_text(size = 15),
-                       axis.line = element_blank())
+                       axis.line = element_blank(),
+                       legend.title = element_text(size = size_titulo_legenda),               
+                       legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(mapa_psic_pop22, tooltip = "text")
 

@@ -19,7 +19,9 @@ freq_genero_br_total <- dados_br_total %>%
 
 hist_genero_br_total <- ggplot(freq_genero_br_total, aes(x = SEXO, y = Quantidade, fill = SEXO)) +
   geom_bar(stat = "identity") +
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda)) +
   labs(title = "Quantidades de mortes no Brasil entre o periodo de 2013 a 2022 de acordo com o genero",
        x = "genero",
        y = "Numero de Pessoas")
@@ -35,7 +37,9 @@ freq_genero_br_psic <- dados_br_psic %>%
 
 hist_genero_br_psic <- ggplot(freq_genero_br_psic, aes(x = SEXO, y = Quantidade, fill = SEXO)) +
   geom_bar(stat = "identity") +
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda)) +
   labs(title = "Quantidades de mortes por psicoativo no Brasil entre o periodo de 2013 a 2022 de acordo com o genero",
        x = "genero",
        y = "Numero de Pessoas")
@@ -51,7 +55,9 @@ freq_genero_es_total <- dados_es_total %>%
 
 hist_genero_es_total <- ggplot(freq_genero_es_total, aes(x = SEXO, y = Quantidade, fill = SEXO)) +
   geom_bar(stat = "identity") +
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda)) +
   labs(title = "Quantidades de mortes no ES entre o periodo de 2013 a 2022 de acordo com o genero",
        x = "genero",
        y = "Numero de Pessoas")
@@ -67,7 +73,9 @@ freq_genero_es_psic <- dados_es_psic %>%
 
 hist_genero_es_psic <- ggplot(freq_genero_es_psic, aes(x = SEXO, y = Quantidade, fill = SEXO)) +
   geom_bar(stat = "identity") +
-  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title = element_text(size = 20),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda)) +
   labs(title = "Quantidades de mortes por psicoativo no ES entre o periodo de 2013 a 2022 de acordo com o genero",
        x = "Genero",
        y = "Numero de Pessoas")
@@ -94,10 +102,7 @@ dados.genero.br.series <- data.frame(
 series_genero_br_total <- ggplot(data = dados.genero.br.series, aes(x = ANOOBITO, y = N.obitos,
                                                          colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO, 
-                                           "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
   labs(title = "Número de óbitos Totais no Brasil por gênero",
        x="Anos", y="Cbitos Totais", colour = "Sexo") +
@@ -105,9 +110,11 @@ series_genero_br_total <- ggplot(data = dados.genero.br.series, aes(x = ANOOBITO
     breaks = dados.genero.br.series$ANOOBITO,
     labels = dados.genero.br.series$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15))
+  theme(plot.title = element_text(size = 15),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
-ggplotly(series_genero_br_total)
+print(series_genero_br_total)
 
 save(series_genero_br_total, file="GRAFICOS_RDA/series_genero_br_total.RData")
 
@@ -123,10 +130,7 @@ dados.genero.es.series <- data.frame(
 series_genero_es_total <- ggplot(data = dados.genero.es.series, aes(x = ANOOBITO, y = N.obitos,
                                                                  colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO, 
-                                           "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
   labs(title = "Número de óbitos Totais no Espírito Santo por gênero",
        x="Anos", y="Cbitos Totais", colour = "Sexo") +
@@ -134,7 +138,9 @@ series_genero_es_total <- ggplot(data = dados.genero.es.series, aes(x = ANOOBITO
     breaks = dados.genero.es.series$ANOOBITO,
     labels = dados.genero.es.series$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15))
+  theme(plot.title = element_text(size = 15),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_es_total)
 
@@ -151,10 +157,7 @@ dados.genero.br.series.psic <- data.frame(
 series_genero_br_psic <- ggplot(data = dados.genero.br.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                     colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO, 
-                                           "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
   labs(title = "Número de óbitos por psicoativos no Brasil por gênero",
        x="Anos", y="obitos por psicativos", colour = "Sexo") +
@@ -162,7 +165,9 @@ series_genero_br_psic <- ggplot(data = dados.genero.br.series.psic, aes(x = ANOO
   breaks = dados.genero.br.series.psic$ANOOBITO,
   labels = dados.genero.br.series.psic$ANOOBITO)+
   theme_classic()+
-  theme(plot.title = element_text(size = 15))
+  theme(plot.title = element_text(size = 15),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_br_psic)
 
@@ -180,10 +185,7 @@ dados.genero.es.series.psic <- data.frame(
 series_genero_es_psic <- ggplot(data = dados.genero.es.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                         colour = SEXO)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO, 
-                                           "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15, aes(colour = SEXO)) +
   scale_colour_manual(values=rev(paleta_series(2)))+
   labs(title = "Número de óbitos por psicoativos no Espírito Santo por gênero",
        x="Anos", y="Cbitos por psicativos", colour = "Sexo") +
@@ -191,7 +193,9 @@ series_genero_es_psic <- ggplot(data = dados.genero.es.series.psic, aes(x = ANOO
     breaks = dados.genero.es.series.psic$ANOOBITO,
     labels = dados.genero.es.series.psic$ANOOBITO)+
     theme_classic()+
-    theme(plot.title = element_text(size = 15))
+    theme(plot.title = element_text(size = 15),
+          legend.title = element_text(size = size_titulo_legenda),               
+          legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_es_psic)
 
@@ -232,10 +236,7 @@ dados.genero.br.series.psic <- dados.genero.br.series.psic %>%
 
 #2 Criar o grC!fico
 proporcao_genero_br_psic <- ggplot(dados.genero.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text = paste("Ano: ", factor(ANOOBITO), 
-                            "<br>Percentual: ", round(porcentagem, 2),
-                            "<br>Sexo: ", SEXO)))+
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values=rev(paleta_hist(2)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Gênero",
        title = "Percentual de Mortes por Psicoativos no Brasil por Gênero e Ano") +
@@ -257,10 +258,7 @@ dados.genero.es.series.psic <- dados.genero.es.series.psic %>%
 
 #2 Criar o grC!fico
 proporcao_genero_es_psic <- ggplot(dados.genero.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = SEXO)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text = paste("Ano: ", factor(ANOOBITO), 
-                            "<br>Percentual: ", round(porcentagem, 2),
-                            "<br>Sexo: ", SEXO))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values=rev(paleta_hist(2)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Gênero",
        title = "Percentual de Mortes por Psicoativos no ES por Gênero e Ano") +
