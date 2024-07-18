@@ -99,7 +99,11 @@ Os gráficos abaixo mostram quais as CID's com maior número de ocorrências tan
 <br>
 
 ```{r, echo=FALSE}
+<<<<<<< HEAD
+ggplotly(g_count_CIDs, tooltip = "text")
+=======
 ggplotly(g_count_CIDs, tooltip = 'text')
+>>>>>>> b65380f4e079e4479b4a2d6a7646361584b37d26
 ```
 
 <br> O gráfico de calor é usado para visualizar de forma clara a
@@ -180,7 +184,7 @@ de morte por gênero, no Brasil e no Espírito Santo.
 <br>
 
 ```{r out.width = "100%", echo=FALSE}
-subplot(ggplotly(proporcao_genero_br_psic) |> 
+subplot(ggplotly(proporcao_genero_br_psic, tooltip = "text") |> 
           layout(annotations = list(x = 0.1 , 
                                     y = 1.05,
                                     text = "Mortes Psicoativos BR",
@@ -192,7 +196,7 @@ subplot(ggplotly(proporcao_genero_br_psic) |>
                                x = 0.5),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 15))), 
-        ggplotly(proporcao_genero_es_psic) |> style(showlegend = F) |> 
+        ggplotly(proporcao_genero_es_psic, tooltip = "text") |> style(showlegend = F) |> 
           layout(annotations = list(x = 0.5,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -259,7 +263,7 @@ dados e se é válido unir as categorias Parda e Preta.
 
 
 
-subplot(style(ggplotly(series_raca_br_total),
+subplot(style(ggplotly(series_raca_br_total, tooltip = "text"),
               showlegend = T)  |> 
           layout(legend = list(orientation = "h",
                                xanchor = "center",
@@ -272,7 +276,7 @@ subplot(style(ggplotly(series_raca_br_total),
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_raca_es_total), 
+        style(ggplotly(series_raca_es_total, tooltip = "text"), 
               showlegend = FALSE)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
@@ -284,7 +288,7 @@ subplot(style(ggplotly(series_raca_br_total),
                  yaxis = list(tickfont = list(size = 10))))  |> 
   layout(title =  'Mortes Relacionadas por Raça/Cor')
  
-subplot(style( ggplotly(series_raca_br_psic), showlegend = T)  |> 
+subplot(style( ggplotly(series_raca_br_psic, tooltip = "text"), showlegend = T)  |> 
           layout(legend = list(orientation = "h",
                                xanchor = "center",
                                x = 0.5),
@@ -296,7 +300,7 @@ subplot(style( ggplotly(series_raca_br_psic), showlegend = T)  |>
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_raca_es_psic), showlegend = F)  |> 
+        style(ggplotly(series_raca_es_psic, tooltip = "text"), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -326,7 +330,7 @@ subplot(style( ggplotly(series_raca_br_psic), showlegend = T)  |>
 #           heights = c(1, 1))
 
 
-subplot(ggplotly(proporcao_raca_br_psic) |> 
+subplot(ggplotly(proporcao_raca_br_psic, tooltip = "text") |> 
           layout(annotations = list(x = 0.1 , 
                                     y = 1.05,
                                     text = "Mortes Psicoativos BR",
