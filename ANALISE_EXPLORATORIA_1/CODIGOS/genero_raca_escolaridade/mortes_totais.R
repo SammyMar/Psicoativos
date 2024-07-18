@@ -146,7 +146,10 @@ dados.mortes.totais.series <- data.frame(
 series_mortes_br_total <- ggplot(data = dados.mortes.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid",
             linewidth = 0.5, color = paleta_series(1)) +
-  geom_point(shape = 15) +
+  geom_point(shape = 15,
+             text  = paste("Ano: ", ANOOBITO, 
+                           "<br>Quantidade: ", N.obitos,
+                           "<br>Sexo: ", SEXO)) +
   labs(title = "Número de Óbitos Totais no Brasil de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
@@ -174,7 +177,10 @@ dados.mortes.psic.series <- data.frame(
 series_mortes_br_psic <- ggplot(data = dados.mortes.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
-  geom_point(shape = 15) +
+  geom_point(shape = 15,
+             text  = paste("Ano: ", ANOOBITO, 
+                           "<br>Quantidade: ", N.obitos,
+                           "<br>Sexo: ", SEXO)) +
   labs(title = "Número de Óbitos por Psicoativos no Brasil de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
@@ -203,7 +209,10 @@ dados.mortes.es.totais.series <- data.frame(
 series_mortes_es_total <- ggplot(data = dados.mortes.es.totais.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
-  geom_point(shape = 15) +
+  geom_point(shape = 15,
+             text  = paste("Ano: ", ANOOBITO, 
+                           "<br>Quantidade: ", N.obitos,
+                           "<br>Sexo: ", SEXO)) +
   labs(title = "Número de Óbitos Totais no Espírito Santo de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
@@ -231,7 +240,10 @@ dados.mortes.es.psic.series <- data.frame(
 series_mortes_es_psic <- ggplot(data = dados.mortes.es.psic.series, aes(x = ANOOBITO, y = N.obitos)) +
   geom_line(linetype = "solid" ,color = paleta_series(1),
             linewidth = 0.5) +
-  geom_point(shape = 15) +
+  geom_point(shape = 15,
+             text  = paste("Ano: ", ANOOBITO, 
+                           "<br>Quantidade: ", N.obitos,
+                           "<br>Sexo: ", SEXO)) +
   labs(title = "Número de Óbitos por Psicoativos no Espírito Santo de 2013 a 2022",
        x="Anos", y="Óbitos Totais") +
   scale_x_continuous(
