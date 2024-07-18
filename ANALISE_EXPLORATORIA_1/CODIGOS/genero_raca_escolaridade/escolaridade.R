@@ -21,12 +21,12 @@ hist_escolaridade_br_total <- ggplot(freq_escolaridade_br_total, aes(x = ESC, y 
   geom_bar(stat = "identity") +
   scale_fill_manual(values=paleta_hist_ordinal(5))+
   theme(plot.title = element_text(size = 15),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda)) +
   labs(title = "Quantidades de mortes totais no Brasil por Escolaridade",
        x = "Escolaridade",
        y = "Número de Pessoas")
-  
+
 
 print(hist_escolaridade_br_total)
 
@@ -40,7 +40,7 @@ freq_escolaridade_br_psic <- dados_br_psic %>%
 hist_escolaridade_br_psic <- ggplot(freq_escolaridade_br_psic, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme(plot.title = element_text(size = 20),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
               legend.text = element_text(size = size_texto_legenda)
   ) +
   scale_fill_manual(values=paleta_hist_ordinal(5))+
@@ -77,7 +77,7 @@ freq_escolaridade_es_psic <- dados_es_psic %>%
 hist_escolaridade_es_psic <- ggplot(freq_escolaridade_es_psic, aes(x = ESC, y = Quantidade, fill = ESC)) +
   geom_bar(stat = "identity") +
   theme(plot.title = element_text(size = 15),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda)) +
   scale_fill_manual(values=paleta_hist_ordinal(5))+
   labs(title = "Quantidades de mortes por psicoativo no ES por Escolaridade",
@@ -107,7 +107,7 @@ series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(
                                                                                 colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
@@ -118,7 +118,7 @@ series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(
     labels = dados.escolaridade.br.series$ANOOBITO)+
   theme_classic()+
   theme(plot.title = element_text(size = 15),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda))
 
 print (series_escolaridade_br_total)
@@ -138,7 +138,7 @@ series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(
                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
@@ -149,7 +149,7 @@ series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(
     labels = dados.escolaridade.es.series$ANOOBITO)+
   theme_classic()+
   theme(plot.title = element_text(size = 15),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda))
 
 print (series_escolaridade_es_total)
@@ -170,7 +170,7 @@ series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, 
                                                                         colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
@@ -181,7 +181,7 @@ series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, 
     labels = dados.escolaridade.br.series.psic$ANOOBITO)+
   theme_classic()+
   theme(plot.title = element_text(size = 13),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda))
 
 print (series_escolaridade_br_psic)
@@ -201,7 +201,7 @@ series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, 
                                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESC,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
@@ -212,7 +212,7 @@ series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, 
     labels = dados.escolaridade.es.series.psic$ANOOBITO)+
   theme_classic()+
   theme(plot.title = element_text(size = 13),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda))
 
 print (series_escolaridade_es_psic)
@@ -235,18 +235,17 @@ dados.escolaridade.br.series.psic <- dados.escolaridade.br.series.psic %>%
   ungroup()
 
 # 3 Criando o gráfico
-proporcao_escolaridade_br_psic <-ggplot(dados.escolaridade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", ANOOBITO, 
-                             "<br>Quantidade: ", N.obitos,
-                             "<br>Escolaridade: ", ESC))) +
+proporcao_escolaridade_br_psic <-ggplot(dados.escolaridade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC,text  = paste("Ano: ", ANOOBITO,
+                                                                                                                                               "<br>Quantidade: ", N.obitos,
+                                                                                                                                               "<br>Escolaridade: "))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(6)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
        title = "Proporção de Mortes por Psicoativos no Brasil por Escolaridade e Ano") +
   theme_classic()+
   theme(plot.title = element_text(size = 14),
         axis.text = element_text(size = 13),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda))
 
 print(proporcao_escolaridade_br_psic)
@@ -269,18 +268,17 @@ dados.escolaridade.es.series.psic <- dados.escolaridade.es.series.psic %>%
   ungroup()
 
 # 3 Criando o gráfico
-proporcao_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", ANOOBITO, 
-                             "<br>Quantidade: ", N.obitos,
-                             "<br>Escolaridade: ", ESC))) +
+proporcao_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC,text  = paste("Ano: ", ANOOBITO,
+                                                                                                                                                "<br>Quantidade: ", N.obitos,
+                                                                                                                                                "<br>Escolaridade: ", ESC))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(5)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
        title = "Proporção de Mortes por Psicoativos no ES por Escolaridade e Ano") +
   theme_classic()+
   theme(plot.title = element_text(size = 14),
         axis.text = element_text(size = 13),
-        legend.title = element_text(size = size_titulo_legenda),               
+        legend.title = element_text(size = size_titulo_legenda),
         legend.text = element_text(size = size_texto_legenda))
 
 print(proporcao_escolaridade_es_psic)

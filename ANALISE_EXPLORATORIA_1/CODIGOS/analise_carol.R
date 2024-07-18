@@ -139,7 +139,7 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Faixa Etária: ", categoria_idade))) +
   labs(title = "Óbitos Totais no Espírito Santo por Faixa etária",
@@ -148,18 +148,18 @@ graf.serie.idade.es.t <- ggplot(data = dados.grafico.series.esto, aes(x = ANOOBI
     breaks = dados.grafico.series.esto$ANOOBITO,
     labels = dados.grafico.series.esto$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
-                      labels = c("Menor de idade (0-17 anos)", 
-                                 "Jovem-Adulto (18 - 30 anos)", 
-                                 "Adulto (31 - 55 anos)", 
+                      labels = c("Menor de idade (0-17 anos)",
+                                 "Jovem-Adulto (18 - 30 anos)",
+                                 "Adulto (31 - 55 anos)",
                                  "Idoso(56+ anos)"))+
   theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))                 # Tamanho do texto da legenda
-  
+
 
 graf.serie.idade.es.t
 
@@ -180,7 +180,7 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Faixa Etária: ", categoria_idade))) +
   labs(title = "Óbitos pelo uso de psicoativos no Espírito Santo por Faixa etária",
@@ -189,16 +189,16 @@ graf.serie.idade.es.p <- ggplot(data = dados.grafico.series.esps, aes(x = ANOOBI
     breaks = dados.grafico.series.esps$ANOOBITO,
     labels = dados.grafico.series.esps$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
-                      labels = c("Menor de idade (0-17 anos)", 
-                                 "Jovem-Adulto (18 - 30 anos)", 
-                                 "Adulto (31 - 55 anos)", 
+                      labels = c("Menor de idade (0-17 anos)",
+                                 "Jovem-Adulto (18 - 30 anos)",
+                                 "Adulto (31 - 55 anos)",
                                  "Idoso(56+ anos)"))+
   theme_classic()+
   theme(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 graf.serie.idade.es.p
@@ -218,7 +218,7 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Faixa Etária: ", categoria_idade))) +
   labs(title = " Óbitos Totais no Brasil por Faixa etária",
@@ -227,16 +227,16 @@ graf.serie.idade.br.t <- ggplot(data = dados.grafico.series.brto, aes(x = ANOOBI
     breaks = dados.grafico.series.brto$ANOOBITO,
     labels = dados.grafico.series.brto$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
-                      labels = c("Menor de idade (0-17 anos)", 
-                                 "Jovem-Adulto (18 - 30 anos)", 
-                                 "Adulto (31 - 55 anos)", 
+                      labels = c("Menor de idade (0-17 anos)",
+                                 "Jovem-Adulto (18 - 30 anos)",
+                                 "Adulto (31 - 55 anos)",
                                  "Idoso(56+ anos)"))+
   theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 graf.serie.idade.br.t
@@ -256,7 +256,7 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
                                                                       colour = categoria_idade)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = categoria_idade,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Faixa Etária: ", categoria_idade))) +
   labs(title = " Óbitos pelo uso de psicoativos no Brasil por Faixa etária",
@@ -265,16 +265,16 @@ graf.serie.idade.br.p <- ggplot(data = dados.grafico.series.brps, aes(x = ANOOBI
     breaks = dados.grafico.series.brps$ANOOBITO,
     labels = dados.grafico.series.brps$ANOOBITO)+
   scale_colour_manual(name = "Faixa etária", values = paleta_series(5),
-                      labels = c("Menor de idade (0-17 anos)", 
-                                 "Jovem-Adulto (18 - 30 anos)", 
-                                 "Adulto (31 - 55 anos)", 
+                      labels = c("Menor de idade (0-17 anos)",
+                                 "Jovem-Adulto (18 - 30 anos)",
+                                 "Adulto (31 - 55 anos)",
                                  "Idoso(56+ anos)"))+
   theme_classic()+
   theme(
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 graf.serie.idade.br.p
@@ -311,8 +311,8 @@ dados_prop_estciv_br <- dados_br_total %>%
 
 barplot_estciv_br <-  ggplot(dados_prop_estciv_br, aes(x = fct_reorder(ESTCIV,p), y = p, fill = ESTCIV)) +
   geom_bar(stat = "identity", aes(text  = paste("<br>Percentual: ", p, "%",
-                                                "<br>Estado Civil: ", ESTCIV)))+ 
-                                               
+                                                "<br>Estado Civil: ", ESTCIV)))+
+
   scale_fill_manual(values=paleta_hist(5))+
   theme_minimal() +
   labs(title = "Óbitos por estado civil no Brasil",
@@ -325,7 +325,7 @@ barplot_estciv_br <-  ggplot(dados_prop_estciv_br, aes(x = fct_reorder(ESTCIV,p)
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -353,7 +353,7 @@ barplot_estciv_br_psic <- ggplot(dados_prop_estciv_br.psic, aes(x = fct_reorder(
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),
     axis.text.x = element_blank(),# Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -379,7 +379,7 @@ barplot_estciv_es_psic <- ggplot(dados_prop_estciv_es.psic, aes(x = fct_reorder(
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),
     axis.text.x = element_blank(),# Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 barplot_estciv_es_psic
@@ -404,7 +404,7 @@ barplot_estciv_es <- ggplot(dados_prop_estciv_es, aes(x = fct_reorder(ESTCIV,p),
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),
     axis.text.x = element_blank(),# Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 barplot_estciv_es
@@ -430,7 +430,7 @@ serie_obt_psic_br <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
                                                          colour = ESTCIV)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESTCIV,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Estado Civil: ", ESTCIV))) +
   scale_colour_manual(values =  paleta_series(5))+
@@ -444,7 +444,7 @@ serie_obt_psic_br <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(serie_obt_psic_br, tooltip="text")
@@ -465,7 +465,7 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
                                                              colour = ESTCIV)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
   geom_point(shape = 15, aes(colour = ESTCIV,
-                             text  = paste("Ano: ", ANOOBITO, 
+                             text  = paste("Ano: ", ANOOBITO,
                                            "<br>Quantidade: ", N.obitos,
                                            "<br>Estado Civil: ", ESTCIV))) +
   scale_colour_manual(values =  paleta_series(5))+
@@ -479,7 +479,7 @@ serie_obt_psic_es <- ggplot(data = dados.grafico.series, aes(x = ANOOBITO, y = N
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -503,11 +503,10 @@ dados.estciv.es.series <- dados.estciv.es.series %>%
 
 #2 Criar o gráfico
 
-grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                         "<br>Percentual: ",round(porcentagem, 2),"%",
-                         "<br>Estado Civil: ", ESTCIV))) +
+grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                                                                "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                                                                "<br>Estado Civil: ", ESTCIV))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes no Espírito Santo por Estado civil e Ano",
@@ -520,7 +519,7 @@ grafico_prop_estciv_es <- ggplot(dados.estciv.es.series, aes(x = factor(ANOOBITO
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -540,11 +539,12 @@ dados.estciv.br.series <- dados.estciv.br.series %>%
 
 #2 Criar o gráfico
 
-grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                             "<br>Percentual: ",round(porcentagem, 2),"%",
-                             "<br>Estado Civil: ", ESTCIV))) +
+grafico_prop_estciv_br <- ggplot(dados.estciv.br.series,
+                                 aes(x = factor(ANOOBITO),
+                                     y = porcentagem, fill = ESTCIV,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                  "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                  "<br>Estado Civil: ", ESTCIV))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes no Brasil por Estado civil e Ano",
@@ -557,7 +557,7 @@ grafico_prop_estciv_br <- ggplot(dados.estciv.br.series, aes(x = factor(ANOOBITO
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -579,11 +579,12 @@ dados.estciv.es.series.psic <- dados.estciv.es.series.psic %>%
 
 #2 Criar o gráfico
 
-grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                             "<br>Percentual: ",round(porcentagem, 2),"%",
-                             "<br>Estado Civil: ", ESTCIV))) +
+grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = factor(ANOOBITO),
+                                                                       y = porcentagem,
+                                                                       fill = ESTCIV,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                                   "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                                   "<br>Estado Civil: ", ESTCIV))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes por Psicoativos no ES por Estado civil e Ano",
@@ -596,7 +597,7 @@ grafico_prop_estciv_es_psic <- ggplot(dados.estciv.es.series.psic, aes(x = facto
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -616,11 +617,11 @@ dados.estciv.br.series.psic <- dados.estciv.br.series.psic %>%
 
 #2 Criar o gráfico
 
-grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESTCIV)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                             "<br>Percentual: ",round(porcentagem, 2),"%",
-                             "<br>Estado Civil: ", ESTCIV))) +
+grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = factor(ANOOBITO),
+                                                                       y = porcentagem,  fill = ESTCIV,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                                                     "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                                                     "<br>Estado Civil: ", ESTCIV))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(5)))+
   labs(
     title = "Proporção de Mortes por psicoativos no Brasil por Estado civil e Ano",
@@ -633,7 +634,7 @@ grafico_prop_estciv_br_psic <- ggplot(dados.estciv.br.series.psic, aes(x = facto
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -657,11 +658,10 @@ dados.idade.es.series.psic <- dados.idade.es.series.psic %>%
 
 #2 Criar o gráfico
 
-grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                             "<br>Percentual: ",round(porcentagem, 2),"%",
-                             "<br>Faixa Etária: ", categoria_idade))) +
+grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                                                                                 "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                                                                                 "<br>Faixa Etária: ", categoria_idade))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes por psicoativo no ES por Idade e Ano",
@@ -674,7 +674,7 @@ grafico_prop_idade_es_psic <- ggplot(dados.idade.es.series.psic, aes(x = factor(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -695,11 +695,10 @@ dados.idade.br.series.psic <- dados.idade.br.series.psic %>%
 
 #2 Criar o gráfico
 
-grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                             "<br>Percentual: ",round(porcentagem, 2),"%",
-                             "<br>Faixa Etária: ", categoria_idade))) +
+grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                                                                                 "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                                                                                 "<br>Faixa Etária: ", categoria_idade))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes por psicoativo no Brasil por Idade e Ano",
@@ -712,7 +711,7 @@ grafico_prop_idade_br_psic <- ggplot(dados.idade.br.series.psic, aes(x = factor(
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -733,11 +732,10 @@ dados.idade.es.series <- dados.idade.es.series %>%
 
 #2 Criar o gráfico
 
-grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                             "<br>Percentual: ",round(porcentagem, 2),"%",
-                             "<br>Faixa Etária: ", categoria_idade))) +
+grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                                                                       "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                                                                       "<br>Faixa Etária: ", categoria_idade))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes no Espírito Santo por Idade e Ano",
@@ -750,7 +748,7 @@ grafico_prop_idade_es <- ggplot(dados.idade.es.series, aes(x = factor(ANOOBITO),
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 
@@ -771,11 +769,10 @@ dados.idade.br.series <- dados.idade.br.series %>%
 
 #2 Criar o gráfico
 
-grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade)) +
-  geom_bar(stat = "identity", position = "stack",
-           aes(text  = paste("Ano: ", factor(ANOOBITO), 
-                             "<br>Percentual: ",round(porcentagem, 2),"%",
-                             "<br>Faixa Etária: ", categoria_idade))) +
+grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO), y = porcentagem, fill = categoria_idade,text  = paste("Ano: ", factor(ANOOBITO),
+                                                                                                                                       "<br>Percentual: ",round(porcentagem, 2),"%",
+                                                                                                                                       "<br>Faixa Etária: ", categoria_idade))) +
+  geom_bar(stat = "identity", position = "stack") +
   scale_fill_manual(values =  (paleta_hist(4)))+
   labs(
     title = "Proporção de Mortes no Brasil por Idade e Ano",
@@ -788,7 +785,7 @@ grafico_prop_idade_br <- ggplot(dados.idade.br.series, aes(x = factor(ANOOBITO),
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print(grafico_prop_idade_br)
@@ -796,3 +793,4 @@ save(grafico_prop_idade_es_psic, file="GRAFICOS_RDA/grafico_prop_idade_es_psic.R
 save(grafico_prop_idade_br_psic, file="GRAFICOS_RDA/grafico_prop_idade_br_psic.RData")
 save(grafico_prop_idade_es, file="GRAFICOS_RDA/grafico_prop_idade_es.RData")
 save(grafico_prop_idade_br, file="GRAFICOS_RDA/grafico_prop_idade_br.RData")
+

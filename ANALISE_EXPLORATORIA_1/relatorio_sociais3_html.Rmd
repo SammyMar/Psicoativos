@@ -100,7 +100,7 @@ Os gráficos abaixo mostram quais as CID's com maior número de ocorrências tan
 
 ```{r, echo=FALSE}
 
-ggplotly(g_count_CIDs, tooltip = "text")
+ggplotly(g_count_CIDs, tooltip = "text") |>  layout(title = "Percentual de Óbitos no BR e ES")
 
 ```
 

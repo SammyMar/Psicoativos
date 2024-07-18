@@ -27,7 +27,7 @@ hist.F10.es <- ggplot(data = dados.F10.ES, aes(x = IDADE2)) +
     plot.title = element_text(size = 12),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(hist.F10.es)
@@ -48,7 +48,7 @@ hist.F10.br <- ggplot(data = dados.F10.BR, aes(x = IDADE2)) +
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 hist.F10.br
@@ -69,7 +69,7 @@ hist.F17.es <- ggplot(data = dados.F17.ES, aes(x = IDADE2)) +
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 hist.F17.es
@@ -88,7 +88,7 @@ hist.F17.br <- ggplot(data = dados.F17.BR, aes(x = IDADE2)) +
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 hist.F17.br
@@ -107,27 +107,26 @@ dados.genero.br.F10 <- data.frame(
 
 # grafico
 series_genero_br_f10 <- ggplot(data = dados.genero.br.F10, aes(x = ANOOBITO, y = N.obitos,
-                                                                    colour = SEXO)) +
+                                                                    colour = SEXO,group = SEXO,
+                                                               text  = paste("Ano: ", ANOOBITO,
+                                                                             "<br>Quantidade: ", N.obitos,
+                                                                             "<br>Sexo: ", SEXO))) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO,
-                                          "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15) +
   labs(title = "Óbitos causados pelo uso de álcool no Brasil por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
     breaks = dados.genero.br.F10$ANOOBITO,
     labels = dados.genero.br.F10$ANOOBITO)+
-  scale_colour_manual(values = paleta_series(2))+
   theme_classic()+
   theme(
     plot.title = element_text(size = 12),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
-print (series_genero_br_f10)
+print(series_genero_br_f10)
 save(series_genero_br_f10, file="GRAFICOS_RDA/series_genero_br_f10.RData")
 # 3.2 ES
 # montando os dados
@@ -138,12 +137,12 @@ dados.genero.es.F10 <- data.frame(
 
 # grafico
 series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y = N.obitos,
-                                                               colour = SEXO)) +
+                                                               colour = SEXO,group = SEXO,
+                                                               text  = paste("Ano: ", ANOOBITO,
+                                                                             "<br>Quantidade: ", N.obitos,
+                                                                             "<br>Sexo: ", SEXO))) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO,
-                                           "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15) +
   labs(title = "Óbitos causados pelo uso de álcool no Espírito Santo por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
@@ -154,10 +153,10 @@ series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y =
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
-print (series_genero_es_f10)
+print(series_genero_es_f10)
 ggplotly(series_genero_es_f10, tooltip = "text")
 save(series_genero_es_f10, file="GRAFICOS_RDA/series_genero_es_f10.RData")
 
@@ -171,12 +170,12 @@ dados.genero.br.F17 <- data.frame(
 
 # grafico
 series_genero_br_f17 <- ggplot(data = dados.genero.br.F17, aes(x = ANOOBITO, y = N.obitos,
-                                                               colour = SEXO)) +
+                                                               colour = SEXO,group = SEXO,
+                                                               text  = paste("Ano: ", ANOOBITO,
+                                                                             "<br>Quantidade: ", N.obitos,
+                                                                             "<br>Sexo: ", SEXO))) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO,
-                                           "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15) +
   labs(title = "Número de Óbitos causados pelo fumo no Brasil por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
@@ -187,7 +186,7 @@ series_genero_br_f17 <- ggplot(data = dados.genero.br.F17, aes(x = ANOOBITO, y =
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_br_f17)
@@ -201,12 +200,12 @@ dados.genero.es.F17 <- data.frame(
 
 # grafico
 series_genero_es_f17 <- ggplot(data = dados.genero.es.F17, aes(x = ANOOBITO, y = N.obitos,
-                                                               colour = SEXO)) +
+                                                               colour = SEXO, group = SEXO,
+                                                               text  = paste("Ano: ", ANOOBITO,
+                                                                             "<br>Quantidade: ", N.obitos,
+                                                                             "<br>Sexo: ", SEXO))) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = SEXO,
-                             text  = paste("Ano: ", ANOOBITO,
-                                           "<br>Quantidade: ", N.obitos,
-                                           "<br>Sexo: ", SEXO))) +
+  geom_point(shape = 15) +
   labs(title = "Óbitos causados pelo fumo no Espírito Santo por Gênero",
        x="Anos", y="Número óbtos", colour = "Sexo") +
   scale_x_continuous(
@@ -217,7 +216,7 @@ series_genero_es_f17 <- ggplot(data = dados.genero.es.F17, aes(x = ANOOBITO, y =
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_es_f17)
@@ -246,7 +245,7 @@ hist_escolaridade_br_f10 <- ggplot(freq_escolaridade_br_f10, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_br_f10)
@@ -271,7 +270,7 @@ hist_escolaridade_es_f10 <- ggplot(freq_escolaridade_es_f10, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_es_f10)
@@ -300,7 +299,7 @@ hist_escolaridade_br_f17 <- ggplot(freq_escolaridade_br_f17, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_br_f17)
@@ -326,7 +325,7 @@ hist_escolaridade_es_f17 <- ggplot(freq_escolaridade_es_f17, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_es_f17)
@@ -361,7 +360,7 @@ series_raca_br_F10 <- ggplot(data = dados.raca.br.f10, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_br_F10)
@@ -392,7 +391,7 @@ series_raca_es_F10 <- ggplot(data = dados.raca.es.f10, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_es_F10)
@@ -424,7 +423,7 @@ series_raca_br_F17 <- ggplot(data = dados.raca.br.f17, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_br_F17)
@@ -455,7 +454,7 @@ series_raca_es_F17 <- ggplot(data = dados.raca.es.f17, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = size_titulo_legenda),               
+    legend.title = element_text(size = size_titulo_legenda),
     legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_es_F17)
