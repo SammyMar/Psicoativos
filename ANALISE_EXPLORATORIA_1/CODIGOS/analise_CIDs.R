@@ -67,7 +67,9 @@ g_count_CIDs <- dados.count.CID %>%
   labs(title = "Porcentual de Óbitos por CID no Brasil e Espírito Santo", y="Percentual", x="CIDs")+
   theme_classic() + coord_flip() + theme(title = element_text(size = 15),
                                          axis.text = element_text(size = 13),
-                                         strip.text = element_text(face = "bold", size = 15))
+                                         strip.text = element_text(face = "bold", size = 15),
+                                         legend.title = element_text(size = size_titulo_legenda),               
+                                         legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(g_count_CIDs, tooltip = "text")
 
@@ -104,7 +106,9 @@ heatmap_CIDS <- ggplot(dados_heatmap_CIDs,
        title = "Percentual de Óbitos por CID - ES") +
   theme(axis.text.x = element_text(size = 13),
        axis.text.y = element_text(size = 15),
-       title = element_text(size = 14))+
+       title = element_text(size = 14),
+       legend.title = element_text(size = size_titulo_legenda),               
+       legend.text = element_text(size = size_texto_legenda))+
   scale_x_discrete(limits = dados_heatmap_CIDs$ANOOBITO,position = "bottom")
 
 ggplotly(heatmap_CIDS, tooltip = "text")

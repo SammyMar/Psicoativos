@@ -117,8 +117,8 @@ boxplot.anoidad.br <- base_boxplot_br %>%
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda)                 # Tamanho do texto da legenda
   )
 boxplot.anoidad.br
 
@@ -142,8 +142,8 @@ boxplot.anoidad.br.psic <- base_boxplot_br_psic %>%
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda)                 # Tamanho do texto da legenda
   )
 boxplot.anoidad.br.psic
 
@@ -168,8 +168,8 @@ boxplot.anoidad.es <- base_boxplot_es %>%
     plot.title = element_text(size = 14, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda)                 # Tamanho do texto da legenda
   )
 print(boxplot.anoidad.es)
 
@@ -194,8 +194,8 @@ boxplot.anoidad.es.psic <- base_boxplot_es_psic %>%
     plot.title = element_text(size = 13, face = "bold"),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda)                 # Tamanho do texto da legenda
   )
 boxplot.anoidad.es.psic
 

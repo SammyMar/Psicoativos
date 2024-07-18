@@ -119,7 +119,9 @@ heatmap_mortes_psic <- ggplot(tab_mortes_estado_ano_psic,
        y = "Estado") +
   theme_minimal()+
   theme(plot.title = element_text(size = 20)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 ggplotly(heatmap_mortes_psic, tooltip = "text")
 
