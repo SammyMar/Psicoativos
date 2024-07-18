@@ -20,3 +20,4 @@ pop13a21 <- pop13a21 %>%
 
 saveRDS(pop13a21, "pop13a21.rds")
 
+pop13a21 <- readRDS("pop13a21.rds")

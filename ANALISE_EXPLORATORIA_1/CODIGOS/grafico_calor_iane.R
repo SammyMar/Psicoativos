@@ -104,17 +104,24 @@ tab_mortes_estado_ano_psic <- tab_mortes_estado_ano_psic %>%
 anos <- seq(2013, 2022)
 
 # Plotar o grC!fico de calor
-heatmap_mortes_psic <- ggplot(tab_mortes_estado_ano_psic, aes(x = ANOOBITO, y = Sigla, fill = Taxa_Obitos_100k)) +
+heatmap_mortes_psic <- ggplot(tab_mortes_estado_ano_psic, 
+                              aes(x = ANOOBITO,
+                                  y = Sigla, 
+                                  fill = Taxa_Obitos_100k,
+                                  text = paste("Ano: ", ANOOBITO,
+                                               "<br>UF: ", Sigla,
+                                               "<br> Taxa: ", round(Taxa_Obitos_100k, 2)))) +
   geom_tile(color = "white") +
-  scale_fill_gradient(low = "lightblue", high = "#010440", name = "Obitos por 100k habitantes") +
+  scale_fill_gradient(low = "lightblue", high = "#010440", name = "Óbitos por 100 mil habitantes") +
   scale_x_continuous(breaks = anos) +
   labs(title = "Taxa de mortes por Psicoativos a cada 100.000 habitantes nos estados brasileiros ao longo dos anos",
        x = "Ano",
        y = "Estado") +
+  theme_minimal()+
   theme(plot.title = element_text(size = 20)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-print(heatmap_mortes_psic)
+ggplotly(heatmap_mortes_psic, tooltip = "text")
 
 
 save(heatmap_mortes_psic, file="GRAFICOS_RDA/heatmap_mortes_psic.RData")

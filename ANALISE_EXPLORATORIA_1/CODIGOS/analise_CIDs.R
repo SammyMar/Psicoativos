@@ -46,11 +46,11 @@ dados.count.CID <- full_join(
 
   dados.count.CID %>%
   filter(Localidade == "Brasil") %>%
-  mutate(prop = Contagens/sum(Contagens)),
+  mutate(prop = Contagens*100/sum(Contagens)),
 
   dados.count.CID %>%
   filter(Localidade == "Espírito Santo") %>%
-  mutate(prop = Contagens/sum(Contagens))
+  mutate(prop = Contagens*100/sum(Contagens))
 
 )
 
@@ -60,17 +60,19 @@ dados.count.CID <- full_join(
 
 g_count_CIDs <- dados.count.CID %>%
   ggplot(aes(x = fct_reorder(CIDs, prop), y = prop)) +
-  geom_col(fill = paleta_hist(1)) +
+  geom_col(aes(text = paste("CID: ", CIDs, "<br>Percentual: ", 
+                            round(prop, 2), "%"))
+           ,fill = paleta_hist(1)) +
   facet_grid(rows = vars(Localidade))+
-  labs(title = "Porcentagem de Óbitos por CID no Brasil e Espírito Santo", y="Quantidade", x="CIDs")+
+  labs(title = "Porcentual de Óbitos por CID no Brasil e Espírito Santo", y="Percentual", x="CIDs")+
   theme_classic() + coord_flip() + theme(title = element_text(size = 15),
                                          axis.text = element_text(size = 13),
                                          strip.text = element_text(face = "bold", size = 15))
 
-g_count_CIDs
+ggplotly(g_count_CIDs, tooltip = "text")
 
 
-save(g_count_CIDs, file="GRAFICOS_RDA/g_count_CIDs.RDatata")
+save(g_count_CIDs, file="GRAFICOS_RDA/g_count_CIDs.RData")
 
 
 # preparando dados para heatmap por cids vs anos ------------------------------------
@@ -89,7 +91,12 @@ dados_heatmap_CIDs <- dados_es_psic %>% select(CAUSABAS, ANOOBITO) %>%
 
 dados_heatmap_CIDs <- melt(dados_heatmap_CIDs)
 
-heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value*100)) +
+heatmap_CIDS <- ggplot(dados_heatmap_CIDs,
+                       aes(ANOOBITO, CIDs, fill = value*100,
+                            text = paste("Ano: ", ANOOBITO, 
+                                         "<br>CID: ", CIDs,
+                                         "<br>Percentual: ", 
+                                            round(value*100, 2), "%"))) +
   geom_tile(color="white") +
   scale_fill_gradient(low = "lightblue", high = "#010440")+
   theme_minimal() +
@@ -100,9 +107,8 @@ heatmap_CIDS <- ggplot(dados_heatmap_CIDs, aes(ANOOBITO, CIDs, fill = value*100)
        title = element_text(size = 14))+
   scale_x_discrete(limits = dados_heatmap_CIDs$ANOOBITO,position = "bottom")
 
-heatmap_CIDS
+ggplotly(heatmap_CIDS, tooltip = "text")
+
+save(heatmap_CIDS, file="GRAFICOS_RDA/heatmap_CIDS.RData")
 
 
-save(heatmap_CIDS, file="GRAFICOS_RDA/heatmap_CIDS.RDatata")
-
-load("GRAFICOS_RDA/heatmap_CIDS.RDatata")
