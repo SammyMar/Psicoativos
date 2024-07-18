@@ -1142,7 +1142,7 @@ fumo são mais velhas que as que morrem por álcool.
 
 ```{r echo=FALSE,out.width = "100%", warning=FALSE}
 # grid.arrange(hist.F10.es, hist.F10.br, ncol=2)
-subplot(style(ggplotly(hist.F10.br, tooltip = "text")) |> 
+subplot(ggplotly(hist.F10.br, tooltip = "text") |> 
           layout(annotations = list(x = 0.1 , 
                                      y = -0.1,
                                     text = "Mortes F10 BR",
