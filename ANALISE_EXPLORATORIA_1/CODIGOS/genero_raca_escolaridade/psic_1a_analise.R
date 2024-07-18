@@ -169,7 +169,9 @@ grafico_genero <- ggplot(frequencias_genero, aes(x = SEXO, y = Quantidade, fill 
   scale_fill_manual(values = cores_sexo) +
   labs(title = "Gênero das pessoas falecidades no ES de 2018 a 2022",
        x = "Gênero",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(grafico_genero)
 
@@ -180,7 +182,9 @@ grafico_escolaridade <- ggplot(frequencias_escolaridade, aes(x = ESC, y = Quanti
   scale_fill_manual(values = cores_escolaridade) +
   labs(title = "Escolaridade das pessoas falecidades no ES de 2018 a 2022",
        x = "Escolaridade",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(grafico_escolaridade)
 
@@ -191,7 +195,9 @@ grafico_estado_civil<- ggplot(frequencias_estado_civil, aes(x = ESTCIV, y = Quan
   scale_fill_manual(values = cores_estado_civil) +
   labs(title = "Estado Civil das pessoas falecidades no ES de 2018 a 2022",
        x = "Estado Civil",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(grafico_estado_civil)
 
@@ -202,7 +208,9 @@ grafico_raca <- ggplot(frequencias_raca, aes(x = RACACOR, y = Quantidade, fill =
   scale_fill_manual(values = cores_raca) +
   labs(title = "Raça das pessoas falecidades no ES de 2018 a 2022",
        x = "Raça",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(grafico_raca)
 
@@ -224,7 +232,9 @@ grafico_mortes_por_ano <- ggplot(frequencias_ano_obito, aes(x = ANOOBITO, y = Qu
   theme_minimal() +
   labs(title = "Mortes no ES de 2018 a 2022",
        x = "Ano",
-       y = "Óbitos")
+       y = "Óbitos")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 #print(grafico_mortes_por_ano)
 
@@ -238,7 +248,9 @@ graficof_genero <- ggplot(frequenciasf_genero, aes(x = SEXO, y = Quantidade, fil
   scale_fill_manual(values = cores_sexo) +
   labs(title = "Gênero das pessoas falecidades por psicoativos no ES de 2018 a 2022",
        x = "Gênero",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(graficof_genero)
 
@@ -249,7 +261,9 @@ graficof_escolaridade <- ggplot(frequenciasf_escolaridade, aes(x = ESC, y = Quan
   scale_fill_manual(values = cores_escolaridade) +
   labs(title = "Escolaridade das pessoas falecidades por psicoativos no ES de 2018 a 2022",
        x = "Escolaridade",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(graficof_escolaridade)
 
@@ -260,7 +274,9 @@ graficof_estado_civil<- ggplot(frequenciasf_estado_civil, aes(x = ESTCIV, y = Qu
   scale_fill_manual(values = cores_estado_civil) +
   labs(title = "Estado Civil das pessoas falecidades por psicoativos no ES de 2018 a 2022",
        x = "Estado Civil",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(graficof_estado_civil)
 
@@ -271,7 +287,9 @@ graficof_raca <- ggplot(frequenciasf_raca, aes(x = RACACOR, y = Quantidade, fill
   scale_fill_manual(values = cores_raca) +
   labs(title = "Raça das pessoas falecidades por psicoativos no ES de 2018 a 2022",
        x = "Raça",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(graficof_raca)
 
@@ -282,7 +300,9 @@ graficof_idade <- ggplot(frequenciasf_faixa_etaria, aes(x = FAIXAETA, y = Quanti
   scale_fill_manual(values = cores_faixa_etaria) +
   labs(title = "Faixa Etária das pessoas falecidades por psicoativos no ES de 2018 a 2022",
        x = "Faixa Etária",
-       y = "Quantidade")
+       y = "Quantidade")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 print(graficof_idade)
 
@@ -293,7 +313,9 @@ graficof_mortes_por_ano <- ggplot(frequenciasf_ano_obito, aes(x = ANOOBITO, y = 
   theme_minimal() +
   labs(title = "Mortes por psicoativos no ES de 2018 a 2022",
        x = "Ano",
-       y = "Óbitos")
+       y = "Óbitos")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 #print(graficof_mortes_por_ano)
 
