@@ -1,4 +1,6 @@
 
+library(sf)
+library(lwgeom)
 # baixando info estados brasil (geobr) ------------------------------------
 
 brasil = read_state(code_state = "all", year = 2018)
@@ -45,27 +47,53 @@ dados_mapa_psic_pop13 <- brasil %>%
 dados_mapa_psic_pop22 <- brasil %>%
   left_join(dados_mapa_psic_pop22, by = c("abbrev_state"="Sigla"))
 
+set.seed(0411)
+
+points_within <- st_sample(dados_mapa_psic_pop13, size = 10000, type = "random")  # Ajuste o 'size' conforme necessário
+
+# Converter os pontos gerados em um dataframe com a geometria correta
+points_within_df_13 <- st_as_sf(points_within) %>%
+  st_set_crs(st_crs(dados_mapa_psic_pop13)) %>%
+  st_join(dados_mapa_psic_pop13) %>%
+  mutate(label = paste("UF: ", abbrev_state, "<br>Taxa de Óbitos: ", round((N.obitos / pop13) * 100000, 2)))
+
+
+# Converter os pontos gerados em um dataframe com a geometria correta
+points_within_df_22 <- st_as_sf(points_within) %>%
+  st_set_crs(st_crs(dados_mapa_psic_pop22)) %>%
+  st_join(dados_mapa_psic_pop22) %>%
+  mutate(label = paste("UF: ", abbrev_state, "<br>Taxa de Óbitos: ", round((N.obitos / pop22) * 100000, 2)))
+
+
+# Verificar se a geometria está correta
 
 mapa_psic_pop13 <- ggplot() +
-  geom_sf(data = dados_mapa_psic_pop13, aes(fill = (N.obitos/pop13)*100000),
-          color = "#788881")+
+  geom_sf(data = dados_mapa_psic_pop13, 
+          aes(fill = (N.obitos/pop13)*100000),
+          color = "#788881")+ 
+  geom_sf(data = points_within_df_13, aes(text = label),
+          color = "transparent") +
   scale_fill_gradient(low = "white", high = "#010440",limits = c(0,15),
-                      name="Obitos (por 100000)") +
-  labs(title="Obitos por Psicoativos em 2013 por 100000 habitantes") +
-  theme_void() + theme(title = element_text(size = 15))
+                      name="Óbitos por 100000 hab.") +
+  labs(title="Óbitos por Psicoativos em 2013 por 100000 habitantes") +
+  theme_void() + theme(title = element_text(size = 15),
+                       axis.line = element_blank())
 
-mapa_psic_pop13
+ggplotly(mapa_psic_pop13, tooltip = "text")
 
 save(mapa_psic_pop13, file="GRAFICOS_RDA/mapa_psic_pop13.RData")
 
 mapa_psic_pop22 <- ggplot() +
   geom_sf(data = dados_mapa_psic_pop22, aes(fill = (N.obitos/pop22)*100000),
           color = "#788881")+
+  geom_sf(data = points_within_df_22, aes(text = label),
+          color = "transparent") +
   scale_fill_gradient(low = "white", high = "#010440", , limits = c(0,15),
                       name="Obitos (por 100000)") +
   labs(title="Obitos por Psicoativos em 2022 por 100000 habitantes", size=15) +
-  theme_void() + theme(title = element_text(size = 15))
+  theme_void() + theme(title = element_text(size = 15),
+                       axis.line = element_blank())
 
-mapa_psic_pop22
+ggplotly(mapa_psic_pop22, tooltip = "text")
 
 save(mapa_psic_pop22, file="GRAFICOS_RDA/mapa_psic_pop22.RData")

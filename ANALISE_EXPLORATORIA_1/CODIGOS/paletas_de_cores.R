@@ -10,7 +10,7 @@
 # paleta de series === CORES VIVAS (primárias) POIS AS LINHAS SÃO FINAS
 
 
-paleta_series <- manual_pal(c("#ff7f00","#1e96fc", "#ff6392", 
+paleta_series <- manual_pal(c("#010440","#ff7f00","#1e96fc", "#ff6392", 
                               "#009D00","#9381ff" ,"#e31a1c", "#25a18e"
                         ))
 

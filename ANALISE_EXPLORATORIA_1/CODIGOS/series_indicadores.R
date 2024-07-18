@@ -27,11 +27,17 @@ dados_indic1$indic1 <- (N_obitos_es_psic/N_obitos_es_total)*1000
 
 
 # montando o grafico
-serie_indic1 <- ggplot(data = dados_indic1, aes(x = ANOOBITO, y = indic1)) +
+serie_indic1 <- ggplot(data = dados_indic1, 
+                       aes(x = ANOOBITO, 
+                           y = indic1
+                           )) +
   geom_line(linetype = "solid", color = paleta_series(1),
-            linewidth = 0.5) +
-  geom_point(shape = 15, color = paleta_series(1)) +
-  labs(title = "Número de óbitos por Psicoativos no ES/Numero de Obitos Totais (>17 anos) no ES de 2013 a 2022",
+            linewidth = 0.5)+
+  geom_point(shape = 15, color = paleta_series(1), 
+             aes(text = paste("Ano: ", ANOOBITO, 
+                 "<br>Indicador 1: ", 
+                  round(indic1, 2)))) +
+  labs(title = "Série do Indicador 1 de 2013 a 2022",
        x="Anos", y="Obitos/1000") +
   scale_x_continuous(
     breaks = dados_indic1$ANOOBITO,
@@ -39,10 +45,9 @@ serie_indic1 <- ggplot(data = dados_indic1, aes(x = ANOOBITO, y = indic1)) +
   scale_y_continuous(limits = c(0,15),
       breaks = seq(0,15, by=2))+
   theme_classic()+
-  theme(
-    plot.title = element_text(size = 13))
+  theme(plot.title = element_text(size = 13))
 
-serie_indic1
+ggplotly(serie_indic1, tooltip = "text")
 
 
 
@@ -152,8 +157,12 @@ serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
                                                     colour = Indicador)) +
   geom_line(linetype = "solid",
             linewidth = 0.5) +
-  geom_point(shape = 15) +
-  labs(title = TeX("Indicador 2: $\\frac{Nº óbitos ES psic}{Nº óbitos BR psic}$ e Indicador 3: $\\frac{Nº \ óbitos \ ES \  total}{Nº \ óbitos \ BR \ total}$ de 2013 a 2022"),
+  geom_point(shape = 15, 
+             aes(text = paste("Ano: ", Ano, 
+                              "<br> Percentual: ", 
+                              round(valor, 2), "%", 
+                              "<br>", Indicador))) +
+  labs(title = "Indicador 2 e Indicador 3 de 2013 a 2022",
        x="Anos", y="Obitos/100") +
   scale_colour_manual(values = paleta_series(2), name = "Indicadores",
             labels = c("Indicador 2", "Indicador 3")) +
@@ -165,7 +174,7 @@ serie_indic2_3 <- ggplot(data = dados_indic2_3, aes(x = Ano, y = valor,
                      breaks = seq(0,3.5, by=0.5))+
   theme_classic()
 
-serie_indic2_3
+ggplotly(serie_indic2_3, tooltip = "text")
 
 save(serie_indic2_3, file="GRAFICOS_RDA/serie_indic2_3.RData")
 
@@ -173,13 +182,14 @@ save(serie_indic2_3, file="GRAFICOS_RDA/serie_indic2_3.RData")
 
 ### Indicador 4 obitos psic ES/pop ES
 pop_es_2022 <- data.frame(codigoUF = "32",
-                          ano = as.numeric("2022"),
+                          ano = "2022",
                           valor  = c(3833712))
 
+pop13a21 <- readRDS("pop13a21.rds")
 
 dados_indic4 <- pop13a21 %>%
   dplyr::filter(codigoUF == 32) %>%
-  select(ano, valor, codigoUF) %>%
+  select(codigoUF, ano, valor) %>%
   bind_rows(pop_es_2022)
 
 dados_indic4$ano <- as.numeric(dados_indic4$ano)
@@ -234,9 +244,12 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
                                                     colour = Indicador)) +
   geom_line(linetype = "solid",
             linewidth = 0.5) +
-  geom_point(shape = 15) +
-  labs(title = TeX("Indicador 4: $\\frac{Nº óbitos ES psic}{PopulaçãoES}$ e Indicador 5: $\\frac{NºÓbitosBRpsic}{PopulaçãoBR}$ de 2013 a 2022"),
-       x="Anos", y="Obitos/100000") +
+  geom_point(shape = 15, aes(text = paste("Ano: ", Ano, 
+                                    "<br> Valor: ", 
+                                    round((N.obitos/valor)*100000, 2), 
+                                    "<br>", Indicador))) +
+  labs(title = "Indicador 4 e Indicador 5 de 2013 a 2022",
+       x="Anos", y="Óbitos/100000") +
   scale_colour_manual(values = paleta_series(2), name = "Indicadores",
                       labels = c("Indicador 4", "Indicador 5")) +
   #ylim(1.5, 3.5) +
@@ -246,6 +259,8 @@ serie_indic4_5 <- ggplot(data = dados_indic4_5, aes(x = Ano, y = (N.obitos/valor
   scale_y_continuous(limits = c(0,10),
                      breaks = seq(0,10, by=1))+
   theme_classic()
+
+ggplotly(serie_indic4_5, tooltip = "text")
 
 save(serie_indic4_5, file="GRAFICOS_RDA/serie_indic4_5.RData")
 

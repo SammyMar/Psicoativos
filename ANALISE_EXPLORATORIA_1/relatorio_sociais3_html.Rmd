@@ -42,6 +42,8 @@ library(tidyverse)
 library(latex2exp)
 library(geobr)
 library(scales)
+library(sf)
+library(lwgeom)
 source("CODIGOS/paletas_de_cores.R")
 # source("leitura_filtragem_02.R")
 # source("read_pop13a21.R")
@@ -96,9 +98,7 @@ Os gráficos abaixo mostram quais as CID's com maior número de ocorrências tan
 <br>
 
 ```{r, echo=FALSE}
-
 ggplotly(g_count_CIDs)
-
 ```
 
 <br> O gráfico de calor é usado para visualizar de forma clara a
@@ -108,7 +108,7 @@ mais escura a cor, maior a quantidade de mortes por determinada CID no
 estado. 
 
 ```{r, echo=FALSE}
-ggplotly(heatmap_CIDS)
+ggplotly(heatmap_CIDS, tooltip = "text")
 ```
 
 <br>
@@ -122,7 +122,7 @@ A seguir é possível visualizar a discrepância entre o número de homens e de 
 <br>
 
 ```{r echo=FALSE, out.width = "100%"}
-subplot(style(ggplotly(series_genero_br_total),
+subplot(style(ggplotly(series_genero_br_total, tooltip = "text"),
               showlegend = T)  |> 
           layout(legend = list(orientation = "h",
                                xanchor = "center",
@@ -135,7 +135,7 @@ subplot(style(ggplotly(series_genero_br_total),
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_genero_es_total), 
+        style(ggplotly(series_genero_es_total, tooltip = "text"), 
               showlegend = FALSE)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
@@ -147,7 +147,7 @@ subplot(style(ggplotly(series_genero_br_total),
                  yaxis = list(tickfont = list(size = 10))))  |> 
   layout(title = 'Mortes Relacionadas por Gênero')
  
-subplot(style( ggplotly(series_genero_br_psic), showlegend = T)  |> 
+subplot(style( ggplotly(series_genero_br_psic, tooltip = "text"), showlegend = T)  |> 
           layout(legend = list(orientation = "h",
                                xanchor = "center",
                                x = 0.5),
@@ -159,7 +159,7 @@ subplot(style( ggplotly(series_genero_br_psic), showlegend = T)  |>
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_genero_es_psic), showlegend = F)  |> 
+        style(ggplotly(series_genero_es_psic, tooltip = "text"), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -1554,7 +1554,7 @@ ggplotly(grafico_proporcao) |> style( showlegend = T)  |>
 O mapa abaixo apresenta o cenário nacional, por estado, do número de óbitos por psicoativos sobre 100.000 habitantes no ano de 2013. É possível perceber que o estado do Espírito Santo se posiciona próximo da média das proporções.
 
 ```{r, echo=FALSE}
-print(mapa_psic_pop13)
+ggplotly(mapa_psic_pop13)
 ```
 
 <br>
@@ -1562,7 +1562,7 @@ print(mapa_psic_pop13)
 Já este segundo mapa apresenta o mesmo indicador, porém calculado com os dados de 2022. As duas "fotografias", uma do ano de 2013 e a outra do ano de 2022, não consideram a evolução ao longo dos anos deste indicador, no entanto, traz visualmente a ideia do antes e depois. O gráfico de calor, apresentado em seguida, consegue mostrar essa mudança ao longo do tempo.
 
 ```{r, echo=FALSE}
-print(mapa_psic_pop22) 
+ggplotly(mapa_psic_pop22)
 ```
 
 <br>
@@ -1577,7 +1577,7 @@ Brasil e no país, tudo isso no decorrer de 10 anos. O estado do Sergipe
 <br>
 
 ```{r, echo=FALSE}
-ggplotly(heatmap_mortes_psic) |> layout(title = 'Taxa de Mortes por Psicoativos a cada 100.000 Habitantes')
+ggplotly(heatmap_mortes_psic, tooltip = "text") |> layout(title = 'Taxa de Mortes por Psicoativos a cada 100.000 Habitantes')
 ```
 
 # Indicadores
@@ -1588,7 +1588,7 @@ O primeiro indicador desenvolvido mostra quantas pessoas morreram por
 psicoativos no Espírito Santo a cada 100 mortes totais no estado
 
 $$
-I_1 = \frac{\text{Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito Santo}}{\text{Nº de Óbitos Totais no Espírito Santo}} \cdot 1000
+I_1 = \frac{\text{Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito Santo}}{\text{Nº de Óbitos Totais de indívidus com mais de 18 anos no Espírito Santo}} \cdot 1000
 $$
 
 É possível observar que os números de mortes por uso de substâncias a
@@ -1600,13 +1600,13 @@ anteriormente.
 <br>
 
 ```{r, out.width = "100%", echo=FALSE}
-ggplotly(serie_indic1)   |>
+ggplotly(serie_indic1, tooltip = "text")   |>
           layout(legend = list(orientation = "h",
                                xanchor = "center",
                                x = 0.5,
                                y = -0.16),
                  xaxis = list(tickfont = list(size = 10)),
-                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Número de Óbitos por Psicoativos no ES/Número de Obitos Totais (> 17 anos) no ')
+                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Indicador 1 de 2013 a 2022')
 ```
 
 ## Indicadores 2 e 3
@@ -1635,7 +1635,13 @@ $$
 <br>
 
 ```{r, echo=FALSE}
-print(serie_indic2_3)
+ggplotly(serie_indic2_3, tooltip = "text")   |>
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5,
+                               y = -0.16),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Indicador 2 e Indicador 3 de 2013 a 2022')
 ```
 
 ## Indicadores 4 e 5
@@ -1662,7 +1668,13 @@ $$
 <br>
 
 ```{r, echo=FALSE}
-print(serie_indic4_5)
+ggplotly(serie_indic4_5, tooltip = "text")   |>
+          layout(legend = list(orientation = "h",
+                               xanchor = "center",
+                               x = 0.5,
+                               y = -0.16),
+                 xaxis = list(tickfont = list(size = 10)),
+                 yaxis = list(tickfont = list(size = 10)))  |> layout(title = 'Indicador 4 e Indicador 5 de 2013 a 2022')
 ```
 
 # Outras Possíveis Análises
