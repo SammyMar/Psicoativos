@@ -59,6 +59,7 @@ source("CODIGOS/paletas_de_cores.R")
 # source("CODIGOS/graficos_pelascids.R")
 source("carregamento_plots.R")
 
+
 ```
 
 <br>
@@ -98,7 +99,11 @@ Os gráficos abaixo mostram quais as CID's com maior número de ocorrências tan
 <br>
 
 ```{r, echo=FALSE}
+<<<<<<< HEAD
 ggplotly(g_count_CIDs, tooltip = "text")
+=======
+ggplotly(g_count_CIDs, tooltip = 'text')
+>>>>>>> b65380f4e079e4479b4a2d6a7646361584b37d26
 ```
 
 <br> O gráfico de calor é usado para visualizar de forma clara a
@@ -827,10 +832,10 @@ uso de psicoativos.
 #           layout(legend = list(orientation = "h",
 #                                xanchor = "center",
 #                                x = 0.5),
-#                  annotations = list(x = 0.2 ,
+ #                 annotations = list(x = 0.2 ,
 #                                     y = 1.05,
 #                                     text = "Mortes Totais BR",
-#                                     showarrow = F, 
+#                                    showarrow = F, 
 #                                     xref='paper', 
 #                                     yref='paper'),
 #                  xaxis = list(tickfont = list(size = 10)),
@@ -851,12 +856,12 @@ uso de psicoativos.
 #           layout(legend = list(orientation = "h",
 #                                xanchor = "center",
 #                                x = 0.5),
-#                  annotations = list(x = 0.2 ,
-#                                     y = 1.05,
+#                 annotations = list(x = 0.2 ,
+#                                    y = 1.05,
 #                                     text = "Mortes Psicoativos BR",
 #                                     showarrow = F,
 #                                     xref='paper',
-#                                     yref='paper'),
+#                                    yref='paper'),
 #                  xaxis = list(tickfont = list(size = 10)),
 #                  yaxis = list(tickfont = list(size = 10))),
 #         style(ggplotly(boxplot.anoidad.es.psic), showlegend = F)  |> 
@@ -865,10 +870,10 @@ uso de psicoativos.
 #                                     text = "Mortes Psicoativos ES",
 #                                     showarrow = F,
 #                                     xref='paper',
-  #                                   yref='paper'),
-  #                xaxis = list(tickfont = list(size = 10)),
-  #                yaxis = list(tickfont = list(size = 10)))) |>
-  # layout(title = '')
+#                                     yref='paper'),
+#                  xaxis = list(tickfont = list(size = 10)),
+#                 yaxis = list(tickfont = list(size = 10)))) |>
+#   layout(title = '')
 ```
 
 <br>

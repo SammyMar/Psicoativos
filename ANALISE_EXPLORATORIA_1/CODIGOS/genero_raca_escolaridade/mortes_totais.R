@@ -24,7 +24,9 @@ hist_obito_br_totais <- ggplot(freq_obito_br_totais, aes(x = ANOOBITO, y = Quant
   theme_minimal() +
   labs(title = "Mortes Totais no Brasil de 2013 a 2022",
        x = "Ano",
-       y = "Óbitos")
+       y = "Óbitos")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 
 print(hist_obito_br_totais)
@@ -42,7 +44,9 @@ hist_obito_br_psic <- ggplot(freq_obito_br_psic, aes(x = ANOOBITO, y = Quantidad
   theme_minimal() +
   labs(title = "Mortes por Psicoativos no Brasil de 2013 a 2022",
        x = "Ano",
-       y = "Óbitos")
+       y = "Óbitos")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 
 print(hist_obito_br_psic)
@@ -60,7 +64,9 @@ hist_obito_es_totais <- ggplot(freq_obito_es_totais, aes(x = ANOOBITO, y = Quant
   theme_minimal() +
   labs(title = "Mortes Totais no Espírito Santo de 2013 a 2022",
        x = "Ano",
-       y = "Óbitos")
+       y = "Óbitos")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 
 print(hist_obito_es_totais)
@@ -79,7 +85,9 @@ hist_obito_es_psic <- ggplot(freq_obito_es_psic, aes(x = ANOOBITO, y = Quantidad
   theme_minimal() +
   labs(title = "Mortes por Psicoativos no Espírito Santo de 2013 a 2022",
        x = "Ano",
-       y = "Óbitos")
+       y = "Óbitos")+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 
 print(hist_obito_es_psic)
@@ -112,7 +120,9 @@ grafico_proporcao <- ggplot(obitos_combinados_br_es, aes(x = factor(ANOOBITO), y
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Região",
        title = "Proporção de Mortes por Psicoativos no Espírito Santo em relação ao Restante do Brasil anualmente") +
   theme_minimal() +
-  scale_fill_manual(values = rev(paleta_hist(2)), labels = c("Espírito Santo", "Restante do Brasil"))
+  scale_fill_manual(values = rev(paleta_hist(2)), labels = c("Espírito Santo", "Restante do Brasil"))+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 
 # Mostrar o gráfico
 print(grafico_proporcao)
@@ -142,7 +152,9 @@ series_mortes_br_total <- ggplot(data = dados.mortes.totais.series, aes(x = ANOO
   scale_x_continuous(
     breaks = dados.mortes.totais.series$ANOOBITO,
     labels = dados.mortes.totais.series$ANOOBITO)+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 series_mortes_br_total
 
 
@@ -168,7 +180,9 @@ series_mortes_br_psic <- ggplot(data = dados.mortes.psic.series, aes(x = ANOOBIT
   scale_x_continuous(
     breaks = dados.mortes.psic.series$ANOOBITO,
     labels = dados.mortes.psic.series$ANOOBITO)+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 series_mortes_br_psic
 
 
@@ -195,7 +209,9 @@ series_mortes_es_total <- ggplot(data = dados.mortes.es.totais.series, aes(x = A
   scale_x_continuous(
     breaks = dados.mortes.es.totais.series$ANOOBITO,
     labels = dados.mortes.es.totais.series$ANOOBITO)+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 series_mortes_es_total
 
 
@@ -221,7 +237,9 @@ series_mortes_es_psic <- ggplot(data = dados.mortes.es.psic.series, aes(x = ANOO
   scale_x_continuous(
     breaks = dados.mortes.es.psic.series$ANOOBITO,
     labels = dados.mortes.es.psic.series$ANOOBITO)+
-  theme_classic()
+  theme_classic()+
+  theme(legend.title = element_text(size = size_titulo_legenda),               
+        legend.text = element_text(size = size_texto_legenda))
 series_mortes_es_psic
 
 save(series_mortes_es_psic, file = "GRAFICOS_RDA/series_mortes_es_psic.RData")

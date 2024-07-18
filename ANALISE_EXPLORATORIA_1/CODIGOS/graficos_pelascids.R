@@ -26,9 +26,8 @@ hist.F10.es <- ggplot(data = dados.F10.ES, aes(x = IDADE2)) +
     plot.title = element_text(size = 12),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 hist.F10.es
 save(hist.F10.es, file="GRAFICOS_RDA/hist.F10.es.RData")
@@ -47,9 +46,8 @@ hist.F10.br <- ggplot(data = dados.F10.BR, aes(x = IDADE2)) +
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 hist.F10.br
 save(hist.F10.br, file="GRAFICOS_RDA/hist.F10.br.RData")
@@ -69,9 +67,8 @@ hist.F17.es <- ggplot(data = dados.F17.ES, aes(x = IDADE2)) +
     plot.title = element_text(size = 14),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 hist.F17.es
 save(hist.F17.es, file="GRAFICOS_RDA/hist.F17.es.RData")
@@ -89,9 +86,8 @@ hist.F17.br <- ggplot(data = dados.F17.BR, aes(x = IDADE2)) +
     plot.title = element_text(size = 13),   # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),                 # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),                  # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 15),               # Tamanho do título da legenda
-    legend.text = element_text(size = 12)                 # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 hist.F17.br
 save(hist.F17.br, file="GRAFICOS_RDA/hist.F17.br.RData")
@@ -122,9 +118,8 @@ series_genero_br_f10 <- ggplot(data = dados.genero.br.F10, aes(x = ANOOBITO, y =
     plot.title = element_text(size = 12),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_br_f10)
 save(series_genero_br_f10, file="GRAFICOS_RDA/series_genero_br_f10.RData")
@@ -150,9 +145,8 @@ series_genero_es_f10 <- ggplot(data = dados.genero.es.F10, aes(x = ANOOBITO, y =
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_es_f10)
 save(series_genero_es_f10, file="GRAFICOS_RDA/series_genero_es_f10.RData")
@@ -180,9 +174,8 @@ series_genero_br_f17 <- ggplot(data = dados.genero.br.F17, aes(x = ANOOBITO, y =
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_br_f17)
 save(series_genero_br_f17, file="GRAFICOS_RDA/series_genero_br_f17.RData")
@@ -208,9 +201,8 @@ series_genero_es_f17 <- ggplot(data = dados.genero.es.F17, aes(x = ANOOBITO, y =
     plot.title = element_text(size = 13),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 13),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_genero_es_f17)
 save(series_genero_es_f17, file="GRAFICOS_RDA/series_genero_es_f17.RData")
@@ -236,9 +228,8 @@ hist_escolaridade_br_f10 <- ggplot(freq_escolaridade_br_f10, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_br_f10)
 save(hist_escolaridade_br_f10, file="GRAFICOS_RDA/hist_escolaridade_br_f10.RData")
@@ -260,9 +251,8 @@ hist_escolaridade_es_f10 <- ggplot(freq_escolaridade_es_f10, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_es_f10)
 
@@ -288,9 +278,8 @@ hist_escolaridade_br_f17 <- ggplot(freq_escolaridade_br_f17, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_br_f17)
 
@@ -313,9 +302,8 @@ hist_escolaridade_es_f17 <- ggplot(freq_escolaridade_es_f17, aes(x = ESC, y = Qu
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text.y = element_text(size = 13),      # Tamanho dos textos dos eixos
     axis.text.x = element_blank(),              # Removendo o texto do eixo x
-    legend.title = element_text(size = 13),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print(hist_escolaridade_es_f17)
 save(hist_escolaridade_es_f17, file="GRAFICOS_RDA/hist_escolaridade_es_f17.RData")
@@ -346,9 +334,8 @@ series_raca_br_F10 <- ggplot(data = dados.raca.br.f10, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 14),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_br_F10)
 
@@ -375,9 +362,8 @@ series_raca_es_F10 <- ggplot(data = dados.raca.es.f10, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 14),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_es_F10)
 
@@ -405,9 +391,8 @@ series_raca_br_F17 <- ggplot(data = dados.raca.br.f17, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 14),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_br_F17)
 
@@ -434,9 +419,8 @@ series_raca_es_F17 <- ggplot(data = dados.raca.es.f17, aes(x = ANOOBITO, y = N.o
     plot.title = element_text(size = 14),       # Tamanho e estilo do título do gráfico
     axis.title = element_text(size = 15),       # Tamanho dos títulos dos eixos
     axis.text = element_text(size = 12),      # Tamanho dos textos dos eixos
-    legend.title = element_text(size = 14),     # Tamanho do título da legenda
-    legend.text = element_text(size = 12)       # Tamanho do texto da legenda
-  )
+    legend.title = element_text(size = size_titulo_legenda),               
+    legend.text = element_text(size = size_texto_legenda))
 
 print (series_raca_es_F17)
 

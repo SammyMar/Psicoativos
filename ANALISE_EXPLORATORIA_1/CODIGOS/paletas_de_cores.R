@@ -56,3 +56,7 @@ paleta_azul <- manual_pal(c("#FFFFFF","#E0E0E0", "#8A8A8A", "#496373",
                       
                       "#222333","#2B2B33", "#000000"))
 
+
+#TAMANHO DO TEXTO DA LEGENDA
+size_titulo_legenda <- 12
+size_texto_legenda <- 10
