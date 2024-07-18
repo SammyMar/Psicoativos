@@ -106,7 +106,10 @@ dados.escolaridade.br.series <- data.frame(
 series_escolaridade_br_total <- ggplot(data = dados.escolaridade.br.series, aes(x = ANOOBITO, y = N.obitos,
                                                                                 colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = ESC)) +
+  geom_point(shape = 15, aes(colour = ESC,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de Óbitos Totais no Brasil por Escolaridade",
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
@@ -134,7 +137,10 @@ dados.escolaridade.es.series <- data.frame(
 series_escolaridade_es_total <- ggplot(data = dados.escolaridade.es.series, aes(x = ANOOBITO, y = N.obitos,
                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = ESC)) +
+  geom_point(shape = 15, aes(colour = ESC,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de Óbitos Totais no ES por Escolaridade",
        x="Anos", y="Óbitos Totais", colour = "Escolaridade") +
@@ -163,7 +169,10 @@ dados.escolaridade.br.series.psic <- data.frame(
 series_escolaridade_br_psic <- ggplot(data = dados.escolaridade.br.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                         colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = ESC)) +
+  geom_point(shape = 15, aes(colour = ESC,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de Óbitos por psicoativos no Brasil por Escolaridade",
        x="Anos", y="Óbitos por psicoativos", colour = "Escolaridade") +
@@ -191,7 +200,10 @@ dados.escolaridade.es.series.psic <- data.frame(
 series_escolaridade_es_psic <- ggplot(data = dados.escolaridade.es.series.psic, aes(x = ANOOBITO, y = N.obitos,
                                                                                     colour = ESC)) +
   geom_line(linewidth = 0.5, linetype = "solid") +
-  geom_point(shape = 15, aes(colour = ESC)) +
+  geom_point(shape = 15, aes(colour = ESC,
+                             text  = paste("Ano: ", ANOOBITO, 
+                                           "<br>Quantidade: ", N.obitos,
+                                           "<br>Escolaridade: ", ESC))) +
   scale_colour_manual(values =  paleta_series(5))+
   labs(title = "Número de óbitos por psicoativos no Espirito Santo por Escolaridade",
        x="Anos", y="Óbitos por psicoativos", colour = "Escolaridade") +
@@ -224,7 +236,10 @@ dados.escolaridade.br.series.psic <- dados.escolaridade.br.series.psic %>%
 
 # 3 Criando o gráfico
 proporcao_escolaridade_br_psic <-ggplot(dados.escolaridade.br.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
-  geom_bar(stat = "identity", position = "stack") +
+  geom_bar(stat = "identity", position = "stack",
+           aes(text  = paste("Ano: ", ANOOBITO, 
+                             "<br>Quantidade: ", N.obitos,
+                             "<br>Escolaridade: ", ESC))) +
   scale_fill_manual(values =  (paleta_hist(6)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
        title = "Proporção de Mortes por Psicoativos no Brasil por Escolaridade e Ano") +
@@ -255,7 +270,10 @@ dados.escolaridade.es.series.psic <- dados.escolaridade.es.series.psic %>%
 
 # 3 Criando o gráfico
 proporcao_escolaridade_es_psic <- ggplot(dados.escolaridade.es.series.psic, aes(x = factor(ANOOBITO), y = porcentagem, fill = ESC)) +
-  geom_bar(stat = "identity", position = "stack") +
+  geom_bar(stat = "identity", position = "stack",
+           aes(text  = paste("Ano: ", ANOOBITO, 
+                             "<br>Quantidade: ", N.obitos,
+                             "<br>Escolaridade: ", ESC))) +
   scale_fill_manual(values =  (paleta_hist(5)))+
   labs(x = "Ano", y = "Porcentagem (%)", fill = "Escolaridade",
        title = "Proporção de Mortes por Psicoativos no ES por Escolaridade e Ano") +

@@ -342,7 +342,7 @@ subplot(ggplotly(proporcao_raca_br_psic, tooltip = "text") |>
                                x = 0.5),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 15))),
-        ggplotly(proporcao_raca_es_psic) |> style(showlegend = F) |> 
+        ggplotly(proporcao_raca_es_psic, tooltip = "text") |> style(showlegend = F) |> 
           layout(annotations = list(x = 0.5,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -428,7 +428,7 @@ um alto índice de NA's.
 
 
 
-subplot(style(ggplotly(series_escolaridade_br_total),
+subplot(style(ggplotly(series_escolaridade_br_total, tooltip = "text"),
               showlegend = T)  |> 
           layout(legend = list(orientation = "h",
                                xanchor = "center",
@@ -441,7 +441,7 @@ subplot(style(ggplotly(series_escolaridade_br_total),
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_escolaridade_es_total), 
+        style(ggplotly(series_escolaridade_es_total, tooltip = "text"), 
               showlegend = FALSE)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
@@ -453,7 +453,7 @@ subplot(style(ggplotly(series_escolaridade_br_total),
                  yaxis = list(tickfont = list(size = 10))))  |> 
   layout(title =  'Mortes Relacionadas por Escolaridade')
  
-subplot(style( ggplotly(series_escolaridade_br_psic), showlegend = T)  |> 
+subplot(style(ggplotly(series_escolaridade_br_psic, tooltip = "text"), showlegend = T)  |> 
           layout(legend = list(orientation = "h",
                                xanchor = "center",
                                x = 0.5),
@@ -465,7 +465,7 @@ subplot(style( ggplotly(series_escolaridade_br_psic), showlegend = T)  |>
                                     yref='paper'),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 10))),
-        style(ggplotly(series_escolaridade_es_psic), showlegend = F)  |> 
+        style(ggplotly(series_escolaridade_es_psic, tooltip = "text"), showlegend = F)  |> 
           layout(annotations = list(x = 0.6 ,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
@@ -506,7 +506,7 @@ subplot(ggplotly(proporcao_escolaridade_br_psic,
                                x = 0.5),
                  xaxis = list(tickfont = list(size = 10)),
                  yaxis = list(tickfont = list(size = 15))),
-        ggplotly(proporcao_escolaridade_es_psic) |> style(showlegend = F) |> 
+        ggplotly(proporcao_escolaridade_es_psic, tooltip = "text") |> style(showlegend = F) |> 
           layout(annotations = list(x = 0.5,
                                     y = 1.05,
                                     text = "Mortes Psicoativos ES",
