@@ -767,8 +767,12 @@ subplot(style( ggplotly(grafico_prop_estciv_br_psic, tooltip = "text"), showlege
 ## Idade
 
 Ao analisar a variável idade, é possível seguir duas abordagens, por
-anos de idade e por faixas etárias. Neste relatório será feita a análise por faixa etária, podendo ser feita a outra análise futuramente.
+anos de idade e por faixas etárias. Neste relatório serão feitas as duas análises, iniciando pelos anos de idade.
 
+É possível observar que em todos os boxplots das idades por ano a variabilidade dessas
+idades ao longo dos anos é baixa. Percebe-se também que a média de
+idade de mortes geral é mais elevada que a média de idade de mortes pelo
+uso de psicoativos.
 
 ```{r out.width = "100%", warning = FALSE, echo=FALSE}
 # ggpubr::ggarrange(boxplot.anoidad.br, boxplot.anoidad.br.psic , ncol=2,  common.legend = T,

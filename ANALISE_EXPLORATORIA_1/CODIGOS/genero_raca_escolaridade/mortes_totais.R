@@ -121,7 +121,8 @@ grafico_proporcao <- ggplot(obitos_combinados_br_es, aes(x = factor(ANOOBITO), y
                                                                    "<br>Percentual: ",round(Porcentagem,2),"%",
                                                                    "<br>Região: ", Regiao))) +
   labs(x = "Ano", y = "Percentual (%)", fill = "Região",
-       title = "Proporção de Mortes por Psicoativos no Espírito Santo em relação ao Restante do Brasil anualmente") +
+       title = "Proporção de Mortes por Psicoativos no Espírito Santo em relação ao Restante do Brasil anualmente",
+       legen) +
   theme_minimal() +
   scale_fill_manual(values = rev(paleta_hist(2)), labels = c("Espírito Santo", "Restante do Brasil"))+
   theme(legend.title = element_text(size = size_titulo_legenda),               
