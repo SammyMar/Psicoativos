@@ -18,7 +18,7 @@ paleta_series <- manual_pal(c("#010440","#ff7f00","#1e96fc", "#ff6392",
 # paleta de histograma === SIMILAR A DE SÉRIES PORÉM COM CORES MAIS AGRADÁVEIS DE OLHAR
 
 paleta_hist <- manual_pal(c("#A6CEE3", "#FB9A99", "#FFDB58", "#1F78B4",
-                            "#B2DF8A","#33A02C", "#F5F5F5"
+                            "#B2DF8A","#33A02C", "#8F8164"
                             ))
 
 
