@@ -2,7 +2,8 @@ VARIÁVEL,EXPLICAÇÃO
 ACIDTRAB,"Indica se o evento que desencadeou o óbito está relacionado ao processo de
 trabalho. (1 – sim; 2 – não; 9 – ignorado)"
 ALTCAUSA,"Indica se houve correção ou alteração da causa do óbito após investigação.
-(1- Sim; 2 – Não)"
+(1- Sim; 2 – Não)
+"
 ASSISTMED,"Se refere ao atendimento médico continuado que o paciente recebeu, ou não,
 durante a enfermidade que ocasionou o óbito. (1 – sim; 2 – não; 9 – ignorado)"
 ATESTADO,CIDs informados no atestado. (Códigos CID 10)
@@ -11,7 +12,8 @@ ATESTANTE,"Indica se o medico que assina atendeu o paciente
 2: Substituto
 3: IML
 4: SVO
-5: Outros"
+5: Outros
+"
 BAIRES,"Bairro de residencia. Este codigo e atribuido por cada
 estado e/ou municipio, nao fazendo parte da base
 nacional"
