@@ -1,0 +1,45 @@
+Indicador 1
+
+
+$$
+I_1 = \frac{\text{Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito Santo}}{\text{Nº de Óbitos Totais no Espírito Santo}} \cdot 1000
+$$
+
+
+Indicador 2
+
+
+$$
+I_2 = \frac{\text{Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito Santo}}{\text{Nº de Óbitos Decorrentes do uso de Psicoativos no Brasil}} \cdot 100
+$$
+
+
+Indicador 3
+
+
+$$
+I_3 = \frac{\text{Nº de Óbitos Totais no Espírito Santo}}{\text{Nº de Óbitos Totais no Brasil}}\cdot 100
+$$
+
+
+Indicador 4
+
+
+$$
+I_4 = \frac{\text{Nº de Óbitos Decorrentes do Uso de Psicoativos no Espírito Santo}}{\text{População Estimada do Espírito Santo no ano correspondente}} \cdot 100000
+$$
+
+
+Indicador 5
+
+
+$$
+I_5 = \frac{\text{Nº de Óbitos Decorrentes do Uso de Psicoativos no Brasil}}{\text{População Estimada do Brasil no ano correspondente}} \cdot 100000
+$$
+
+
+
+
+
+
+
